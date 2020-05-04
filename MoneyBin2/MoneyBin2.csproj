@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,28 +35,358 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Money Bin.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EFWinforms">
+      <HintPath>..\..\Libraries\EF6Winforms\EF6WinForms\bin\Debug\EFWinforms.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.0.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.0.4\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="LaMarvin.Windows.Forms.ColorPicker">
+      <HintPath>..\..\Libraries\ColorPicker\Control\bin\LaMarvin.Windows.Forms.ColorPicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Access, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="NFExtensions">
+      <HintPath>..\..\Libraries\Extensions\NFExtensions\bin\Debug\NFExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SuperChart, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\ChartLibrary\SuperChart\bin\Debug\SuperChart.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperDGV">
+      <HintPath>..\..\Libraries\SuperDGV\SuperDGV\bin\Debug\SuperDGV.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperPrompt">
+      <HintPath>..\..\Libraries\SuperPrompt\SuperPrompt\bin\Debug\SuperPrompt.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperReport">
+      <HintPath>..\..\Libraries\SuperReportSolution\SuperReport\bin\Debug\SuperReport.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Controls\ExheritenceToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="DataForm.Designer.cs">
+      <DependentUpon>DataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Balance\frmRegras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Balance\frmRegras.Designer.cs">
+      <DependentUpon>frmRegras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cotacoes\FinanceData.cs" />
+    <Compile Include="Forms\Investimentos\frmBalanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Investimentos\frmBalanco.Designer.cs">
+      <DependentUpon>frmBalanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Investimentos\frmEditarOperacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Investimentos\frmEditarOperacao.Designer.cs">
+      <DependentUpon>frmEditarOperacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Investimentos\frmInvestimentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Investimentos\frmInvestimentos.designer.cs">
+      <DependentUpon>frmInvestimentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SerieHistorica\frmSerieHistorica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SerieHistorica\frmSerieHistorica.designer.cs">
+      <DependentUpon>frmSerieHistorica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SerieHistorica\frmGrafico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SerieHistorica\frmGrafico.designer.cs">
+      <DependentUpon>frmGrafico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Pagamentos\frmCalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Pagamentos\frmCalendario.Designer.cs">
+      <DependentUpon>frmCalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Pagamentos\frmComprovantePDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Pagamentos\frmComprovantePDF.designer.cs">
+      <DependentUpon>frmComprovantePDF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmPagamentos - Copy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmPagamentos - Copy.designer.cs">
+      <DependentUpon>frmPagamentos - Copy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Utilidades\frmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Utilidades\frmConfig.designer.cs">
+      <DependentUpon>frmConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Balance\frmExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Balance\frmExport.designer.cs">
+      <DependentUpon>frmExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmBancosContasOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmBancosContasOld.Designer.cs">
+      <DependentUpon>frmBancosContasOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Pagamentos\frmPagamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Pagamentos\frmPagamentos.designer.cs">
+      <DependentUpon>frmPagamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Utilidades\frmPleaseWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Utilidades\frmPleaseWait.Designer.cs">
+      <DependentUpon>frmPleaseWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Utilidades\frmProgressBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Utilidades\frmProgressBar.designer.cs">
+      <DependentUpon>frmProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Utilidades\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Utilidades\frmReport.designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmBaseEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmBaseEdit.Designer.cs">
+      <DependentUpon>frmBaseEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmBanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmBanco.Designer.cs">
+      <DependentUpon>frmBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmConta.Designer.cs">
+      <DependentUpon>frmConta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmRegrasOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmRegrasOld.Designer.cs">
+      <DependentUpon>frmRegrasOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Balance\frmLeitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Balance\frmLeitor.Designer.cs">
+      <DependentUpon>frmLeitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmBalanceOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmBalanceOld.Designer.cs">
+      <DependentUpon>frmBalanceOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Balance\frmClassificacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Balance\frmClassificacao.Designer.cs">
+      <DependentUpon>frmClassificacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ToolStripCheckbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ToolStripDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmpagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Obsoletos\frmpagamento.Designer.cs">
+      <DependentUpon>frmpagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\FormUtils.cs" />
+    <Compile Include="Forms\Balance\frmBancosContas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Balance\frmBancosContas.Designer.cs">
+      <DependentUpon>frmBancosContas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Balance\frmBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Balance\frmBalance.Designer.cs">
+      <DependentUpon>frmBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SerieHistorica\frmCustomizeChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SerieHistorica\frmCustomizeChart.designer.cs">
+      <DependentUpon>frmCustomizeChart.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="DataForm.resx">
+      <DependentUpon>DataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Balance\frmRegras.resx">
+      <DependentUpon>frmRegras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Investimentos\frmBalanco.resx">
+      <DependentUpon>frmBalanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Investimentos\frmEditarOperacao.resx">
+      <DependentUpon>frmEditarOperacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Investimentos\frmInvestimentos.resx">
+      <DependentUpon>frmInvestimentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SerieHistorica\frmSerieHistorica.resx">
+      <DependentUpon>frmSerieHistorica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SerieHistorica\frmGrafico.resx">
+      <DependentUpon>frmGrafico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Obsoletos\frmBancosContasOld.resx">
+      <DependentUpon>frmBancosContasOld.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Pagamentos\frmCalendario.resx">
+      <DependentUpon>frmCalendario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Pagamentos\frmComprovantePDF.resx">
+      <DependentUpon>frmComprovantePDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Obsoletos\frmPagamentos - Copy.resx">
+      <DependentUpon>frmPagamentos - Copy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Utilidades\frmConfig.resx">
+      <DependentUpon>frmConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Balance\frmExport.resx">
+      <DependentUpon>frmExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Pagamentos\frmPagamentos.resx">
+      <DependentUpon>frmPagamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Utilidades\frmPleaseWait.resx">
+      <DependentUpon>frmPleaseWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Utilidades\frmProgressBar.resx">
+      <DependentUpon>frmProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Utilidades\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Obsoletos\frmBaseEdit.resx">
+      <DependentUpon>frmBaseEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Obsoletos\frmBanco.resx">
+      <DependentUpon>frmBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Obsoletos\frmConta.resx">
+      <DependentUpon>frmConta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Obsoletos\frmRegrasOld.resx">
+      <DependentUpon>frmRegrasOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Balance\frmLeitor.resx">
+      <DependentUpon>frmLeitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Obsoletos\frmBalanceOld.resx">
+      <DependentUpon>frmBalanceOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Balance\frmClassificacao.resx">
+      <DependentUpon>frmClassificacao.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Obsoletos\frmpagamento.resx">
+      <DependentUpon>frmpagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Balance\frmBancosContas.resx">
+      <DependentUpon>frmBancosContas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Balance\frmBalance.resx">
+      <DependentUpon>frmBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SerieHistorica\frmCustomizeChart.resx">
+      <DependentUpon>frmCustomizeChart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,7 +395,29 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\Balance.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ComDescricao.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PorGrupo.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\DataLayer.Ativo.datasource" />
+    <None Include="Properties\DataSources\DataLayer.BalanceItem.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Banco.datasource" />
+    <None Include="Properties\DataSources\DataLayer.CalendarioItem.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Classificacao.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Conta1.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Pagamento.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Patrimonio.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Regra.datasource" />
+    <None Include="Properties\DataSources\DataLayer.SerieHistorica.datasource" />
+    <None Include="Properties\DataSources\DataLayer.SituacaoImpostoRenda.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,5 +431,67 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{c75b1460-3da4-4d24-a0b8-3683de1d22fc}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Money Bin.ico" />
+    <None Include="Resources\Calendario.png" />
+    <None Include="Resources\Yes_24.png" />
+    <None Include="Resources\Delete 24.png" />
+    <None Include="Resources\No_24.png" />
+    <None Include="Resources\Pula_24.png" />
+    <None Include="Resources\Config.png" />
+    <None Include="Resources\Spinner.gif" />
+    <None Include="Resources\TestConnection_24.png" />
+    <None Include="Resources\FindServer1.gif" />
+    <None Include="Resources\FindServer2.gif" />
+    <None Include="Resources\dollar-icon.png" />
+    <None Include="Resources\dollar48.png" />
+    <None Include="Resources\SerieHistorica48.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Relatorios.png" />
+    <None Include="Resources\Add_24.png" />
+    <None Include="Resources\Revert_24.png" />
+    <None Include="Resources\OK_24.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\Carteira.png" />
+    <None Include="Resources\Revert.png" />
+    <None Include="Resources\OK.png" />
+    <None Include="Resources\Uncle Scrooge-McDuck.gif" />
+    <None Include="Resources\Dinheiro.png" />
+    <None Include="Resources\Disquete.png" />
+    <None Include="Resources\Configuracao.png" />
+    <None Include="Resources\Classificar.png" />
+    <None Include="Resources\Exportar.png" />
+    <None Include="Resources\Banco.png" />
+    <None Include="Resources\Balance.png" />
+    <None Include="Resources\Oculos.png" />
+    <None Include="Resources\Regras.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
 </Project>

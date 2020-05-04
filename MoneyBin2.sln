@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyBin2", "MoneyBin2\MoneyBin2.csproj", "{3D01761B-389E-47B7-A8F3-5880790208D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{C75B1460-3DA4-4D24-A0B8-3683DE1D22FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3D01761B-389E-47B7-A8F3-5880790208D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D01761B-389E-47B7-A8F3-5880790208D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D01761B-389E-47B7-A8F3-5880790208D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C75B1460-3DA4-4D24-A0B8-3683DE1D22FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C75B1460-3DA4-4D24-A0B8-3683DE1D22FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C75B1460-3DA4-4D24-A0B8-3683DE1D22FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C75B1460-3DA4-4D24-A0B8-3683DE1D22FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

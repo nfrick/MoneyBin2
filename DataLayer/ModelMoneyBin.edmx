@@ -1,0 +1,1558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MoneyBinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbAtivos">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbOperacoes">
+          <Key>
+            <PropertyRef Name="OperacaoId" />
+          </Key>
+          <Property Name="OperacaoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaId" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TipoId" Type="int" Nullable="false" />
+          <Property Name="Data" Type="smalldatetime" Nullable="false" />
+          <Property Name="Qtd" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="smallmoney" Nullable="false" />
+          <Property Name="ValorReal" Type="smallmoney" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbOperacoesTipos">
+          <Key>
+            <PropertyRef Name="TipoId" />
+          </Key>
+          <Property Name="TipoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="SinalPositivo" Type="bit" Nullable="false" />
+          <Property Name="Sinal" Type="int" Nullable="false" />
+          <Property Name="IncideTaxa" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbSerieHistorica">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Data" />
+          </Key>
+          <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="PrecoAbertura" Type="smallmoney" Nullable="false" />
+          <Property Name="PrecoMaximo" Type="smallmoney" Nullable="false" />
+          <Property Name="PrecoMinimo" Type="smallmoney" Nullable="false" />
+          <Property Name="PrecoMedio" Type="smallmoney" Nullable="false" />
+          <Property Name="PrecoUltimo" Type="smallmoney" Nullable="false" />
+          <Property Name="PrecoMelhorOfertaCompra" Type="smallmoney" Nullable="false" />
+          <Property Name="PrecoMelhorOfertaVenda" Type="smallmoney" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbBancos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Sigla" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ExtensaoExtrato" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="ExtensaoFundos" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbContas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dono" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BancoID" Type="int" Nullable="false" />
+          <Property Name="Apelido" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Agencia" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AgenciaDV" Type="char" MaxLength="1" />
+          <Property Name="ContaCorrente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ContaCorrenteDV" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Operacao" Type="varchar" MaxLength="3" />
+          <Property Name="Gerente" Type="varchar" MaxLength="20" />
+          <Property Name="Telefone" Type="varchar" MaxLength="10" />
+          <Property Name="Celular" Type="varchar" MaxLength="11" />
+          <Property Name="EMail" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="tbRegras">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Texto" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="AfetaSaldo" Type="bit" Nullable="false" />
+          <Property Name="Grupo" Type="nvarchar" MaxLength="15" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="20" />
+          <Property Name="SubCategoria" Type="nvarchar" MaxLength="30" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="30" />
+          <Property Name="AddToDatabase" Type="bit" Nullable="false" />
+          <Property Name="Ocorrencias" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbContasFundos">
+          <Key>
+            <PropertyRef Name="ContaFundoId" />
+          </Key>
+          <Property Name="ContaFundoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaId" Type="int" Nullable="false" />
+          <Property Name="FundoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbContasMeses">
+          <Key>
+            <PropertyRef Name="ContaMesId" />
+          </Key>
+          <Property Name="ContaMesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaFundoId" Type="int" Nullable="false" />
+          <Property Name="FundoMesId" Type="int" Nullable="false" />
+          <Property Name="RendimentoBruto" Type="money" Nullable="false" />
+          <Property Name="CotaQtd" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbFundos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CNPJ" Type="char" MaxLength="14" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbFundosMeses">
+          <Key>
+            <PropertyRef Name="FundoMesId" />
+          </Key>
+          <Property Name="FundoMesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FundoId" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="date" Nullable="false" />
+          <Property Name="CotaValor" Type="numeric" Precision="18" Scale="9" Nullable="false" />
+          <Property Name="RendimentoMes" Type="numeric" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="RendimentoAno" Type="numeric" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="Rendimento12Meses" Type="numeric" Precision="7" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMovimentos">
+          <Key>
+            <PropertyRef Name="MovimentoId" />
+          </Key>
+          <Property Name="MovimentoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaMesId" Type="int" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Historico" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="Valor" Type="money" Nullable="false" />
+          <Property Name="ImpostoRenda" Type="money" Nullable="false" />
+          <Property Name="IOF" Type="money" Nullable="false" />
+          <Property Name="CotaQtd" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="CotaValor" Type="decimal" Precision="18" Scale="9" />
+        </EntityType>
+        <EntityType Name="tbLCA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaID" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Aplicacao" Type="date" Nullable="false" />
+          <Property Name="Vencimento" Type="date" Nullable="false" />
+          <Property Name="Taxa" Type="money" Nullable="false" />
+          <Property Name="ValorEmissao" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbLCAMeses">
+          <Key>
+            <PropertyRef Name="LCAMesId" />
+          </Key>
+          <Property Name="LCAMesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LCAId" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="date" Nullable="false" />
+          <Property Name="SaldoAnterior" Type="money" Nullable="false" />
+          <Property Name="Aplicacoes" Type="money" Nullable="false" />
+          <Property Name="Resgates" Type="money" Nullable="false" />
+          <Property Name="RendimentoBruto" Type="money" Nullable="false" />
+          <Property Name="ImpostoRenda" Type="money" Nullable="false" />
+          <Property Name="IOF" Type="money" Nullable="false" />
+          <Property Name="RendimentoLiquido" Type="money" Nullable="false" />
+          <Property Name="SaldoAtual" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbLCAMovimentos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LCAMesId" Type="int" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Historico" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="ValorCapital" Type="money" Nullable="false" />
+          <Property Name="ImpostoRenda" Type="money" Nullable="false" />
+          <Property Name="IOF" Type="money" Nullable="false" />
+          <Property Name="Rendimentos" Type="money" Nullable="false" />
+          <Property Name="ValorMovimento" Type="money" Nullable="false" />
+          <Property Name="ValorAtual" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbCalendario">
+          <Key>
+            <PropertyRef Name="Ano" />
+            <PropertyRef Name="Mes" />
+            <PropertyRef Name="PagamentoID" />
+          </Key>
+          <Property Name="Ano" Type="smallint" Nullable="false" />
+          <Property Name="Mes" Type="smallint" Nullable="false" />
+          <Property Name="PagamentoID" Type="int" Nullable="false" />
+          <Property Name="Agendado" Type="bit" Nullable="false" />
+          <Property Name="AgendadoData" Type="date" />
+          <Property Name="Pago" Type="bit" Nullable="false" />
+          <Property Name="PagamentoData" Type="date" />
+          <Property Name="Valor" Type="smallmoney" />
+          <Property Name="BalanceID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbPagamentos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Grupo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SubCategoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="30" />
+          <Property Name="Dia" Type="tinyint" Nullable="false" />
+          <Property Name="Meses" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MoneyBin2.Acoes.vwOperacoesQtdAcumulada' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwOperacoesQtdAcumulada">
+          <Key>
+            <PropertyRef Name="OperacaoId" />
+          </Key>
+          <Property Name="OperacaoId" Type="int" Nullable="false" />
+          <Property Name="QtdAcumulada" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MoneyBin2.Acoes.vwUltimoPreco' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwUltimoPreco">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            
+            
+          </Key>
+          <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="PrecoUltimo" Type="smallmoney" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwBalance">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaID" Type="int" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Historico" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Documento" Type="nvarchar" MaxLength="30" />
+          <Property Name="Valor" Type="money" Nullable="false" />
+          <Property Name="AfetaSaldo" Type="bit" Nullable="false" />
+          <Property Name="Grupo" Type="nvarchar" MaxLength="15" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="20" />
+          <Property Name="SubCategoria" Type="nvarchar" MaxLength="30" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="200" />
+          <Property Name="Saldo" Type="money" />
+        </EntityType>
+        <Association Name="FK_tbCalendario_tbPagamentos">
+          <End Role="tbPagamentos" Type="Self.tbPagamentos" Multiplicity="1" />
+          <End Role="tbCalendario" Type="Self.tbCalendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPagamentos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbCalendario">
+              <PropertyRef Name="PagamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContas_tbBancos">
+          <End Role="tbBancos" Type="Self.tbBancos" Multiplicity="1" />
+          <End Role="tbContas" Type="Self.tbContas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbBancos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbContas">
+              <PropertyRef Name="BancoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContasFundos_tbContas">
+          <End Role="tbContas" Type="Self.tbContas" Multiplicity="1" />
+          <End Role="tbContasFundos" Type="Self.tbContasFundos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbContasFundos">
+              <PropertyRef Name="ContaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContasFundos_tbFundos">
+          <End Role="tbFundos" Type="Self.tbFundos" Multiplicity="1" />
+          <End Role="tbContasFundos" Type="Self.tbContasFundos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbFundos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbContasFundos">
+              <PropertyRef Name="FundoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContasMeses_tbContasFundos">
+          <End Role="tbContasFundos" Type="Self.tbContasFundos" Multiplicity="1" />
+          <End Role="tbContasMeses" Type="Self.tbContasMeses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContasFundos">
+              <PropertyRef Name="ContaFundoId" />
+            </Principal>
+            <Dependent Role="tbContasMeses">
+              <PropertyRef Name="ContaFundoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContasMeses_tbFundosMeses">
+          <End Role="tbFundosMeses" Type="Self.tbFundosMeses" Multiplicity="1" />
+          <End Role="tbContasMeses" Type="Self.tbContasMeses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbFundosMeses">
+              <PropertyRef Name="FundoMesId" />
+            </Principal>
+            <Dependent Role="tbContasMeses">
+              <PropertyRef Name="FundoMesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbFundosMeses_tbFundos">
+          <End Role="tbFundos" Type="Self.tbFundos" Multiplicity="1" />
+          <End Role="tbFundosMeses" Type="Self.tbFundosMeses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbFundos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbFundosMeses">
+              <PropertyRef Name="FundoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbLCA_tbContas">
+          <End Role="tbContas" Type="Self.tbContas" Multiplicity="1" />
+          <End Role="tbLCA" Type="Self.tbLCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbLCA">
+              <PropertyRef Name="ContaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbLCAMeses_tbLCA">
+          <End Role="tbLCA" Type="Self.tbLCA" Multiplicity="1" />
+          <End Role="tbLCAMeses" Type="Self.tbLCAMeses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbLCA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbLCAMeses">
+              <PropertyRef Name="LCAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMovimentos_tbContasMeses">
+          <End Role="tbContasMeses" Type="Self.tbContasMeses" Multiplicity="1" />
+          <End Role="tbMovimentos" Type="Self.tbMovimentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContasMeses">
+              <PropertyRef Name="ContaMesId" />
+            </Principal>
+            <Dependent Role="tbMovimentos">
+              <PropertyRef Name="ContaMesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMovimentos_tbLCAMeses">
+          <End Role="tbLCAMeses" Type="Self.tbLCAMeses" Multiplicity="1" />
+          <End Role="tbLCAMovimentos" Type="Self.tbLCAMovimentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbLCAMeses">
+              <PropertyRef Name="LCAMesId" />
+            </Principal>
+            <Dependent Role="tbLCAMovimentos">
+              <PropertyRef Name="LCAMesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbOperacoes_tbContas">
+          <End Role="tbContas" Type="Self.tbContas" Multiplicity="1" />
+          <End Role="tbOperacoes" Type="Self.tbOperacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbOperacoes">
+              <PropertyRef Name="ContaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbOperacoes_tbOperacoesTipos">
+          <End Role="tbOperacoesTipos" Type="Self.tbOperacoesTipos" Multiplicity="1" />
+          <End Role="tbOperacoes" Type="Self.tbOperacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbOperacoesTipos">
+              <PropertyRef Name="TipoId" />
+            </Principal>
+            <Dependent Role="tbOperacoes">
+              <PropertyRef Name="TipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbSerieHistorica_tbAtivos">
+          <End Role="tbAtivos" Type="Self.tbAtivos" Multiplicity="1" />
+          <End Role="tbSerieHistorica" Type="Self.tbSerieHistorica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAtivos">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tbSerieHistorica">
+              <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_SituacaoImpostoRenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acoes">
+          <Parameter Name="ContaID" Type="int" Mode="In" />
+          <Parameter Name="Ano" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSerieHistorica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acoes">
+          <Parameter Name="Codigo" Type="char" Mode="In" />
+          <Parameter Name="inicio" Type="smalldatetime" Mode="In" />
+          <Parameter Name="termino" Type="smalldatetime" Mode="In" />
+        </Function>
+        <Function Name="spSerieHistoricaDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acoes" />
+        <Function Name="spBalanceItemDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Extrato">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spBalanceItemInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Extrato">
+          <Parameter Name="ContaID" Type="int" Mode="In" />
+          <Parameter Name="Data" Type="date" Mode="In" />
+          <Parameter Name="Historico" Type="nvarchar" Mode="In" />
+          <Parameter Name="Documento" Type="nvarchar" Mode="In" />
+          <Parameter Name="Valor" Type="money" Mode="In" />
+          <Parameter Name="AfetaSaldo" Type="bit" Mode="In" />
+          <Parameter Name="Grupo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Categoria" Type="nvarchar" Mode="In" />
+          <Parameter Name="SubCategoria" Type="nvarchar" Mode="In" />
+          <Parameter Name="Descricao" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spBalanceItemUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Extrato">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="AfetaSaldo" Type="bit" Mode="In" />
+          <Parameter Name="Grupo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Categoria" Type="nvarchar" Mode="In" />
+          <Parameter Name="SubCategoria" Type="nvarchar" Mode="In" />
+          <Parameter Name="Descricao" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spBalanceUpdateByGrupoCatSubCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Extrato">
+          <Parameter Name="grp" Type="nvarchar" Mode="In" />
+          <Parameter Name="cat" Type="nvarchar" Mode="In" />
+          <Parameter Name="sub" Type="nvarchar" Mode="In" />
+          <Parameter Name="newgrp" Type="nvarchar" Mode="In" />
+          <Parameter Name="newcat" Type="nvarchar" Mode="In" />
+          <Parameter Name="newsub" Type="nvarchar" Mode="In" />
+          <Parameter Name="listOfIDs" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="spClassificacao" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Extrato" />
+        <Function Name="spExportToAccessExtrato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Extrato">
+          <Parameter Name="AccessDB" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="spCalendarioMeses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Pagamentos" />
+        <Function Name="spCalendarioRefresh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Pagamentos">
+          <Parameter Name="Ano" Type="smallint" Mode="In" />
+          <Parameter Name="Mes" Type="smallint" Mode="In" />
+        </Function>
+        <EntityContainer Name="MoneyBinModelStoreContainer">
+          <EntitySet Name="tbAtivos" EntityType="Self.tbAtivos" Schema="Acoes" store:Type="Tables" />
+          <EntitySet Name="tbOperacoes" EntityType="Self.tbOperacoes" Schema="Acoes" store:Type="Tables" />
+          <EntitySet Name="tbOperacoesTipos" EntityType="Self.tbOperacoesTipos" Schema="Acoes" store:Type="Tables" />
+          <EntitySet Name="tbSerieHistorica" EntityType="Self.tbSerieHistorica" Schema="Acoes" store:Type="Tables" />
+          <EntitySet Name="tbBancos" EntityType="Self.tbBancos" Schema="Contas" store:Type="Tables" />
+          <EntitySet Name="tbContas" EntityType="Self.tbContas" Schema="Contas" store:Type="Tables" />
+          <EntitySet Name="tbRegras" EntityType="Self.tbRegras" Schema="Extrato" store:Type="Tables" />
+          <EntitySet Name="tbContasFundos" EntityType="Self.tbContasFundos" Schema="Fundos" store:Type="Tables" />
+          <EntitySet Name="tbContasMeses" EntityType="Self.tbContasMeses" Schema="Fundos" store:Type="Tables" />
+          <EntitySet Name="tbFundos" EntityType="Self.tbFundos" Schema="Fundos" store:Type="Tables" />
+          <EntitySet Name="tbFundosMeses" EntityType="Self.tbFundosMeses" Schema="Fundos" store:Type="Tables" />
+          <EntitySet Name="tbMovimentos" EntityType="Self.tbMovimentos" Schema="Fundos" store:Type="Tables" />
+          <EntitySet Name="tbLCA" EntityType="Self.tbLCA" Schema="LCA" store:Type="Tables" />
+          <EntitySet Name="tbLCAMeses" EntityType="Self.tbLCAMeses" Schema="LCA" store:Type="Tables" />
+          <EntitySet Name="tbLCAMovimentos" EntityType="Self.tbLCAMovimentos" Schema="LCA" store:Type="Tables" />
+          <EntitySet Name="tbCalendario" EntityType="Self.tbCalendario" Schema="Pagamentos" store:Type="Tables" />
+          <EntitySet Name="tbPagamentos" EntityType="Self.tbPagamentos" Schema="Pagamentos" store:Type="Tables" />
+          <EntitySet Name="vwOperacoesQtdAcumulada" EntityType="Self.vwOperacoesQtdAcumulada" store:Type="Views" store:Schema="Acoes">
+            <DefiningQuery>SELECT 
+    [vwOperacoesQtdAcumulada].[OperacaoId] AS [OperacaoId], 
+    [vwOperacoesQtdAcumulada].[QtdAcumulada] AS [QtdAcumulada]
+    FROM [Acoes].[vwOperacoesQtdAcumulada] AS [vwOperacoesQtdAcumulada]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwUltimoPreco" EntityType="Self.vwUltimoPreco" store:Type="Views" store:Schema="Acoes">
+            <DefiningQuery>SELECT 
+    [vwUltimoPreco].[Codigo] AS [Codigo], 
+    [vwUltimoPreco].[Data] AS [Data], 
+    [vwUltimoPreco].[PrecoUltimo] AS [PrecoUltimo]
+    FROM [Acoes].[vwUltimoPreco] AS [vwUltimoPreco]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwBalance" EntityType="Self.vwBalance" store:Type="Views" store:Schema="Extrato">
+            <DefiningQuery>SELECT 
+    [vwBalance].[ID] AS [ID], 
+    [vwBalance].[ContaID] AS [ContaID], 
+    [vwBalance].[Data] AS [Data], 
+    [vwBalance].[Historico] AS [Historico], 
+    [vwBalance].[Documento] AS [Documento], 
+    [vwBalance].[Valor] AS [Valor], 
+    [vwBalance].[AfetaSaldo] AS [AfetaSaldo], 
+    [vwBalance].[Grupo] AS [Grupo], 
+    [vwBalance].[Categoria] AS [Categoria], 
+    [vwBalance].[SubCategoria] AS [SubCategoria], 
+    [vwBalance].[Descricao] AS [Descricao], 
+    [vwBalance].[Saldo] AS [Saldo]
+    FROM [Extrato].[vwBalance] AS [vwBalance]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tbCalendario_tbPagamentos" Association="Self.FK_tbCalendario_tbPagamentos">
+            <End Role="tbPagamentos" EntitySet="tbPagamentos" />
+            <End Role="tbCalendario" EntitySet="tbCalendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContas_tbBancos" Association="Self.FK_tbContas_tbBancos">
+            <End Role="tbBancos" EntitySet="tbBancos" />
+            <End Role="tbContas" EntitySet="tbContas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContasFundos_tbContas" Association="Self.FK_tbContasFundos_tbContas">
+            <End Role="tbContas" EntitySet="tbContas" />
+            <End Role="tbContasFundos" EntitySet="tbContasFundos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContasFundos_tbFundos" Association="Self.FK_tbContasFundos_tbFundos">
+            <End Role="tbFundos" EntitySet="tbFundos" />
+            <End Role="tbContasFundos" EntitySet="tbContasFundos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContasMeses_tbContasFundos" Association="Self.FK_tbContasMeses_tbContasFundos">
+            <End Role="tbContasFundos" EntitySet="tbContasFundos" />
+            <End Role="tbContasMeses" EntitySet="tbContasMeses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContasMeses_tbFundosMeses" Association="Self.FK_tbContasMeses_tbFundosMeses">
+            <End Role="tbFundosMeses" EntitySet="tbFundosMeses" />
+            <End Role="tbContasMeses" EntitySet="tbContasMeses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbFundosMeses_tbFundos" Association="Self.FK_tbFundosMeses_tbFundos">
+            <End Role="tbFundos" EntitySet="tbFundos" />
+            <End Role="tbFundosMeses" EntitySet="tbFundosMeses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbLCA_tbContas" Association="Self.FK_tbLCA_tbContas">
+            <End Role="tbContas" EntitySet="tbContas" />
+            <End Role="tbLCA" EntitySet="tbLCA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbLCAMeses_tbLCA" Association="Self.FK_tbLCAMeses_tbLCA">
+            <End Role="tbLCA" EntitySet="tbLCA" />
+            <End Role="tbLCAMeses" EntitySet="tbLCAMeses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMovimentos_tbContasMeses" Association="Self.FK_tbMovimentos_tbContasMeses">
+            <End Role="tbContasMeses" EntitySet="tbContasMeses" />
+            <End Role="tbMovimentos" EntitySet="tbMovimentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMovimentos_tbLCAMeses" Association="Self.FK_tbMovimentos_tbLCAMeses">
+            <End Role="tbLCAMeses" EntitySet="tbLCAMeses" />
+            <End Role="tbLCAMovimentos" EntitySet="tbLCAMovimentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbOperacoes_tbContas" Association="Self.FK_tbOperacoes_tbContas">
+            <End Role="tbContas" EntitySet="tbContas" />
+            <End Role="tbOperacoes" EntitySet="tbOperacoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbOperacoes_tbOperacoesTipos" Association="Self.FK_tbOperacoes_tbOperacoesTipos">
+            <End Role="tbOperacoesTipos" EntitySet="tbOperacoesTipos" />
+            <End Role="tbOperacoes" EntitySet="tbOperacoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbSerieHistorica_tbAtivos" Association="Self.FK_tbSerieHistorica_tbAtivos">
+            <End Role="tbAtivos" EntitySet="tbAtivos" />
+            <End Role="tbSerieHistorica" EntitySet="tbSerieHistorica" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MoneyBinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MoneyBinEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="spBalanceSelectByGrupoCatSubCat">
+            <Parameter Name="grp" Mode="In" Type="String" />
+            <Parameter Name="cat" Mode="In" Type="String" />
+            <Parameter Name="sub" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBalanceUpdateByGrupoCatSubCat">
+            <Parameter Name="grp" Mode="In" Type="String" />
+            <Parameter Name="cat" Mode="In" Type="String" />
+            <Parameter Name="sub" Mode="In" Type="String" />
+            <Parameter Name="newgrp" Mode="In" Type="String" />
+            <Parameter Name="newcat" Mode="In" Type="String" />
+            <Parameter Name="newsub" Mode="In" Type="String" />
+            <Parameter Name="listOfIDs" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBalance">
+            <Parameter Name="ContaID" Mode="In" Type="Int32" />
+            <Parameter Name="Inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="Termino" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spBalanceItemDelete">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spBalanceItemInsert" ReturnType="Collection(Decimal)">
+            <Parameter Name="ContaID" Mode="In" Type="Int32" />
+            <Parameter Name="Data" Mode="In" Type="DateTime" />
+            <Parameter Name="Historico" Mode="In" Type="String" />
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="Valor" Mode="In" Type="Decimal" />
+            <Parameter Name="AfetaSaldo" Mode="In" Type="Boolean" />
+            <Parameter Name="Grupo" Mode="In" Type="String" />
+            <Parameter Name="Categoria" Mode="In" Type="String" />
+            <Parameter Name="SubCategoria" Mode="In" Type="String" />
+            <Parameter Name="Descricao" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBalanceItemUpdate">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="AfetaSaldo" Mode="In" Type="Boolean" />
+            <Parameter Name="Grupo" Mode="In" Type="String" />
+            <Parameter Name="Categoria" Mode="In" Type="String" />
+            <Parameter Name="SubCategoria" Mode="In" Type="String" />
+            <Parameter Name="Descricao" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spExportToAccessExtrato">
+          <Parameter Name="AccessDB" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Calendario" EntityType="MoneyBinModel.CalendarioItem" />
+          <EntitySet Name="Pagamentos" EntityType="MoneyBinModel.Pagamento" />
+          <AssociationSet Name="FK_tbCalendario_tbPagamentos" Association="MoneyBinModel.FK_tbCalendario_tbPagamentos">
+            <End Role="Pagamento" EntitySet="Pagamentos" />
+            <End Role="CalendarioItem" EntitySet="Calendario" />
+          </AssociationSet>
+          <FunctionImport Name="spClassificacao" ReturnType="Collection(MoneyBinModel.Classificacao)" />
+          <FunctionImport Name="spCalendarioMeses" ReturnType="Collection(MoneyBinModel.CalendarioMes)" />
+          <FunctionImport Name="spCalendarioRefresh" EntitySet="Calendario" ReturnType="Collection(MoneyBinModel.CalendarioItem)">
+            <Parameter Name="Ano" Mode="In" Type="Int16" />
+            <Parameter Name="Mes" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="spSerieHistorica" EntitySet="SeriesHistoricas" ReturnType="Collection(MoneyBinModel.SerieHistorica)">
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="termino" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spSerieHistoricaDateRange" ReturnType="Collection(MoneyBinModel.SerieHistoricaDateRange)" />
+          <EntitySet Name="Bancos" EntityType="MoneyBinModel.Banco" />
+          <EntitySet Name="Contas" EntityType="MoneyBinModel.Conta" />
+          <AssociationSet Name="FK_tbContas_tbBancos" Association="MoneyBinModel.FK_tbContas_tbBancos">
+            <End Role="tbBancos" EntitySet="Bancos" />
+            <End Role="tbContas" EntitySet="Contas" />
+          </AssociationSet>
+          <EntitySet Name="Ativos" EntityType="MoneyBinModel.Ativo" />
+          <EntitySet Name="SeriesHistoricas" EntityType="MoneyBinModel.SerieHistorica" />
+          <EntitySet Name="Regras" EntityType="MoneyBinModel.Regra" />
+          <EntitySet Name="Balance" EntityType="MoneyBinModel.BalanceItem" />
+          <AssociationSet Name="FK_tbSerieHistorica_tbAtivos" Association="MoneyBinModel.FK_tbSerieHistorica_tbAtivos">
+            <End Role="tbAtivos" EntitySet="Ativos" />
+            <End Role="tbSerieHistorica" EntitySet="SeriesHistoricas" />
+          </AssociationSet>
+          <AssociationSet Name="ContaBalanceItem" Association="MoneyBinModel.ContaBalanceItem">
+            <End Role="Conta" EntitySet="Contas" />
+            <End Role="BalanceItem" EntitySet="Balance" />
+          </AssociationSet>
+          <EntitySet Name="Operacoes" EntityType="MoneyBinModel.Operacao" />
+          <EntitySet Name="OperacoesTipos" EntityType="MoneyBinModel.OperacaoTipo" />
+          <AssociationSet Name="FK_tbOperacoes_tbContas" Association="MoneyBinModel.FK_tbOperacoes_tbContas">
+            <End Role="Conta" EntitySet="Contas" />
+            <End Role="tbOperaco" EntitySet="Operacoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbOperacoes_tbOperacoesTipos" Association="MoneyBinModel.FK_tbOperacoes_tbOperacoesTipos">
+            <End Role="tbOperacoesTipos" EntitySet="OperacoesTipos" />
+            <End Role="tbOperaco" EntitySet="Operacoes" />
+          </AssociationSet>
+          <EntitySet Name="AtivosUltimosPrecos" EntityType="MoneyBinModel.AtivoUltimoPreco" />
+          <EntitySet Name="ContasFundos" EntityType="MoneyBinModel.ContaFundo" />
+          <EntitySet Name="ContasMeses" EntityType="MoneyBinModel.ContaMes" />
+          <EntitySet Name="Fundos" EntityType="MoneyBinModel.Fundo" />
+          <EntitySet Name="FundosMeses" EntityType="MoneyBinModel.FundoMes" />
+          <EntitySet Name="Movimentos" EntityType="MoneyBinModel.Movimento" />
+          <AssociationSet Name="FK_tbContasFundos_tbContas" Association="MoneyBinModel.FK_tbContasFundos_tbContas">
+            <End Role="Conta" EntitySet="Contas" />
+            <End Role="tbContasFundo" EntitySet="ContasFundos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContasFundos_tbFundos" Association="MoneyBinModel.FK_tbContasFundos_tbFundos">
+            <End Role="tbFundo" EntitySet="Fundos" />
+            <End Role="tbContasFundo" EntitySet="ContasFundos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContasMeses_tbContasFundos" Association="MoneyBinModel.FK_tbContasMeses_tbContasFundos">
+            <End Role="tbContasFundo" EntitySet="ContasFundos" />
+            <End Role="tbContasMes" EntitySet="ContasMeses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContasMeses_tbFundosMeses" Association="MoneyBinModel.FK_tbContasMeses_tbFundosMeses">
+            <End Role="tbFundosMes" EntitySet="FundosMeses" />
+            <End Role="tbContasMes" EntitySet="ContasMeses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMovimentos_tbContasMeses" Association="MoneyBinModel.FK_tbMovimentos_tbContasMeses">
+            <End Role="tbContasMes" EntitySet="ContasMeses" />
+            <End Role="tbMovimento" EntitySet="Movimentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbFundosMeses_tbFundos" Association="MoneyBinModel.FK_tbFundosMeses_tbFundos">
+            <End Role="tbFundo" EntitySet="Fundos" />
+            <End Role="tbFundosMes" EntitySet="FundosMeses" />
+          </AssociationSet>
+          <FunctionImport Name="spSituacaoImpostoRenda" ReturnType="Collection(MoneyBinModel.SituacaoImpostoRenda)">
+            <Parameter Name="ContaID" Mode="In" Type="Int32" />
+            <Parameter Name="Ano" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="LCAs" EntityType="MoneyBinModel.LCA" />
+          <EntitySet Name="LCAMeses" EntityType="MoneyBinModel.LCAMes" />
+          <EntitySet Name="LCAMovimentos" EntityType="MoneyBinModel.LCAMovimento" />
+          <AssociationSet Name="FK_tbLCA_tbContas" Association="MoneyBinModel.FK_tbLCA_tbContas">
+            <End Role="Conta" EntitySet="Contas" />
+            <End Role="tbLCA" EntitySet="LCAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbLCAMeses_tbLCA" Association="MoneyBinModel.FK_tbLCAMeses_tbLCA">
+            <End Role="tbLCA" EntitySet="LCAs" />
+            <End Role="tbLCAMes" EntitySet="LCAMeses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMovimentos_tbLCAMeses" Association="MoneyBinModel.FK_tbMovimentos_tbLCAMeses">
+            <End Role="tbLCAMes" EntitySet="LCAMeses" />
+            <End Role="tbLCAMovimento" EntitySet="LCAMovimentos" />
+          </AssociationSet>
+          <EntitySet Name="QtdsAcumuladas" EntityType="MoneyBinModel.Acumulada" />
+          <AssociationSet Name="OperacaovwOperacoesQtdAcumulada" Association="MoneyBinModel.OperacaovwOperacoesQtdAcumulada">
+            <End Role="Operacao" EntitySet="Operacoes" />
+            <End Role="vwOperacoesQtdAcumulada" EntitySet="QtdsAcumuladas" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="CalendarioItem">
+          <Key>
+            <PropertyRef Name="Mes" />
+            <PropertyRef Name="PagamentoID" />
+            <PropertyRef Name="Ano" />
+          </Key>
+          <Property Name="Ano" Type="Int16" Nullable="false" />
+          <Property Name="Mes" Type="Int16" Nullable="false" />
+          <Property Name="PagamentoID" Type="Int32" Nullable="false" />
+          <Property Name="Agendado" Type="Boolean" Nullable="false" />
+          <Property Name="AgendadoData" Type="DateTime" Precision="0" />
+          <Property Name="Pago" Type="Boolean" Nullable="false" />
+          <Property Name="PagamentoData" Type="DateTime" Precision="0" />
+          <Property Name="Valor" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="BalanceID" Type="Int32" />
+          <NavigationProperty Name="Pagamento" Relationship="MoneyBinModel.FK_tbCalendario_tbPagamentos" FromRole="CalendarioItem" ToRole="Pagamento" />
+        </EntityType>
+        <EntityType Name="Pagamento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grupo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="SubCategoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Descricao" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Dia" Type="Byte" Nullable="false" DefaultValue="1" />
+          <Property Name="Meses" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Calendario" Relationship="MoneyBinModel.FK_tbCalendario_tbPagamentos" FromRole="Pagamento" ToRole="CalendarioItem" />
+        </EntityType>
+        <Association Name="FK_tbCalendario_tbPagamentos">
+          <End Type="MoneyBinModel.Pagamento" Role="Pagamento" Multiplicity="1" />
+          <End Type="MoneyBinModel.CalendarioItem" Role="CalendarioItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pagamento">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CalendarioItem">
+              <PropertyRef Name="PagamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Classificacao">
+          <Property Type="String" Name="Grupo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Categoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SubCategoria" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Sinal" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CalendarioMes">
+          <Property Type="Int16" Name="Ano" Nullable="false" />
+          <Property Type="Int16" Name="Mes" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SerieHistoricaDateRange">
+          <Property Type="DateTime" Name="MinDate" Nullable="false" />
+          <Property Type="DateTime" Name="MaxDate" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Sigla" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ExtensaoExtrato" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="ExtensaoFundos" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contas" Relationship="MoneyBinModel.FK_tbContas_tbBancos" FromRole="tbBancos" ToRole="tbContas" />
+        </EntityType>
+        <EntityType Name="Conta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dono" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BancoID" Type="Int32" Nullable="false" />
+          <Property Name="Apelido" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Agencia" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AgenciaDV" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ContaCorrente" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ContaCorrenteDV" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Operacao" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Gerente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="EMail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Banco" Relationship="MoneyBinModel.FK_tbContas_tbBancos" FromRole="tbContas" ToRole="tbBancos" />
+          <NavigationProperty Name="Balance" Relationship="MoneyBinModel.ContaBalanceItem" FromRole="Conta" ToRole="BalanceItem" />
+          <NavigationProperty Name="Operacoes" Relationship="MoneyBinModel.FK_tbOperacoes_tbContas" FromRole="Conta" ToRole="tbOperaco" />
+          <NavigationProperty Name="Fundos" Relationship="MoneyBinModel.FK_tbContasFundos_tbContas" FromRole="Conta" ToRole="tbContasFundo" />
+          <NavigationProperty Name="LCAs" Relationship="MoneyBinModel.FK_tbLCA_tbContas" FromRole="Conta" ToRole="tbLCA" />
+          </EntityType>
+        <Association Name="FK_tbContas_tbBancos">
+          <End Type="MoneyBinModel.Banco" Role="tbBancos" Multiplicity="1" />
+          <End Type="MoneyBinModel.Conta" Role="tbContas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbBancos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbContas">
+              <PropertyRef Name="BancoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ativo">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SerieHistorica" Relationship="MoneyBinModel.FK_tbSerieHistorica_tbAtivos" FromRole="tbAtivos" ToRole="tbSerieHistorica" />
+        </EntityType>
+        <EntityType Name="SerieHistorica">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Data" />
+          </Key>
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PrecoAbertura" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="PrecoMaximo" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="PrecoMinimo" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="PrecoMedio" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="PrecoUltimo" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="PrecoMelhorOfertaCompra" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="PrecoMelhorOfertaVenda" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <NavigationProperty Name="Ativo" Relationship="MoneyBinModel.FK_tbSerieHistorica_tbAtivos" FromRole="tbSerieHistorica" ToRole="tbAtivos" />
+        </EntityType>
+        <EntityType Name="Regra">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Texto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AfetaSaldo" Type="Boolean" Nullable="false" />
+          <Property Name="Grupo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SubCategoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Descricao" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AddToDatabase" Type="Boolean" Nullable="false" />
+          <Property Name="Ocorrencias" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BalanceItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContaID" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Historico" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Documento" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="AfetaSaldo" Type="Boolean" Nullable="false" />
+          <Property Name="Grupo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SubCategoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Saldo" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Conta" Relationship="MoneyBinModel.ContaBalanceItem" FromRole="BalanceItem" ToRole="Conta" />
+        </EntityType>
+        <Association Name="FK_tbSerieHistorica_tbAtivos">
+          <End Type="MoneyBinModel.Ativo" Role="tbAtivos" Multiplicity="1" />
+          <End Type="MoneyBinModel.SerieHistorica" Role="tbSerieHistorica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAtivos">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tbSerieHistorica">
+              <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContaBalanceItem">
+          <End Type="MoneyBinModel.Conta" Role="Conta" Multiplicity="1" />
+          <End Type="MoneyBinModel.BalanceItem" Role="BalanceItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BalanceItem">
+              <PropertyRef Name="ContaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Operacao">
+          <Key>
+            <PropertyRef Name="OperacaoId" />
+          </Key>
+          <Property Name="OperacaoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="TipoId" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Qtd" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="ValorReal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <NavigationProperty Name="Conta" Relationship="MoneyBinModel.FK_tbOperacoes_tbContas" FromRole="tbOperaco" ToRole="Conta" />
+          <NavigationProperty Name="OperacaoTipo" Relationship="MoneyBinModel.FK_tbOperacoes_tbOperacoesTipos" FromRole="tbOperaco" ToRole="tbOperacoesTipos" />
+          <NavigationProperty Name="Acumulada" Relationship="MoneyBinModel.OperacaovwOperacoesQtdAcumulada" FromRole="Operacao" ToRole="vwOperacoesQtdAcumulada" />
+        </EntityType>
+        <EntityType Name="OperacaoTipo">
+          <Key>
+            <PropertyRef Name="TipoId" />
+          </Key>
+          <Property Name="TipoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SinalPositivo" Type="Boolean" Nullable="false" />
+          <Property Name="Sinal" Type="Int32" Nullable="false" />
+          <Property Name="IncideTaxa" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Operacoes" Relationship="MoneyBinModel.FK_tbOperacoes_tbOperacoesTipos" FromRole="tbOperacoesTipos" ToRole="tbOperaco" />
+        </EntityType>
+        <Association Name="FK_tbOperacoes_tbContas">
+          <End Type="MoneyBinModel.Conta" Role="Conta" Multiplicity="1" />
+          <End Type="MoneyBinModel.Operacao" Role="tbOperaco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbOperaco">
+              <PropertyRef Name="ContaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbOperacoes_tbOperacoesTipos">
+          <End Type="MoneyBinModel.OperacaoTipo" Role="tbOperacoesTipos" Multiplicity="1" />
+          <End Type="MoneyBinModel.Operacao" Role="tbOperaco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbOperacoesTipos">
+              <PropertyRef Name="TipoId" />
+            </Principal>
+            <Dependent Role="tbOperaco">
+              <PropertyRef Name="TipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AtivoUltimoPreco">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PrecoUltimo" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
+        <EntityType Name="ContaFundo">
+          <Key>
+            <PropertyRef Name="ContaFundoId" />
+          </Key>
+          <Property Name="ContaFundoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
+          <Property Name="FundoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Conta" Relationship="MoneyBinModel.FK_tbContasFundos_tbContas" FromRole="tbContasFundo" ToRole="Conta" />
+          <NavigationProperty Name="Fundo" Relationship="MoneyBinModel.FK_tbContasFundos_tbFundos" FromRole="tbContasFundo" ToRole="tbFundo" />
+          <NavigationProperty Name="ContasMeses" Relationship="MoneyBinModel.FK_tbContasMeses_tbContasFundos" FromRole="tbContasFundo" ToRole="tbContasMes" />
+        </EntityType>
+        <EntityType Name="ContaMes">
+          <Key>
+            <PropertyRef Name="ContaMesId" />
+          </Key>
+          <Property Name="ContaMesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContaFundoId" Type="Int32" Nullable="false" />
+          <Property Name="FundoMesId" Type="Int32" Nullable="false" />
+          <Property Name="RendimentoBruto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CotaQtd" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <NavigationProperty Name="ContaFundo" Relationship="MoneyBinModel.FK_tbContasMeses_tbContasFundos" FromRole="tbContasMes" ToRole="tbContasFundo" />
+          <NavigationProperty Name="FundoMes" Relationship="MoneyBinModel.FK_tbContasMeses_tbFundosMeses" FromRole="tbContasMes" ToRole="tbFundosMes" />
+          <NavigationProperty Name="Movimentos" Relationship="MoneyBinModel.FK_tbMovimentos_tbContasMeses" FromRole="tbContasMes" ToRole="tbMovimento" />
+        </EntityType>
+        <EntityType Name="Fundo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CNPJ" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Contas" Relationship="MoneyBinModel.FK_tbContasFundos_tbFundos" FromRole="tbFundo" ToRole="tbContasFundo" />
+          <NavigationProperty Name="Meses" Relationship="MoneyBinModel.FK_tbFundosMeses_tbFundos" FromRole="tbFundo" ToRole="tbFundosMes" />
+        </EntityType>
+        <EntityType Name="FundoMes">
+          <Key>
+            <PropertyRef Name="FundoMesId" />
+          </Key>
+          <Property Name="FundoMesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FundoId" Type="Int32" Nullable="false" />
+          <Property Name="Mes" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CotaValor" Type="Decimal" Nullable="false" Precision="18" Scale="9" />
+          <Property Name="RendimentoMes" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="RendimentoAno" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="Rendimento12Meses" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <NavigationProperty Name="ContasMeses" Relationship="MoneyBinModel.FK_tbContasMeses_tbFundosMeses" FromRole="tbFundosMes" ToRole="tbContasMes" />
+          <NavigationProperty Name="Fundo" Relationship="MoneyBinModel.FK_tbFundosMeses_tbFundos" FromRole="tbFundosMes" ToRole="tbFundo" />
+        </EntityType>
+        <EntityType Name="Movimento">
+          <Key>
+            <PropertyRef Name="MovimentoId" />
+          </Key>
+          <Property Name="MovimentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContaMesId" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Historico" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ImpostoRenda" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IOF" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CotaQtd" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="CotaValor" Type="Decimal" Precision="18" Scale="9" />
+          <NavigationProperty Name="ContaMes" Relationship="MoneyBinModel.FK_tbMovimentos_tbContasMeses" FromRole="tbMovimento" ToRole="tbContasMes" />
+        </EntityType>
+        <Association Name="FK_tbContasFundos_tbContas">
+          <End Type="MoneyBinModel.Conta" Role="Conta" Multiplicity="1" />
+          <End Type="MoneyBinModel.ContaFundo" Role="tbContasFundo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbContasFundo">
+              <PropertyRef Name="ContaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContasFundos_tbFundos">
+          <End Type="MoneyBinModel.Fundo" Role="tbFundo" Multiplicity="1" />
+          <End Type="MoneyBinModel.ContaFundo" Role="tbContasFundo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbFundo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbContasFundo">
+              <PropertyRef Name="FundoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContasMeses_tbContasFundos">
+          <End Type="MoneyBinModel.ContaFundo" Role="tbContasFundo" Multiplicity="1" />
+          <End Type="MoneyBinModel.ContaMes" Role="tbContasMes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContasFundo">
+              <PropertyRef Name="ContaFundoId" />
+            </Principal>
+            <Dependent Role="tbContasMes">
+              <PropertyRef Name="ContaFundoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContasMeses_tbFundosMeses">
+          <End Type="MoneyBinModel.FundoMes" Role="tbFundosMes" Multiplicity="1" />
+          <End Type="MoneyBinModel.ContaMes" Role="tbContasMes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbFundosMes">
+              <PropertyRef Name="FundoMesId" />
+            </Principal>
+            <Dependent Role="tbContasMes">
+              <PropertyRef Name="FundoMesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMovimentos_tbContasMeses">
+          <End Type="MoneyBinModel.ContaMes" Role="tbContasMes" Multiplicity="1" />
+          <End Type="MoneyBinModel.Movimento" Role="tbMovimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContasMes">
+              <PropertyRef Name="ContaMesId" />
+            </Principal>
+            <Dependent Role="tbMovimento">
+              <PropertyRef Name="ContaMesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbFundosMeses_tbFundos">
+          <End Type="MoneyBinModel.Fundo" Role="tbFundo" Multiplicity="1" />
+          <End Type="MoneyBinModel.FundoMes" Role="tbFundosMes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbFundo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbFundosMes">
+              <PropertyRef Name="FundoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SituacaoImpostoRenda">
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="5" />
+          <Property Type="Int32" Name="Qtd" Nullable="true" />
+          <Property Type="Decimal" Name="Preco" Nullable="false" Precision="10" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+        </ComplexType>
+        <EntityType Name="LCA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContaID" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="Aplicacao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Vencimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Taxa" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ValorEmissao" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Conta" Relationship="MoneyBinModel.FK_tbLCA_tbContas" FromRole="tbLCA" ToRole="Conta" />
+          <NavigationProperty Name="LCAMeses" Relationship="MoneyBinModel.FK_tbLCAMeses_tbLCA" FromRole="tbLCA" ToRole="tbLCAMes" />
+        </EntityType>
+        <EntityType Name="LCAMes">
+          <Key>
+            <PropertyRef Name="LCAMesId" />
+          </Key>
+          <Property Name="LCAMesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LCAId" Type="Int32" Nullable="false" />
+          <Property Name="Mes" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SaldoAnterior" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Aplicacoes" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Resgates" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="RendimentoBruto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ImpostoRenda" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IOF" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="RendimentoLiquido" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="SaldoAtual" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="LCA" Relationship="MoneyBinModel.FK_tbLCAMeses_tbLCA" FromRole="tbLCAMes" ToRole="tbLCA" />
+          <NavigationProperty Name="LCAMovimentos" Relationship="MoneyBinModel.FK_tbMovimentos_tbLCAMeses" FromRole="tbLCAMes" ToRole="tbLCAMovimento" />
+        </EntityType>
+        <EntityType Name="LCAMovimento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LCAMesId" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Historico" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="ValorCapital" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ImpostoRenda" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IOF" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Rendimentos" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ValorMovimento" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ValorAtual" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="LCAMes" Relationship="MoneyBinModel.FK_tbMovimentos_tbLCAMeses" FromRole="tbLCAMovimento" ToRole="tbLCAMes" />
+        </EntityType>
+        <Association Name="FK_tbLCA_tbContas">
+          <End Type="MoneyBinModel.Conta" Role="Conta" Multiplicity="1" />
+          <End Type="MoneyBinModel.LCA" Role="tbLCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbLCA">
+              <PropertyRef Name="ContaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbLCAMeses_tbLCA">
+          <End Type="MoneyBinModel.LCA" Role="tbLCA" Multiplicity="1" />
+          <End Type="MoneyBinModel.LCAMes" Role="tbLCAMes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbLCA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbLCAMes">
+              <PropertyRef Name="LCAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMovimentos_tbLCAMeses">
+          <End Type="MoneyBinModel.LCAMes" Role="tbLCAMes" Multiplicity="1" />
+          <End Type="MoneyBinModel.LCAMovimento" Role="tbLCAMovimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbLCAMes">
+              <PropertyRef Name="LCAMesId" />
+            </Principal>
+            <Dependent Role="tbLCAMovimento">
+              <PropertyRef Name="LCAMesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Acumulada">
+          <Key>
+            <PropertyRef Name="OperacaoId" />
+          </Key>
+          <Property Name="OperacaoId" Type="Int32" Nullable="false" />
+          <Property Name="Qtd" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Operacao" Relationship="MoneyBinModel.OperacaovwOperacoesQtdAcumulada" FromRole="vwOperacoesQtdAcumulada" ToRole="Operacao" />
+        </EntityType>
+        <Association Name="OperacaovwOperacoesQtdAcumulada">
+          <End Type="MoneyBinModel.Operacao" Role="Operacao" Multiplicity="1" />
+          <End Type="MoneyBinModel.Acumulada" Role="vwOperacoesQtdAcumulada" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Operacao">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="vwOperacoesQtdAcumulada">
+              <PropertyRef Name="OperacaoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MoneyBinModelStoreContainer" CdmEntityContainer="MoneyBinEntities">
+          <FunctionImportMapping FunctionImportName="spBalanceUpdateByGrupoCatSubCat" FunctionName="MoneyBinModel.Store.spBalanceUpdateByGrupoCatSubCat" />
+          <FunctionImportMapping FunctionImportName="spBalanceItemDelete" FunctionName="MoneyBinModel.Store.spBalanceItemDelete" />
+          <FunctionImportMapping FunctionImportName="spBalanceItemInsert" FunctionName="MoneyBinModel.Store.spBalanceItemInsert" />
+          <FunctionImportMapping FunctionImportName="spBalanceItemUpdate" FunctionName="MoneyBinModel.Store.spBalanceItemUpdate" />
+          <FunctionImportMapping FunctionImportName="spExportToAccessExtrato" FunctionName="MoneyBinModel.Store.spExportToAccessExtrato" />
+          <EntitySetMapping Name="Calendario">
+            <EntityTypeMapping TypeName="MoneyBinModel.CalendarioItem">
+              <MappingFragment StoreEntitySet="tbCalendario">
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="BalanceID" ColumnName="BalanceID" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="PagamentoData" ColumnName="PagamentoData" />
+                <ScalarProperty Name="Pago" ColumnName="Pago" />
+                <ScalarProperty Name="AgendadoData" ColumnName="AgendadoData" />
+                <ScalarProperty Name="Agendado" ColumnName="Agendado" />
+                <ScalarProperty Name="PagamentoID" ColumnName="PagamentoID" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagamentos">
+            <EntityTypeMapping TypeName="MoneyBinModel.Pagamento">
+              <MappingFragment StoreEntitySet="tbPagamentos">
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Meses" ColumnName="Meses" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="SubCategoria" ColumnName="SubCategoria" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spClassificacao" FunctionName="MoneyBinModel.Store.spClassificacao">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MoneyBinModel.Classificacao">
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="SubCategoria" ColumnName="SubCategoria" />
+                <ScalarProperty Name="Sinal" ColumnName="Sinal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spCalendarioMeses" FunctionName="MoneyBinModel.Store.spCalendarioMeses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MoneyBinModel.CalendarioMes">
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spCalendarioRefresh" FunctionName="MoneyBinModel.Store.spCalendarioRefresh" />
+          <FunctionImportMapping FunctionImportName="spSerieHistorica" FunctionName="MoneyBinModel.Store.spSerieHistorica">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSerieHistoricaDateRange" FunctionName="MoneyBinModel.Store.spSerieHistoricaDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MoneyBinModel.SerieHistoricaDateRange">
+                <ScalarProperty Name="MinDate" ColumnName="MinDate" />
+                <ScalarProperty Name="MaxDate" ColumnName="MaxDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Bancos">
+            <EntityTypeMapping TypeName="MoneyBinModel.Banco">
+              <MappingFragment StoreEntitySet="tbBancos">
+                <ScalarProperty Name="ExtensaoFundos" ColumnName="ExtensaoFundos" />
+                <ScalarProperty Name="ExtensaoExtrato" ColumnName="ExtensaoExtrato" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contas">
+            <EntityTypeMapping TypeName="MoneyBinModel.Conta">
+              <MappingFragment StoreEntitySet="tbContas">
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Gerente" ColumnName="Gerente" />
+                <ScalarProperty Name="Operacao" ColumnName="Operacao" />
+                <ScalarProperty Name="ContaCorrenteDV" ColumnName="ContaCorrenteDV" />
+                <ScalarProperty Name="ContaCorrente" ColumnName="ContaCorrente" />
+                <ScalarProperty Name="AgenciaDV" ColumnName="AgenciaDV" />
+                <ScalarProperty Name="Agencia" ColumnName="Agencia" />
+                <ScalarProperty Name="Apelido" ColumnName="Apelido" />
+                <ScalarProperty Name="BancoID" ColumnName="BancoID" />
+                <ScalarProperty Name="Dono" ColumnName="Dono" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ativos">
+            <EntityTypeMapping TypeName="MoneyBinModel.Ativo">
+              <MappingFragment StoreEntitySet="tbAtivos">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeriesHistoricas">
+            <EntityTypeMapping TypeName="MoneyBinModel.SerieHistorica">
+              <MappingFragment StoreEntitySet="tbSerieHistorica">
+                <ScalarProperty Name="PrecoMelhorOfertaVenda" ColumnName="PrecoMelhorOfertaVenda" />
+                <ScalarProperty Name="PrecoMelhorOfertaCompra" ColumnName="PrecoMelhorOfertaCompra" />
+                <ScalarProperty Name="PrecoUltimo" ColumnName="PrecoUltimo" />
+                <ScalarProperty Name="PrecoMedio" ColumnName="PrecoMedio" />
+                <ScalarProperty Name="PrecoMinimo" ColumnName="PrecoMinimo" />
+                <ScalarProperty Name="PrecoMaximo" ColumnName="PrecoMaximo" />
+                <ScalarProperty Name="PrecoAbertura" ColumnName="PrecoAbertura" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regras">
+            <EntityTypeMapping TypeName="MoneyBinModel.Regra">
+              <MappingFragment StoreEntitySet="tbRegras">
+                <ScalarProperty Name="Ocorrencias" ColumnName="Ocorrencias" />
+                <ScalarProperty Name="AddToDatabase" ColumnName="AddToDatabase" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="SubCategoria" ColumnName="SubCategoria" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="AfetaSaldo" ColumnName="AfetaSaldo" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Balance">
+            <EntityTypeMapping TypeName="MoneyBinModel.BalanceItem">
+              <MappingFragment StoreEntitySet="vwBalance">
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="SubCategoria" ColumnName="SubCategoria" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="AfetaSaldo" ColumnName="AfetaSaldo" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Historico" ColumnName="Historico" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ContaID" ColumnName="ContaID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operacoes">
+            <EntityTypeMapping TypeName="MoneyBinModel.Operacao">
+              <MappingFragment StoreEntitySet="tbOperacoes">
+                <ScalarProperty Name="ValorReal" ColumnName="ValorReal" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Qtd" ColumnName="Qtd" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="TipoId" ColumnName="TipoId" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ContaId" ColumnName="ContaId" />
+                <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperacoesTipos">
+            <EntityTypeMapping TypeName="MoneyBinModel.OperacaoTipo">
+              <MappingFragment StoreEntitySet="tbOperacoesTipos">
+                <ScalarProperty Name="IncideTaxa" ColumnName="IncideTaxa" />
+                <ScalarProperty Name="Sinal" ColumnName="Sinal" />
+                <ScalarProperty Name="SinalPositivo" ColumnName="SinalPositivo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="TipoId" ColumnName="TipoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AtivosUltimosPrecos">
+            <EntityTypeMapping TypeName="MoneyBinModel.AtivoUltimoPreco">
+              <MappingFragment StoreEntitySet="vwUltimoPreco">
+                <ScalarProperty Name="PrecoUltimo" ColumnName="PrecoUltimo" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContasFundos">
+            <EntityTypeMapping TypeName="MoneyBinModel.ContaFundo">
+              <MappingFragment StoreEntitySet="tbContasFundos">
+                <ScalarProperty Name="FundoId" ColumnName="FundoId" />
+                <ScalarProperty Name="ContaId" ColumnName="ContaId" />
+                <ScalarProperty Name="ContaFundoId" ColumnName="ContaFundoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContasMeses">
+            <EntityTypeMapping TypeName="MoneyBinModel.ContaMes">
+              <MappingFragment StoreEntitySet="tbContasMeses">
+                <ScalarProperty Name="CotaQtd" ColumnName="CotaQtd" />
+                <ScalarProperty Name="RendimentoBruto" ColumnName="RendimentoBruto" />
+                <ScalarProperty Name="FundoMesId" ColumnName="FundoMesId" />
+                <ScalarProperty Name="ContaFundoId" ColumnName="ContaFundoId" />
+                <ScalarProperty Name="ContaMesId" ColumnName="ContaMesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fundos">
+            <EntityTypeMapping TypeName="MoneyBinModel.Fundo">
+              <MappingFragment StoreEntitySet="tbFundos">
+                <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FundosMeses">
+            <EntityTypeMapping TypeName="MoneyBinModel.FundoMes">
+              <MappingFragment StoreEntitySet="tbFundosMeses">
+                <ScalarProperty Name="Rendimento12Meses" ColumnName="Rendimento12Meses" />
+                <ScalarProperty Name="RendimentoAno" ColumnName="RendimentoAno" />
+                <ScalarProperty Name="RendimentoMes" ColumnName="RendimentoMes" />
+                <ScalarProperty Name="CotaValor" ColumnName="CotaValor" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="FundoId" ColumnName="FundoId" />
+                <ScalarProperty Name="FundoMesId" ColumnName="FundoMesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movimentos">
+            <EntityTypeMapping TypeName="MoneyBinModel.Movimento">
+              <MappingFragment StoreEntitySet="tbMovimentos">
+                <ScalarProperty Name="CotaValor" ColumnName="CotaValor" />
+                <ScalarProperty Name="CotaQtd" ColumnName="CotaQtd" />
+                <ScalarProperty Name="IOF" ColumnName="IOF" />
+                <ScalarProperty Name="ImpostoRenda" ColumnName="ImpostoRenda" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Historico" ColumnName="Historico" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ContaMesId" ColumnName="ContaMesId" />
+                <ScalarProperty Name="MovimentoId" ColumnName="MovimentoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spSituacaoImpostoRenda" FunctionName="MoneyBinModel.Store.sp_SituacaoImpostoRenda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MoneyBinModel.SituacaoImpostoRenda">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Qtd" ColumnName="Qtd" />
+                <ScalarProperty Name="Preco" ColumnName="Preco" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="LCAs">
+            <EntityTypeMapping TypeName="MoneyBinModel.LCA">
+              <MappingFragment StoreEntitySet="tbLCA">
+                <ScalarProperty Name="ValorEmissao" ColumnName="ValorEmissao" />
+                <ScalarProperty Name="Taxa" ColumnName="Taxa" />
+                <ScalarProperty Name="Vencimento" ColumnName="Vencimento" />
+                <ScalarProperty Name="Aplicacao" ColumnName="Aplicacao" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="ContaID" ColumnName="ContaID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LCAMeses">
+            <EntityTypeMapping TypeName="MoneyBinModel.LCAMes">
+              <MappingFragment StoreEntitySet="tbLCAMeses">
+                <ScalarProperty Name="SaldoAtual" ColumnName="SaldoAtual" />
+                <ScalarProperty Name="RendimentoLiquido" ColumnName="RendimentoLiquido" />
+                <ScalarProperty Name="IOF" ColumnName="IOF" />
+                <ScalarProperty Name="ImpostoRenda" ColumnName="ImpostoRenda" />
+                <ScalarProperty Name="RendimentoBruto" ColumnName="RendimentoBruto" />
+                <ScalarProperty Name="Resgates" ColumnName="Resgates" />
+                <ScalarProperty Name="Aplicacoes" ColumnName="Aplicacoes" />
+                <ScalarProperty Name="SaldoAnterior" ColumnName="SaldoAnterior" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="LCAId" ColumnName="LCAId" />
+                <ScalarProperty Name="LCAMesId" ColumnName="LCAMesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LCAMovimentos">
+            <EntityTypeMapping TypeName="MoneyBinModel.LCAMovimento">
+              <MappingFragment StoreEntitySet="tbLCAMovimentos">
+                <ScalarProperty Name="ValorAtual" ColumnName="ValorAtual" />
+                <ScalarProperty Name="ValorMovimento" ColumnName="ValorMovimento" />
+                <ScalarProperty Name="Rendimentos" ColumnName="Rendimentos" />
+                <ScalarProperty Name="IOF" ColumnName="IOF" />
+                <ScalarProperty Name="ImpostoRenda" ColumnName="ImpostoRenda" />
+                <ScalarProperty Name="ValorCapital" ColumnName="ValorCapital" />
+                <ScalarProperty Name="Historico" ColumnName="Historico" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="LCAMesId" ColumnName="LCAMesId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QtdsAcumuladas">
+            <EntityTypeMapping TypeName="MoneyBinModel.Acumulada">
+              <MappingFragment StoreEntitySet="vwOperacoesQtdAcumulada">
+                <ScalarProperty Name="Qtd" ColumnName="QtdAcumulada" />
+                <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
