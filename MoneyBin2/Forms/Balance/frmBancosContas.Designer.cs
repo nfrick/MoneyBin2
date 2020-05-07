@@ -40,6 +40,8 @@
             System.Windows.Forms.Label telefoneLabel;
             System.Windows.Forms.Label celularLabel;
             System.Windows.Forms.Label eMailLabel;
+            System.Windows.Forms.Label cSVPosicaoDataLabel;
+            System.Windows.Forms.Label cSVSeparadorLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -70,6 +72,8 @@
             this.contasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.splitContainerBanco = new System.Windows.Forms.SplitContainer();
+            this.cSVSeparadorTextBox = new System.Windows.Forms.TextBox();
+            this.cSVPosicaoDataTextBox = new System.Windows.Forms.TextBox();
             this.buttonBancoCancel = new System.Windows.Forms.Button();
             this.buttonBancoOK = new System.Windows.Forms.Button();
             this.extensaoFundosTextBox = new System.Windows.Forms.TextBox();
@@ -107,6 +111,8 @@
             telefoneLabel = new System.Windows.Forms.Label();
             celularLabel = new System.Windows.Forms.Label();
             eMailLabel = new System.Windows.Forms.Label();
+            cSVPosicaoDataLabel = new System.Windows.Forms.Label();
+            cSVSeparadorLabel = new System.Windows.Forms.Label();
             this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBancos)).BeginInit();
@@ -298,6 +304,26 @@
             eMailLabel.Size = new System.Drawing.Size(64, 28);
             eMailLabel.TabIndex = 24;
             eMailLabel.Text = "EMail:";
+            // 
+            // cSVPosicaoDataLabel
+            // 
+            cSVPosicaoDataLabel.AutoSize = true;
+            cSVPosicaoDataLabel.ForeColor = System.Drawing.SystemColors.Control;
+            cSVPosicaoDataLabel.Location = new System.Drawing.Point(235, 178);
+            cSVPosicaoDataLabel.Name = "cSVPosicaoDataLabel";
+            cSVPosicaoDataLabel.Size = new System.Drawing.Size(168, 28);
+            cSVPosicaoDataLabel.TabIndex = 12;
+            cSVPosicaoDataLabel.Text = "CSV Posição Data:";
+            // 
+            // cSVSeparadorLabel
+            // 
+            cSVSeparadorLabel.AutoSize = true;
+            cSVSeparadorLabel.ForeColor = System.Drawing.SystemColors.Control;
+            cSVSeparadorLabel.Location = new System.Drawing.Point(235, 138);
+            cSVSeparadorLabel.Name = "cSVSeparadorLabel";
+            cSVSeparadorLabel.Size = new System.Drawing.Size(147, 28);
+            cSVSeparadorLabel.TabIndex = 13;
+            cSVSeparadorLabel.Text = "CSV Separador:";
             // 
             // dgvBancos
             // 
@@ -575,6 +601,10 @@
             // splitContainerBanco.Panel2
             // 
             this.splitContainerBanco.Panel2.AutoScroll = true;
+            this.splitContainerBanco.Panel2.Controls.Add(cSVSeparadorLabel);
+            this.splitContainerBanco.Panel2.Controls.Add(this.cSVSeparadorTextBox);
+            this.splitContainerBanco.Panel2.Controls.Add(cSVPosicaoDataLabel);
+            this.splitContainerBanco.Panel2.Controls.Add(this.cSVPosicaoDataTextBox);
             this.splitContainerBanco.Panel2.Controls.Add(this.buttonBancoCancel);
             this.splitContainerBanco.Panel2.Controls.Add(this.buttonBancoOK);
             this.splitContainerBanco.Panel2.Controls.Add(label1);
@@ -589,6 +619,22 @@
             this.splitContainerBanco.Size = new System.Drawing.Size(1233, 241);
             this.splitContainerBanco.SplitterDistance = 445;
             this.splitContainerBanco.TabIndex = 0;
+            // 
+            // cSVSeparadorTextBox
+            // 
+            this.cSVSeparadorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bancosBindingSource, "CSVSeparador", true));
+            this.cSVSeparadorTextBox.Location = new System.Drawing.Point(409, 135);
+            this.cSVSeparadorTextBox.Name = "cSVSeparadorTextBox";
+            this.cSVSeparadorTextBox.Size = new System.Drawing.Size(37, 34);
+            this.cSVSeparadorTextBox.TabIndex = 14;
+            // 
+            // cSVPosicaoDataTextBox
+            // 
+            this.cSVPosicaoDataTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bancosBindingSource, "CSVPosicaoData", true));
+            this.cSVPosicaoDataTextBox.Location = new System.Drawing.Point(409, 175);
+            this.cSVPosicaoDataTextBox.Name = "cSVPosicaoDataTextBox";
+            this.cSVPosicaoDataTextBox.Size = new System.Drawing.Size(37, 34);
+            this.cSVPosicaoDataTextBox.TabIndex = 13;
             // 
             // buttonBancoCancel
             // 
@@ -918,5 +964,7 @@
         private System.Windows.Forms.Button buttonBancoOK;
         private System.Windows.Forms.Button buttonContaOK;
         private System.Windows.Forms.Button buttonContaCancel;
+        private System.Windows.Forms.TextBox cSVSeparadorTextBox;
+        private System.Windows.Forms.TextBox cSVPosicaoDataTextBox;
     }
 }

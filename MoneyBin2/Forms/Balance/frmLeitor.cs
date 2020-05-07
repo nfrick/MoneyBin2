@@ -67,8 +67,9 @@ namespace MoneyBin2 {
 
         private void labelConta_DoubleClick(object sender, EventArgs e) {
             SalvarExtratoLido();
-            GetConta();
-            LerExtratos();
+            if (GetConta()) {
+                LerExtratos();
+            }
         }
 
         private void toolStripButtonRemove_Click(object sender, EventArgs e) {
@@ -110,18 +111,23 @@ namespace MoneyBin2 {
         }
 
         private bool SalvarExtratoLido() {
-            var addToDb = _conta.Extrato.Where(e => e.AddToDB);
-            if (!addToDb.Any()) {
+            if (!_conta.ExtratoHasAddToDB) {
                 return true;
             }
             var retorno = true;
-            switch (MessageBox.Show("Salvar extrato lido?",
+            switch (MessageBox.Show($"Salvar {_conta.ExtratoAddToDBCount} itens?",
                 "Leitor", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)) {
                 case DialogResult.Yes:
-                    foreach (var item in addToDb) {
-                        _conta.Balance.Add(item);
+                    try {
+                        _conta.ExtratoParaBalance();
+                        _ctx.SaveChanges();
                     }
-                    _ctx.SaveChanges();
+                    catch {
+                        // Ignore exception
+                    }
+                    bsExtrato.ResetBindings(false);
+                    toolStripButtonSalvar.Enabled = false;
+
                     break;
                 case DialogResult.No:
                     break;
@@ -146,13 +152,26 @@ namespace MoneyBin2 {
             else if (!bal.AfetaSaldo) {
                 e.CellStyle.ForeColor = Color.LightGray;
             }
-            if (e.ColumnIndex == 5 && bal.AddToDB && string.IsNullOrEmpty(bal.Grupo)) {
+            if (e.ColumnIndex == 6 && bal.AddToDB && string.IsNullOrEmpty(bal.Grupo)) {
+                e.CellStyle.ForeColor = Color.Black;
                 e.CellStyle.BackColor = Color.Goldenrod;
             }
         }
 
         private void dgvExtrato_RowEnter(object sender, DataGridViewCellEventArgs e) {
-            toolStripButtonSalvar.Visible = _conta.ExtratoHasAddToDB;
+            toolStripButtonSalvar.Enabled = _conta.ExtratoHasAddToDB;
+        }
+
+        private void dgvExtrato_SelectionChanged(object sender, EventArgs e) {
+            if (dgvExtrato.SelectedRows.Count == 0) {
+                return;
+            }
+
+            EnableNavigationButtons(dgvExtrato.SelectedRows[0].Index);
+        }
+
+        private void dgvExtrato_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e) {
+            ClassifTools.EditingControlShowing(sender, e);
         }
 
         #endregion DATAGRIDVIEW ---------------------
@@ -176,6 +195,10 @@ namespace MoneyBin2 {
                     break;
             }
             SelectRow(row);
+            EnableNavigationButtons(row);
+        }
+
+        private void EnableNavigationButtons(int row) {
             buttonFirst.Enabled = buttonPrevious.Enabled = (row != 0);
             buttonNext.Enabled = buttonLast.Enabled = (row != (dgvExtrato.RowCount - 1));
         }
@@ -254,9 +277,5 @@ namespace MoneyBin2 {
             ClassifTools.PopupItemClicked(sender, e, dgvExtrato);
         }
         #endregion POPUP MENU -----------------
-
-        private void dgvExtrato_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e) {
-            ClassifTools.EditingControlShowing(sender, e);
-        }
     }
 }

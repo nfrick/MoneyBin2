@@ -1,4 +1,5 @@
 ﻿using DataLayer;
+using MoneyBin2.Forms.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -67,7 +68,7 @@ namespace MoneyBin2 {
 
         private void SetHeight() {
             Height = 3 + toolStripCalendario.Height + dgvCalendario.ColumnHeadersHeight +
-                     dgvCalendario.RowCount * (6 + dgvCalendario.RowTemplate.Height);
+                     dgvCalendario.RowCount * (8 + dgvCalendario.RowTemplate.Height);
         }
         #endregion FORM ---------------------------------
 
@@ -201,6 +202,7 @@ namespace MoneyBin2 {
 
         private bool ProcurarAgendamento(CalendarioItem item) {
             const string header = "Confirmar Agendamento";
+            var lmb = new LargeMessageBox() { Text = header };
             var mes = (CalendarioMes)toolStripComboBoxMes.SelectedItem;
             var itemFolder = Path.Combine(_folder, item.Pagamento.ToString());
             if (Directory.Exists(itemFolder)) {
@@ -219,8 +221,11 @@ namespace MoneyBin2 {
                     return resp != DialogResult.Cancel;
                 }
                 else {
-                    var resp = MessageBox.Show($"{item.Descricao}:\n\n\tComprovante de agendamento não encontrado.\n\nConfirma não agendamento?",
-                        header, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    //var resp = MessageBox.Show($"{item.Descricao}:\n\n\tComprovante de agendamento não encontrado.\n\nMarcar como agendado?",
+                    //    header, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    lmb.rtbMessage.Text =
+                        $"{item.Descricao}:\n\n\tComprovante de agendamento não encontrado.\n\nMarcar como agendado?";
+                    var resp = lmb.ShowDialog();
                     item.Agendado = resp == DialogResult.Yes;
                     return resp != DialogResult.Cancel;
                 }
@@ -237,7 +242,7 @@ namespace MoneyBin2 {
             var mes = (CalendarioMes)toolStripComboBoxMes.SelectedItem;
             var pagamentos = _ctx.Balance.Where(b => b.Valor < 0
                                                      && b.Data.Year == mes.Ano
-                                                     && b.Data.Month == mes.Mes12); // .ToList()
+                                                     && b.Data.Month == mes.Mes12).ToList();
             var naoPagos = dgvCalendario.Rows.OfType<DataGridViewRow>()
                 .Select(r => (CalendarioItem)r.DataBoundItem)
                 .Where(r => r.Agendado && !r.Pago && r.PagamentoData <= DateTime.Today &&
@@ -246,16 +251,16 @@ namespace MoneyBin2 {
 
             foreach (var item in naoPagos) {
                 var ip = item.Pagamento;
-                var valor = -1 * item.Valor == null || item.Valor == 1 ? ip.Valor : item.Valor;
+                var valor = -1 * (item.Valor == null || item.Valor == 1 ? ip.Valor : item.Valor);
                 IEnumerable<BalanceItem> found;
-                if (ip.Descricao != null && valor != null) {
+                if (item.Descricao != null && valor != null) {
                     found = pagamentos.Where(p => p.Grupo == ip.Grupo &&
                         p.Categoria == ip.Categoria &&
                         p.SubCategoria == ip.SubCategoria &&
                         //p.Historico.Contains(ip.Descricao) &&
                         p.Valor == valor);
                 }
-                else if (ip.Descricao != null) {
+                else if (item.Descricao != null) {
                     found = pagamentos.Where(p => p.Grupo == ip.Grupo &&
                                                   p.Categoria == ip.Categoria &&
                                                   p.SubCategoria == ip.SubCategoria);

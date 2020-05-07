@@ -307,7 +307,7 @@ namespace MoneyBin2 {
             // 
             // bsFundos
             // 
-            this.bsFundos.DataMember = "Fundos";
+            this.bsFundos.DataMember = "FundosNaoZerado";
             this.bsFundos.DataSource = this.bsContas;
             // 
             // toolStripContainer1

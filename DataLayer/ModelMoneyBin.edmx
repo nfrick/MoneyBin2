@@ -59,6 +59,8 @@
           <Property Name="Sigla" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="ExtensaoExtrato" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="ExtensaoFundos" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="CSVSeparador" Type="char" MaxLength="1" />
+          <Property Name="CSVPosicaoData" Type="smallint" />
         </EntityType>
         <EntityType Name="tbContas">
           <Key>
@@ -802,6 +804,8 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Property Name="ExtensaoExtrato" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="ExtensaoFundos" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Contas" Relationship="MoneyBinModel.FK_tbContas_tbBancos" FromRole="tbBancos" ToRole="tbContas" />
+          <Property Name="CSVSeparador" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CSVPosicaoData" Type="Int16" />
         </EntityType>
         <EntityType Name="Conta">
           <Key>
@@ -1294,6 +1298,8 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <EntitySetMapping Name="Bancos">
             <EntityTypeMapping TypeName="MoneyBinModel.Banco">
               <MappingFragment StoreEntitySet="tbBancos">
+                <ScalarProperty Name="CSVPosicaoData" ColumnName="CSVPosicaoData" />
+                <ScalarProperty Name="CSVSeparador" ColumnName="CSVSeparador" />
                 <ScalarProperty Name="ExtensaoFundos" ColumnName="ExtensaoFundos" />
                 <ScalarProperty Name="ExtensaoExtrato" ColumnName="ExtensaoExtrato" />
                 <ScalarProperty Name="Sigla" ColumnName="Sigla" />
@@ -1375,6 +1381,33 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
                 <ScalarProperty Name="ContaID" ColumnName="ContaID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="MoneyBinModel.BalanceItem">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="MoneyBinModel.Store.spBalanceItemInsert">
+                  <ScalarProperty Name="Descricao" ParameterName="Descricao" />
+                  <ScalarProperty Name="SubCategoria" ParameterName="SubCategoria" />
+                  <ScalarProperty Name="Categoria" ParameterName="Categoria" />
+                  <ScalarProperty Name="Grupo" ParameterName="Grupo" />
+                  <ScalarProperty Name="AfetaSaldo" ParameterName="AfetaSaldo" />
+                  <ScalarProperty Name="Valor" ParameterName="Valor" />
+                  <ScalarProperty Name="Documento" ParameterName="Documento" />
+                  <ScalarProperty Name="Historico" ParameterName="Historico" />
+                  <ScalarProperty Name="Data" ParameterName="Data" />
+                  <ScalarProperty Name="ContaID" ParameterName="ContaID" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="MoneyBinModel.Store.spBalanceItemUpdate">
+                  <ScalarProperty Name="Descricao" ParameterName="Descricao" Version="Current" />
+                  <ScalarProperty Name="SubCategoria" ParameterName="SubCategoria" Version="Current" />
+                  <ScalarProperty Name="Categoria" ParameterName="Categoria" Version="Current" />
+                  <ScalarProperty Name="Grupo" ParameterName="Grupo" Version="Current" />
+                  <ScalarProperty Name="AfetaSaldo" ParameterName="AfetaSaldo" Version="Current" />
+                  <ScalarProperty Name="ID" ParameterName="ID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="MoneyBinModel.Store.spBalanceItemDelete">
+                  <ScalarProperty Name="ID" ParameterName="ID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Operacoes">

@@ -91,10 +91,17 @@ namespace MoneyBin2 {
             var lblInicio = new ToolStripLabel("Início:") { DoubleClickEnabled = true };
             lblInicio.DoubleClick += (sender, args) => {
                 _dtpInicio.Value = ContaAtual.DataMin;
+                if (_dtpInicio.Value > _dtpTermino.Value) {
+                    _dtpTermino.Value = _dtpInicio.Value.AddMonths(3);
+                }
             };
+
             var lblTermino = new ToolStripLabel("Término:") { DoubleClickEnabled = true };
             lblTermino.DoubleClick += (sender, args) => {
                 _dtpTermino.Value = ContaAtual.DataMax;
+                if (_dtpInicio.Value > _dtpTermino.Value) {
+                    _dtpInicio.Value = _dtpTermino.Value.AddMonths(-3);
+                }
             };
 
             toolStripMenu.Items.Add(new ToolStripLabel("Conta:"));

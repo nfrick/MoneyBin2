@@ -25,6 +25,8 @@ namespace DataLayer
         public string Sigla { get; set; }
         public string ExtensaoExtrato { get; set; }
         public string ExtensaoFundos { get; set; }
+        public string CSVSeparador { get; set; }
+        public Nullable<short> CSVPosicaoData { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Conta> Contas { get; set; }

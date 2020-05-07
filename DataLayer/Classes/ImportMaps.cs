@@ -8,6 +8,23 @@ namespace DataLayer {
     public abstract class ExtratoMap : ClassMap<BalanceItem> {
         public static int Conta { get; set; }
         public static string DataFormato { get; set; } = "dd/MM/yyyy";
+
+        public static bool DefineFormatoData(string path, short? position, string separator) {
+            // https://stackoverflow.com/questions/32387274/retrieve-list-of-possible-datetime-formats-from-string-value
+            var linhas = File.ReadLines(path).ToArray();
+            if (linhas.Length < 2) return false;
+            var data = linhas.ElementAt(1).Split(new[] { separator[0] })[(int)position].Replace("\"", "");
+            // Procura separadores
+            var sep = data.FirstOrDefault(c => !char.IsDigit(c));
+            var sep1 = sep == '\0' ? string.Empty : "" + sep;
+            var formatos = new[] { "dd/MM/yyyy", "MM/dd/yyyy", "yyyy/MM/dd" };
+            for (var i = 0; i < formatos.Length; i++)
+                formatos[i] = formatos[i].Replace("/", sep1);
+            DataFormato = formatos
+                .FirstOrDefault(format => DateTime.TryParseExact(data, format, CultureInfo.InvariantCulture,
+                    DateTimeStyles.None, out var ignored));
+            return true;
+        }
     }
 
     public sealed class ExtratoBBMap : ExtratoMap {
@@ -25,20 +42,20 @@ namespace DataLayer {
             Map(m => m.AddToDB).Index(0).Constant(true);
         }
 
-        public static void DefineFormatoData(string path) {
-            // https://stackoverflow.com/questions/32387274/retrieve-list-of-possible-datetime-formats-from-string-value
-            var linhas = File.ReadLines(path);
-            var data = linhas.ElementAt(1).Split(new[] { ',' })[0].Replace("\"", "");
-            // Procura separadores
-            var sep = data.FirstOrDefault(c => !char.IsDigit(c));
-            var sep1 = sep == '\0' ? string.Empty : "" + sep;
-            var formatos = new[] { "dd/MM/yyyy", "MM/dd/yyyy", "yyyy/MM/dd" };
-            for (var i = 0; i < formatos.Length; i++)
-                formatos[i] = formatos[i].Replace("/", sep1);
-            DataFormato = formatos
-                .FirstOrDefault(format => DateTime.TryParseExact(data, format, CultureInfo.InvariantCulture,
-                    DateTimeStyles.None, out var ignored));
-        }
+        //public static void DefineFormatoData(string path) {
+        //    // https://stackoverflow.com/questions/32387274/retrieve-list-of-possible-datetime-formats-from-string-value
+        //    var linhas = File.ReadLines(path);
+        //    var data = linhas.ElementAt(1).Split(new[] { ',' })[0].Replace("\"", "");
+        //    // Procura separadores
+        //    var sep = data.FirstOrDefault(c => !char.IsDigit(c));
+        //    var sep1 = sep == '\0' ? string.Empty : "" + sep;
+        //    var formatos = new[] { "dd/MM/yyyy", "MM/dd/yyyy", "yyyy/MM/dd" };
+        //    for (var i = 0; i < formatos.Length; i++)
+        //        formatos[i] = formatos[i].Replace("/", sep1);
+        //    DataFormato = formatos
+        //        .FirstOrDefault(format => DateTime.TryParseExact(data, format, CultureInfo.InvariantCulture,
+        //            DateTimeStyles.None, out var ignored));
+        //}
     }
 
     public sealed class ExtratoCEFMap : ExtratoMap {
@@ -55,19 +72,20 @@ namespace DataLayer {
             Map(m => m.AfetaSaldo).Index(0).Constant(true);
             Map(m => m.AddToDB).Index(0).Constant(true);
         }
-        public static void DefineFormatoData(string path) {
-            // https://stackoverflow.com/questions/32387274/retrieve-list-of-possible-datetime-formats-from-string-value
-            var linhas = File.ReadLines(path);
-            var data = linhas.ElementAt(1).Split(new[] { ';' })[1].Replace("\"", "");
-            // Procura separadores
-            var sep = data.FirstOrDefault(c => !char.IsDigit(c));
-            var sep1 = sep == '\0' ? string.Empty : "" + sep;
-            var formatos = new[] { "dd/MM/yyyy", "MM/dd/yyyy", "yyyy/MM/dd" };
-            for (var i = 0; i < formatos.Length; i++)
-                formatos[i] = formatos[i].Replace("/", sep1);
-            DataFormato = formatos
-                .FirstOrDefault(format => DateTime.TryParseExact(data, format, CultureInfo.InvariantCulture,
-                    DateTimeStyles.None, out var ignored));
-        }
+
+        //public static void DefineFormatoData(string path) {
+        //    // https://stackoverflow.com/questions/32387274/retrieve-list-of-possible-datetime-formats-from-string-value
+        //    var linhas = File.ReadLines(path);
+        //    var data = linhas.ElementAt(1).Split(new[] { ';' })[1].Replace("\"", "");
+        //    // Procura separadores
+        //    var sep = data.FirstOrDefault(c => !char.IsDigit(c));
+        //    var sep1 = sep == '\0' ? string.Empty : "" + sep;
+        //    var formatos = new[] { "dd/MM/yyyy", "MM/dd/yyyy", "yyyy/MM/dd" };
+        //    for (var i = 0; i < formatos.Length; i++)
+        //        formatos[i] = formatos[i].Replace("/", sep1);
+        //    DataFormato = formatos
+        //        .FirstOrDefault(format => DateTime.TryParseExact(data, format, CultureInfo.InvariantCulture,
+        //            DateTimeStyles.None, out var ignored));
+        //}
     }
 }

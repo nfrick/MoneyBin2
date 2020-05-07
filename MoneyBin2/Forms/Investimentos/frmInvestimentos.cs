@@ -163,12 +163,12 @@ namespace MoneyBin2 {
             _ctx.Contas.Load();
             bsContas.DataSource = _ctx.Contas.Local.ToBindingList();
 
-            toolStripComboBoxConta.ComboBox.DataSource = bsContas;
+            toolStripComboBoxConta.ComboBox.DataSource = _ctx.Contas.ToList(); //bsContas;
             toolStripComboBoxConta.ComboBox.DisplayMember = "Apelido";
             toolStripComboBoxConta.ComboBox.ValueMember = "ID";
             toolStripComboBoxConta.ComboBox.SelectedItem =
                 _ctx.Contas.Find(Settings.Default.InvestimentosUltimaConta);
-
+            
             GetBalancePath();
 
             _ctx.Operacoes.Local.CollectionChanged += LocalOnCollectionChanged;
@@ -210,7 +210,10 @@ namespace MoneyBin2 {
             col = Math.Abs(col);
             var row = dgv.Rows[e.RowIndex];
             var value = Convert.ToDecimal(row.Cells[col].Value);
-            if (value > 0) return;
+            if (value > 0) {
+                return;
+            }
+
             e.CellStyle.ForeColor = value < 0 ? Color.Orange : Color.DarkGray;
         }
 
@@ -400,6 +403,8 @@ namespace MoneyBin2 {
                 return;
             }
 
+            bsContas.Position = bsContas.List.IndexOf(ContaAtual);
+
             UpdateResumo();
 
             var ops = _ctx.Operacoes.Where(o => o.ContaId == ContaAtual.ID);
@@ -464,7 +469,7 @@ namespace MoneyBin2 {
         }
 
         private void RefreshSalvar() {
-            toolStripButtonSalvar.Visible = toolStripButtonDesfazer.Visible = 
+            toolStripButtonSalvar.Visible = toolStripButtonDesfazer.Visible =
             toolStripSeparatorSalvar.Visible = _ctx.ChangeTracker.HasChanges();
 
             var alts = _ctx.ChangesCount;
@@ -551,20 +556,25 @@ namespace MoneyBin2 {
         }
 
         private void toolStripButtonPath_Click(object sender, EventArgs e) {
-            GetBalancePath();
+            SetBalancePath();
         }
 
         private void GetBalancePath() {
             _balancePath = Settings.Default.InvestimentosBalancePath;
-            if (_balancePath != null && Directory.Exists(_balancePath)) {
+            while (_balancePath == null || !Directory.Exists(_balancePath)) {
+                SetBalancePath();
+            }
+            toolStripButtonPath.Text = $@"Path: {_balancePath}";
+        }
+
+        private void SetBalancePath() {
+            var fbd = new FolderBrowserDialog { ShowNewFolderButton = false };
+            if (fbd.ShowDialog() == DialogResult.Cancel) {
                 return;
             }
-            var fbd = new FolderBrowserDialog { ShowNewFolderButton = false };
-            if (fbd.ShowDialog() == DialogResult.OK) {
-                _balancePath = fbd.SelectedPath;
-                if (_balancePath.EndsWith("\\")) {
-                    _balancePath = _balancePath.Substring(0, _balancePath.Length - 1);
-                }
+            _balancePath = fbd.SelectedPath;
+            if (_balancePath.EndsWith("\\")) {
+                _balancePath = _balancePath.Substring(0, _balancePath.Length - 1);
             }
             Settings.Default.InvestimentosBalancePath = _balancePath;
             Settings.Default.Save();
@@ -673,7 +683,7 @@ namespace MoneyBin2 {
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-            toolStripComboBoxConta.SelectedItem = contacorrente;
+            toolStripComboBoxConta.SelectedItem = conta;
             return true;
         }
 

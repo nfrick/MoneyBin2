@@ -57,9 +57,9 @@ namespace MoneyBin2 {
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.afetaSaldoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.grupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subCategoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Grupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonSalvar = new System.Windows.Forms.ToolStripButton();
@@ -148,6 +148,7 @@ namespace MoneyBin2 {
             // 
             this.checkBoxAfetaSaldo.AutoSize = true;
             this.checkBoxAfetaSaldo.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bsExtrato, "AfetaSaldo", true));
+            this.checkBoxAfetaSaldo.ForeColor = System.Drawing.SystemColors.Control;
             this.checkBoxAfetaSaldo.Location = new System.Drawing.Point(24, 195);
             this.checkBoxAfetaSaldo.Name = "checkBoxAfetaSaldo";
             this.checkBoxAfetaSaldo.Size = new System.Drawing.Size(135, 32);
@@ -163,6 +164,7 @@ namespace MoneyBin2 {
             // 
             this.checkBoxAddToDB.AutoSize = true;
             this.checkBoxAddToDB.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bsExtrato, "AddToDB", true));
+            this.checkBoxAddToDB.ForeColor = System.Drawing.SystemColors.Control;
             this.checkBoxAddToDB.Location = new System.Drawing.Point(25, 162);
             this.checkBoxAddToDB.Name = "checkBoxAddToDB";
             this.checkBoxAddToDB.Size = new System.Drawing.Size(175, 32);
@@ -172,6 +174,8 @@ namespace MoneyBin2 {
             // 
             // comboBoxCategoria
             // 
+            this.comboBoxCategoria.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxCategoria.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxCategoria.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsExtrato, "Categoria", true));
             this.comboBoxCategoria.FormattingEnabled = true;
             this.comboBoxCategoria.Location = new System.Drawing.Point(24, 329);
@@ -182,6 +186,8 @@ namespace MoneyBin2 {
             // 
             // comboBoxSubcategoria
             // 
+            this.comboBoxSubcategoria.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxSubcategoria.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxSubcategoria.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsExtrato, "SubCategoria", true));
             this.comboBoxSubcategoria.FormattingEnabled = true;
             this.comboBoxSubcategoria.Location = new System.Drawing.Point(24, 397);
@@ -263,6 +269,7 @@ namespace MoneyBin2 {
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
             this.label4.Location = new System.Drawing.Point(20, 434);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 28);
@@ -272,6 +279,7 @@ namespace MoneyBin2 {
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(20, 366);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(131, 28);
@@ -281,6 +289,7 @@ namespace MoneyBin2 {
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(20, 298);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 28);
@@ -290,6 +299,7 @@ namespace MoneyBin2 {
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(20, 230);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 28);
@@ -333,9 +343,9 @@ namespace MoneyBin2 {
             this.Documento,
             this.valorDataGridViewTextBoxColumn,
             this.afetaSaldoDataGridViewCheckBoxColumn,
-            this.grupoDataGridViewTextBoxColumn,
-            this.categoriaDataGridViewTextBoxColumn,
-            this.subCategoriaDataGridViewTextBoxColumn,
+            this.Grupo,
+            this.Categoria,
+            this.SubCategoria,
             this.descricaoDataGridViewTextBoxColumn});
             this.dgvExtrato.DataSource = this.bsExtrato;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -369,6 +379,7 @@ namespace MoneyBin2 {
             this.dgvExtrato.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvExtrato_EditingControlShowing);
             this.dgvExtrato.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExtrato_RowEnter);
             this.dgvExtrato.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvExtrato_RowStateChanged);
+            this.dgvExtrato.SelectionChanged += new System.EventHandler(this.dgvExtrato_SelectionChanged);
             this.dgvExtrato.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvExtrato_MouseClick);
             // 
             // addToDBDataGridViewCheckBoxColumn
@@ -411,23 +422,23 @@ namespace MoneyBin2 {
             this.afetaSaldoDataGridViewCheckBoxColumn.HeaderText = "Afeta Saldo";
             this.afetaSaldoDataGridViewCheckBoxColumn.Name = "afetaSaldoDataGridViewCheckBoxColumn";
             // 
-            // grupoDataGridViewTextBoxColumn
+            // Grupo
             // 
-            this.grupoDataGridViewTextBoxColumn.DataPropertyName = "Grupo";
-            this.grupoDataGridViewTextBoxColumn.HeaderText = "Grupo";
-            this.grupoDataGridViewTextBoxColumn.Name = "grupoDataGridViewTextBoxColumn";
+            this.Grupo.DataPropertyName = "Grupo";
+            this.Grupo.HeaderText = "Grupo";
+            this.Grupo.Name = "Grupo";
             // 
-            // categoriaDataGridViewTextBoxColumn
+            // Categoria
             // 
-            this.categoriaDataGridViewTextBoxColumn.DataPropertyName = "Categoria";
-            this.categoriaDataGridViewTextBoxColumn.HeaderText = "Categoria";
-            this.categoriaDataGridViewTextBoxColumn.Name = "categoriaDataGridViewTextBoxColumn";
+            this.Categoria.DataPropertyName = "Categoria";
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
             // 
-            // subCategoriaDataGridViewTextBoxColumn
+            // SubCategoria
             // 
-            this.subCategoriaDataGridViewTextBoxColumn.DataPropertyName = "SubCategoria";
-            this.subCategoriaDataGridViewTextBoxColumn.HeaderText = "SubCategoria";
-            this.subCategoriaDataGridViewTextBoxColumn.Name = "subCategoriaDataGridViewTextBoxColumn";
+            this.SubCategoria.DataPropertyName = "SubCategoria";
+            this.SubCategoria.HeaderText = "SubCategoria";
+            this.SubCategoria.Name = "SubCategoria";
             // 
             // descricaoDataGridViewTextBoxColumn
             // 
@@ -497,11 +508,10 @@ namespace MoneyBin2 {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(1395, 600);
             this.Controls.Add(this.toolStripContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -561,9 +571,9 @@ namespace MoneyBin2 {
         private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn afetaSaldoDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn grupoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subCategoriaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Grupo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn;
     }
 }

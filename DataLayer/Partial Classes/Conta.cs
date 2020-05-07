@@ -91,12 +91,15 @@ namespace DataLayer {
 
         public bool ExtratoHasAddToDB => Extrato != null && Extrato.Any(i => i.AddToDB);
 
+        public int ExtratoAddToDBCount => Extrato.Count(i => i.AddToDB);
+
         public void LimpaExtrato() {
             Extrato.Clear();
         }
 
         public void ExtratoParaBalance() {
-            foreach (var bal in Extrato) {
+            foreach (var bal in Extrato.Where(i => i.AddToDB)
+                .OrderBy(i => i.Data).ThenBy(i => i.Valor)) {
                 Balance.Add(bal);
             }
             Extrato.Clear();
@@ -129,21 +132,17 @@ namespace DataLayer {
         private IEnumerable<BalanceItem> ExtratoFromCSV(string filepath) {
             using (TextReader reader = new StreamReader(filepath, Encoding.Default)) {
                 var csv = new CsvReader(reader, new CultureInfo("pt-br"));
-                csv.Configuration.HasHeaderRecord = true;
                 if (Banco.Sigla == "BB") {
-                    ExtratoBBMap.Conta = ID;
-                    ExtratoBBMap.DefineFormatoData(filepath);
-                    csv.Configuration.Delimiter = ",";
                     csv.Configuration.RegisterClassMap<ExtratoBBMap>();
-                    csv.Configuration.HeaderValidated = null;
                 }
                 else {
-                    ExtratoCEFMap.Conta = ID;
-                    ExtratoCEFMap.DefineFormatoData(filepath);
-                    csv.Configuration.Delimiter = ";";
                     csv.Configuration.RegisterClassMap<ExtratoCEFMap>();
-                    csv.Configuration.HeaderValidated = null;
                 }
+                ExtratoMap.Conta = ID;
+                ExtratoMap.DefineFormatoData(filepath, Banco.CSVPosicaoData, Banco.CSVSeparador);
+                csv.Configuration.Delimiter = Banco.CSVSeparador;
+                csv.Configuration.HasHeaderRecord = true;
+                csv.Configuration.HeaderValidated = null;
 
                 try {
                     return csv.GetRecords<BalanceItem>().ToList();
