@@ -602,7 +602,6 @@ namespace MoneyBin2 {
             this.comboBoxCategoria.Size = new System.Drawing.Size(216, 36);
             this.comboBoxCategoria.TabIndex = 63;
             this.comboBoxCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategoria_SelectedIndexChanged);
-            this.comboBoxCategoria.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // checkBoxMai
             // 
@@ -631,7 +630,6 @@ namespace MoneyBin2 {
             this.comboBoxSubCategoria.Name = "comboBoxSubCategoria";
             this.comboBoxSubCategoria.Size = new System.Drawing.Size(216, 36);
             this.comboBoxSubCategoria.TabIndex = 64;
-            this.comboBoxSubCategoria.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // checkBoxJun
             // 

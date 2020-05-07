@@ -12,7 +12,8 @@ using System.Windows.Forms;
 namespace MoneyBin2 {
     public partial class frmPagamentos : DataForm {
 
-        private Pagamento PagtoAtual => (Pagamento)dgvPagamentos.CurrentRow?.DataBoundItem;
+        private Pagamento PagtoAtual => (Pagamento)bsPagamentos.Current;
+        //(Pagamento)dgvPagamentos.CurrentRow?.DataBoundItem;
 
         private IEnumerable<CheckBox> CheckBoxesMeses =>
             splitContainer.Panel2
@@ -216,15 +217,15 @@ namespace MoneyBin2 {
         }
 
         private void textBoxDescricao_Validating(object sender, CancelEventArgs e) {
-            var ctl = (TextBox)sender;
-            var campo = ctl.Name.Substring(8);
-            if (string.IsNullOrEmpty(ctl.Text)) {
-                errorProvider.SetError(ctl, $"'{campo}' é um campo obrigatório.");
-                e.Cancel = true;
-            }
-            else {
-                errorProvider.SetError(ctl, "");
-            }
+            //var ctl = (TextBox)sender;
+            //var campo = ctl.Name.Substring(8);
+            //if (string.IsNullOrEmpty(ctl.Text)) {
+            //    errorProvider.SetError(ctl, $"'{campo}' é um campo obrigatório.");
+            //    e.Cancel = true;
+            //}
+            //else {
+            //    errorProvider.SetError(ctl, "");
+            //}
         }
         #endregion EDITING -------------------
     }

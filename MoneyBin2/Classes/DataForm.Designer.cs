@@ -115,12 +115,13 @@
             this.toolStripSeparatorUndo});
             this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(188, 27);
+            this.toolStripMenu.Size = new System.Drawing.Size(227, 27);
             this.toolStripMenu.TabIndex = 0;
             // 
             // toolStripButtonSave
             // 
             this.toolStripButtonSave.BackColor = System.Drawing.Color.PaleGreen;
+            this.toolStripButtonSave.ForeColor = System.Drawing.Color.Black;
             this.toolStripButtonSave.Image = global::MoneyBin2.Properties.Resources.Disquete;
             this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSave.Name = "toolStripButtonSave";
@@ -138,6 +139,7 @@
             // toolStripButtonRevert
             // 
             this.toolStripButtonRevert.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.toolStripButtonRevert.ForeColor = System.Drawing.Color.Black;
             this.toolStripButtonRevert.Image = global::MoneyBin2.Properties.Resources.Revert_24;
             this.toolStripButtonRevert.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRevert.Name = "toolStripButtonRevert";

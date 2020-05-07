@@ -10,10 +10,12 @@ namespace DataLayer {
         Jul = 64, Ago = 128, Set = 256, Out = 512, Nov = 1024, Dez = 2048
     }
     public partial class Pagamento {
-        public override string ToString() => $@"{Grupo}\{Categoria}\{SubCategoria}" +
-                                             (Descricao == null
-            ? ""
-            : $"\\{Descricao}");
+        public override string ToString() =>
+            string.Join("\\", new[] { Grupo, Categoria, SubCategoria, Descricao }
+            .Where(i => !string.IsNullOrEmpty(i)));
+
+        //$@"{Grupo}\{Categoria}\{SubCategoria}" +
+        // (Descricao == null ? "" : $"\\{Descricao}");
 
         private static Array TodosOsMeses => Enum.GetValues(typeof(MesesDoAno));
         private static IEnumerable<MesesDoAno> TodosOsMesesCast => TodosOsMeses.Cast<MesesDoAno>();

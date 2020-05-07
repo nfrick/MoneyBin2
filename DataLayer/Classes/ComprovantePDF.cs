@@ -103,6 +103,15 @@ namespace DataLayer {
                     Valor = val;
                 }
             }
+
+            // Se for boleto, pode haver mais de uma linha "Valor". Procurar por "valor Pago"
+            if (Valor == 0 && !GetLine("Valor Pago", _blank, out temp)) {
+                return;
+            }
+
+            if (temp.Length > 1 && decimal.TryParse(temp.Last(), out var v1)) {
+                Valor = v1;
+            }
         }
 
         private void LerTransferencia() {

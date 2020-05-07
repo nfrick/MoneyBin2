@@ -211,8 +211,8 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Grupo" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Categoria" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="SubCategoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="20" />
+          <Property Name="SubCategoria" Type="nvarchar" MaxLength="30" />
           <Property Name="Descricao" Type="nvarchar" MaxLength="30" />
           <Property Name="Dia" Type="tinyint" Nullable="false" />
           <Property Name="Meses" Type="int" Nullable="false" />
@@ -760,8 +760,8 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Grupo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Categoria" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="SubCategoria" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" MaxLength="20" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="SubCategoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Descricao" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Dia" Type="Byte" Nullable="false" DefaultValue="1" />
           <Property Name="Meses" Type="Int32" Nullable="false" />

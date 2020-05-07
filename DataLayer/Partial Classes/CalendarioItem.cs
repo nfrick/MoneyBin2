@@ -2,7 +2,7 @@
 
 namespace DataLayer {
     public partial class CalendarioItem {
-        public override string ToString() => Pagamento.Grupo + "\\" + Pagamento.Descricao;
+        public override string ToString() => $"{Data:dd/MM/yy} {Descricao}";
 
         public int Dia => Pagamento?.Dia ?? 1;
 

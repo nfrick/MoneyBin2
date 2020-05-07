@@ -86,6 +86,9 @@
     <Reference Include="SuperDGV">
       <HintPath>..\..\Libraries\SuperDGV\SuperDGV\bin\Debug\SuperDGV.dll</HintPath>
     </Reference>
+    <Reference Include="SuperMessageBox">
+      <HintPath>..\..\Libraries\SuperMessageBoxSolution\SuperMessageBox\bin\Debug\SuperMessageBox.dll</HintPath>
+    </Reference>
     <Reference Include="SuperPrompt">
       <HintPath>..\..\Libraries\SuperPrompt\SuperPrompt\bin\Debug\SuperPrompt.dll</HintPath>
     </Reference>
@@ -112,10 +115,10 @@
     <Compile Include="Controls\ExheritenceToolStrip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DataForm.cs">
+    <Compile Include="Classes\DataForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataForm.Designer.cs">
+    <Compile Include="Classes\DataForm.Designer.cs">
       <DependentUpon>DataForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Balance\frmRegras.cs">
@@ -294,16 +297,10 @@
     <Compile Include="Forms\SerieHistorica\frmCustomizeChart.designer.cs">
       <DependentUpon>frmCustomizeChart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Utilidades\LargeMessageBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Utilidades\LargeMessageBox.Designer.cs">
-      <DependentUpon>LargeMessageBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="DataForm.resx">
+    <EmbeddedResource Include="Classes\DataForm.resx">
       <DependentUpon>DataForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Balance\frmRegras.resx">
@@ -392,9 +389,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SerieHistorica\frmCustomizeChart.resx">
       <DependentUpon>frmCustomizeChart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Utilidades\LargeMessageBox.resx">
-      <DependentUpon>LargeMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

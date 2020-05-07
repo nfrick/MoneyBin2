@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Form = System.Windows.Forms.Form;
 
@@ -124,7 +125,9 @@ namespace MoneyBin2 {
                     reload = true;
                 }
                 else {
-                    var pagamentos = _ctx.Pagamentos.Where(p => (p.Meses & novoMes.Mes) == novoMes.Mes)//.ToList()
+                    var pagamentos = _ctx.Pagamentos
+                        .Where(p => (p.Meses & novoMes.Mes) == novoMes.Mes)
+                        .ToList() // ToList() é necessário
                         .Select(p => new CalendarioItem() {
                             Mes = novoMes.Mes,
                             Ano = novoMes.Ano,
@@ -140,7 +143,7 @@ namespace MoneyBin2 {
             }
 
             var mes = (CalendarioMes)toolStripComboBoxMes.SelectedItem;
-            CalendarBindingSource.DataSource = _ctx.spCalendarioRefresh(mes.Ano, mes.Mes);
+            bsCalendar.DataSource = _ctx.spCalendarioRefresh(mes.Ano, mes.Mes);
             SetHeight();
             _previousIndex = toolStripComboBoxMes.SelectedIndex;
             EnableButtons();
@@ -201,12 +204,11 @@ namespace MoneyBin2 {
         }
 
         private bool ProcurarAgendamento(CalendarioItem item) {
-            const string header = "Confirmar Agendamento";
-            var lmb = new LargeMessageBox() { Text = header };
+            const string header = "Procurar Agendamento";
             var mes = (CalendarioMes)toolStripComboBoxMes.SelectedItem;
             var itemFolder = Path.Combine(_folder, item.Pagamento.ToString());
             if (Directory.Exists(itemFolder)) {
-                var files = Directory.GetFiles(itemFolder, $@"{mes.AnoMes}*.pdf");
+                var files = GetComprovanteFiles(itemFolder, mes);
                 if (files.Any()) {
                     var frm = new frmComprovantePDF(item.Descricao, _folder, files);
                     var resp = frm.ShowDialog();
@@ -221,24 +223,30 @@ namespace MoneyBin2 {
                     return resp != DialogResult.Cancel;
                 }
                 else {
-                    //var resp = MessageBox.Show($"{item.Descricao}:\n\n\tComprovante de agendamento não encontrado.\n\nMarcar como agendado?",
-                    //    header, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    lmb.rtbMessage.Text =
-                        $"{item.Descricao}:\n\n\tComprovante de agendamento não encontrado.\n\nMarcar como agendado?";
-                    var resp = lmb.ShowDialog();
+                    var resp = SuperMsgBox.Show($"{item.Descricao}:\n\n\tComprovante de agendamento não encontrado.\n\nMarcar como agendado?",
+                        header, SuperMsgBox.Buttons.YesNoCancel, SuperMsgBox.Icon.Question);
+                    
                     item.Agendado = resp == DialogResult.Yes;
                     return resp != DialogResult.Cancel;
                 }
             }
-            if (MessageBox.Show($"Folder para '{item.Pagamento}' não existe.\n\n{itemFolder}\n\nCria?",
-                header, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question) == DialogResult.Yes) {
+            if (SuperMsgBox.Show($"Folder para '{item.Pagamento}' não existe.\n\n{itemFolder}\n\nCria?",
+                header, SuperMsgBox.Buttons.YesNo,
+                SuperMsgBox.Icon.Question) == DialogResult.Yes) {
                 Directory.CreateDirectory(itemFolder);
             }
             return true;
         }
 
+        private string[] GetComprovanteFiles(string itemFolder, CalendarioMes mes) {
+            var regex = new Regex("conta|boleto");
+            return Directory.GetFiles(itemFolder, $@"{mes.AnoMes}*.pdf")
+                .Where(f => !regex.IsMatch(f))
+                .ToArray();
+        }
+
         private void ProcurarPagamentos() {
+            const string header = "Procurar Pagamento";
             var mes = (CalendarioMes)toolStripComboBoxMes.SelectedItem;
             var pagamentos = _ctx.Balance.Where(b => b.Valor < 0
                                                      && b.Data.Year == mes.Ano
@@ -257,7 +265,6 @@ namespace MoneyBin2 {
                     found = pagamentos.Where(p => p.Grupo == ip.Grupo &&
                         p.Categoria == ip.Categoria &&
                         p.SubCategoria == ip.SubCategoria &&
-                        //p.Historico.Contains(ip.Descricao) &&
                         p.Valor == valor);
                 }
                 else if (item.Descricao != null) {
@@ -269,16 +276,20 @@ namespace MoneyBin2 {
                     found = pagamentos.Where(p => p.Valor == valor);
                 }
                 if (!found.Any()) {
-                    MessageBox.Show($"{item.Descricao}:\n\n\tPagamento não encontrado.",
-                                "Confirmar Pagamento",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (SuperMsgBox.Show($"{item.Descricao}:\n\n\tPagamento não encontrado.",
+                                header,
+                                SuperMsgBox.Buttons.OKCancel, 
+                                SuperMsgBox.Icon.Question) == DialogResult.Cancel) {
+                        break;
+                    }
+
                     continue;
                 }
 
                 var text = found.Select(f => f.ToString())
                     .Aggregate((i, j) => "\t" + i.ToString() + "\n" + j.ToString());
-                if (MessageBox.Show($"{item.Descricao}:\n\n{text}\n\nConfirma?",
-                                "Confirmar Pagamento", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                if (SuperMsgBox.Show($"{item.Descricao}:\n\n{text}\n\nConfirma?",
+                        header, SuperMsgBox.Buttons.YesNo, SuperMsgBox.Icon.Question) ==
                             DialogResult.No) {
                     continue;
                 }
