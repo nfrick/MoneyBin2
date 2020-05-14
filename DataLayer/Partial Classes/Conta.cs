@@ -193,6 +193,10 @@ namespace DataLayer {
 
         #region CLASSIFICACAO ------------------
         private void ClassificaItens(IEnumerable<Regra> regras) {
+            if (!Extrato.Any()) {
+                return;
+            }
+
             var minData = Extrato.Min(p => p.Data);
             var maxData = Extrato.Max(p => p.Data);
 

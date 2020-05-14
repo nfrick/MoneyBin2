@@ -61,7 +61,8 @@ namespace DataLayer {
             Mes = mes.AddDays(1 - mes.Day);
         }
 
-        public Fundo CreateFundo() => new Fundo() { Nome = Nome, CNPJ = CNPJ };
+        public Fundo CreateFundo() => new Fundo() { Nome = Nome, CNPJ = CNPJ,
+            Apelido = Nome.Substring(0, Math.Min(25, Nome.Length)) };
 
         public void UpdateFundoMes(Fundo fundo) {
             _fundoMes = fundo.Meses.FirstOrDefault(m => m.Mes == Mes) ?? new FundoMes() { Fundo = fundo };

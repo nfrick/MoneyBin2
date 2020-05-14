@@ -102,7 +102,8 @@ namespace DataLayer {
             }
         }
 
-        public Fundo CreateFundo() => new Fundo() { Nome = Nome, CNPJ = CNPJ };
+        public Fundo CreateFundo() => new Fundo() { Nome = Nome, CNPJ = CNPJ,
+            Apelido = Nome.Substring(0, Math.Min(25, Nome.Length)) };
 
         private decimal GetValue(string text, int pos) {
             pos += text.Count(c => SeparatorBlank.Contains(c));

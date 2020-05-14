@@ -33,9 +33,7 @@ namespace MoneyBin2 {
             OFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             OFD.Title = @"Selecione arquivo(s) de extrato:";
 
-            LerExtratos();
-
-            if (!_conta.ExtratoHasData) {
+            if (!LerExtratos()) {
                 Load += (s, e) => Close();
             }
 
@@ -91,23 +89,29 @@ namespace MoneyBin2 {
             return true;
         }
 
-        public void LerExtratos() {
+        public bool LerExtratos() {
             OFD.Filter = $@"Arquivos de extrato|*.{_conta.Banco.ExtensaoExtrato}|Todos os arquivos|*.*";
             OFD.FileName = null;
 
             if (OFD.ShowDialog(this) != DialogResult.OK) {
-                return;
+                return false;
             }
 
             OFD.InitialDirectory = Path.GetDirectoryName(OFD.FileNames[0]);
             var getAll = MessageBox.Show(@"Incluir todos os itens?", DialogTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
             _conta.LerExtratos(OFD.FileNames, getAll, _ctx.Regras.OrderByDescending(r => r.Ocorrencias));
 
+            if (!_conta.ExtratoHasData) {
+                MessageBox.Show("Extrato não contém movimentos.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
             dgvExtrato.RowStateChanged -= dgvExtrato_RowStateChanged;
             bsExtrato.DataSource = _conta.Extrato;
             dgvExtrato.Refresh();
             dgvExtrato.RowStateChanged += dgvExtrato_RowStateChanged;
             SelectRow(0);
+            return true;
         }
 
         private bool SalvarExtratoLido() {
