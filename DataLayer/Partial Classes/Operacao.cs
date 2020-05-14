@@ -5,6 +5,9 @@ namespace DataLayer {
         private const decimal TaxaNegociacao = 0.004657m;
         private const decimal TaxaLiquidacao = 0.0275m;
 
+        public override string ToString() => 
+            $"{Codigo} {Data:dd/MM/yyyy} {Tipo} {QtdComSinal} {Valor:C2}";
+
         public string Tipo => OperacaoTipo.Tipo;
 
         public bool IsEntrada => OperacaoTipo.SinalPositivo;

@@ -2,9 +2,7 @@
 
 namespace DataLayer {
     public partial class LCA {
-        public override string ToString() {
-            return Numero;
-        }
+        public override string ToString() => Numero;
 
         public string Codigo => Numero.Substring(8);
 

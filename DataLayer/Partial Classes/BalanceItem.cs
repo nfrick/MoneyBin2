@@ -4,6 +4,10 @@ using System.Xml.Linq;
 
 namespace DataLayer {
     public partial class BalanceItem {  // : IEquatable<BalanceItem> {
+        public override string ToString() {
+            return $"{Data:d}  {Historico}  {Valor:C2}";
+        }
+
         private static readonly CultureInfo CultureUS = CultureInfo.CreateSpecificCulture("en-US");
         //private static readonly CultureInfo CultureBR = CultureInfo.CreateSpecificCulture("pt-BR");
 
@@ -17,11 +21,6 @@ namespace DataLayer {
         public string ContaCompletaDV => $"{Banco} {Conta.AgenciaComDV} {Conta.ContaCorrenteComDV}";
         public decimal ValorParaSaldo => AfetaSaldo ? Valor : 0.0m;
         public int Sinal => Valor == 0 ? 0 : (int)(Valor / Math.Abs(Valor));
-
-        public override string ToString() {
-            return $"{Data:d}  {Historico}  {Valor:C2}";
-        }
-
 
         #region IEquitable_implementation
         /// <summary>

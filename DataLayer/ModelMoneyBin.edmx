@@ -119,6 +119,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CNPJ" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="Apelido" Type="nvarchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="tbFundosMeses">
           <Key>
@@ -1014,6 +1015,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Property Name="CNPJ" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Contas" Relationship="MoneyBinModel.FK_tbContasFundos_tbFundos" FromRole="tbFundo" ToRole="tbContasFundo" />
           <NavigationProperty Name="Meses" Relationship="MoneyBinModel.FK_tbFundosMeses_tbFundos" FromRole="tbFundo" ToRole="tbFundosMes" />
+          <Property Name="Apelido" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FundoMes">
           <Key>
@@ -1467,6 +1469,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <EntitySetMapping Name="Fundos">
             <EntityTypeMapping TypeName="MoneyBinModel.Fundo">
               <MappingFragment StoreEntitySet="tbFundos">
+                <ScalarProperty Name="Apelido" ColumnName="Apelido" />
                 <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

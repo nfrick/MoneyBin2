@@ -10,6 +10,9 @@ using System.Text;
 
 namespace DataLayer {
     public partial class Conta : ICloneable {
+
+        public override string ToString() => $"{Banco.Sigla} {AgenciaComDV} {ContaCorrenteComDV}";
+
         private Conta _backup;
         public List<BalanceItem> Extrato { get; set; }
         public bool Selecionada { get; set; }
@@ -293,7 +296,7 @@ namespace DataLayer {
                     Fundos
                         .Select(f => new Patrimonio {
                             Tipo = "Fundos",
-                            Item = f.FundoNome.ToLower(),
+                            Item = f.FundoApelido,
                             Valor = f.Saldo
                         }).OrderBy(p => p.Item))
                 .ToObservableListSource();

@@ -212,6 +212,7 @@
     <Compile Include="Partial Classes\Conta.cs" />
     <Compile Include="Partial Classes\ContaFundo.cs" />
     <Compile Include="Partial Classes\ContaMes.cs" />
+    <Compile Include="Partial Classes\Fundo.cs" />
     <Compile Include="Partial Classes\LCA.cs" />
     <Compile Include="Partial Classes\LCAMes.cs" />
     <Compile Include="Partial Classes\MoneyBinEntities.cs" />

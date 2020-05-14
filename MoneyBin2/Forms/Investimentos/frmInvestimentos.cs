@@ -86,8 +86,8 @@ namespace MoneyBin2 {
 
             // FUNDOS
             dgvFundos.FormatColumn("Fundo", dgvFundos.StyleBase, -1);
-            dgvFundos.FormatColumn("Saldo", dgvFundos.StyleCurrency, 95);
-            dgvFundos.FormatColumn("Rend. Líquido", dgvFundos.StyleCurrency, 85);
+            dgvFundos.FormatColumn("Saldo", dgvFundos.StyleCurrency, 100);
+            dgvFundos.FormatColumn("Rend. Líquido", dgvFundos.StyleCurrency, 95);
 
             //0 mes, 1 saldo, 2 qtd cotas, 3 valor cota, 4 rend bruto, 5 ir, 6 iof, 7 rendliquido, 8 rend mes, rend ano, rend12 meses
             dgvContasMeses.FormatColumn("Mês", dgvContasMeses.StyleMMMAndYear, 80);
@@ -142,7 +142,7 @@ namespace MoneyBin2 {
 
             // RESUMO
             dgvResumoAcoes.FormatColumn("Item", dgvResumoAcoes.StyleBase, -1);
-            dgvResumoAcoes.FormatColumn("Valor", dgvResumoAcoes.StyleCurrency, 90);
+            dgvResumoAcoes.FormatColumn("Valor", dgvResumoAcoes.StyleCurrency, 100);
             dgvResumoAcoes.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dgvResumoFundos.CopyFormatFrom(dgvResumoAcoes);
 

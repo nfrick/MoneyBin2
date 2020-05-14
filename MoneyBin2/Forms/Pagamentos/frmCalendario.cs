@@ -1,5 +1,4 @@
 ﻿using DataLayer;
-using MoneyBin2.Forms.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,26 +6,28 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Form = System.Windows.Forms.Form;
+
 
 namespace MoneyBin2 {
-    public partial class frmCalendario : Form {
-        private readonly MoneyBinEntities _ctx = new MoneyBinEntities();
+    public partial class frmCalendario : DataForm {
         private readonly string _folder = Properties.Settings.Default.CalendarioPastaPagamentos;
         private int _previousIndex = -1;
 
+        #region FORM ------------------------------------
         public frmCalendario() {
             InitializeComponent();
-        }
+            _mainBindingSource = bsCalendar;
+            toolStripMenu.Items.Add(toolStripButtonPrevMonth);
+            toolStripMenu.Items.Add(toolStripComboBoxMes);
+            toolStripMenu.Items.Add(toolStripButtonNextMonth);
+            toolStripMenu.Items.Add(toolStripEncontrarPagamentos);
 
-        #region FORM ------------------------------------
-        private void frmCalendario_Load(object sender, EventArgs e) {
             dgvCalendario.FormatColumn("Dia", dgvCalendario.StyleInteger, 40);
-            dgvCalendario.FormatColumn("Descrição", null, 200);
+            dgvCalendario.FormatColumn("Descrição", null, 180);
             dgvCalendario.FormatColumn("Agendado?", null, 70);
             dgvCalendario.FormatColumn("Pago?", null, 70);
-            dgvCalendario.FormatColumn("Data", dgvCalendario.StyleDateTimeShort, 120);
-            dgvCalendario.FormatColumn("Valor", dgvCalendario.StyleCurrency, 100);
+            dgvCalendario.FormatColumn("Data", dgvCalendario.StyleDateTimeShort, 110);
+            dgvCalendario.FormatColumn("Valor", dgvCalendario.StyleCurrency, 90);
 
             var meses = _ctx.spCalendarioMeses().ToList();
 
@@ -44,32 +45,19 @@ namespace MoneyBin2 {
             toolStripComboBoxMes.SelectedIndex = 1;
 
             SetHeight();
+            //ResizeForm(dgvCalendario);
             UpdateToolbarButtons();
         }
 
-        private void frmCalendario_FormClosing(object sender, FormClosingEventArgs e) {
+        protected override void DataForm_FormClosing(object sender, FormClosingEventArgs e) {
             dgvCalendario.EndEdit();
-            if (!toolStripButtonSalvar.Visible) {
-                return;
-            }
-
-            switch (FormUtils.PerguntaSeSalva(_ctx, Text)) {
-                case DialogResult.Cancel:
-                    e.Cancel = true;
-                    break;
-                case DialogResult.Yes:
-                    _ctx.SaveChanges();
-                    break;
-                case DialogResult.No:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            base.DataForm_FormClosing(sender, e);
         }
 
         private void SetHeight() {
-            Height = 3 + toolStripCalendario.Height + dgvCalendario.ColumnHeadersHeight +
-                     dgvCalendario.RowCount * (8 + dgvCalendario.RowTemplate.Height);
+            Height = 10 + toolStripMenu.Height + statusStrip.Height +
+                     dgvCalendario.ColumnHeadersHeight +
+                     dgvCalendario.RowCount * (6 + dgvCalendario.RowTemplate.Height);
         }
         #endregion FORM ---------------------------------
 
@@ -146,14 +134,19 @@ namespace MoneyBin2 {
             bsCalendar.DataSource = _ctx.spCalendarioRefresh(mes.Ano, mes.Mes);
             SetHeight();
             _previousIndex = toolStripComboBoxMes.SelectedIndex;
-            EnableButtons();
+            EnableNavigationButtons();
             UpdateToolbarButtons();
         }
 
-        private void toolStripButtonSalvar_Click(object sender, EventArgs e) {
+        protected override void toolStripButtonSave_Click(object sender, EventArgs e) {
             dgvCalendario.EndEdit();
-            _ctx.SaveChanges();
-            toolStripButtonSalvar.Visible = false;
+            base.toolStripButtonSave_Click(sender, e);
+        }
+
+        protected override void toolStripButtonRevert_Click(object sender, EventArgs e) {
+            dgvCalendario.EndEdit();
+            base.toolStripButtonRevert_Click(sender, e);
+            dgvCalendario.Refresh();
         }
 
         private void toolStripButtonMonth_Click(object sender, EventArgs e) {
@@ -164,11 +157,11 @@ namespace MoneyBin2 {
             else {
                 toolStripComboBoxMes.ComboBox.SelectedIndex -= 1;
             }
-            EnableButtons();
+            EnableNavigationButtons();
         }
 
         private void UpdateToolbarButtons() {
-            FormUtils.EnableSaveButtons(_ctx, toolStripCalendario);
+            EnableSaveButtons();
             toolStripEncontrarPagamentos.Visible =
                 dgvCalendario.Rows.OfType<DataGridViewRow>()
                     .Select(r => (CalendarioItem)r.DataBoundItem)
@@ -178,7 +171,7 @@ namespace MoneyBin2 {
                         (r.Pagamento.Descricao != null || r.Pagamento.Valor != null || r.Valor != null)));
         }
 
-        private void EnableButtons() {
+        private void EnableNavigationButtons() {
             var cbx = toolStripComboBoxMes.ComboBox;
             toolStripButtonPrevMonth.Enabled = cbx.SelectedIndex < cbx.Items.Count - 1;
             toolStripButtonNextMonth.Enabled = cbx.SelectedIndex > 0;
@@ -225,7 +218,7 @@ namespace MoneyBin2 {
                 else {
                     var resp = SuperMsgBox.Show($"{item.Descricao}:\n\n\tComprovante de agendamento não encontrado.\n\nMarcar como agendado?",
                         header, SuperMsgBox.Buttons.YesNoCancel, SuperMsgBox.Icon.Question);
-                    
+
                     item.Agendado = resp == DialogResult.Yes;
                     return resp != DialogResult.Cancel;
                 }
@@ -278,7 +271,7 @@ namespace MoneyBin2 {
                 if (!found.Any()) {
                     if (SuperMsgBox.Show($"{item.Descricao}:\n\n\tPagamento não encontrado.",
                                 header,
-                                SuperMsgBox.Buttons.OKCancel, 
+                                SuperMsgBox.Buttons.OKCancel,
                                 SuperMsgBox.Icon.Question) == DialogResult.Cancel) {
                         break;
                     }

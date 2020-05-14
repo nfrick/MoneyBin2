@@ -2,7 +2,9 @@
 using System.Globalization;
 
 namespace DataLayer {
-    public partial class SerieHistorica : IEquatable<SerieHistorica>{
+    public partial class SerieHistorica : IEquatable<SerieHistorica> {
+
+        public override string ToString() => $"{Codigo} {Data}";
 
         public SerieHistorica() {
         }
@@ -20,25 +22,36 @@ namespace DataLayer {
             PrecoMelhorOfertaVenda = Convert.ToDecimal(linha.Substring(134, 13)) / 100;
         }
 
-        public bool Equals(SerieHistorica other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
+        public bool Equals(SerieHistorica other) {
+            if (ReferenceEquals(null, other)) {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other)) {
+                return true;
+            }
+
             return string.Equals(Codigo, other.Codigo) && Data.Equals(other.Data);
         }
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((SerieHistorica) obj);
+        public override bool Equals(object obj) {
+            if (ReferenceEquals(null, obj)) {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj)) {
+                return true;
+            }
+
+            if (obj.GetType() != this.GetType()) {
+                return false;
+            }
+
+            return Equals((SerieHistorica)obj);
         }
 
-        public override int GetHashCode()
-        {
-            unchecked
-            {
+        public override int GetHashCode() {
+            unchecked {
                 return ((Codigo != null ? Codigo.GetHashCode() : 0) * 397) ^ Data.GetHashCode();
             }
         }

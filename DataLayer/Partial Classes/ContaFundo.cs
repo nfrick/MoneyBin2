@@ -2,11 +2,11 @@
 
 namespace DataLayer {
     public partial class ContaFundo {
-        public override string ToString() {
-            return FundoNome;
-        }
+        public override string ToString() => $"{Conta} {FundoNome}";
 
         public string FundoNome => Fundo.Nome;
+
+        public string FundoApelido => Fundo.Apelido;
 
         public string FundoCNPJ => Fundo.CNPJ;
 

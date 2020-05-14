@@ -153,5 +153,15 @@ namespace MoneyBin2.Properties {
                 this["InvestimentosBalancePath"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://tyger-i7:80/ReportServer/ReportService2005.asmx")]
+        public string MoneyBin2_RepServiceNF_ReportingService2005 {
+            get {
+                return ((string)(this["MoneyBin2_RepServiceNF_ReportingService2005"]));
+            }
+        }
     }
 }

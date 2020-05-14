@@ -31,7 +31,6 @@ namespace MoneyBin2 {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalendario));
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.dgvCalendario = new SuperGrid.SuperDGV();
             this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,37 +40,24 @@ namespace MoneyBin2 {
             this.Pago = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PagamentoData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsCalendar = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStripCalendario = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonPrevMonth = new System.Windows.Forms.ToolStripButton();
             this.toolStripComboBoxMes = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButtonNextMonth = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSalvar = new System.Windows.Forms.ToolStripButton();
             this.toolStripEncontrarPagamentos = new System.Windows.Forms.ToolStripButton();
-            this.toolStripContainer1.ContentPanel.SuspendLayout();
-            this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
-            this.toolStripContainer1.SuspendLayout();
+            this.toolStripContainer.ContentPanel.SuspendLayout();
+            this.toolStripContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalendario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCalendar)).BeginInit();
-            this.toolStripCalendario.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolStripContainer1
+            // toolStripContainer
             // 
             // 
-            // toolStripContainer1.ContentPanel
+            // toolStripContainer.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.dgvCalendario);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(772, 331);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(772, 364);
-            this.toolStripContainer1.TabIndex = 0;
-            this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripCalendario);
+            this.toolStripContainer.ContentPanel.Controls.Add(this.dgvCalendario);
+            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(699, 364);
+            this.toolStripContainer.Size = new System.Drawing.Size(699, 364);
             // 
             // dgvCalendario
             // 
@@ -128,7 +114,7 @@ namespace MoneyBin2 {
             this.dgvCalendario.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCalendario.RowHeadersWidth = 20;
             this.dgvCalendario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCalendario.Size = new System.Drawing.Size(772, 331);
+            this.dgvCalendario.Size = new System.Drawing.Size(699, 364);
             this.dgvCalendario.TabIndex = 0;
             this.dgvCalendario.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCalendario_CellEndEdit);
             this.dgvCalendario.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCalendario_CellFormatting);
@@ -184,22 +170,6 @@ namespace MoneyBin2 {
             this.bsCalendar.AllowNew = false;
             this.bsCalendar.DataSource = typeof(DataLayer.CalendarioItem);
             // 
-            // toolStripCalendario
-            // 
-            this.toolStripCalendario.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStripCalendario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripCalendario.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStripCalendario.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonPrevMonth,
-            this.toolStripComboBoxMes,
-            this.toolStripButtonNextMonth,
-            this.toolStripButtonSalvar,
-            this.toolStripEncontrarPagamentos});
-            this.toolStripCalendario.Location = new System.Drawing.Point(3, 0);
-            this.toolStripCalendario.Name = "toolStripCalendario";
-            this.toolStripCalendario.Size = new System.Drawing.Size(435, 33);
-            this.toolStripCalendario.TabIndex = 0;
-            // 
             // toolStripButtonPrevMonth
             // 
             this.toolStripButtonPrevMonth.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -231,19 +201,6 @@ namespace MoneyBin2 {
             this.toolStripButtonNextMonth.ToolTipText = "Próximo mês";
             this.toolStripButtonNextMonth.Click += new System.EventHandler(this.toolStripButtonMonth_Click);
             // 
-            // toolStripButtonSalvar
-            // 
-            this.toolStripButtonSalvar.BackColor = System.Drawing.Color.Green;
-            this.toolStripButtonSalvar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonSalvar.ForeColor = System.Drawing.Color.White;
-            this.toolStripButtonSalvar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSalvar.Image")));
-            this.toolStripButtonSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSalvar.Name = "toolStripButtonSalvar";
-            this.toolStripButtonSalvar.Size = new System.Drawing.Size(67, 30);
-            this.toolStripButtonSalvar.Tag = "Save";
-            this.toolStripButtonSalvar.Text = "Salvar";
-            this.toolStripButtonSalvar.Click += new System.EventHandler(this.toolStripButtonSalvar_Click);
-            // 
             // toolStripEncontrarPagamentos
             // 
             this.toolStripEncontrarPagamentos.BackColor = System.Drawing.Color.PaleGoldenrod;
@@ -260,40 +217,29 @@ namespace MoneyBin2 {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 364);
-            this.Controls.Add(this.toolStripContainer1);
+            this.ClientSize = new System.Drawing.Size(699, 364);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmCalendario";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calendário";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCalendario_FormClosing);
-            this.Load += new System.EventHandler(this.frmCalendario_Load);
-            this.toolStripContainer1.ContentPanel.ResumeLayout(false);
-            this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
-            this.toolStripContainer1.TopToolStripPanel.PerformLayout();
-            this.toolStripContainer1.ResumeLayout(false);
-            this.toolStripContainer1.PerformLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataForm_FormClosing);
+            this.toolStripContainer.ContentPanel.ResumeLayout(false);
+            this.toolStripContainer.ResumeLayout(false);
+            this.toolStripContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalendario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCalendar)).EndInit();
-            this.toolStripCalendario.ResumeLayout(false);
-            this.toolStripCalendario.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private SuperDGV dgvCalendario;
         private System.Windows.Forms.BindingSource bsCalendar;
-        private System.Windows.Forms.ToolStrip toolStripCalendario;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxMes;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSalvar;
         private System.Windows.Forms.ToolStripButton toolStripButtonPrevMonth;
         private System.Windows.Forms.ToolStripButton toolStripButtonNextMonth;
         private System.Windows.Forms.ToolStripButton toolStripEncontrarPagamentos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn paidDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Agendado;

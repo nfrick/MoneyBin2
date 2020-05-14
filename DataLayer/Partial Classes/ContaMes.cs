@@ -3,6 +3,8 @@ using System.Linq;
 
 namespace DataLayer {
     public partial class ContaMes {
+        public override string ToString() => $"ContaMesId: {ContaMesId}  Mês: {Mes:MMM/yyyy}";
+
         public decimal ImpostoRenda => Movimentos.Sum(m => m.ImpostoRenda);
         public decimal IOF => Movimentos.Sum(m => m.IOF);
         public decimal RendimentoLiquido => RendimentoBruto - ImpostoRenda;
@@ -14,8 +16,7 @@ namespace DataLayer {
         public decimal RendimentoMes => FundoMes.RendimentoMes;
         public decimal RendimentoAno => FundoMes.RendimentoAno;
         public decimal Rendimento12Meses => FundoMes.Rendimento12Meses;
-
-        public override string ToString() => $"ContaMesId: {ContaMesId}  Mês: {Mes:MMM/yyyy}";
+        
     }
 
     public partial class FundoMes {

@@ -2,6 +2,11 @@
 
 namespace DataLayer {
     public partial class Banco : ICloneable {
+
+        public override string ToString() {
+            return $"{Sigla} {Nome}";
+        }
+
         private Banco _backup;
         public object Clone() {
             return this.MemberwiseClone();

@@ -2,6 +2,9 @@
 
 namespace DataLayer {
     public partial class CalendarioMes {
+
+        public override string ToString() => $"{AnoMes}";
+
         public short Mes12 => (short) (1 + (short)Math.Log(Mes, 2));
         public string MesAno => $"{Mes12:00}-{Ano}";
         public string AnoMes => $"{Ano:0000}-{Mes12:00}";

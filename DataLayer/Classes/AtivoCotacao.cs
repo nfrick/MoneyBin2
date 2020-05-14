@@ -6,11 +6,14 @@ using System.Net;
 
 namespace DataLayer {
     public class AtivoCotacao {
+
+        public override string ToString() => $"{Codigo} {LastTrade}";
+
         public string Codigo { get; set; }
 
         public ObservableListSource<Operacao> Operacoes { get; set; }
 
-        public SortedDictionary<DateTime, StockInfo> Cotacoes = 
+        public SortedDictionary<DateTime, StockInfo> Cotacoes =
             new SortedDictionary<DateTime, StockInfo>();
 
         public const string TrendUp = "é";

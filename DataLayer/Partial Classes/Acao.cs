@@ -5,6 +5,8 @@ using System.Linq;
 namespace DataLayer {
     [NotMapped]
     public class Acao {
+        public override string ToString() => $"{Codigo} - Qtd:{Qtd} - Preço:{UltimoPreco}";
+
         public static DbSet<AtivoUltimoPreco> Precos = null;
 
         public string Codigo { get; set; }
@@ -16,9 +18,5 @@ namespace DataLayer {
         public int Qtd => Operacoes.Sum(o => o.QtdComSinal);
 
         public decimal Total => Qtd * UltimoPreco;
-
-        public override string ToString() => $"{Codigo} - Qtd:{Qtd} - Preço:{UltimoPreco}";
-
     }
 }
-

@@ -9,6 +9,8 @@ namespace DataLayer {
         private Regex _regex;
         private decimal _valor;
 
+        public override string ToString() => Texto;
+
         public void Initialize() {
             _categoria = Categoria?.Split('/');
             int.TryParse(SubCategoria, out _subCatLength);

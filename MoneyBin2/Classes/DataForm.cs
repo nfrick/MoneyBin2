@@ -20,11 +20,7 @@ namespace MoneyBin2 {
                     e.Cancel = true;
                     break;
                 case DialogResult.Yes:
-                    if (!_ctx.SaveChanges(out var message)) {
-                        MessageBox.Show(message, Text,
-                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-
+                    e.Cancel = Save();
                     break;
             }
             _ctx.Dispose();
@@ -76,10 +72,17 @@ namespace MoneyBin2 {
         }
 
         protected virtual void toolStripButtonSave_Click(object sender, System.EventArgs e) {
-            if (!_ctx.SaveChanges(out var message)) {
-                MessageBox.Show(message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            Save();
             EnableSaveButtons();
+        }
+
+        protected virtual bool Save() {
+            if (_ctx.SaveChanges(out var message)) {
+                return true;
+            }
+
+            MessageBox.Show(message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            return false;
         }
 
         protected virtual void toolStripButtonRevert_Click(object sender, System.EventArgs e) {
@@ -95,9 +98,7 @@ namespace MoneyBin2 {
 
         protected void ImportToolStrip(ToolStrip local) {
             var items = local.Items.Cast<ToolStripItem>().ToArray();
-            foreach (var t in items) {
-                toolStripMenu.Items.Add(t);
-            }
+            toolStripMenu.Items.AddRange(items);
             local.Visible = false;
             toolStripMenu.Location = new Point(3, 0);
         }

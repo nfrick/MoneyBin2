@@ -154,5 +154,10 @@ namespace MoneyBin2 {
             var frm = new frmInvestimentos() { MdiParent = this };
             frm.Show();
         }
+
+        private void fundosToolStripMenuItem_Click(object sender, EventArgs e) {
+            var frm = new frmFundos() { MdiParent = this };
+            frm.Show();
+        }
     }
 }

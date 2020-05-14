@@ -99,9 +99,11 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -140,6 +142,12 @@
     <Compile Include="Forms\Investimentos\frmEditarOperacao.Designer.cs">
       <DependentUpon>frmEditarOperacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Investimentos\frmFundos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Investimentos\frmFundos.Designer.cs">
+      <DependentUpon>frmFundos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Investimentos\frmInvestimentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,12 +178,6 @@
     <Compile Include="Forms\Pagamentos\frmComprovantePDF.designer.cs">
       <DependentUpon>frmComprovantePDF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Obsoletos\frmPagamentos - Copy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmPagamentos - Copy.designer.cs">
-      <DependentUpon>frmPagamentos - Copy.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Utilidades\frmConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,12 +195,6 @@
     </Compile>
     <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmBancosContasOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmBancosContasOld.Designer.cs">
-      <DependentUpon>frmBancosContasOld.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Pagamentos\frmPagamentos.cs">
       <SubType>Form</SubType>
@@ -224,41 +220,11 @@
     <Compile Include="Forms\Utilidades\frmReport.designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Obsoletos\frmBaseEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmBaseEdit.Designer.cs">
-      <DependentUpon>frmBaseEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmBanco.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmBanco.Designer.cs">
-      <DependentUpon>frmBanco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmConta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmConta.Designer.cs">
-      <DependentUpon>frmConta.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmRegrasOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmRegrasOld.Designer.cs">
-      <DependentUpon>frmRegrasOld.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Balance\frmLeitor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Balance\frmLeitor.Designer.cs">
       <DependentUpon>frmLeitor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmBalanceOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmBalanceOld.Designer.cs">
-      <DependentUpon>frmBalanceOld.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Balance\frmClassificacao.cs">
       <SubType>Form</SubType>
@@ -272,13 +238,7 @@
     <Compile Include="Controls\ToolStripDateTimePicker.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\Obsoletos\frmpagamento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Obsoletos\frmpagamento.Designer.cs">
-      <DependentUpon>frmpagamento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Classes\FormUtils.cs" />
+    <Compile Include="Classes\ClassifTools.cs" />
     <Compile Include="Forms\Balance\frmBancosContas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +260,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Web References\RepServiceNF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Classes\DataForm.resx">
       <DependentUpon>DataForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -312,6 +277,9 @@
     <EmbeddedResource Include="Forms\Investimentos\frmEditarOperacao.resx">
       <DependentUpon>frmEditarOperacao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Investimentos\frmFundos.resx">
+      <DependentUpon>frmFundos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Investimentos\frmInvestimentos.resx">
       <DependentUpon>frmInvestimentos.cs</DependentUpon>
     </EmbeddedResource>
@@ -321,18 +289,11 @@
     <EmbeddedResource Include="Forms\SerieHistorica\frmGrafico.resx">
       <DependentUpon>frmGrafico.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Obsoletos\frmBancosContasOld.resx">
-      <DependentUpon>frmBancosContasOld.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Pagamentos\frmCalendario.resx">
       <DependentUpon>frmCalendario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Pagamentos\frmComprovantePDF.resx">
       <DependentUpon>frmComprovantePDF.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Obsoletos\frmPagamentos - Copy.resx">
-      <DependentUpon>frmPagamentos - Copy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Utilidades\frmConfig.resx">
       <DependentUpon>frmConfig.cs</DependentUpon>
@@ -356,30 +317,12 @@
       <DependentUpon>frmReport.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Obsoletos\frmBaseEdit.resx">
-      <DependentUpon>frmBaseEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Obsoletos\frmBanco.resx">
-      <DependentUpon>frmBanco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Obsoletos\frmConta.resx">
-      <DependentUpon>frmConta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Obsoletos\frmRegrasOld.resx">
-      <DependentUpon>frmRegrasOld.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Balance\frmLeitor.resx">
       <DependentUpon>frmLeitor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Obsoletos\frmBalanceOld.resx">
-      <DependentUpon>frmBalanceOld.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Balance\frmClassificacao.resx">
       <DependentUpon>frmClassificacao.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Obsoletos\frmpagamento.resx">
-      <DependentUpon>frmpagamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Balance\frmBancosContas.resx">
       <DependentUpon>frmBancosContas.cs</DependentUpon>
@@ -416,6 +359,7 @@
     <None Include="Properties\DataSources\DataLayer.CalendarioItem.datasource" />
     <None Include="Properties\DataSources\DataLayer.Classificacao.datasource" />
     <None Include="Properties\DataSources\DataLayer.Conta1.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Fundo.datasource" />
     <None Include="Properties\DataSources\DataLayer.Pagamento.datasource" />
     <None Include="Properties\DataSources\DataLayer.Patrimonio.datasource" />
     <None Include="Properties\DataSources\DataLayer.Regra.datasource" />
@@ -430,6 +374,101 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Web References\RepServiceNF\ActiveState.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\CatalogItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\DataRetrievalPlan.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\DataSetDefinition.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\DataSource.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\DataSourceDefinition.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\DataSourcePrompt.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\Event.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ExecutionSettingEnum.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ExpirationDefinition.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\Extension.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ExtensionParameter.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ExtensionSettings.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ItemTypeEnum.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\Job.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ModelCatalogItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ModelDrillthroughReport.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ModelItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ParameterValue.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ParameterValueOrFieldReference.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\Policy.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\Property.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\RepServiceNF\ReportHistorySnapshot.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ReportParameter.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\reportservice2005.wsdl" />
+    <None Include="Web References\RepServiceNF\Role.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\Schedule.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\ScheduleDefinitionOrReference.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\Subscription.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\Task.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RepServiceNF\Warning.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -487,7 +526,25 @@
     <None Include="Resources\Oculos.png" />
     <None Include="Resources\Regras.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://tyger-i7/reportserver/reportservice2005.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\RepServiceNF\</RelPath>
+      <UpdateFromURL>http://tyger-i7/reportserver/reportservice2005.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>MoneyBin2_RepServiceNF_ReportingService2005</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
