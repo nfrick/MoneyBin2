@@ -12,7 +12,7 @@ namespace MoneyBin2 {
         private const string DialogTitle = @"Leitor de Extratos";
         private Conta _conta;
 
-        public bool HasData => _conta.ExtratoHasData;
+        public bool HasData => _conta != null && _conta.ExtratoHasData;
 
         #region FORM -------------------------
         public frmLeitor(Conta conta = null) {

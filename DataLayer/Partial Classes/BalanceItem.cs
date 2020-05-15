@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Xml.Linq;
 
 namespace DataLayer {
-    public partial class BalanceItem {  // : IEquatable<BalanceItem> {
+    public partial class BalanceItem : IEquatable<BalanceItem> {
         public override string ToString() {
             return $"{Data:d}  {Historico}  {Valor:C2}";
         }
@@ -28,30 +28,31 @@ namespace DataLayer {
         /// </summary>
         /// <param name="bi"></param>
         /// <returns></returns>
-        //public override bool Equals(object obj) {
-        //    if (!(obj is BalanceItem)) {
-        //        throw new ArgumentException("Object is not a BalanceItem");
-        //    }
+        public override bool Equals(object obj) {
+            if (!(obj is BalanceItem)) {
+                throw new ArgumentException("Object is not a BalanceItem");
+            }
+            var other = (BalanceItem)obj;
+            return this.Equals(other);
+        }
 
-        //    var other = (BalanceItem)obj;
-        //    return this.Equals(other);
-        //}
+        public bool Equals(BalanceItem other) {
+            if (other == null) {
+                return false;
+            }
 
-        //public bool Equals(BalanceItem other) {
-        //    if (other == null) {
-        //        return false;
-        //    }
+            return //this.ContaID.Equals(other.ContaID) &&
+                this.Data.Equals(other.Data) &&
+                this.Valor.Equals(other.Valor) &&
+                this.Historico.Equals(other.Historico) &&
+                   (other.Documento == null ? 
+                        (this.Documento == null || this.Documento.Equals("")) : 
+                        this.Documento.Equals(other.Documento));
+        }
 
-        //    return this.ContaID.Equals(other.ContaID) &&
-        //        this.Data.Equals(other.Data) &&
-        //        this.Valor.Equals(other.Valor) &&
-        //        this.Historico.Equals(other.Historico) &&
-        //           (other.Documento == null ? (this.Documento == null || this.Documento.Equals("")) : this.Documento.Equals(other.Documento));
-        //}
-
-        //public override int GetHashCode() {
-        //    return this.Historico.GetHashCode();
-        //}
+        public override int GetHashCode() {
+            return $"{Data}{Valor}{Historico}{Documento}".GetHashCode();
+        }
 
         //public static bool operator ==(BalanceItem bi1, BalanceItem bi2) {
         //    if (object.ReferenceEquals(bi1, bi2)) {

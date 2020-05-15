@@ -119,20 +119,22 @@ namespace DataLayer {
             }
 
             foreach (var arquivo in arquivos) {
-                var extension = Path.GetExtension(arquivo).ToLower();
-                var entries = extension.Equals(".xls") ?
-                    ExtratoFromXML(arquivo) : ExtratoFromCSV(arquivo);
+                //var extension = Path.GetExtension(arquivo).ToLower();
+                //extension.Equals(".xls") ? 
+                //ExtratoFromXML(arquivo, getAll) : 
+                var entries = ExtratoFromCSV(arquivo, getAll);
                 if (entries == null || !entries.Any()) {
                     continue;
                 }
 
-                extrato.AddRange(getAll ? entries : entries.SkipWhile(i => i.Data.CompareTo(DataMax) < 0));
+                extrato.AddRange(entries.Except(extrato));
+                //extrato.AddRange(getAll ? entries : entries.SkipWhile(i => i.Data.CompareTo(DataMax) < 0));
             }
-            Extrato = extrato.Distinct().OrderByDescending(e => e.Data).ToList();
+            Extrato = extrato.OrderByDescending(e => e.Data).ToList();
             ClassificaItens(regras);
         }
 
-        private IEnumerable<BalanceItem> ExtratoFromCSV(string filepath) {
+        private IEnumerable<BalanceItem> ExtratoFromCSV(string filepath, bool getAll) {
             using (TextReader reader = new StreamReader(filepath, Encoding.Default)) {
                 var csv = new CsvReader(reader, new CultureInfo("pt-br"));
                 if (Banco.Sigla == "BB") {
@@ -148,7 +150,10 @@ namespace DataLayer {
                 csv.Configuration.HeaderValidated = null;
 
                 try {
-                    return csv.GetRecords<BalanceItem>().ToList();
+                    // O "ToList() é necessário pois o CSVreader é fechado quando a execução do método termina
+                    return getAll ? csv.GetRecords<BalanceItem>().ToList() :
+                        csv.GetRecords<BalanceItem>()
+                        .SkipWhile(i => i.Data.CompareTo(DataMax) < 0).ToList();
                 }
                 catch (Exception) {
                     return null;
@@ -157,7 +162,7 @@ namespace DataLayer {
             }
         }
 
-        private IEnumerable<BalanceItem> ExtratoFromXML(string filepath) {
+        private IEnumerable<BalanceItem> ExtratoFromXML(string filepath, bool getAll) {
             //_entries = new List<BalanceItem>();
 
             //var htmlContent = File.ReadAllText(filepath).Replace("Saldo<td>", "Saldo</td>");
