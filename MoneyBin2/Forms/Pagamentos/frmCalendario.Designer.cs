@@ -178,6 +178,7 @@ namespace MoneyBin2 {
             this.toolStripButtonPrevMonth.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonPrevMonth.Name = "toolStripButtonPrevMonth";
             this.toolStripButtonPrevMonth.Size = new System.Drawing.Size(34, 30);
+            this.toolStripButtonPrevMonth.Tag = "1";
             this.toolStripButtonPrevMonth.Text = "3";
             this.toolStripButtonPrevMonth.ToolTipText = "Mês anterior";
             this.toolStripButtonPrevMonth.Click += new System.EventHandler(this.toolStripButtonMonth_Click);
@@ -197,6 +198,7 @@ namespace MoneyBin2 {
             this.toolStripButtonNextMonth.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNextMonth.Name = "toolStripButtonNextMonth";
             this.toolStripButtonNextMonth.Size = new System.Drawing.Size(34, 30);
+            this.toolStripButtonNextMonth.Tag = "-1";
             this.toolStripButtonNextMonth.Text = "4";
             this.toolStripButtonNextMonth.ToolTipText = "Próximo mês";
             this.toolStripButtonNextMonth.Click += new System.EventHandler(this.toolStripButtonMonth_Click);

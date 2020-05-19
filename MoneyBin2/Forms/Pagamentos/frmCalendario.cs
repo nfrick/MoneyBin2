@@ -57,7 +57,7 @@ namespace MoneyBin2 {
         private void SetHeight() {
             Height = 10 + toolStripMenu.Height + statusStrip.Height +
                      dgvCalendario.ColumnHeadersHeight +
-                     dgvCalendario.RowCount * (6 + dgvCalendario.RowTemplate.Height);
+                     dgvCalendario.RowCount * (8 + dgvCalendario.RowTemplate.Height);
         }
         #endregion FORM ---------------------------------
 
@@ -151,12 +151,7 @@ namespace MoneyBin2 {
 
         private void toolStripButtonMonth_Click(object sender, EventArgs e) {
             var btn = sender as ToolStripButton;
-            if (btn.Name.Contains("Prev")) {
-                toolStripComboBoxMes.ComboBox.SelectedIndex += 1;
-            }
-            else {
-                toolStripComboBoxMes.ComboBox.SelectedIndex -= 1;
-            }
+            toolStripComboBoxMes.ComboBox.SelectedIndex += int.Parse((string)btn.Tag);
             EnableNavigationButtons();
         }
 

@@ -43,11 +43,7 @@ namespace DataLayer {
                 return true;
             }
 
-            if (obj.GetType() != this.GetType()) {
-                return false;
-            }
-
-            return Equals((SerieHistorica)obj);
+            return obj.GetType() == this.GetType() && Equals((SerieHistorica)obj);
         }
 
         public override int GetHashCode() {
