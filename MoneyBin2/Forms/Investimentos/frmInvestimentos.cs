@@ -7,7 +7,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Data.Entity;
 using System.Drawing;
 using System.IO;
@@ -219,7 +218,7 @@ namespace MoneyBin2 {
         }
 
         #endregion DATAGRID GENÉRICAS -------------------------
-        
+
         #region TABS ==========================================
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e) {
             var tabLabel = tabControlInvestimentos.SelectedTab.Text;
@@ -528,32 +527,46 @@ namespace MoneyBin2 {
         private string[] GetExtratosFundos() {
             var conta = ContaAtual;
             var path = $@"{_balancePath}\{conta.Banco.Sigla}\{conta.ContaCorrente}\Fundos {conta.Banco.ExtensaoFundos}";
-            if (MessageBox.Show($"Conta {conta.ContaCorrenteComDV}: Ler todos os extratos de um mês?", DialogTitle, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question) == DialogResult.Yes) {
-                var allFiles = Directory.GetFiles(path, $"*.{conta.Banco.ExtensaoFundos}");
-                if (!allFiles.Any()) {
-                    return null;
-                }
 
-                var regex = new Regex(@"([12]\d{3}-(0[1-9]|1[0-2]))");
-                var meses = allFiles.Select(f => regex.Match(f).Value).Distinct().OrderByDescending(m => m).ToArray();
-                if (!meses.Any()) {
-                    MessageBox.Show($"Não foi possível selecionar os meses nos arquivos em\n\n{path}",
-                        DialogTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBoxManager.Yes = "Mês inteiro";
+            MessageBoxManager.No = "Selecionados";
+            MessageBoxManager.Register();
+            var resp = MessageBox.Show($"Ler extrato(s) da conta {conta.ContaCorrenteComDV}?", DialogTitle,
+                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            MessageBoxManager.Unregister();
+            switch (resp) {
+                case DialogResult.Cancel:
                     return null;
-                }
+                case DialogResult.Yes:
+                    var allFiles = Directory.GetFiles(path, $"*.{conta.Banco.ExtensaoFundos}");
+                    if (!allFiles.Any()) {
+                        return null;
+                    }
+                    var regex = new Regex(@"([12]\d{3}-(0[1-9]|1[0-2]))");
+                    var meses = allFiles.Select(f => regex.Match(f).Value).Distinct().OrderByDescending(m => m)
+                        .ToArray();
+                    if (!meses.Any()) {
+                        MessageBox.Show($"Não foi possível selecionar os meses nos arquivos em\n\n{path}",
+                            DialogTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return null;
+                    }
 
-                var mes = meses.First();
-                return PromptDialog.InputCombo(DialogTitle, "Selecione o mês:", meses, ref mes) ==
-                       DialogResult.Cancel
-                    ? null
-                    : allFiles.Where(f => f.Contains(mes)).ToArray();
+                    var mes = meses.First();
+                    return PromptDialog.InputCombo(DialogTitle, "Selecione o mês:", meses, ref mes) ==
+                           DialogResult.Cancel
+                        ? null
+                        : allFiles.Where(f => f.Contains(mes)).ToArray();
+
+                case DialogResult.No:
+                    OFD.InitialDirectory = path;
+                    OFD.DefaultExt = conta.Banco.ExtensaoFundos.ToLower();
+                    OFD.Filter = $@"Arquivos {OFD.DefaultExt.ToUpper()}|*.{OFD.DefaultExt}";
+                    OFD.Multiselect = true;
+                    return (OFD.ShowDialog() == DialogResult.Cancel) ? null : OFD.FileNames;
+
+                default:
+                    return null;
             }
-            OFD.InitialDirectory = path;
-            OFD.DefaultExt = conta.Banco.ExtensaoFundos.ToLower();
-            OFD.Filter = $@"Arquivos {OFD.DefaultExt.ToUpper()}|*.{OFD.DefaultExt}";
-            OFD.Multiselect = true;
-            return (OFD.ShowDialog() == DialogResult.Cancel) ? null : OFD.FileNames;
         }
 
         private void toolStripButtonPath_Click(object sender, EventArgs e) {
