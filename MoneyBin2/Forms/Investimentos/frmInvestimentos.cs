@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Drawing;
 using System.IO;
@@ -168,7 +169,7 @@ namespace MoneyBin2 {
             toolStripComboBoxConta.ComboBox.ValueMember = "ID";
             toolStripComboBoxConta.ComboBox.SelectedItem =
                 _ctx.Contas.Find(Settings.Default.InvestimentosUltimaConta);
-            
+
             GetBalancePath();
 
             _ctx.Operacoes.Local.CollectionChanged += LocalOnCollectionChanged;
@@ -218,7 +219,7 @@ namespace MoneyBin2 {
         }
 
         #endregion DATAGRID GENÉRICAS -------------------------
-
+        
         #region TABS ==========================================
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e) {
             var tabLabel = tabControlInvestimentos.SelectedTab.Text;
@@ -636,7 +637,7 @@ namespace MoneyBin2 {
             toolStripProgressBar1.Value = 0;
             toolStripProgressBar1.Maximum = files.Count();
 
-            foreach (var file in files) {
+            foreach (var file in files.OrderBy(f => f)) {
                 toolStripProgressBar1.Value += 1;
                 toolStripLabelLendoExtrato.Text = $"Lendo extrato: {Path.GetFileName(file)}";
                 leitor(file);
@@ -756,5 +757,6 @@ namespace MoneyBin2 {
             ExtratoLCAReader.LerExtratoLCA(filename, (Conta)toolStripComboBoxConta.SelectedItem);
         }
         #endregion LEITURA DE EXTRATO -------------------------------
+
     }
 }

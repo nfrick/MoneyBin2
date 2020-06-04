@@ -118,7 +118,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CNPJ" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="CNPJ" Type="varchar" MaxLength="14" Nullable="false" />
           <Property Name="Apelido" Type="nvarchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="tbFundosMeses">
@@ -212,8 +212,8 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Grupo" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Categoria" Type="nvarchar" MaxLength="20" />
-          <Property Name="SubCategoria" Type="nvarchar" MaxLength="30" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SubCategoria" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Descricao" Type="nvarchar" MaxLength="30" />
           <Property Name="Dia" Type="tinyint" Nullable="false" />
           <Property Name="Meses" Type="int" Nullable="false" />
@@ -761,8 +761,8 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Grupo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Categoria" MaxLength="20" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="SubCategoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" MaxLength="20" FixedLength="false" Unicode="true" Type="String" Nullable="false" />
+          <Property Name="SubCategoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descricao" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Dia" Type="Byte" Nullable="false" DefaultValue="1" />
           <Property Name="Meses" Type="Int32" Nullable="false" />
@@ -1012,7 +1012,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CNPJ" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="CNPJ" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Contas" Relationship="MoneyBinModel.FK_tbContasFundos_tbFundos" FromRole="tbFundo" ToRole="tbContasFundo" />
           <NavigationProperty Name="Meses" Relationship="MoneyBinModel.FK_tbFundosMeses_tbFundos" FromRole="tbFundo" ToRole="tbFundosMes" />
           <Property Name="Apelido" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />

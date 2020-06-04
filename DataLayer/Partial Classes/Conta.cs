@@ -254,7 +254,7 @@ namespace DataLayer {
             var acoes = Operacoes.GroupBy(o => o.Codigo)
                 .Select(a => new Acao {
                     Codigo = a.Key,
-                    Operacoes = a.OrderBy(c => c.Data).ToObservableListSource()
+                    Operacoes = a.OrderByDescending(c => c.Data).ToObservableListSource()
                 }).OrderBy(a => a.Codigo);
             return acoes;
         }
