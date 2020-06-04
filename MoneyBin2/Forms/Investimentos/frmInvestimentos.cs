@@ -528,7 +528,7 @@ namespace MoneyBin2 {
         private string[] GetExtratosFundos() {
             var conta = ContaAtual;
             var path = $@"{_balancePath}\{conta.Banco.Sigla}\{conta.ContaCorrente}\Fundos {conta.Banco.ExtensaoFundos}";
-            if (MessageBox.Show("Ler todos os extratos de um mês?", DialogTitle, MessageBoxButtons.YesNo,
+            if (MessageBox.Show($"Conta {conta.ContaCorrenteComDV}: Ler todos os extratos de um mês?", DialogTitle, MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes) {
                 var allFiles = Directory.GetFiles(path, $"*.{conta.Banco.ExtensaoFundos}");
                 if (!allFiles.Any()) {
@@ -551,7 +551,7 @@ namespace MoneyBin2 {
             }
             OFD.InitialDirectory = path;
             OFD.DefaultExt = conta.Banco.ExtensaoFundos.ToLower();
-            OFD.Filter = $@"{conta.Banco.ExtensaoFundos.ToUpper()} files|*.{OFD.DefaultExt}";
+            OFD.Filter = $@"Arquivos {OFD.DefaultExt.ToUpper()}|*.{OFD.DefaultExt}";
             OFD.Multiselect = true;
             return (OFD.ShowDialog() == DialogResult.Cancel) ? null : OFD.FileNames;
         }
