@@ -31,6 +31,12 @@ namespace DataLayer {
             Balance.OrderByDescending(b => b.Data)
                 .ThenByDescending(b => b.ID).First().Saldo ?? 0 : 0;
 
+        public decimal SaldoUltimoMes => BalanceHasData ?
+            Balance.OrderByDescending(b => b.Data)
+                .ThenByDescending(b => b.ID)
+                .SkipWhile(b => b.Data > DateTime.Today.AddDays(-DateTime.Today.Day))
+                .First().Saldo ?? 0 : 0;
+
         public IEnumerable<string> Grupos => Balance.Select(b => b.Grupo)
             .Where(g => g != null).Distinct().OrderBy(g => g);
 
@@ -288,7 +294,7 @@ namespace DataLayer {
                 .Concat(new List<Patrimonio> {new Patrimonio {
                         Tipo = "Saldo em Conta",
                         Item = "Saldo em Conta",
-                        Valor = Saldo
+                        Valor = SaldoUltimoMes
                     }
                 })
                 .Concat(
