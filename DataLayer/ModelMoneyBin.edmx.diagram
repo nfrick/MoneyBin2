@@ -4,24 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7b9c9a07fe284fa49b9f03d8017f518b" Name="Diagram1" ZoomLevel="96">
-        <EntityTypeShape EntityType="MoneyBinModel.CalendarioItem" Width="1.5" PointX="23.125" PointY="13.875" FillColor="255, 192, 255" />
-        <EntityTypeShape EntityType="MoneyBinModel.Pagamento" Width="1.5" PointX="20.25" PointY="13.875" FillColor="255, 192, 255" IsExpanded="true" />
+      <Diagram DiagramId="7b9c9a07fe284fa49b9f03d8017f518b" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="MoneyBinModel.CalendarioItem" Width="1.5" PointX="23.125" PointY="11" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="MoneyBinModel.Pagamento" Width="1.5" PointX="20.25" PointY="11" FillColor="255, 192, 255" IsExpanded="true" />
         <AssociationConnector Association="MoneyBinModel.FK_tbCalendario_tbPagamentos" />
         <EntityTypeShape EntityType="MoneyBinModel.Banco" Width="1.5" PointX="10.25" PointY="8.875" FillColor="Silver" />
         <EntityTypeShape EntityType="MoneyBinModel.Conta" Width="1.5" PointX="12.625" PointY="8.875" FillColor="Silver" />
         <AssociationConnector Association="MoneyBinModel.FK_tbContas_tbBancos" />
-        <EntityTypeShape EntityType="MoneyBinModel.Ativo" Width="1.5" PointX="20.25" PointY="10.75" FillColor="255, 255, 192" />
-        <EntityTypeShape EntityType="MoneyBinModel.SerieHistorica" Width="1.5" PointX="23.125" PointY="10.25" FillColor="255, 255, 192" />
+        <EntityTypeShape EntityType="MoneyBinModel.Ativo" Width="1.5" PointX="20.25" PointY="15" FillColor="255, 255, 192" />
+        <EntityTypeShape EntityType="MoneyBinModel.SerieHistorica" Width="1.5" PointX="23.125" PointY="14.5" FillColor="255, 255, 192" />
         <EntityTypeShape EntityType="MoneyBinModel.Regra" Width="1.5" PointX="10.25" PointY="14" FillColor="192, 255, 192" />
-        <EntityTypeShape EntityType="MoneyBinModel.BalanceItem" Width="1.5" PointX="12.625" PointY="14" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="MoneyBinModel.BalanceItem" Width="1.5" PointX="12.625" PointY="14.5" FillColor="192, 255, 192" />
         <AssociationConnector Association="MoneyBinModel.FK_tbSerieHistorica_tbAtivos" />
         <AssociationConnector Association="MoneyBinModel.ContaBalanceItem" />
-        <EntityTypeShape EntityType="MoneyBinModel.Operacao" Width="1.5" PointX="15.25" PointY="12.375" FillColor="255, 224, 192" />
-        <EntityTypeShape EntityType="MoneyBinModel.OperacaoTipo" Width="1.5" PointX="17.875" PointY="13.125" FillColor="255, 224, 192" />
-        <AssociationConnector Association="MoneyBinModel.FK_tbOperacoes_tbContas" />
+        <EntityTypeShape EntityType="MoneyBinModel.Operacao" Width="1.5" PointX="15.25" PointY="15.875" FillColor="255, 224, 192" />
+        <EntityTypeShape EntityType="MoneyBinModel.OperacaoTipo" Width="1.5" PointX="17.875" PointY="16.75" FillColor="255, 224, 192" />
         <AssociationConnector Association="MoneyBinModel.FK_tbOperacoes_tbOperacoesTipos" />
-        <EntityTypeShape EntityType="MoneyBinModel.AtivoUltimoPreco" Width="1.5" PointX="17.875" PointY="10.75" FillColor="255, 224, 192" />
+        <EntityTypeShape EntityType="MoneyBinModel.AtivoUltimoPreco" Width="1.5" PointX="20.25" PointY="18.25" FillColor="255, 255, 192" />
         <EntityTypeShape EntityType="MoneyBinModel.ContaFundo" Width="1.5" PointX="15.125" PointY="7.375" FillColor="192, 255, 255" />
         <EntityTypeShape EntityType="MoneyBinModel.ContaMes" Width="1.5" PointX="17.625" PointY="7.25" FillColor="192, 255, 255" />
         <EntityTypeShape EntityType="MoneyBinModel.Fundo" Width="1.5" PointX="15.25" PointY="4.125" FillColor="192, 255, 255" />
@@ -40,8 +39,43 @@
         <AssociationConnector Association="MoneyBinModel.FK_tbLCA_tbContas" />
         <AssociationConnector Association="MoneyBinModel.FK_tbLCAMeses_tbLCA" />
         <AssociationConnector Association="MoneyBinModel.FK_tbMovimentos_tbLCAMeses" />
-        <EntityTypeShape EntityType="MoneyBinModel.Acumulada" Width="1.5" PointX="15.25" PointY="16" FillColor="255, 192, 128" />
+        <EntityTypeShape EntityType="MoneyBinModel.Acumulada" Width="1.5" PointX="17.875" PointY="14.5" FillColor="255, 224, 192" />
         <AssociationConnector Association="MoneyBinModel.OperacaovwOperacoesQtdAcumulada" />
+        <EntityTypeShape EntityType="MoneyBinModel.Associacao" Width="1.5" PointX="15.375" PointY="22.25" FillColor="255, 224, 192" />
+        <EntityTypeShape EntityType="MoneyBinModel.Entrada" Width="1.5" PointX="17.875" PointY="20.375" FillColor="255, 224, 192" />
+        <EntityTypeShape EntityType="MoneyBinModel.Saida" Width="1.5" PointX="12.625" PointY="20.25" FillColor="255, 224, 192" />
+        <AssociationConnector Association="MoneyBinModel.FK_tbAssociacoes_tbEntradas" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="MoneyBinModel.FK_tbAssociacoes_tbSaidas" ManuallyRouted="true" >
+          <ConnectorPoint PointX="14.125" PointY="21.265261442263508" />
+          <ConnectorPoint PointX="15.694944021775799" PointY="21.265261442263508" />
+          <ConnectorPoint PointX="15.694944021775799" PointY="22.25" />
+        </AssociationConnector>
+        <InheritanceConnector EntityType="MoneyBinModel.Entrada" />
+        <InheritanceConnector EntityType="MoneyBinModel.Saida" ManuallyRouted="true" >
+          <ConnectorPoint PointX="15.662801003030934" PointY="19.201396484375003" />
+          <ConnectorPoint PointX="15.662801003030934" PointY="20.817815649984407" />
+          <ConnectorPoint PointX="14.125" PointY="20.817815649984407" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="MoneyBinModel.ContaAtivo" Width="1.5" PointX="15.25" PointY="12.375" FillColor="255, 224, 192" />
+        <AssociationConnector Association="MoneyBinModel.FK_tbContasAtivos_tbAtivos" />
+        <AssociationConnector Association="MoneyBinModel.FK_tbContasAtivos_tbContas" />
+        <AssociationConnector Association="MoneyBinModel.FK_tbOperacoes_tbContasAtivos" />
+        <AssociationConnector Association="MoneyBinModel.AtivoAtivoUltimoPreco" />
+        <AssociationConnector Association="MoneyBinModel.ContaAtivoSaida" ManuallyRouted="true" >
+          <ConnectorPoint PointX="15.25" PointY="14.024552650248038" />
+          <ConnectorPoint PointX="14.517289883392017" PointY="14.024552650248038" />
+          <ConnectorPoint PointX="14.517289883392017" PointY="19.875" />
+          <ConnectorPoint PointX="13.037395245618477" PointY="19.875" />
+          <ConnectorPoint PointX="13.037395245618477" PointY="20.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="MoneyBinModel.ContaAtivoEntrada" ManuallyRouted="true" >
+          <ConnectorPoint PointX="16.75" PointY="14.20047262760416" />
+          <ConnectorPoint PointX="17.311104469938574" PointY="14.20047262760416" />
+          <ConnectorPoint PointX="17.311104469938574" PointY="20" />
+          <ConnectorPoint PointX="18.101165772175172" PointY="20" />
+          <ConnectorPoint PointX="18.101165772175172" PointY="20.375" />
+        </AssociationConnector>
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

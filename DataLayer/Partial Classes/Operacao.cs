@@ -18,7 +18,7 @@ namespace DataLayer {
 
         public bool IncideTaxa => OperacaoTipo.IncideTaxa;
 
-        public int QtdAcumulada => Acumulada.Qtd;
+        public int QtdAcumulada => Acumulada?.Qtd ?? 0;
 
         public int QtdAntes => QtdAcumulada - QtdComSinal;
 
@@ -40,30 +40,28 @@ namespace DataLayer {
 
         public decimal ValorOperacaoComTaxasReal => Qtd * ValorComTaxasReal;
 
-        //public Entrada ToEntrada => new Entrada() {
-        //    OperacaoId = this.OperacaoId,
-        //    ContaId = this.ContaId,
-        //    Codigo = this.Codigo,
-        //    TipoId = this.TipoId,
-        //    Data = this.Data,
-        //    Qtd = this.Qtd,
-        //    Valor = this.Valor,
-        //    ValorReal = this.ValorReal,
-        //    OperacaoTipo = this.OperacaoTipo,
-        //    AtivoDaConta = this.AtivoDaConta
-        //};
+        public Entrada ToEntrada => new Entrada() {
+            OperacaoId = this.OperacaoId,
+            ContaId = this.ContaId,
+            Codigo = this.Codigo,
+            TipoId = this.TipoId,
+            Data = this.Data,
+            Qtd = this.Qtd,
+            Valor = this.Valor,
+            ValorReal = this.ValorReal,
+            OperacaoTipo = this.OperacaoTipo
+        };
 
-        //public Saida ToSaida => new Saida() {
-        //    OperacaoId = this.OperacaoId,
-        //    ContaId = this.ContaId,
-        //    Codigo = this.Codigo,
-        //    TipoId = this.TipoId,
-        //    Data = this.Data,
-        //    Qtd = this.Qtd,
-        //    Valor = this.Valor,
-        //    ValorReal = this.ValorReal,
-        //    OperacaoTipo = this.OperacaoTipo,
-        //    AtivoDaConta = this.AtivoDaConta
-        //};
+        public Saida ToSaida => new Saida() {
+            OperacaoId = this.OperacaoId,
+            ContaId = this.ContaId,
+            Codigo = this.Codigo,
+            TipoId = this.TipoId,
+            Data = this.Data,
+            Qtd = this.Qtd,
+            Valor = this.Valor,
+            ValorReal = this.ValorReal,
+            OperacaoTipo = this.OperacaoTipo
+        };
     }
 }

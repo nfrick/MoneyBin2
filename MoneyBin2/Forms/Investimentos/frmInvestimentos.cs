@@ -15,6 +15,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+//using Investimentos;
 
 namespace MoneyBin2 {
 
@@ -67,7 +68,7 @@ namespace MoneyBin2 {
             dgvAcoes.FormatColumn("Código", dgvAcoes.StyleBase, 60);
             dgvAcoes.FormatColumn("Qtd", dgvAcoes.StyleInteger, 60);
             dgvAcoes.FormatColumn("Último Preço", dgvAcoes.StyleCurrency, 70);
-            dgvAcoes.FormatColumn("Total", dgvAcoes.StyleCurrency, 80);
+            dgvAcoes.FormatColumn("Total", dgvAcoes.StyleCurrency, 95);
 
             dgvOperacoes.FormatColumn("Data", dgvOperacoes.StyleDateTimeShort, 120);
             dgvOperacoes.FormatColumn("Operação", dgvOperacoes.StyleBase, 100);
@@ -77,12 +78,19 @@ namespace MoneyBin2 {
             dgvOperacoes.FormatColumn("Valor Real", dgvOperacoes.StyleCurrency, 68);
             dgvOperacoes.FormatColumn("Valor Operação", dgvOperacoes.StyleCurrency, 95);
             dgvOperacoes.FormatColumn("Custos", dgvOperacoes.StyleCurrency, 68);
-
-            //dgvVendas.Columns[0].Visible = false;
-            //dgvVendas.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
-            //dgvVendas.FormatColumn(dgvVendas, GridStyles.StyleInteger, 75, 2, 3, 4, 6, 7);
-            //dgvVendas.FormatColumn(dgvVendas, GridStyles.StyleCurrency, 80, 5, 8, 9, 10);
-            //dgvVendas.FormatColumn(dgvVendas, GridStyles.StyleCurrency, 90, 11, 12);
+            
+            dgvVendas.FormatColumn("Data", dgvVendas.StyleDateTimeShort, 120);
+            dgvVendas.FormatColumn("Antes", dgvVendas.StyleInteger, 75);
+            dgvVendas.FormatColumn("Venda", dgvVendas.StyleInteger, 75);
+            dgvVendas.FormatColumn("Depois", dgvVendas.StyleInteger, 75);
+            dgvVendas.FormatColumn("Valor", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumn("Valor Real", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumn("Compras", dgvVendas.StyleInteger, 75);
+            dgvVendas.FormatColumn("Pendente", dgvVendas.StyleInteger, 75);
+            dgvVendas.FormatColumn("VM Compra", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumn("VM Compra Real", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumn("Lucro", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumn("Lucro Real", dgvVendas.StyleCurrency, 75);
 
             // FUNDOS
             dgvFundos.FormatColumn("Fundo", dgvFundos.StyleBase, -1);
@@ -159,7 +167,7 @@ namespace MoneyBin2 {
             //    8 + dgvAtivos.ColumnHeadersHeight + 11 * dgvAtivos.RowTemplate.Height;
 
             //----------------
-            Acao.Precos = _ctx.AtivosUltimosPrecos;
+            //Acao.Precos = _ctx.AtivosUltimosPrecos;
             _ctx.Contas.Load();
             bsContas.DataSource = _ctx.Contas.Local.ToBindingList();
 
@@ -246,12 +254,12 @@ namespace MoneyBin2 {
         }
 
         private void dgvVendas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
-            //var frm = new frmAssociarCompraComVenda {
-            //    Saida = (Saida)dgvVendas.SelectedRows[0].DataBoundItem,
-            //    eds = EDS
-            //};
-            //frm.ShowDialog();
-            //RefreshDataAcoes();
+            var frm = new frmAssociarCompraComVenda {
+                Saida = (Saida)bsVendas.Current,
+                AcaoAtual = (ContaAtivo)bsAcoes.Current
+            };
+            frm.ShowDialog();
+            RefreshDataAcoes();
         }
 
         private frmEditarOperacao GetFrmEditarOperacao(Operacao op) {
@@ -266,6 +274,7 @@ namespace MoneyBin2 {
         private void RefreshDataAcoes() {
             dgvAcoes.Refresh();
             dgvOperacoes.Refresh();
+            dgvVendas.Refresh();
             RefreshSalvar();
         }
         #endregion TAB AÇÕES -----------------------------------------
@@ -416,36 +425,35 @@ namespace MoneyBin2 {
 
         #region TOOLSTRIP AÇÕES --------------------------------------
         private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
-            var ativo = (Acao)bsAcoes.Current;
+            var acaoAtual = (ContaAtivo)bsAcoes.Current;
 
-            var op = new Operacao() { Codigo = ativo.Codigo };
+            var op = new Operacao() { Codigo = acaoAtual.Codigo };
             var frm = GetFrmEditarOperacao(op);
             if (frm.ShowDialog() == DialogResult.Cancel) {
                 return;
             }
 
-            ContaAtual.Operacoes.Add(op);
+            acaoAtual = ContaAtual.Acoes
+                .FirstOrDefault(ca => ca.Codigo == op.Codigo) ?? new ContaAtivo() { Conta = ContaAtual, Codigo = op.Codigo };
 
-            bsContas.ResetBindings(false);
-            bsAcoes.ResetBindings(false);
-            dgvAcoes.Refresh();
-
-            var row = dgvAcoes.Rows
-                .Cast<DataGridViewRow>()
-                .FirstOrDefault(r => r.Cells["dgvtbAcaoCodigo"].Value.ToString().Equals(op.Codigo));
-            if (row != null) {
-                dgvAcoes.Rows[row.Index].Selected = true;
-            }
+            bsAcoes.Position = bsAcoes.Find("Codigo", acaoAtual.Codigo);
+            
+            //var row = dgvAcoes.Rows
+            //    .Cast<DataGridViewRow>()
+            //    .FirstOrDefault(r => r.Cells["Codigo"].Value.ToString().Equals(op.Codigo));
+            //if (row != null) {
+            //    dgvAcoes.Rows[row.Index].Selected = true;
+            //}
 
             //var tipo = (OperacaoTipo)frm.comboBoxOperacao.SelectedItem;
             //var operacoes = EDS.DbContext.Set<Operacao>();
-            //if (tipo.IsEntrada) {
-            //    operacoes.Add(op.ToEntrada);
-            //}
-            //else {
-            //    operacoes.Add(op.ToSaida);
-            //}
-
+            if (op.IsEntrada) {
+                acaoAtual.Operacoes.Add(op.ToEntrada);
+            }
+            else {
+                acaoAtual.Operacoes.Add(op.ToSaida);
+            }
+            dgvAcoes.Refresh();
             RefreshDataAcoes();
         }
 
@@ -537,6 +545,7 @@ namespace MoneyBin2 {
             switch (resp) {
                 case DialogResult.Cancel:
                     return null;
+
                 case DialogResult.Yes:
                     var allFiles = Directory.GetFiles(path, $"*.{conta.Banco.ExtensaoFundos}");
                     if (!allFiles.Any()) {

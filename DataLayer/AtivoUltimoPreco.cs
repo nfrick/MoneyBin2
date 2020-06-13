@@ -17,5 +17,7 @@ namespace DataLayer
         public string Codigo { get; set; }
         public System.DateTime Data { get; set; }
         public decimal PrecoUltimo { get; set; }
+    
+        public virtual Ativo Ativo { get; set; }
     }
 }

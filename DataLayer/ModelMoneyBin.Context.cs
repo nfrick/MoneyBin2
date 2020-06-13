@@ -47,6 +47,8 @@ namespace DataLayer
         public virtual DbSet<LCAMes> LCAMeses { get; set; }
         public virtual DbSet<LCAMovimento> LCAMovimentos { get; set; }
         public virtual DbSet<Acumulada> QtdsAcumuladas { get; set; }
+        public virtual DbSet<Associacao> Associacoes { get; set; }
+        public virtual DbSet<ContaAtivo> ContasAtivos { get; set; }
     
         public virtual int spBalanceSelectByGrupoCatSubCat(string grp, string cat, string sub)
         {

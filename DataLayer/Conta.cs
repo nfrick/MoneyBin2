@@ -18,9 +18,9 @@ namespace DataLayer
         public Conta()
         {
             this.Balance = new ObservableListSource<BalanceItem>();
-            this.Operacoes = new ObservableListSource<Operacao>();
             this.Fundos = new ObservableListSource<ContaFundo>();
             this.LCAs = new ObservableListSource<LCA>();
+            this.Acoes = new ObservableListSource<ContaAtivo>();
         }
     
         public int ID { get; set; }
@@ -41,10 +41,10 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<BalanceItem> Balance { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Operacao> Operacoes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<ContaFundo> Fundos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<LCA> LCAs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableListSource<ContaAtivo> Acoes { get; set; }
     }
 }

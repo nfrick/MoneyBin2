@@ -12,22 +12,17 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Ativo
+    public partial class Entrada : Operacao
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ativo()
+        public Entrada()
         {
-            this.SerieHistorica = new ObservableListSource<SerieHistorica>();
-            this.ContasAtivos = new ObservableListSource<ContaAtivo>();
+            this.Associacoes = new ObservableListSource<Associacao>();
         }
     
-        public string Codigo { get; set; }
-        public string Nome { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<SerieHistorica> SerieHistorica { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<ContaAtivo> ContasAtivos { get; set; }
-        public virtual AtivoUltimoPreco AtivoUltimoPreco { get; set; }
+        public virtual ObservableListSource<Associacao> Associacoes { get; set; }
+        public virtual ContaAtivo ContaAtivo1 { get; set; }
     }
 }

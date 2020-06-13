@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace MoneyBin2 {
     public partial class frmEditarOperacao : Form {
         public Operacao Operacao { private get; set; }
-        public ObservableListSource<Acao> Acoes { private get; set; }
+        public ObservableListSource<ContaAtivo> Acoes { private get; set; }
         public MoneyBinEntities Ctx { private get; set; }
 
         public frmEditarOperacao() {
@@ -78,17 +78,17 @@ namespace MoneyBin2 {
             }
             var operacaoTipo = (OperacaoTipo) comboBoxOperacao.SelectedItem;
             if (operacaoTipo.SinalPositivo) {
-                Salvaralteracoes();
+                SalvarAlteracoes();
                 return;
             }
 
             var codigo = (string) comboBoxAtivo.SelectedValue;
             var acaoAtual = Acoes.FirstOrDefault(a => a.Codigo == codigo);
-            var QtdDisponivel = acaoAtual == null ? 0 :
+            var qtdDisponivel = acaoAtual == null ? 0 :
                     Operacao.OperacaoId == 0 ? acaoAtual.Qtd : Operacao.QtdAntes;
             var qtd = (int) nudQtd.Value;
-            if (qtd <= QtdDisponivel) {
-                Salvaralteracoes();
+            if (qtd <= qtdDisponivel) {
+                SalvarAlteracoes();
                 return;
             }
 
@@ -98,7 +98,7 @@ namespace MoneyBin2 {
             e.Cancel = true;
         }
 
-        private void Salvaralteracoes() {
+        private void SalvarAlteracoes() {
             Operacao.Codigo = (string)comboBoxAtivo.SelectedValue;
             Operacao.OperacaoTipo = (OperacaoTipo)comboBoxOperacao.SelectedItem;
             Operacao.TipoId = (int)comboBoxOperacao.SelectedValue;

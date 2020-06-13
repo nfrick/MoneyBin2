@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MoneyBinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbAssociacoes">
+          <Key>
+            <PropertyRef Name="SaidaId" />
+            <PropertyRef Name="EntradaId" />
+          </Key>
+          <Property Name="SaidaId" Type="int" Nullable="false" />
+          <Property Name="EntradaId" Type="int" Nullable="false" />
+          <Property Name="QtdAssociada" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="tbAtivos">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -12,11 +21,26 @@
           <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbContasAtivos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaId" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbEntradas">
+          <Key>
+            <PropertyRef Name="OperacaoId" />
+          </Key>
+          <Property Name="OperacaoId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="tbOperacoes">
           <Key>
             <PropertyRef Name="OperacaoId" />
           </Key>
           <Property Name="OperacaoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaAtivoId" Type="int" />
           <Property Name="ContaId" Type="int" Nullable="false" />
           <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="TipoId" Type="int" Nullable="false" />
@@ -34,6 +58,12 @@
           <Property Name="SinalPositivo" Type="bit" Nullable="false" />
           <Property Name="Sinal" Type="int" Nullable="false" />
           <Property Name="IncideTaxa" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbSaidas">
+          <Key>
+            <PropertyRef Name="OperacaoId" />
+          </Key>
+          <Property Name="OperacaoId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tbSerieHistorica">
           <Key>
@@ -264,6 +294,30 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Property Name="Descricao" Type="nvarchar" MaxLength="200" />
           <Property Name="Saldo" Type="money" />
         </EntityType>
+        <Association Name="FK_tbAssociacoes_tbEntradas">
+          <End Role="tbEntradas" Type="Self.tbEntradas" Multiplicity="1" />
+          <End Role="tbAssociacoes" Type="Self.tbAssociacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEntradas">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="tbAssociacoes">
+              <PropertyRef Name="EntradaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbAssociacoes_tbSaidas">
+          <End Role="tbSaidas" Type="Self.tbSaidas" Multiplicity="1" />
+          <End Role="tbAssociacoes" Type="Self.tbAssociacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSaidas">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="tbAssociacoes">
+              <PropertyRef Name="SaidaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbCalendario_tbPagamentos">
           <End Role="tbPagamentos" Type="Self.tbPagamentos" Multiplicity="1" />
           <End Role="tbCalendario" Type="Self.tbCalendario" Multiplicity="*" />
@@ -285,6 +339,30 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
             </Principal>
             <Dependent Role="tbContas">
               <PropertyRef Name="BancoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContasAtivos_tbAtivos">
+          <End Role="tbAtivos" Type="Self.tbAtivos" Multiplicity="1" />
+          <End Role="tbContasAtivos" Type="Self.tbContasAtivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAtivos">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tbContasAtivos">
+              <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContasAtivos_tbContas">
+          <End Role="tbContas" Type="Self.tbContas" Multiplicity="1" />
+          <End Role="tbContasAtivos" Type="Self.tbContasAtivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbContasAtivos">
+              <PropertyRef Name="ContaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -333,6 +411,18 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
             </Principal>
             <Dependent Role="tbContasMeses">
               <PropertyRef Name="FundoMesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbEntradas_tbOperacoes">
+          <End Role="tbOperacoes" Type="Self.tbOperacoes" Multiplicity="1" />
+          <End Role="tbEntradas" Type="Self.tbEntradas" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbOperacoes">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="tbEntradas">
+              <PropertyRef Name="OperacaoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -396,15 +486,15 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbOperacoes_tbContas">
-          <End Role="tbContas" Type="Self.tbContas" Multiplicity="1" />
+        <Association Name="FK_tbOperacoes_tbContasAtivos">
+          <End Role="tbContasAtivos" Type="Self.tbContasAtivos" Multiplicity="0..1" />
           <End Role="tbOperacoes" Type="Self.tbOperacoes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tbContas">
+            <Principal Role="tbContasAtivos">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="tbOperacoes">
-              <PropertyRef Name="ContaId" />
+              <PropertyRef Name="ContaAtivoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -417,6 +507,18 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
             </Principal>
             <Dependent Role="tbOperacoes">
               <PropertyRef Name="TipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbSaidas_tbOperacoes">
+          <End Role="tbOperacoes" Type="Self.tbOperacoes" Multiplicity="1" />
+          <End Role="tbSaidas" Type="Self.tbSaidas" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbOperacoes">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="tbSaidas">
+              <PropertyRef Name="OperacaoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -484,9 +586,13 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Parameter Name="Mes" Type="smallint" Mode="In" />
         </Function>
         <EntityContainer Name="MoneyBinModelStoreContainer">
+          <EntitySet Name="tbAssociacoes" EntityType="Self.tbAssociacoes" Schema="Acoes" store:Type="Tables" />
           <EntitySet Name="tbAtivos" EntityType="Self.tbAtivos" Schema="Acoes" store:Type="Tables" />
+          <EntitySet Name="tbContasAtivos" EntityType="Self.tbContasAtivos" Schema="Acoes" store:Type="Tables" />
+          <EntitySet Name="tbEntradas" EntityType="Self.tbEntradas" Schema="Acoes" store:Type="Tables" />
           <EntitySet Name="tbOperacoes" EntityType="Self.tbOperacoes" Schema="Acoes" store:Type="Tables" />
           <EntitySet Name="tbOperacoesTipos" EntityType="Self.tbOperacoesTipos" Schema="Acoes" store:Type="Tables" />
+          <EntitySet Name="tbSaidas" EntityType="Self.tbSaidas" Schema="Acoes" store:Type="Tables" />
           <EntitySet Name="tbSerieHistorica" EntityType="Self.tbSerieHistorica" Schema="Acoes" store:Type="Tables" />
           <EntitySet Name="tbBancos" EntityType="Self.tbBancos" Schema="Contas" store:Type="Tables" />
           <EntitySet Name="tbContas" EntityType="Self.tbContas" Schema="Contas" store:Type="Tables" />
@@ -530,6 +636,14 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
     [vwBalance].[Saldo] AS [Saldo]
     FROM [Extrato].[vwBalance] AS [vwBalance]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_tbAssociacoes_tbEntradas" Association="Self.FK_tbAssociacoes_tbEntradas">
+            <End Role="tbEntradas" EntitySet="tbEntradas" />
+            <End Role="tbAssociacoes" EntitySet="tbAssociacoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbAssociacoes_tbSaidas" Association="Self.FK_tbAssociacoes_tbSaidas">
+            <End Role="tbSaidas" EntitySet="tbSaidas" />
+            <End Role="tbAssociacoes" EntitySet="tbAssociacoes" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbCalendario_tbPagamentos" Association="Self.FK_tbCalendario_tbPagamentos">
             <End Role="tbPagamentos" EntitySet="tbPagamentos" />
             <End Role="tbCalendario" EntitySet="tbCalendario" />
@@ -537,6 +651,14 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <AssociationSet Name="FK_tbContas_tbBancos" Association="Self.FK_tbContas_tbBancos">
             <End Role="tbBancos" EntitySet="tbBancos" />
             <End Role="tbContas" EntitySet="tbContas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContasAtivos_tbAtivos" Association="Self.FK_tbContasAtivos_tbAtivos">
+            <End Role="tbAtivos" EntitySet="tbAtivos" />
+            <End Role="tbContasAtivos" EntitySet="tbContasAtivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContasAtivos_tbContas" Association="Self.FK_tbContasAtivos_tbContas">
+            <End Role="tbContas" EntitySet="tbContas" />
+            <End Role="tbContasAtivos" EntitySet="tbContasAtivos" />
           </AssociationSet>
           <AssociationSet Name="FK_tbContasFundos_tbContas" Association="Self.FK_tbContasFundos_tbContas">
             <End Role="tbContas" EntitySet="tbContas" />
@@ -553,6 +675,10 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <AssociationSet Name="FK_tbContasMeses_tbFundosMeses" Association="Self.FK_tbContasMeses_tbFundosMeses">
             <End Role="tbFundosMeses" EntitySet="tbFundosMeses" />
             <End Role="tbContasMeses" EntitySet="tbContasMeses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbEntradas_tbOperacoes" Association="Self.FK_tbEntradas_tbOperacoes">
+            <End Role="tbOperacoes" EntitySet="tbOperacoes" />
+            <End Role="tbEntradas" EntitySet="tbEntradas" />
           </AssociationSet>
           <AssociationSet Name="FK_tbFundosMeses_tbFundos" Association="Self.FK_tbFundosMeses_tbFundos">
             <End Role="tbFundos" EntitySet="tbFundos" />
@@ -574,13 +700,17 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
             <End Role="tbLCAMeses" EntitySet="tbLCAMeses" />
             <End Role="tbLCAMovimentos" EntitySet="tbLCAMovimentos" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbOperacoes_tbContas" Association="Self.FK_tbOperacoes_tbContas">
-            <End Role="tbContas" EntitySet="tbContas" />
+          <AssociationSet Name="FK_tbOperacoes_tbContasAtivos" Association="Self.FK_tbOperacoes_tbContasAtivos">
+            <End Role="tbContasAtivos" EntitySet="tbContasAtivos" />
             <End Role="tbOperacoes" EntitySet="tbOperacoes" />
           </AssociationSet>
           <AssociationSet Name="FK_tbOperacoes_tbOperacoesTipos" Association="Self.FK_tbOperacoes_tbOperacoesTipos">
             <End Role="tbOperacoesTipos" EntitySet="tbOperacoesTipos" />
             <End Role="tbOperacoes" EntitySet="tbOperacoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbSaidas_tbOperacoes" Association="Self.FK_tbSaidas_tbOperacoes">
+            <End Role="tbOperacoes" EntitySet="tbOperacoes" />
+            <End Role="tbSaidas" EntitySet="tbSaidas" />
           </AssociationSet>
           <AssociationSet Name="FK_tbSerieHistorica_tbAtivos" Association="Self.FK_tbSerieHistorica_tbAtivos">
             <End Role="tbAtivos" EntitySet="tbAtivos" />
@@ -675,10 +805,6 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           </AssociationSet>
           <EntitySet Name="Operacoes" EntityType="MoneyBinModel.Operacao" />
           <EntitySet Name="OperacoesTipos" EntityType="MoneyBinModel.OperacaoTipo" />
-          <AssociationSet Name="FK_tbOperacoes_tbContas" Association="MoneyBinModel.FK_tbOperacoes_tbContas">
-            <End Role="Conta" EntitySet="Contas" />
-            <End Role="tbOperaco" EntitySet="Operacoes" />
-          </AssociationSet>
           <AssociationSet Name="FK_tbOperacoes_tbOperacoesTipos" Association="MoneyBinModel.FK_tbOperacoes_tbOperacoesTipos">
             <End Role="tbOperacoesTipos" EntitySet="OperacoesTipos" />
             <End Role="tbOperaco" EntitySet="Operacoes" />
@@ -736,6 +862,40 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <AssociationSet Name="OperacaovwOperacoesQtdAcumulada" Association="MoneyBinModel.OperacaovwOperacoesQtdAcumulada">
             <End Role="Operacao" EntitySet="Operacoes" />
             <End Role="vwOperacoesQtdAcumulada" EntitySet="QtdsAcumuladas" />
+          </AssociationSet>
+          <EntitySet Name="Associacoes" EntityType="MoneyBinModel.Associacao" />
+          <AssociationSet Name="FK_tbAssociacoes_tbEntradas" Association="MoneyBinModel.FK_tbAssociacoes_tbEntradas">
+            <End Role="tbEntrada" EntitySet="Operacoes" />
+            <End Role="tbAssociaco" EntitySet="Associacoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbAssociacoes_tbSaidas" Association="MoneyBinModel.FK_tbAssociacoes_tbSaidas">
+            <End Role="tbSaida" EntitySet="Operacoes" />
+            <End Role="tbAssociaco" EntitySet="Associacoes" />
+          </AssociationSet>
+          <EntitySet Name="ContasAtivos" EntityType="MoneyBinModel.ContaAtivo" />
+          <AssociationSet Name="FK_tbContasAtivos_tbAtivos" Association="MoneyBinModel.FK_tbContasAtivos_tbAtivos">
+            <End Role="Ativo" EntitySet="Ativos" />
+            <End Role="tbContasAtivo" EntitySet="ContasAtivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContasAtivos_tbContas" Association="MoneyBinModel.FK_tbContasAtivos_tbContas">
+            <End Role="Conta" EntitySet="Contas" />
+            <End Role="tbContasAtivo" EntitySet="ContasAtivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbOperacoes_tbContasAtivos" Association="MoneyBinModel.FK_tbOperacoes_tbContasAtivos">
+            <End Role="tbContasAtivo" EntitySet="ContasAtivos" />
+            <End Role="Operacao" EntitySet="Operacoes" />
+          </AssociationSet>
+          <AssociationSet Name="AtivoAtivoUltimoPreco" Association="MoneyBinModel.AtivoAtivoUltimoPreco">
+            <End Role="Ativo" EntitySet="Ativos" />
+            <End Role="AtivoUltimoPreco" EntitySet="AtivosUltimosPrecos" />
+          </AssociationSet>
+          <AssociationSet Name="ContaAtivoSaida" Association="MoneyBinModel.ContaAtivoSaida">
+            <End Role="ContaAtivo" EntitySet="ContasAtivos" />
+            <End Role="Saida" EntitySet="Operacoes" />
+          </AssociationSet>
+          <AssociationSet Name="ContaAtivoEntrada" Association="MoneyBinModel.ContaAtivoEntrada">
+            <End Role="ContaAtivo" EntitySet="ContasAtivos" />
+            <End Role="Entrada" EntitySet="Operacoes" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="CalendarioItem">
@@ -827,9 +987,9 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Property Name="EMail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Banco" Relationship="MoneyBinModel.FK_tbContas_tbBancos" FromRole="tbContas" ToRole="tbBancos" />
           <NavigationProperty Name="Balance" Relationship="MoneyBinModel.ContaBalanceItem" FromRole="Conta" ToRole="BalanceItem" />
-          <NavigationProperty Name="Operacoes" Relationship="MoneyBinModel.FK_tbOperacoes_tbContas" FromRole="Conta" ToRole="tbOperaco" />
           <NavigationProperty Name="Fundos" Relationship="MoneyBinModel.FK_tbContasFundos_tbContas" FromRole="Conta" ToRole="tbContasFundo" />
           <NavigationProperty Name="LCAs" Relationship="MoneyBinModel.FK_tbLCA_tbContas" FromRole="Conta" ToRole="tbLCA" />
+          <NavigationProperty Name="Acoes" Relationship="MoneyBinModel.FK_tbContasAtivos_tbContas" FromRole="Conta" ToRole="tbContasAtivo" />
           </EntityType>
         <Association Name="FK_tbContas_tbBancos">
           <End Type="MoneyBinModel.Banco" Role="tbBancos" Multiplicity="1" />
@@ -850,6 +1010,8 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="Nome" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SerieHistorica" Relationship="MoneyBinModel.FK_tbSerieHistorica_tbAtivos" FromRole="tbAtivos" ToRole="tbSerieHistorica" />
+          <NavigationProperty Name="ContasAtivos" Relationship="MoneyBinModel.FK_tbContasAtivos_tbAtivos" FromRole="Ativo" ToRole="tbContasAtivo" />
+          <NavigationProperty Name="AtivoUltimoPreco" Relationship="MoneyBinModel.AtivoAtivoUltimoPreco" FromRole="Ativo" ToRole="AtivoUltimoPreco" />
         </EntityType>
         <EntityType Name="SerieHistorica">
           <Key>
@@ -935,9 +1097,10 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Property Name="Qtd" Type="Int32" Nullable="false" />
           <Property Name="Valor" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="ValorReal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <NavigationProperty Name="Conta" Relationship="MoneyBinModel.FK_tbOperacoes_tbContas" FromRole="tbOperaco" ToRole="Conta" />
           <NavigationProperty Name="OperacaoTipo" Relationship="MoneyBinModel.FK_tbOperacoes_tbOperacoesTipos" FromRole="tbOperaco" ToRole="tbOperacoesTipos" />
           <NavigationProperty Name="Acumulada" Relationship="MoneyBinModel.OperacaovwOperacoesQtdAcumulada" FromRole="Operacao" ToRole="vwOperacoesQtdAcumulada" />
+          <Property Name="ContaAtivoId" Type="Int32" />
+          <NavigationProperty Name="ContaAtivo" Relationship="MoneyBinModel.FK_tbOperacoes_tbContasAtivos" FromRole="Operacao" ToRole="tbContasAtivo" />
         </EntityType>
         <EntityType Name="OperacaoTipo">
           <Key>
@@ -950,18 +1113,6 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Property Name="IncideTaxa" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Operacoes" Relationship="MoneyBinModel.FK_tbOperacoes_tbOperacoesTipos" FromRole="tbOperacoesTipos" ToRole="tbOperaco" />
         </EntityType>
-        <Association Name="FK_tbOperacoes_tbContas">
-          <End Type="MoneyBinModel.Conta" Role="Conta" Multiplicity="1" />
-          <End Type="MoneyBinModel.Operacao" Role="tbOperaco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Conta">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tbOperaco">
-              <PropertyRef Name="ContaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tbOperacoes_tbOperacoesTipos">
           <End Type="MoneyBinModel.OperacaoTipo" Role="tbOperacoesTipos" Multiplicity="1" />
           <End Type="MoneyBinModel.Operacao" Role="tbOperaco" Multiplicity="*" />
@@ -981,6 +1132,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PrecoUltimo" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <NavigationProperty Name="Ativo" Relationship="MoneyBinModel.AtivoAtivoUltimoPreco" FromRole="AtivoUltimoPreco" ToRole="Ativo" />
         </EntityType>
         <EntityType Name="ContaFundo">
           <Key>
@@ -1213,7 +1365,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
             <PropertyRef Name="OperacaoId" />
           </Key>
           <Property Name="OperacaoId" Type="Int32" Nullable="false" />
-          <Property Name="Qtd" Type="Int32" Nullable="false" />
+          <Property Name="Qtd" Type="Int32" />
           <NavigationProperty Name="Operacao" Relationship="MoneyBinModel.OperacaovwOperacoesQtdAcumulada" FromRole="vwOperacoesQtdAcumulada" ToRole="Operacao" />
         </EntityType>
         <Association Name="OperacaovwOperacoesQtdAcumulada">
@@ -1225,6 +1377,134 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
             </Principal>
             <Dependent Role="vwOperacoesQtdAcumulada">
               <PropertyRef Name="OperacaoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Associacao">
+          <Key>
+            <PropertyRef Name="SaidaId" />
+            <PropertyRef Name="EntradaId" />
+          </Key>
+          <Property Name="SaidaId" Type="Int32" Nullable="false" />
+          <Property Name="EntradaId" Type="Int32" Nullable="false" />
+          <Property Name="QtdAssociada" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Entrada" Relationship="MoneyBinModel.FK_tbAssociacoes_tbEntradas" FromRole="tbAssociaco" ToRole="tbEntrada" />
+          <NavigationProperty Name="Saida" Relationship="MoneyBinModel.FK_tbAssociacoes_tbSaidas" FromRole="tbAssociaco" ToRole="tbSaida" />
+        </EntityType>
+        <EntityType Name="Entrada" BaseType="MoneyBinModel.Operacao">
+          <NavigationProperty Name="Associacoes" Relationship="MoneyBinModel.FK_tbAssociacoes_tbEntradas" FromRole="tbEntrada" ToRole="tbAssociaco" />
+          <NavigationProperty Name="ContaAtivo1" Relationship="MoneyBinModel.ContaAtivoEntrada" FromRole="Entrada" ToRole="ContaAtivo" />
+        </EntityType>
+        <EntityType Name="Saida" BaseType="MoneyBinModel.Operacao">
+          <NavigationProperty Name="Associacoes" Relationship="MoneyBinModel.FK_tbAssociacoes_tbSaidas" FromRole="tbSaida" ToRole="tbAssociaco" />
+          <NavigationProperty Name="ContaAtivo1" Relationship="MoneyBinModel.ContaAtivoSaida" FromRole="Saida" ToRole="ContaAtivo" />
+        </EntityType>
+        <Association Name="FK_tbAssociacoes_tbEntradas">
+          <End Type="MoneyBinModel.Entrada" Role="tbEntrada" Multiplicity="1" />
+          <End Type="MoneyBinModel.Associacao" Role="tbAssociaco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEntrada">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="tbAssociaco">
+              <PropertyRef Name="EntradaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbAssociacoes_tbSaidas">
+          <End Type="MoneyBinModel.Saida" Role="tbSaida" Multiplicity="1" />
+          <End Type="MoneyBinModel.Associacao" Role="tbAssociaco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSaida">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="tbAssociaco">
+              <PropertyRef Name="SaidaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContaAtivo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Ativo" Relationship="MoneyBinModel.FK_tbContasAtivos_tbAtivos" FromRole="tbContasAtivo" ToRole="Ativo" />
+          <NavigationProperty Name="Conta" Relationship="MoneyBinModel.FK_tbContasAtivos_tbContas" FromRole="tbContasAtivo" ToRole="Conta" />
+          <NavigationProperty Name="Operacoes" Relationship="MoneyBinModel.FK_tbOperacoes_tbContasAtivos" FromRole="tbContasAtivo" ToRole="Operacao" />
+          <NavigationProperty Name="Saidas" Relationship="MoneyBinModel.ContaAtivoSaida" FromRole="ContaAtivo" ToRole="Saida" />
+          <NavigationProperty Name="Entradas" Relationship="MoneyBinModel.ContaAtivoEntrada" FromRole="ContaAtivo" ToRole="Entrada" />
+        </EntityType>
+        <Association Name="FK_tbContasAtivos_tbAtivos">
+          <End Type="MoneyBinModel.Ativo" Role="Ativo" Multiplicity="1" />
+          <End Type="MoneyBinModel.ContaAtivo" Role="tbContasAtivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ativo">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tbContasAtivo">
+              <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContasAtivos_tbContas">
+          <End Type="MoneyBinModel.Conta" Role="Conta" Multiplicity="1" />
+          <End Type="MoneyBinModel.ContaAtivo" Role="tbContasAtivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbContasAtivo">
+              <PropertyRef Name="ContaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbOperacoes_tbContasAtivos">
+          <End Type="MoneyBinModel.ContaAtivo" Role="tbContasAtivo" Multiplicity="0..1" />
+          <End Type="MoneyBinModel.Operacao" Role="Operacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContasAtivo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operacao">
+              <PropertyRef Name="ContaAtivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AtivoAtivoUltimoPreco">
+          <End Type="MoneyBinModel.Ativo" Role="Ativo" Multiplicity="1" />
+          <End Type="MoneyBinModel.AtivoUltimoPreco" Role="AtivoUltimoPreco" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Ativo">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="AtivoUltimoPreco">
+              <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContaAtivoSaida">
+          <End Type="MoneyBinModel.ContaAtivo" Role="ContaAtivo" Multiplicity="0..1" />
+          <End Type="MoneyBinModel.Saida" Role="Saida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContaAtivo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Saida">
+              <PropertyRef Name="ContaAtivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContaAtivoEntrada">
+          <End Type="MoneyBinModel.ContaAtivo" Role="ContaAtivo" Multiplicity="0..1" />
+          <End Type="MoneyBinModel.Entrada" Role="Entrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContaAtivo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Entrada">
+              <PropertyRef Name="ContaAtivoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1413,15 +1693,26 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Operacoes">
-            <EntityTypeMapping TypeName="MoneyBinModel.Operacao">
+            <EntityTypeMapping TypeName="IsTypeOf(MoneyBinModel.Operacao)">
               <MappingFragment StoreEntitySet="tbOperacoes">
-                <ScalarProperty Name="ValorReal" ColumnName="ValorReal" />
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
-                <ScalarProperty Name="Qtd" ColumnName="Qtd" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="TipoId" ColumnName="TipoId" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ContaAtivoId" ColumnName="ContaAtivoId" />
+                <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
                 <ScalarProperty Name="ContaId" ColumnName="ContaId" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="TipoId" ColumnName="TipoId" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Qtd" ColumnName="Qtd" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="ValorReal" ColumnName="ValorReal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(MoneyBinModel.Entrada)">
+              <MappingFragment StoreEntitySet="tbEntradas">
+                <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(MoneyBinModel.Saida)">
+              <MappingFragment StoreEntitySet="tbSaidas">
                 <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1565,6 +1856,24 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
               <MappingFragment StoreEntitySet="vwOperacoesQtdAcumulada">
                 <ScalarProperty Name="Qtd" ColumnName="QtdAcumulada" />
                 <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Associacoes">
+            <EntityTypeMapping TypeName="MoneyBinModel.Associacao">
+              <MappingFragment StoreEntitySet="tbAssociacoes">
+                <ScalarProperty Name="QtdAssociada" ColumnName="QtdAssociada" />
+                <ScalarProperty Name="EntradaId" ColumnName="EntradaId" />
+                <ScalarProperty Name="SaidaId" ColumnName="SaidaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContasAtivos">
+            <EntityTypeMapping TypeName="MoneyBinModel.ContaAtivo">
+              <MappingFragment StoreEntitySet="tbContasAtivos">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ContaId" ColumnName="ContaId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

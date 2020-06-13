@@ -250,29 +250,19 @@ namespace DataLayer {
         #endregion CLONE -------------
 
         #region ACOES ------------------
-        private IEnumerable<Acao> AcoesTudo() {
-            var acoes = Operacoes.GroupBy(o => o.Codigo)
-                .Select(a => new Acao {
-                    Codigo = a.Key,
-                    Operacoes = a.OrderByDescending(c => c.Data).ToObservableListSource()
-                }).OrderBy(a => a.Codigo);
-            return acoes;
-        }
+        public ObservableListSource<ContaAtivo> AcoesNaoZerado =>
+            Acoes.Where(a=>a.Qtd > 0).ToObservableListSource();
 
-        public ObservableListSource<Acao> AcoesNaoZerado =>
-            AcoesTudo().Where(a => a.Qtd > 0)
-                .ToObservableListSource();
+        public ObservableListSource<ContaAtivo> AcoesZerado =>
+            Acoes.Where(a => a.Qtd == 0).ToObservableListSource();
 
-        public ObservableListSource<Acao> Acoes =>
-            AcoesTudo().ToObservableListSource();
-
-        public ObservableListSource<Patrimonio> PatrimonioAcoes => AcoesTudo()
+        public ObservableListSource<Patrimonio> PatrimonioAcoes => Acoes
             .Select(a => new Patrimonio { Tipo = "Ações", Item = a.Codigo, Valor = a.Total })
             .OrderBy(p => p.Item).ToObservableListSource();
 
         public ObservableListSource<Patrimonio> PatrimonioAcoesNaoZerado => PatrimonioAcoes
             .Where(p => p.Valor > 0).ToObservableListSource();
-
+        
         public IEnumerable<Patrimonio> PatrimonioAcoesTotal {
             get {
                 var total = new List<Patrimonio> {

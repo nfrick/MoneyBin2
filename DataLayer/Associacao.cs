@@ -12,11 +12,13 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Acumulada
+    public partial class Associacao
     {
-        public int OperacaoId { get; set; }
-        public Nullable<int> Qtd { get; set; }
+        public int SaidaId { get; set; }
+        public int EntradaId { get; set; }
+        public int QtdAssociada { get; set; }
     
-        public virtual Operacao Operacao { get; set; }
+        public virtual Entrada Entrada { get; set; }
+        public virtual Saida Saida { get; set; }
     }
 }

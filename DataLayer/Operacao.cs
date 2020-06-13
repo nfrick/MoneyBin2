@@ -22,9 +22,10 @@ namespace DataLayer
         public int Qtd { get; set; }
         public decimal Valor { get; set; }
         public decimal ValorReal { get; set; }
+        public Nullable<int> ContaAtivoId { get; set; }
     
-        public virtual Conta Conta { get; set; }
         public virtual OperacaoTipo OperacaoTipo { get; set; }
         public virtual Acumulada Acumulada { get; set; }
+        public virtual ContaAtivo ContaAtivo { get; set; }
     }
 }

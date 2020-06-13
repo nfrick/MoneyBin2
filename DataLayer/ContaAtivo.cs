@@ -12,22 +12,27 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Ativo
+    public partial class ContaAtivo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ativo()
+        public ContaAtivo()
         {
-            this.SerieHistorica = new ObservableListSource<SerieHistorica>();
-            this.ContasAtivos = new ObservableListSource<ContaAtivo>();
+            this.Operacoes = new ObservableListSource<Operacao>();
+            this.Saidas = new ObservableListSource<Saida>();
+            this.Entradas = new ObservableListSource<Entrada>();
         }
     
+        public int ID { get; set; }
+        public int ContaId { get; set; }
         public string Codigo { get; set; }
-        public string Nome { get; set; }
     
+        public virtual Ativo Ativo { get; set; }
+        public virtual Conta Conta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<SerieHistorica> SerieHistorica { get; set; }
+        public virtual ObservableListSource<Operacao> Operacoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<ContaAtivo> ContasAtivos { get; set; }
-        public virtual AtivoUltimoPreco AtivoUltimoPreco { get; set; }
+        public virtual ObservableListSource<Saida> Saidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableListSource<Entrada> Entradas { get; set; }
     }
 }
