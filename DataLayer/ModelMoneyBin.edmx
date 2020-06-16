@@ -109,6 +109,7 @@
           <Property Name="Telefone" Type="varchar" MaxLength="10" />
           <Property Name="Celular" Type="varchar" MaxLength="11" />
           <Property Name="EMail" Type="varchar" MaxLength="60" />
+          <Property Name="Ativa" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tbRegras">
           <Key>
@@ -990,6 +991,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <NavigationProperty Name="Fundos" Relationship="MoneyBinModel.FK_tbContasFundos_tbContas" FromRole="Conta" ToRole="tbContasFundo" />
           <NavigationProperty Name="LCAs" Relationship="MoneyBinModel.FK_tbLCA_tbContas" FromRole="Conta" ToRole="tbLCA" />
           <NavigationProperty Name="Acoes" Relationship="MoneyBinModel.FK_tbContasAtivos_tbContas" FromRole="Conta" ToRole="tbContasAtivo" />
+          <Property Name="Ativa" Type="Boolean" Nullable="false" />
           </EntityType>
         <Association Name="FK_tbContas_tbBancos">
           <End Type="MoneyBinModel.Banco" Role="tbBancos" Multiplicity="1" />
@@ -1365,7 +1367,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
             <PropertyRef Name="OperacaoId" />
           </Key>
           <Property Name="OperacaoId" Type="Int32" Nullable="false" />
-          <Property Name="Qtd" Type="Int32" />
+          <Property Name="Qtd" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Operacao" Relationship="MoneyBinModel.OperacaovwOperacoesQtdAcumulada" FromRole="vwOperacoesQtdAcumulada" ToRole="Operacao" />
         </EntityType>
         <Association Name="OperacaovwOperacoesQtdAcumulada">
@@ -1593,6 +1595,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <EntitySetMapping Name="Contas">
             <EntityTypeMapping TypeName="MoneyBinModel.Conta">
               <MappingFragment StoreEntitySet="tbContas">
+                <ScalarProperty Name="Ativa" ColumnName="Ativa" />
                 <ScalarProperty Name="EMail" ColumnName="EMail" />
                 <ScalarProperty Name="Celular" ColumnName="Celular" />
                 <ScalarProperty Name="Telefone" ColumnName="Telefone" />

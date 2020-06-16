@@ -42,6 +42,7 @@
             System.Windows.Forms.Label eMailLabel;
             System.Windows.Forms.Label cSVPosicaoDataLabel;
             System.Windows.Forms.Label cSVSeparadorLabel;
+            System.Windows.Forms.Label ativaLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,7 +56,7 @@
             this.siglaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extensaoExtratoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extensaoFundosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bancosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bsBancos = new System.Windows.Forms.BindingSource(this.components);
             this.dgvContas = new SuperGrid.SuperDGV();
             this.donoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apelidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +70,7 @@
             this.dataMinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataMaxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bsContas = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.splitContainerBanco = new System.Windows.Forms.SplitContainer();
             this.cSVSeparadorTextBox = new System.Windows.Forms.TextBox();
@@ -81,6 +82,7 @@
             this.siglaTextBox = new System.Windows.Forms.TextBox();
             this.nomeTextBox = new System.Windows.Forms.TextBox();
             this.splitContainerConta = new System.Windows.Forms.SplitContainer();
+            this.ativaCheckBox = new System.Windows.Forms.CheckBox();
             this.buttonContaOK = new System.Windows.Forms.Button();
             this.buttonContaCancel = new System.Windows.Forms.Button();
             this.donoTextBox = new System.Windows.Forms.TextBox();
@@ -113,12 +115,13 @@
             eMailLabel = new System.Windows.Forms.Label();
             cSVPosicaoDataLabel = new System.Windows.Forms.Label();
             cSVSeparadorLabel = new System.Windows.Forms.Label();
+            ativaLabel = new System.Windows.Forms.Label();
             this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBancos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bancosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsBancos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsContas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -141,8 +144,8 @@
             // toolStripContainer.ContentPanel
             // 
             this.toolStripContainer.ContentPanel.Controls.Add(this.splitContainerMain);
-            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(1233, 645);
-            this.toolStripContainer.Size = new System.Drawing.Size(1233, 722);
+            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(1233, 686);
+            this.toolStripContainer.Size = new System.Drawing.Size(1233, 763);
             this.toolStripContainer.TopToolStripPanelVisible = true;
             // 
             // nomeLabel
@@ -325,6 +328,15 @@
             cSVSeparadorLabel.TabIndex = 13;
             cSVSeparadorLabel.Text = "CSV Separador:";
             // 
+            // ativaLabel
+            // 
+            ativaLabel.AutoSize = true;
+            ativaLabel.Location = new System.Drawing.Point(15, 320);
+            ativaLabel.Name = "ativaLabel";
+            ativaLabel.Size = new System.Drawing.Size(69, 28);
+            ativaLabel.TabIndex = 45;
+            ativaLabel.Text = "Status:";
+            // 
             // dgvBancos
             // 
             this.dgvBancos.AllowUserToAddRows = false;
@@ -352,7 +364,7 @@
             this.siglaDataGridViewTextBoxColumn,
             this.extensaoExtratoDataGridViewTextBoxColumn,
             this.extensaoFundosDataGridViewTextBoxColumn});
-            this.dgvBancos.DataSource = this.bancosBindingSource;
+            this.dgvBancos.DataSource = this.bsBancos;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -379,7 +391,7 @@
             this.dgvBancos.RowHeadersWidth = 20;
             this.dgvBancos.RowTemplate.Height = 24;
             this.dgvBancos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBancos.Size = new System.Drawing.Size(445, 241);
+            this.dgvBancos.Size = new System.Drawing.Size(445, 256);
             this.dgvBancos.TabIndex = 1;
             this.dgvBancos.DoubleClick += new System.EventHandler(this.dgvBancos_DoubleClick);
             // 
@@ -411,9 +423,9 @@
             this.extensaoFundosDataGridViewTextBoxColumn.Name = "extensaoFundosDataGridViewTextBoxColumn";
             this.extensaoFundosDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // bancosBindingSource
+            // bsBancos
             // 
-            this.bancosBindingSource.DataSource = typeof(DataLayer.Banco);
+            this.bsBancos.DataSource = typeof(DataLayer.Banco);
             // 
             // dgvContas
             // 
@@ -450,7 +462,7 @@
             this.dataMinDataGridViewTextBoxColumn,
             this.dataMaxDataGridViewTextBoxColumn,
             this.saldoDataGridViewTextBoxColumn});
-            this.dgvContas.DataSource = this.contasBindingSource;
+            this.dgvContas.DataSource = this.bsContas;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -477,8 +489,9 @@
             this.dgvContas.RowHeadersWidth = 20;
             this.dgvContas.RowTemplate.Height = 24;
             this.dgvContas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContas.Size = new System.Drawing.Size(448, 400);
+            this.dgvContas.Size = new System.Drawing.Size(448, 426);
             this.dgvContas.TabIndex = 2;
+            this.dgvContas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvContas_CellFormatting);
             this.dgvContas.DoubleClick += new System.EventHandler(this.dgvContas_DoubleClick);
             // 
             // donoDataGridViewTextBoxColumn
@@ -565,10 +578,10 @@
             this.saldoDataGridViewTextBoxColumn.Name = "saldoDataGridViewTextBoxColumn";
             this.saldoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // contasBindingSource
+            // bsContas
             // 
-            this.contasBindingSource.DataMember = "Contas";
-            this.contasBindingSource.DataSource = this.bancosBindingSource;
+            this.bsContas.DataMember = "Contas";
+            this.bsContas.DataSource = this.bsBancos;
             // 
             // splitContainerMain
             // 
@@ -584,8 +597,8 @@
             // splitContainerMain.Panel2
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.splitContainerConta);
-            this.splitContainerMain.Size = new System.Drawing.Size(1233, 645);
-            this.splitContainerMain.SplitterDistance = 241;
+            this.splitContainerMain.Size = new System.Drawing.Size(1233, 686);
+            this.splitContainerMain.SplitterDistance = 256;
             this.splitContainerMain.TabIndex = 3;
             // 
             // splitContainerBanco
@@ -616,13 +629,13 @@
             this.splitContainerBanco.Panel2.Controls.Add(this.siglaTextBox);
             this.splitContainerBanco.Panel2.Controls.Add(nomeLabel);
             this.splitContainerBanco.Panel2.Controls.Add(this.nomeTextBox);
-            this.splitContainerBanco.Size = new System.Drawing.Size(1233, 241);
+            this.splitContainerBanco.Size = new System.Drawing.Size(1233, 256);
             this.splitContainerBanco.SplitterDistance = 445;
             this.splitContainerBanco.TabIndex = 0;
             // 
             // cSVSeparadorTextBox
             // 
-            this.cSVSeparadorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bancosBindingSource, "CSVSeparador", true));
+            this.cSVSeparadorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsBancos, "CSVSeparador", true));
             this.cSVSeparadorTextBox.Location = new System.Drawing.Point(409, 135);
             this.cSVSeparadorTextBox.Name = "cSVSeparadorTextBox";
             this.cSVSeparadorTextBox.Size = new System.Drawing.Size(37, 34);
@@ -630,7 +643,7 @@
             // 
             // cSVPosicaoDataTextBox
             // 
-            this.cSVPosicaoDataTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bancosBindingSource, "CSVPosicaoData", true));
+            this.cSVPosicaoDataTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsBancos, "CSVPosicaoData", true));
             this.cSVPosicaoDataTextBox.Location = new System.Drawing.Point(409, 175);
             this.cSVPosicaoDataTextBox.Name = "cSVPosicaoDataTextBox";
             this.cSVPosicaoDataTextBox.Size = new System.Drawing.Size(37, 34);
@@ -665,7 +678,7 @@
             // 
             // extensaoFundosTextBox
             // 
-            this.extensaoFundosTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bancosBindingSource, "ExtensaoFundos", true));
+            this.extensaoFundosTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsBancos, "ExtensaoFundos", true));
             this.extensaoFundosTextBox.Location = new System.Drawing.Point(127, 175);
             this.extensaoFundosTextBox.Name = "extensaoFundosTextBox";
             this.extensaoFundosTextBox.Size = new System.Drawing.Size(44, 34);
@@ -675,7 +688,7 @@
             // 
             // extensaoExtratoTextBox
             // 
-            this.extensaoExtratoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bancosBindingSource, "ExtensaoExtrato", true));
+            this.extensaoExtratoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsBancos, "ExtensaoExtrato", true));
             this.extensaoExtratoTextBox.Location = new System.Drawing.Point(127, 135);
             this.extensaoExtratoTextBox.Name = "extensaoExtratoTextBox";
             this.extensaoExtratoTextBox.Size = new System.Drawing.Size(44, 34);
@@ -685,7 +698,7 @@
             // 
             // siglaTextBox
             // 
-            this.siglaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bancosBindingSource, "Sigla", true));
+            this.siglaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsBancos, "Sigla", true));
             this.siglaTextBox.Location = new System.Drawing.Point(88, 58);
             this.siglaTextBox.Name = "siglaTextBox";
             this.siglaTextBox.Size = new System.Drawing.Size(100, 34);
@@ -695,7 +708,7 @@
             // 
             // nomeTextBox
             // 
-            this.nomeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bancosBindingSource, "Nome", true));
+            this.nomeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsBancos, "Nome", true));
             this.nomeTextBox.Location = new System.Drawing.Point(88, 18);
             this.nomeTextBox.Name = "nomeTextBox";
             this.nomeTextBox.Size = new System.Drawing.Size(214, 34);
@@ -716,6 +729,8 @@
             // splitContainerConta.Panel2
             // 
             this.splitContainerConta.Panel2.AutoScroll = true;
+            this.splitContainerConta.Panel2.Controls.Add(ativaLabel);
+            this.splitContainerConta.Panel2.Controls.Add(this.ativaCheckBox);
             this.splitContainerConta.Panel2.Controls.Add(this.buttonContaOK);
             this.splitContainerConta.Panel2.Controls.Add(this.buttonContaCancel);
             this.splitContainerConta.Panel2.Controls.Add(donoLabel);
@@ -741,9 +756,19 @@
             this.splitContainerConta.Panel2.Controls.Add(eMailLabel);
             this.splitContainerConta.Panel2.Controls.Add(this.eMailTextBox);
             this.splitContainerConta.Panel2.ForeColor = System.Drawing.SystemColors.Control;
-            this.splitContainerConta.Size = new System.Drawing.Size(1233, 400);
+            this.splitContainerConta.Size = new System.Drawing.Size(1233, 426);
             this.splitContainerConta.SplitterDistance = 448;
             this.splitContainerConta.TabIndex = 0;
+            // 
+            // ativaCheckBox
+            // 
+            this.ativaCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bsContas, "Ativa", true));
+            this.ativaCheckBox.Location = new System.Drawing.Point(165, 319);
+            this.ativaCheckBox.Name = "ativaCheckBox";
+            this.ativaCheckBox.Size = new System.Drawing.Size(200, 32);
+            this.ativaCheckBox.TabIndex = 46;
+            this.ativaCheckBox.Text = "Ativa";
+            this.ativaCheckBox.UseVisualStyleBackColor = true;
             // 
             // buttonContaOK
             // 
@@ -774,7 +799,7 @@
             // 
             // donoTextBox
             // 
-            this.donoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "Dono", true));
+            this.donoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "Dono", true));
             this.donoTextBox.Location = new System.Drawing.Point(165, 2);
             this.donoTextBox.Name = "donoTextBox";
             this.donoTextBox.Size = new System.Drawing.Size(200, 34);
@@ -784,7 +809,7 @@
             // 
             // apelidoTextBox
             // 
-            this.apelidoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "Apelido", true));
+            this.apelidoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "Apelido", true));
             this.apelidoTextBox.Location = new System.Drawing.Point(165, 41);
             this.apelidoTextBox.Name = "apelidoTextBox";
             this.apelidoTextBox.Size = new System.Drawing.Size(200, 34);
@@ -794,7 +819,7 @@
             // 
             // agenciaTextBox
             // 
-            this.agenciaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "Agencia", true));
+            this.agenciaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "Agencia", true));
             this.agenciaTextBox.Location = new System.Drawing.Point(165, 81);
             this.agenciaTextBox.Name = "agenciaTextBox";
             this.agenciaTextBox.Size = new System.Drawing.Size(96, 34);
@@ -804,7 +829,7 @@
             // 
             // agenciaDVTextBox
             // 
-            this.agenciaDVTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "AgenciaDV", true));
+            this.agenciaDVTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "AgenciaDV", true));
             this.agenciaDVTextBox.Location = new System.Drawing.Point(293, 81);
             this.agenciaDVTextBox.Name = "agenciaDVTextBox";
             this.agenciaDVTextBox.Size = new System.Drawing.Size(43, 34);
@@ -814,7 +839,7 @@
             // 
             // contaCorrenteTextBox
             // 
-            this.contaCorrenteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "ContaCorrente", true));
+            this.contaCorrenteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "ContaCorrente", true));
             this.contaCorrenteTextBox.Location = new System.Drawing.Point(165, 120);
             this.contaCorrenteTextBox.Name = "contaCorrenteTextBox";
             this.contaCorrenteTextBox.Size = new System.Drawing.Size(96, 34);
@@ -824,7 +849,7 @@
             // 
             // contaCorrenteDVTextBox
             // 
-            this.contaCorrenteDVTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "ContaCorrenteDV", true));
+            this.contaCorrenteDVTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "ContaCorrenteDV", true));
             this.contaCorrenteDVTextBox.Location = new System.Drawing.Point(293, 120);
             this.contaCorrenteDVTextBox.Name = "contaCorrenteDVTextBox";
             this.contaCorrenteDVTextBox.Size = new System.Drawing.Size(43, 34);
@@ -834,7 +859,7 @@
             // 
             // operacaoTextBox
             // 
-            this.operacaoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "Operacao", true));
+            this.operacaoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "Operacao", true));
             this.operacaoTextBox.Location = new System.Drawing.Point(449, 120);
             this.operacaoTextBox.Name = "operacaoTextBox";
             this.operacaoTextBox.Size = new System.Drawing.Size(54, 34);
@@ -844,7 +869,7 @@
             // 
             // gerenteTextBox
             // 
-            this.gerenteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "Gerente", true));
+            this.gerenteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "Gerente", true));
             this.gerenteTextBox.Location = new System.Drawing.Point(165, 160);
             this.gerenteTextBox.Name = "gerenteTextBox";
             this.gerenteTextBox.Size = new System.Drawing.Size(338, 34);
@@ -854,7 +879,7 @@
             // 
             // telefoneTextBox
             // 
-            this.telefoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "Telefone", true));
+            this.telefoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "Telefone", true));
             this.telefoneTextBox.Location = new System.Drawing.Point(165, 200);
             this.telefoneTextBox.Name = "telefoneTextBox";
             this.telefoneTextBox.Size = new System.Drawing.Size(200, 34);
@@ -864,7 +889,7 @@
             // 
             // celularTextBox
             // 
-            this.celularTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "Celular", true));
+            this.celularTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "Celular", true));
             this.celularTextBox.Location = new System.Drawing.Point(165, 240);
             this.celularTextBox.Name = "celularTextBox";
             this.celularTextBox.Size = new System.Drawing.Size(200, 34);
@@ -874,7 +899,7 @@
             // 
             // eMailTextBox
             // 
-            this.eMailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contasBindingSource, "EMail", true));
+            this.eMailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsContas, "EMail", true));
             this.eMailTextBox.Location = new System.Drawing.Point(165, 280);
             this.eMailTextBox.Name = "eMailTextBox";
             this.eMailTextBox.Size = new System.Drawing.Size(338, 34);
@@ -889,7 +914,7 @@
             // frmBancosContas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
-            this.ClientSize = new System.Drawing.Size(1233, 722);
+            this.ClientSize = new System.Drawing.Size(1233, 763);
             this.Name = "frmBancosContas";
             this.Text = "Bancos e Contas";
             this.Load += new System.EventHandler(this.frmBancos_Load);
@@ -897,9 +922,9 @@
             this.toolStripContainer.ResumeLayout(false);
             this.toolStripContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBancos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bancosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsBancos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsContas)).EndInit();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
@@ -922,9 +947,9 @@
         #endregion
 
         private SuperGrid.SuperDGV dgvBancos;
-        private System.Windows.Forms.BindingSource bancosBindingSource;
+        private System.Windows.Forms.BindingSource bsBancos;
         private SuperGrid.SuperDGV dgvContas;
-        private System.Windows.Forms.BindingSource contasBindingSource;
+        private System.Windows.Forms.BindingSource bsContas;
         private System.Windows.Forms.SplitContainer splitContainerMain;
         private System.Windows.Forms.SplitContainer splitContainerBanco;
         private System.Windows.Forms.SplitContainer splitContainerConta;
@@ -966,5 +991,6 @@
         private System.Windows.Forms.Button buttonContaCancel;
         private System.Windows.Forms.TextBox cSVSeparadorTextBox;
         private System.Windows.Forms.TextBox cSVPosicaoDataTextBox;
+        private System.Windows.Forms.CheckBox ativaCheckBox;
     }
 }

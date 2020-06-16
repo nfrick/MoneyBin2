@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
@@ -10,8 +11,8 @@ using System.Windows.Forms;
 
 namespace MoneyBin2 {
     public partial class frmBancosContas : MoneyBin2.DataForm {
-        private Banco BancoAtual => (Banco)dgvBancos.CurrentRow?.DataBoundItem;
-        private Conta ContaAtual => (Conta)dgvContas.CurrentRow?.DataBoundItem;
+        private Banco BancoAtual => (Banco)bsBancos.Current;
+        private Conta ContaAtual => (Conta)bsContas.Current;
 
         protected const string RegexAnyCharAccentDigitSeparator = @"[a-zA-Zà-úÀ-Ú0-9]|-|_|\s";
         protected const string RegexAnyCharDigitSeparator = @"[a-zA-Z0-9]|-|_|\s";
@@ -23,8 +24,8 @@ namespace MoneyBin2 {
         public frmBancosContas() {
             InitializeComponent();
             _ctx.Bancos.Load();
-            bancosBindingSource.DataSource = _ctx.Bancos.Local.ToBindingList();
-            _mainBindingSource = bancosBindingSource;
+            bsBancos.DataSource = _ctx.Bancos.Local.ToBindingList();
+            _mainBindingSource = bsBancos;
             EnableSaveButtons();
 
             dgvBancos.FormatColumn("Nome", null, 250);
@@ -80,9 +81,9 @@ namespace MoneyBin2 {
 
         #region TOOLSTRIP ---------------------------
         private void toolStripButtonNovoBanco_Click(object sender, EventArgs e) {
-            bancosBindingSource.Add(new Banco());
-            bancosBindingSource.ResetBindings(true);
-            bancosBindingSource.MoveLast();
+            bsBancos.Add(new Banco());
+            bsBancos.ResetBindings(true);
+            bsBancos.MoveLast();
             dgvBancos.Refresh();
             BancoToggleEdit();
         }
@@ -321,5 +322,11 @@ namespace MoneyBin2 {
         }
         #endregion CONTROL HANDLING -----------------
 
+        private void dgvContas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var conta = (Conta) dgvContas.Rows[e.RowIndex].DataBoundItem;
+            if (!conta.Ativa)
+                e.CellStyle.ForeColor = Color.DarkGray;
+        }
     }
 }

@@ -80,7 +80,8 @@ namespace MoneyBin2 {
 
         private bool GetConta() {
             if (PromptDialog.InputList(DialogTitle, "Selecione a conta:",
-                    _ctx.Contas.Select(c => c.Apelido).OrderBy(a => a).ToArray(),
+                    _ctx.Contas.Where(c=>c.Ativa)
+                    .Select(c => c.Apelido).OrderBy(a => a).ToArray(),
                     out var apelido) == DialogResult.Cancel) {
                 return false;
             }

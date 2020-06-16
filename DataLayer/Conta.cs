@@ -36,6 +36,7 @@ namespace DataLayer
         public string Telefone { get; set; }
         public string Celular { get; set; }
         public string EMail { get; set; }
+        public bool Ativa { get; set; }
     
         public virtual Banco Banco { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
