@@ -131,7 +131,6 @@
     <Compile Include="Forms\Balance\frmRegras.Designer.cs">
       <DependentUpon>frmRegras.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Cotacoes\FinanceData.cs" />
     <Compile Include="Forms\Investimentos\frmAssociarCompraComVenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -555,6 +554,9 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>MoneyBin2_RepServiceNF_ReportingService2005</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Cotacoes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

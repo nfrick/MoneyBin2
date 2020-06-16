@@ -15,7 +15,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-//using Investimentos;
 
 namespace MoneyBin2 {
 
@@ -383,7 +382,7 @@ namespace MoneyBin2 {
 
             BindDataSourceAndPopulatePieChart(ContaAtual.PatrimonioAcoes, "Ações");
             BindDataSourceAndPopulatePieChart(ContaAtual.PatrimonioFundos, "Fundos");
-            PopulateBarChart(ContaAtual.PatrimonioTotal, chartResumoTotal);
+            PopulateBarChart(ContaAtual.PatrimonioTudo, chartResumoTotal);
         }
         #endregion TAB RESUMO -----------------------------------------
 

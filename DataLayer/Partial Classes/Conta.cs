@@ -25,6 +25,7 @@ namespace DataLayer {
         public bool BalanceHasData => Balance.Any();
 
         public DateTime DataMin => BalanceHasData ? Balance.Min(b => b.Data) : DateTime.Today;
+
         public DateTime DataMax => BalanceHasData ? Balance.Max(b => b.Data) : DateTime.Today;
 
         public decimal Saldo => BalanceHasData ?
@@ -95,12 +96,23 @@ namespace DataLayer {
         }
         #endregion BALANCE -----------
 
+        // Vale tanto para Balance quanto para extrato
+        private decimal CalculaSaldos(IEnumerable<BalanceItem> items) {
+            var sortedItems = items.OrderBy(b => b.Data).ThenBy(b => b.ID).ThenBy(b => b.Valor);
+            var saldo = 0.0m;
+            foreach (var bal in sortedItems) {
+                saldo += bal.ValorParaSaldo;
+                bal.Saldo = saldo;
+            }
+            return saldo;
+        }
+
         #region LEITURA DE EXTRATO --------------
         public bool ExtratoHasData => Extrato != null && Extrato.Any();
 
         public bool ExtratoHasAddToDB => Extrato != null && Extrato.Any(i => i.AddToDB);
 
-        public int ExtratoAddToDBCount => Extrato.Count(i => i.AddToDB);
+        public int ExtratoAddToDBCount => Extrato?.Count(i => i.AddToDB) ?? 0;
 
         public void LimpaExtrato() {
             Extrato.Clear();
@@ -192,16 +204,6 @@ namespace DataLayer {
         }
         #endregion LEITURA DE EXTRATO --------------
 
-        private decimal CalculaSaldos(IEnumerable<BalanceItem> items) {
-            var sortedItems = items.OrderBy(b => b.Data).ThenBy(b => b.ID).ThenBy(b => b.Valor);
-            var saldo = 0.0m;
-            foreach (var bal in sortedItems) {
-                saldo += bal.ValorParaSaldo;
-                bal.Saldo = saldo;
-            }
-            return saldo;
-        }
-
         #region CLASSIFICACAO ------------------
         private void ClassificaItens(IEnumerable<Regra> regras) {
             if (!Extrato.Any()) {
@@ -256,8 +258,10 @@ namespace DataLayer {
         #endregion CLONE -------------
 
         #region ACOES ------------------
+        public bool PossuiAcoes => Acoes.Any(a => a.Qtd > 0);
+
         public ObservableListSource<ContaAtivo> AcoesNaoZerado =>
-            Acoes.Where(a=>a.Qtd > 0).ToObservableListSource();
+            Acoes.Where(a => a.Qtd > 0).ToObservableListSource();
 
         public ObservableListSource<ContaAtivo> AcoesZerado =>
             Acoes.Where(a => a.Qtd == 0).ToObservableListSource();
@@ -268,10 +272,13 @@ namespace DataLayer {
 
         public ObservableListSource<Patrimonio> PatrimonioAcoesNaoZerado => PatrimonioAcoes
             .Where(p => p.Valor > 0).ToObservableListSource();
-        
-        public IEnumerable<Patrimonio> PatrimonioAcoesTotal {
+
+        /// <summary>
+        /// Patrimonio total de ações no encerramento do mês
+        /// </summary>
+        public ObservableListSource<Patrimonio> PatrimonioTotalAcoes {
             get {
-                var total = new List<Patrimonio> {
+                var total = new ObservableListSource<Patrimonio> {
                     new Patrimonio {
                         Tipo = "Total Ações",
                         Item = null,
@@ -282,6 +289,12 @@ namespace DataLayer {
                 return total;
             }
         }
+
+        public decimal CotacoesPatrimonio => Acoes.Sum(a => a.Patrimonio);
+
+        public decimal CotacoesLucroReal => Acoes.Sum(a => a.LucroReal);
+
+        public decimal CotacoesLucroImediato => Acoes.Sum(a => a.LucroImediato ?? 0);
 
         #endregion ACOES ------------------
 
@@ -299,7 +312,8 @@ namespace DataLayer {
                 })
                 .Concat(
                     Fundos
-                        .Select(f => new Patrimonio {
+                        .Select(f => new Patrimonio
+                        {
                             Tipo = "Fundos",
                             Item = f.FundoApelido,
                             Valor = f.Saldo
@@ -309,7 +323,7 @@ namespace DataLayer {
         public ObservableListSource<Patrimonio> PatrimonioFundosNaoZerado =>
             PatrimonioFundos.Where(f => f.Valor > 0).ToObservableListSource();
 
-        public ObservableListSource<Patrimonio> PatrimonioFundosTotal {
+        public ObservableListSource<Patrimonio> PatrimonioTotalFundos {
             get {
                 var total = new ObservableListSource<Patrimonio> {
                     new Patrimonio {
@@ -326,14 +340,14 @@ namespace DataLayer {
 
         #region PATRIMÔNIO --------------------
 
-        public ObservableListSource<Patrimonio> PatrimonioTotal =>
+        public ObservableListSource<Patrimonio> PatrimonioTudo =>
             PatrimonioAcoes
                 .Concat(PatrimonioFundos)
                 .OrderByDescending(a => a.Tipo).ThenByDescending(a => a.Item)
                 .ToObservableListSource();
 
-        public ObservableListSource<Patrimonio> PatrimonioTotalNaoZerado =>
-            PatrimonioTotal.Where(p => p.Valor > 0).ToObservableListSource();
+        public ObservableListSource<Patrimonio> PatrimonioTudoNaoZerado =>
+            PatrimonioTudo.Where(p => p.Valor > 0).ToObservableListSource();
 
         #endregion PATRIMÔNIO -----------------
     }
@@ -345,4 +359,5 @@ namespace DataLayer {
 
         public override string ToString() => $"{Tipo} {Item} {Valor}";
     }
+
 }

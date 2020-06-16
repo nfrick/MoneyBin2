@@ -27,23 +27,23 @@ namespace MoneyBin2 {
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.nudQtdAssociada = new System.Windows.Forms.NumericUpDown();
             this.buttonAssociarOK = new System.Windows.Forms.Button();
             this.labelSaldo = new System.Windows.Forms.Label();
@@ -65,19 +65,10 @@ namespace MoneyBin2 {
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvDisponiveis = new SuperGrid.SuperDGV();
-            this.dgvAssociadas = new SuperGrid.SuperDGV();
-            this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnDeletar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtdEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtdDisponivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EntradaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelEditar = new System.Windows.Forms.TableLayoutPanel();
-            this.qtdAssociadaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsAssociadas = new System.Windows.Forms.BindingSource(this.components);
             this.bsDisponiveis = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvAssociadas = new SuperGrid.SuperDGV();
+            this.bsAssociadas = new System.Windows.Forms.BindingSource(this.components);
+            this.panelEditar = new System.Windows.Forms.TableLayoutPanel();
             this.btnAssociarDireto = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnAssociar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,12 +77,21 @@ namespace MoneyBin2 {
             this.qtdAssociadaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdDisponivelDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorRealDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnDeletar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtdEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdAssociadaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtdDisponivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EntradaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdAssociada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponiveis)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAssociadas)).BeginInit();
-            this.panelEditar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsAssociadas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDisponiveis)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAssociadas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsAssociadas)).BeginInit();
+            this.panelEditar.SuspendLayout();
             this.SuspendLayout();
             // 
             // nudQtdAssociada
@@ -335,24 +335,24 @@ namespace MoneyBin2 {
             // 
             this.dgvDisponiveis.AllowUserToAddRows = false;
             this.dgvDisponiveis.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.LightGreen;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvDisponiveis.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvDisponiveis.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDisponiveis.AutoGenerateColumns = false;
             this.dgvDisponiveis.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDisponiveis.BackgroundColor = System.Drawing.Color.Black;
             this.dgvDisponiveis.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvDisponiveis.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDisponiveis.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDisponiveis.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDisponiveis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDisponiveis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnAssociarDireto,
@@ -364,14 +364,14 @@ namespace MoneyBin2 {
             this.qtdDisponivelDataGridViewTextBoxColumn1,
             this.valorRealDataGridViewTextBoxColumn1});
             this.dgvDisponiveis.DataSource = this.bsDisponiveis;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDisponiveis.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDisponiveis.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvDisponiveis.EnableHeadersVisualStyles = false;
             this.dgvDisponiveis.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvDisponiveis.Location = new System.Drawing.Point(621, 161);
@@ -379,14 +379,14 @@ namespace MoneyBin2 {
             this.dgvDisponiveis.Name = "dgvDisponiveis";
             this.dgvDisponiveis.ReadOnly = true;
             this.dgvDisponiveis.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDisponiveis.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDisponiveis.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvDisponiveis.RowHeadersWidth = 25;
             this.dgvDisponiveis.RowTemplate.Height = 24;
             this.dgvDisponiveis.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -394,28 +394,32 @@ namespace MoneyBin2 {
             this.dgvDisponiveis.TabIndex = 0;
             this.dgvDisponiveis.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDisponiveis_CellContentClick);
             // 
+            // bsDisponiveis
+            // 
+            this.bsDisponiveis.DataSource = typeof(DataLayer.Entrada);
+            // 
             // dgvAssociadas
             // 
             this.dgvAssociadas.AllowUserToAddRows = false;
             this.dgvAssociadas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.LightGreen;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvAssociadas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvAssociadas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvAssociadas.AutoGenerateColumns = false;
             this.dgvAssociadas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvAssociadas.BackgroundColor = System.Drawing.Color.Black;
             this.dgvAssociadas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvAssociadas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAssociadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAssociadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvAssociadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAssociadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnEditar,
@@ -428,27 +432,27 @@ namespace MoneyBin2 {
             this.ValorReal,
             this.EntradaId});
             this.dgvAssociadas.DataSource = this.bsAssociadas;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAssociadas.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAssociadas.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgvAssociadas.EnableHeadersVisualStyles = false;
             this.dgvAssociadas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvAssociadas.Location = new System.Drawing.Point(30, 161);
             this.dgvAssociadas.Name = "dgvAssociadas";
             this.dgvAssociadas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle34.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAssociadas.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAssociadas.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvAssociadas.RowHeadersWidth = 25;
             this.dgvAssociadas.RowTemplate.Height = 25;
             this.dgvAssociadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -461,73 +465,9 @@ namespace MoneyBin2 {
             this.dgvAssociadas.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvAssociadas_CellValidating);
             this.dgvAssociadas.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvAssociadas_DataError);
             // 
-            // btnEditar
+            // bsAssociadas
             // 
-            this.btnEditar.HeaderText = "";
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.ReadOnly = true;
-            this.btnEditar.Text = "…";
-            this.btnEditar.ToolTipText = "Alterar Qtd Associada";
-            this.btnEditar.UseColumnTextForButtonValue = true;
-            this.btnEditar.Width = 25;
-            // 
-            // btnDeletar
-            // 
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Red;
-            this.btnDeletar.DefaultCellStyle = dataGridViewCellStyle31;
-            this.btnDeletar.HeaderText = "";
-            this.btnDeletar.Name = "btnDeletar";
-            this.btnDeletar.ReadOnly = true;
-            this.btnDeletar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnDeletar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnDeletar.Text = "û";
-            this.btnDeletar.ToolTipText = "Remover";
-            this.btnDeletar.UseColumnTextForButtonValue = true;
-            this.btnDeletar.Width = 25;
-            // 
-            // Data
-            // 
-            this.Data.DataPropertyName = "Data";
-            this.Data.HeaderText = "Data";
-            this.Data.Name = "Data";
-            this.Data.ReadOnly = true;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            // 
-            // QtdEntrada
-            // 
-            this.QtdEntrada.DataPropertyName = "QtdEntrada";
-            this.QtdEntrada.HeaderText = "Qtd";
-            this.QtdEntrada.Name = "QtdEntrada";
-            this.QtdEntrada.ReadOnly = true;
-            // 
-            // QtdDisponivel
-            // 
-            this.QtdDisponivel.DataPropertyName = "QtdDisponivel";
-            this.QtdDisponivel.HeaderText = "Disponível";
-            this.QtdDisponivel.Name = "QtdDisponivel";
-            this.QtdDisponivel.ReadOnly = true;
-            // 
-            // ValorReal
-            // 
-            this.ValorReal.DataPropertyName = "ValorReal";
-            this.ValorReal.HeaderText = "Valor";
-            this.ValorReal.Name = "ValorReal";
-            this.ValorReal.ReadOnly = true;
-            // 
-            // EntradaId
-            // 
-            this.EntradaId.DataPropertyName = "EntradaId";
-            this.EntradaId.HeaderText = "CompraId";
-            this.EntradaId.Name = "EntradaId";
-            this.EntradaId.Visible = false;
+            this.bsAssociadas.DataSource = typeof(DataLayer.Associacao);
             // 
             // panelEditar
             // 
@@ -561,29 +501,11 @@ namespace MoneyBin2 {
             this.panelEditar.TabIndex = 29;
             this.panelEditar.Visible = false;
             // 
-            // qtdAssociadaDataGridViewTextBoxColumn
-            // 
-            this.qtdAssociadaDataGridViewTextBoxColumn.DataPropertyName = "QtdAssociada";
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle32.Format = "N0";
-            this.qtdAssociadaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle32;
-            this.qtdAssociadaDataGridViewTextBoxColumn.HeaderText = "Associado";
-            this.qtdAssociadaDataGridViewTextBoxColumn.Name = "qtdAssociadaDataGridViewTextBoxColumn";
-            this.qtdAssociadaDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // bsAssociadas
-            // 
-            this.bsAssociadas.DataSource = typeof(DataLayer.Associacao);
-            // 
-            // bsDisponiveis
-            // 
-            this.bsDisponiveis.DataSource = typeof(DataLayer.Entrada);
-            // 
             // btnAssociarDireto
             // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnAssociarDireto.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnAssociarDireto.DefaultCellStyle = dataGridViewCellStyle3;
             this.btnAssociarDireto.HeaderText = "";
             this.btnAssociarDireto.Name = "btnAssociarDireto";
             this.btnAssociarDireto.ReadOnly = true;
@@ -594,9 +516,9 @@ namespace MoneyBin2 {
             // 
             // btnAssociar
             // 
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAssociar.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAssociar.DefaultCellStyle = dataGridViewCellStyle4;
             this.btnAssociar.HeaderText = "";
             this.btnAssociar.Name = "btnAssociar";
             this.btnAssociar.ReadOnly = true;
@@ -608,8 +530,8 @@ namespace MoneyBin2 {
             // dataDataGridViewTextBoxColumn
             // 
             this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            dataGridViewCellStyle22.Format = "dd/MM/yy";
-            this.dataDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle5.Format = "dd/MM/yy";
+            this.dataDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
             this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
             this.dataDataGridViewTextBoxColumn.ReadOnly = true;
@@ -625,9 +547,9 @@ namespace MoneyBin2 {
             // QtdReal
             // 
             this.QtdReal.DataPropertyName = "Qtd";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle23.Format = "N0";
-            this.QtdReal.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            this.QtdReal.DefaultCellStyle = dataGridViewCellStyle6;
             this.QtdReal.HeaderText = "Qtd";
             this.QtdReal.Name = "QtdReal";
             this.QtdReal.ReadOnly = true;
@@ -636,9 +558,9 @@ namespace MoneyBin2 {
             // qtdAssociadaDataGridViewTextBoxColumn2
             // 
             this.qtdAssociadaDataGridViewTextBoxColumn2.DataPropertyName = "QtdAssociada";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle24.Format = "N0";
-            this.qtdAssociadaDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N0";
+            this.qtdAssociadaDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle7;
             this.qtdAssociadaDataGridViewTextBoxColumn2.HeaderText = "Associado";
             this.qtdAssociadaDataGridViewTextBoxColumn2.Name = "qtdAssociadaDataGridViewTextBoxColumn2";
             this.qtdAssociadaDataGridViewTextBoxColumn2.ReadOnly = true;
@@ -647,9 +569,9 @@ namespace MoneyBin2 {
             // qtdDisponivelDataGridViewTextBoxColumn1
             // 
             this.qtdDisponivelDataGridViewTextBoxColumn1.DataPropertyName = "QtdDisponivel";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Format = "N0";
-            this.qtdDisponivelDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N0";
+            this.qtdDisponivelDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle8;
             this.qtdDisponivelDataGridViewTextBoxColumn1.HeaderText = "Disponivel";
             this.qtdDisponivelDataGridViewTextBoxColumn1.Name = "qtdDisponivelDataGridViewTextBoxColumn1";
             this.qtdDisponivelDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -658,13 +580,91 @@ namespace MoneyBin2 {
             // valorRealDataGridViewTextBoxColumn1
             // 
             this.valorRealDataGridViewTextBoxColumn1.DataPropertyName = "ValorReal";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Format = "N2";
-            this.valorRealDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N2";
+            this.valorRealDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle9;
             this.valorRealDataGridViewTextBoxColumn1.HeaderText = "Valor";
             this.valorRealDataGridViewTextBoxColumn1.Name = "valorRealDataGridViewTextBoxColumn1";
             this.valorRealDataGridViewTextBoxColumn1.ReadOnly = true;
             this.valorRealDataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.HeaderText = "";
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.ReadOnly = true;
+            this.btnEditar.Text = "…";
+            this.btnEditar.ToolTipText = "Alterar Qtd Associada";
+            this.btnEditar.UseColumnTextForButtonValue = true;
+            this.btnEditar.Width = 25;
+            // 
+            // btnDeletar
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Red;
+            this.btnDeletar.DefaultCellStyle = dataGridViewCellStyle14;
+            this.btnDeletar.HeaderText = "";
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.ReadOnly = true;
+            this.btnDeletar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnDeletar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnDeletar.Text = "û";
+            this.btnDeletar.ToolTipText = "Remover";
+            this.btnDeletar.UseColumnTextForButtonValue = true;
+            this.btnDeletar.Width = 25;
+            // 
+            // Data
+            // 
+            this.Data.DataPropertyName = "Data";
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // QtdEntrada
+            // 
+            this.QtdEntrada.DataPropertyName = "QtdEntrada";
+            this.QtdEntrada.HeaderText = "Qtd";
+            this.QtdEntrada.Name = "QtdEntrada";
+            this.QtdEntrada.ReadOnly = true;
+            // 
+            // qtdAssociadaDataGridViewTextBoxColumn
+            // 
+            this.qtdAssociadaDataGridViewTextBoxColumn.DataPropertyName = "QtdAssociada";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N0";
+            this.qtdAssociadaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            this.qtdAssociadaDataGridViewTextBoxColumn.HeaderText = "Associado";
+            this.qtdAssociadaDataGridViewTextBoxColumn.Name = "qtdAssociadaDataGridViewTextBoxColumn";
+            this.qtdAssociadaDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // QtdDisponivel
+            // 
+            this.QtdDisponivel.DataPropertyName = "QtdDisponivel";
+            this.QtdDisponivel.HeaderText = "Disponível";
+            this.QtdDisponivel.Name = "QtdDisponivel";
+            this.QtdDisponivel.ReadOnly = true;
+            // 
+            // ValorReal
+            // 
+            this.ValorReal.DataPropertyName = "ValorReal";
+            this.ValorReal.HeaderText = "Valor";
+            this.ValorReal.Name = "ValorReal";
+            this.ValorReal.ReadOnly = true;
+            // 
+            // EntradaId
+            // 
+            this.EntradaId.DataPropertyName = "EntradaId";
+            this.EntradaId.HeaderText = "CompraId";
+            this.EntradaId.Name = "EntradaId";
+            this.EntradaId.Visible = false;
             // 
             // frmAssociarCompraComVenda
             // 
@@ -697,11 +697,11 @@ namespace MoneyBin2 {
             this.Load += new System.EventHandler(this.AssociarCompraComVenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdAssociada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponiveis)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDisponiveis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssociadas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsAssociadas)).EndInit();
             this.panelEditar.ResumeLayout(false);
             this.panelEditar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsAssociadas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsDisponiveis)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -739,15 +739,6 @@ namespace MoneyBin2 {
         private System.Windows.Forms.DataGridViewTextBoxColumn qtdDisponivelDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn;
         private SuperDGV dgvAssociadas;
-        private DataGridViewButtonColumn btnEditar;
-        private DataGridViewButtonColumn btnDeletar;
-        private DataGridViewTextBoxColumn Data;
-        private DataGridViewTextBoxColumn Tipo;
-        private DataGridViewTextBoxColumn QtdEntrada;
-        private DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn QtdDisponivel;
-        private DataGridViewTextBoxColumn ValorReal;
-        private DataGridViewTextBoxColumn EntradaId;
         private TableLayoutPanel panelEditar;
         private DataGridViewButtonColumn btnAssociarDireto;
         private DataGridViewButtonColumn btnAssociar;
@@ -757,5 +748,14 @@ namespace MoneyBin2 {
         private DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn qtdDisponivelDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn1;
+        private DataGridViewButtonColumn btnEditar;
+        private DataGridViewButtonColumn btnDeletar;
+        private DataGridViewTextBoxColumn Data;
+        private DataGridViewTextBoxColumn Tipo;
+        private DataGridViewTextBoxColumn QtdEntrada;
+        private DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn QtdDisponivel;
+        private DataGridViewTextBoxColumn ValorReal;
+        private DataGridViewTextBoxColumn EntradaId;
     }
 }
