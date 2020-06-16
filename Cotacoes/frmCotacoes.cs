@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Cotacoes.Properties;
 using Tulpep.NotificationWindow;
 
 // How to use async and parallel - https://www.youtube.com/watch?v=ZTKGRJy5P2M&t=1474s
@@ -222,7 +223,7 @@ namespace Cotacoes {
                 {
                     Size = new Size(450, 75 * x.Count()),
                     Delay = 10000,
-                    //Image = Resources.alert_icon,
+                    Image = Resources.alert_icon,
                     HeaderColor = Color.Red,
                     TitleColor = Color.Red,
                     TitleFont = new Font("Segoe UI Semibold", 18),
