@@ -378,15 +378,15 @@ namespace Cotacoes {
 
                 var forecolor = e.RowIndex % 2 == 0 ? dgvCotacoes.DefaultCellStyle.ForeColor : dgvCotacoes.AlternatingRowsDefaultCellStyle.ForeColor;
                 switch (e.ColumnIndex) {
-                    case 2: // Trend
+                    case 4: // Trend
                         var s = cell.Value as string;
                         cell.Style.ForeColor = s == ContaAtivo.TrendUp ? Color.LightGreen : (s == ContaAtivo.TrendDown ? Color.OrangeRed : Color.Gray);
                         break;
-                    case 3 when acao.AlertaVenda < 1.004m: // Last Trade
+                    case 5 when acao.AlertaVenda < 1.004m: // Last Trade
                         cell.Style.ForeColor = Color.White;
                         cell.Style.BackColor = acao.AlertaVenda < 1.002m ? Color.Tomato : Color.Goldenrod;
                         break;
-                    case 5: // Change %
+                    case 6: // Change %
                     case 12: // Lucro Real
                         cell.Style.ForeColor = Convert.ToDecimal(cell.Value) < 0 ? Color.OrangeRed : forecolor;
                         break;
