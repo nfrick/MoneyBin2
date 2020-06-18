@@ -1,4 +1,5 @@
 ﻿using DataLayer;
+using SuperPrompt;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -116,7 +117,8 @@ namespace MoneyBin2 {
                     var pagamentos = _ctx.Pagamentos
                         .Where(p => (p.Meses & novoMes.Mes) == novoMes.Mes)
                         .ToList() // ToList() é necessário
-                        .Select(p => new CalendarioItem() {
+                        .Select(p => new CalendarioItem()
+                        {
                             Mes = novoMes.Mes,
                             Ano = novoMes.Ano,
                             PagamentoID = p.ID,
@@ -286,6 +288,8 @@ namespace MoneyBin2 {
                 item.Valor = valor ?? 1;
             }
         }
+
+
         #endregion TOOLBAR ---------------------------------
     }
 }

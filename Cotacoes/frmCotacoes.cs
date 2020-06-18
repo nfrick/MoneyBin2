@@ -1,4 +1,5 @@
-﻿using DataLayer;
+﻿using Cotacoes.Properties;
+using DataLayer;
 using IEnumerableExtensions;
 using SuperPrompt;
 //using Settings;
@@ -10,7 +11,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Cotacoes.Properties;
 using Tulpep.NotificationWindow;
 
 // How to use async and parallel - https://www.youtube.com/watch?v=ZTKGRJy5P2M&t=1474s
@@ -206,6 +206,7 @@ namespace Cotacoes {
                 bsCotacoes.DataSource = _acoes;
             }
             else {
+                bsCotacoes.Sort = "Codigo";
                 dgvCotacoes.Refresh();
             }
             dgvTotal.Refresh();
@@ -300,7 +301,7 @@ namespace Cotacoes {
             }
 
             _acoes.AddRange(codigos.Select(c => new ContaAtivo() { ContaId = 0, Codigo = c }));
-            CarregarDados(true);
+            CarregarDados();
         }
 
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
