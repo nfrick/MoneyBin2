@@ -32,6 +32,8 @@ namespace Cotacoes {
         public frmCotacoes() {
             InitializeComponent();
 
+            dgvTotal.AutoGenerateColumns = false;
+
             _ctx.Contas
                 .Include("Acoes.Entradas.Associacoes")
                 .Include("Acoes.Saidas.Associacoes").Load();
@@ -50,24 +52,25 @@ namespace Cotacoes {
         private void frmCotacoes_Load(object sender, EventArgs e) {
             dgvCotacoes.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
 
-            dgvCotacoes.FormatColumn("Ativo", null, 100);
-            dgvCotacoes.FormatColumn("Last Trade Date", dgvCotacoes.StyleDayAndTime, 100);
+            dgvCotacoes.FormatColumn("Ativo", null, 80);
+            dgvCotacoes.FormatColumn("Last Trade Date", dgvCotacoes.StyleDayAndTime, 95);
             dgvCotacoes.FormatColumn("S", dgvCotacoes.StyleTrend, 20);
             dgvCotacoes.FormatColumn("Change %", dgvCotacoes.StylePercent, 65);
 
             dgvCotacoes.FormatColumn("Qtd", dgvCotacoes.StyleInteger, 65);
             dgvCotacoes.FormatColumn("Qtd Vendável", dgvCotacoes.StyleInteger, 65);
 
-            dgvCotacoes.FormatColumn("Last Trade", dgvCotacoes.StyleCurrency, 80);
-            dgvCotacoes.FormatColumn("Previous Close", dgvCotacoes.StyleCurrency, 80);
-            dgvCotacoes.FormatColumn("Open", dgvCotacoes.StyleCurrency, 80);
-            dgvCotacoes.FormatColumn("Day Low", dgvCotacoes.StyleCurrency, 80);
-            dgvCotacoes.FormatColumn("Day High", dgvCotacoes.StyleCurrency, 80);
-            dgvCotacoes.FormatColumn("VM Compra", dgvCotacoes.StyleCurrency, 80);
+            dgvCotacoes.FormatColumn("Last Trade", dgvCotacoes.StyleCurrency, 75);
+            dgvCotacoes.FormatColumn("Previous Close", dgvCotacoes.StyleCurrency, 75);
+            dgvCotacoes.FormatColumn("Open", dgvCotacoes.StyleCurrency, 75);
+            dgvCotacoes.FormatColumn("Day Low", dgvCotacoes.StyleCurrency, 75);
+            dgvCotacoes.FormatColumn("Day High", dgvCotacoes.StyleCurrency, 75);
+            dgvCotacoes.FormatColumn("VM Compra Nominal", dgvCotacoes.StyleCurrency, 75);
+            dgvCotacoes.FormatColumn("VM Compra Real", dgvCotacoes.StyleCurrency, 75);
 
-            dgvCotacoes.FormatColumn("Patrimônio", dgvCotacoes.StyleCurrency, 90);
-            dgvCotacoes.FormatColumn("Lucro Real", dgvCotacoes.StyleCurrency, 90);
-            dgvCotacoes.FormatColumn("Lucro Imediato", dgvCotacoes.StyleCurrency, 85);
+            dgvCotacoes.FormatColumn("Patrimônio", dgvCotacoes.StyleCurrency, 95);
+            dgvCotacoes.FormatColumn("Lucro Real", dgvCotacoes.StyleCurrency, 95);
+            dgvCotacoes.FormatColumn("Lucro Imediato", dgvCotacoes.StyleCurrency, 95);
 
             dgvTotal.FormatAsTotal(dgvCotacoes);
 
@@ -388,7 +391,7 @@ namespace Cotacoes {
                         cell.Style.BackColor = acao.AlertaVenda < 1.002m ? Color.Tomato : Color.Goldenrod;
                         break;
                     case 6: // Change %
-                    case 12: // Lucro Real
+                    case 13: // Lucro Real
                         cell.Style.ForeColor = Convert.ToDecimal(cell.Value) < 0 ? Color.OrangeRed : forecolor;
                         break;
                 }

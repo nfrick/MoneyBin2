@@ -38,8 +38,8 @@ namespace Cotacoes {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCotacoes));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelAtualizadoEm = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDuracao = new System.Windows.Forms.ToolStripStatusLabel();
@@ -51,21 +51,6 @@ namespace Cotacoes {
             this.bsContas = new System.Windows.Forms.BindingSource(this.components);
             this.chart1 = new ChartLibrary.SuperChart();
             this.dgvCotacoes = new SuperGrid.SuperDGV();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastTradeDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.previousCloseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastTradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.changePercentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayLowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayHighDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patrimonioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorMedioCompraReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LucroReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtdVendavel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LucroImediato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsCotacoes = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -95,9 +80,26 @@ namespace Cotacoes {
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CotacoesPatrimonio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CotacoesLucroReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CotacoesLucroImediato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastTradeDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.previousCloseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastTradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changePercentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayLowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayHighDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patrimonioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorMedioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorMedioCompraReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LucroReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtdVendavel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LucroImediato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -229,6 +231,7 @@ namespace Cotacoes {
             this.Column10,
             this.CotacoesPatrimonio,
             this.Column11,
+            this.Column12,
             this.CotacoesLucroReal,
             this.Column13,
             this.CotacoesLucroImediato});
@@ -356,6 +359,7 @@ namespace Cotacoes {
             this.dayHighDataGridViewTextBoxColumn,
             this.Qtd,
             this.patrimonioDataGridViewTextBoxColumn,
+            this.ValorMedioCompra,
             this.ValorMedioCompraReal,
             this.LucroReal,
             this.QtdVendavel,
@@ -395,127 +399,6 @@ namespace Cotacoes {
             this.dgvCotacoes.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvCotacoes_ColumnWidthChanged);
             this.dgvCotacoes.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvCotacoes_DataError);
             this.dgvCotacoes.SelectionChanged += new System.EventHandler(this.dgvCotacoes_SelectionChanged);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Ativo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // lastTradeDateDataGridViewTextBoxColumn
-            // 
-            this.lastTradeDateDataGridViewTextBoxColumn.DataPropertyName = "LastTradeDate";
-            this.lastTradeDateDataGridViewTextBoxColumn.HeaderText = "Last Trade Date";
-            this.lastTradeDateDataGridViewTextBoxColumn.Name = "lastTradeDateDataGridViewTextBoxColumn";
-            this.lastTradeDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastTradeDateDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // previousCloseDataGridViewTextBoxColumn
-            // 
-            this.previousCloseDataGridViewTextBoxColumn.DataPropertyName = "PreviousClose";
-            this.previousCloseDataGridViewTextBoxColumn.HeaderText = "Previous Close";
-            this.previousCloseDataGridViewTextBoxColumn.Name = "previousCloseDataGridViewTextBoxColumn";
-            this.previousCloseDataGridViewTextBoxColumn.ReadOnly = true;
-            this.previousCloseDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // openDataGridViewTextBoxColumn
-            // 
-            this.openDataGridViewTextBoxColumn.DataPropertyName = "Open";
-            this.openDataGridViewTextBoxColumn.HeaderText = "Open";
-            this.openDataGridViewTextBoxColumn.Name = "openDataGridViewTextBoxColumn";
-            this.openDataGridViewTextBoxColumn.ReadOnly = true;
-            this.openDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // trendDataGridViewTextBoxColumn
-            // 
-            this.trendDataGridViewTextBoxColumn.DataPropertyName = "Trend";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.trendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            this.trendDataGridViewTextBoxColumn.HeaderText = "S";
-            this.trendDataGridViewTextBoxColumn.Name = "trendDataGridViewTextBoxColumn";
-            this.trendDataGridViewTextBoxColumn.ReadOnly = true;
-            this.trendDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // lastTradeDataGridViewTextBoxColumn
-            // 
-            this.lastTradeDataGridViewTextBoxColumn.DataPropertyName = "LastTrade";
-            this.lastTradeDataGridViewTextBoxColumn.HeaderText = "Last Trade";
-            this.lastTradeDataGridViewTextBoxColumn.Name = "lastTradeDataGridViewTextBoxColumn";
-            this.lastTradeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastTradeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // changePercentDataGridViewTextBoxColumn
-            // 
-            this.changePercentDataGridViewTextBoxColumn.DataPropertyName = "ChangePercent";
-            this.changePercentDataGridViewTextBoxColumn.HeaderText = "Change %";
-            this.changePercentDataGridViewTextBoxColumn.Name = "changePercentDataGridViewTextBoxColumn";
-            this.changePercentDataGridViewTextBoxColumn.ReadOnly = true;
-            this.changePercentDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // dayLowDataGridViewTextBoxColumn
-            // 
-            this.dayLowDataGridViewTextBoxColumn.DataPropertyName = "DayLow";
-            this.dayLowDataGridViewTextBoxColumn.HeaderText = "Day Low";
-            this.dayLowDataGridViewTextBoxColumn.Name = "dayLowDataGridViewTextBoxColumn";
-            this.dayLowDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dayLowDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // dayHighDataGridViewTextBoxColumn
-            // 
-            this.dayHighDataGridViewTextBoxColumn.DataPropertyName = "DayHigh";
-            this.dayHighDataGridViewTextBoxColumn.HeaderText = "Day High";
-            this.dayHighDataGridViewTextBoxColumn.Name = "dayHighDataGridViewTextBoxColumn";
-            this.dayHighDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dayHighDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // Qtd
-            // 
-            this.Qtd.DataPropertyName = "Qtd";
-            this.Qtd.HeaderText = "Qtd";
-            this.Qtd.Name = "Qtd";
-            this.Qtd.ReadOnly = true;
-            // 
-            // patrimonioDataGridViewTextBoxColumn
-            // 
-            this.patrimonioDataGridViewTextBoxColumn.DataPropertyName = "Patrimonio";
-            this.patrimonioDataGridViewTextBoxColumn.HeaderText = "Patrimônio";
-            this.patrimonioDataGridViewTextBoxColumn.Name = "patrimonioDataGridViewTextBoxColumn";
-            this.patrimonioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.patrimonioDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // ValorMedioCompraReal
-            // 
-            this.ValorMedioCompraReal.DataPropertyName = "ValorMedioCompraReal";
-            this.ValorMedioCompraReal.HeaderText = "VM Compra";
-            this.ValorMedioCompraReal.Name = "ValorMedioCompraReal";
-            this.ValorMedioCompraReal.ReadOnly = true;
-            this.ValorMedioCompraReal.Width = 70;
-            // 
-            // LucroReal
-            // 
-            this.LucroReal.DataPropertyName = "LucroReal";
-            this.LucroReal.HeaderText = "Lucro Real";
-            this.LucroReal.Name = "LucroReal";
-            this.LucroReal.ReadOnly = true;
-            this.LucroReal.Width = 70;
-            // 
-            // QtdVendavel
-            // 
-            this.QtdVendavel.DataPropertyName = "QtdVendavel";
-            this.QtdVendavel.HeaderText = "Qtd Vendável";
-            this.QtdVendavel.Name = "QtdVendavel";
-            this.QtdVendavel.ReadOnly = true;
-            this.QtdVendavel.Width = 70;
-            // 
-            // LucroImediato
-            // 
-            this.LucroImediato.DataPropertyName = "LucroImediato";
-            this.LucroImediato.HeaderText = "Lucro Imediato";
-            this.LucroImediato.Name = "LucroImediato";
-            this.LucroImediato.ReadOnly = true;
-            this.LucroImediato.Width = 70;
             // 
             // bsCotacoes
             // 
@@ -738,6 +621,12 @@ namespace Cotacoes {
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
             // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Column12";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
             // CotacoesLucroReal
             // 
             this.CotacoesLucroReal.DataPropertyName = "CotacoesLucroReal";
@@ -757,6 +646,134 @@ namespace Cotacoes {
             this.CotacoesLucroImediato.HeaderText = "CotacoesLucroImediato";
             this.CotacoesLucroImediato.Name = "CotacoesLucroImediato";
             this.CotacoesLucroImediato.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Ativo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // lastTradeDateDataGridViewTextBoxColumn
+            // 
+            this.lastTradeDateDataGridViewTextBoxColumn.DataPropertyName = "LastTradeDate";
+            this.lastTradeDateDataGridViewTextBoxColumn.HeaderText = "Last Trade Date";
+            this.lastTradeDateDataGridViewTextBoxColumn.Name = "lastTradeDateDataGridViewTextBoxColumn";
+            this.lastTradeDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastTradeDateDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // previousCloseDataGridViewTextBoxColumn
+            // 
+            this.previousCloseDataGridViewTextBoxColumn.DataPropertyName = "PreviousClose";
+            this.previousCloseDataGridViewTextBoxColumn.HeaderText = "Previous Close";
+            this.previousCloseDataGridViewTextBoxColumn.Name = "previousCloseDataGridViewTextBoxColumn";
+            this.previousCloseDataGridViewTextBoxColumn.ReadOnly = true;
+            this.previousCloseDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // openDataGridViewTextBoxColumn
+            // 
+            this.openDataGridViewTextBoxColumn.DataPropertyName = "Open";
+            this.openDataGridViewTextBoxColumn.HeaderText = "Open";
+            this.openDataGridViewTextBoxColumn.Name = "openDataGridViewTextBoxColumn";
+            this.openDataGridViewTextBoxColumn.ReadOnly = true;
+            this.openDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // trendDataGridViewTextBoxColumn
+            // 
+            this.trendDataGridViewTextBoxColumn.DataPropertyName = "Trend";
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.trendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.trendDataGridViewTextBoxColumn.HeaderText = "S";
+            this.trendDataGridViewTextBoxColumn.Name = "trendDataGridViewTextBoxColumn";
+            this.trendDataGridViewTextBoxColumn.ReadOnly = true;
+            this.trendDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // lastTradeDataGridViewTextBoxColumn
+            // 
+            this.lastTradeDataGridViewTextBoxColumn.DataPropertyName = "LastTrade";
+            this.lastTradeDataGridViewTextBoxColumn.HeaderText = "Last Trade";
+            this.lastTradeDataGridViewTextBoxColumn.Name = "lastTradeDataGridViewTextBoxColumn";
+            this.lastTradeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastTradeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // changePercentDataGridViewTextBoxColumn
+            // 
+            this.changePercentDataGridViewTextBoxColumn.DataPropertyName = "ChangePercent";
+            this.changePercentDataGridViewTextBoxColumn.HeaderText = "Change %";
+            this.changePercentDataGridViewTextBoxColumn.Name = "changePercentDataGridViewTextBoxColumn";
+            this.changePercentDataGridViewTextBoxColumn.ReadOnly = true;
+            this.changePercentDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // dayLowDataGridViewTextBoxColumn
+            // 
+            this.dayLowDataGridViewTextBoxColumn.DataPropertyName = "DayLow";
+            this.dayLowDataGridViewTextBoxColumn.HeaderText = "Day Low";
+            this.dayLowDataGridViewTextBoxColumn.Name = "dayLowDataGridViewTextBoxColumn";
+            this.dayLowDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dayLowDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // dayHighDataGridViewTextBoxColumn
+            // 
+            this.dayHighDataGridViewTextBoxColumn.DataPropertyName = "DayHigh";
+            this.dayHighDataGridViewTextBoxColumn.HeaderText = "Day High";
+            this.dayHighDataGridViewTextBoxColumn.Name = "dayHighDataGridViewTextBoxColumn";
+            this.dayHighDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dayHighDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // Qtd
+            // 
+            this.Qtd.DataPropertyName = "Qtd";
+            this.Qtd.HeaderText = "Qtd";
+            this.Qtd.Name = "Qtd";
+            this.Qtd.ReadOnly = true;
+            // 
+            // patrimonioDataGridViewTextBoxColumn
+            // 
+            this.patrimonioDataGridViewTextBoxColumn.DataPropertyName = "Patrimonio";
+            this.patrimonioDataGridViewTextBoxColumn.HeaderText = "Patrimônio";
+            this.patrimonioDataGridViewTextBoxColumn.Name = "patrimonioDataGridViewTextBoxColumn";
+            this.patrimonioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.patrimonioDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // ValorMedioCompra
+            // 
+            this.ValorMedioCompra.DataPropertyName = "ValorMedioCompra";
+            this.ValorMedioCompra.HeaderText = "VM Compra Nominal";
+            this.ValorMedioCompra.Name = "ValorMedioCompra";
+            this.ValorMedioCompra.ReadOnly = true;
+            // 
+            // ValorMedioCompraReal
+            // 
+            this.ValorMedioCompraReal.DataPropertyName = "ValorMedioCompraReal";
+            this.ValorMedioCompraReal.HeaderText = "VM Compra Real";
+            this.ValorMedioCompraReal.Name = "ValorMedioCompraReal";
+            this.ValorMedioCompraReal.ReadOnly = true;
+            this.ValorMedioCompraReal.Width = 70;
+            // 
+            // LucroReal
+            // 
+            this.LucroReal.DataPropertyName = "LucroReal";
+            this.LucroReal.HeaderText = "Lucro Real";
+            this.LucroReal.Name = "LucroReal";
+            this.LucroReal.ReadOnly = true;
+            this.LucroReal.Width = 70;
+            // 
+            // QtdVendavel
+            // 
+            this.QtdVendavel.DataPropertyName = "QtdVendavel";
+            this.QtdVendavel.HeaderText = "Qtd Vendável";
+            this.QtdVendavel.Name = "QtdVendavel";
+            this.QtdVendavel.ReadOnly = true;
+            this.QtdVendavel.Width = 70;
+            // 
+            // LucroImediato
+            // 
+            this.LucroImediato.DataPropertyName = "LucroImediato";
+            this.LucroImediato.HeaderText = "Lucro Imediato";
+            this.LucroImediato.Name = "LucroImediato";
+            this.LucroImediato.ReadOnly = true;
+            this.LucroImediato.Width = 70;
             // 
             // frmCotacoes
             // 
@@ -839,21 +856,6 @@ namespace Cotacoes {
         public System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private SuperChart chart1;
         private System.Windows.Forms.ToolStripButton toolStripButtonAdicionarAcao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastTradeDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn previousCloseDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn openDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn trendDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastTradeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn changePercentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dayLowDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dayHighDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qtd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn patrimonioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValorMedioCompraReal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LucroReal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtdVendavel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LucroImediato;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -866,9 +868,26 @@ namespace Cotacoes {
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn CotacoesPatrimonio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn CotacoesLucroReal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn CotacoesLucroImediato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastTradeDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn previousCloseDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn openDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn trendDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastTradeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn changePercentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayLowDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayHighDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qtd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patrimonioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorMedioCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorMedioCompraReal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LucroReal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtdVendavel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LucroImediato;
     }
 }
 
