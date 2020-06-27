@@ -1,5 +1,6 @@
 ﻿using DataLayer;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,9 +15,10 @@ namespace MoneyBin2 {
 
             PopulateClassificacao();
 
-            dgvClassificacao.FormatColumn("Grupo", null, 150);
+            dgvClassificacao.FormatColumn("Grupo", null, 120);
             dgvClassificacao.FormatColumn("Categoria", null, 150);
-            dgvClassificacao.FormatColumn("SubCategoria", null, 250);
+            dgvClassificacao.FormatColumn("SubCategoria", null, -1);
+            dgvClassificacao.FormatColumn("Sinal", dgvBalance.StyleInteger, 40);
 
             dgvBalance.FormatColumn("Conta", null, 80);
             dgvBalance.FormatColumn("Data", dgvBalance.StyleDateShort, 80);
@@ -62,12 +64,19 @@ namespace MoneyBin2 {
                 _ctx.Balance.Include("Conta")
                     .Where(b => b.Grupo == ClassifAtual.Grupo && 
                         b.Categoria == ClassifAtual.Categoria && 
-                        b.SubCategoria == ClassifAtual.SubCategoria)).ToBindingList();
+                        b.SubCategoria == ClassifAtual.SubCategoria &&
+                        b.Sinal == ClassifAtual.Sinal)).ToBindingList();
             dgvBalance.Refresh();
 
             textBoxGrupoNovo.Text = ClassifAtual.Grupo;
             textBoxCategoriaNova.Text = ClassifAtual.Categoria;
             textBoxSubCategoriaNova.Text = ClassifAtual.SubCategoria;
+        }
+        
+        private void dgvClassificacao_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            if(e.ColumnIndex != 3) return;
+
+            e.CellStyle.BackColor = (int) e.Value == 1 ? Color.Green : Color.Red;
         }
 
         private void dgvBalance_RowValidated(object sender, DataGridViewCellEventArgs e) {
@@ -125,5 +134,6 @@ namespace MoneyBin2 {
         private void cmsPopMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
             ClassifTools.PopupItemClicked(sender, e, dgvBalance);
         }
+
     }
 }

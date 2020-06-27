@@ -20,7 +20,6 @@ namespace DataLayer {
         public string ContaCompleta => $"{Banco} {Conta.AgenciaComDV} {Conta.ContaCorrenteComDV}";
         public string ContaCompletaDV => $"{Banco} {Conta.AgenciaComDV} {Conta.ContaCorrenteComDV}";
         public decimal ValorParaSaldo => AfetaSaldo ? Valor : 0.0m;
-        public int Sinal => Valor == 0 ? 0 : (int)(Valor / Math.Abs(Valor));
 
         #region IEquitable_implementation
         /// <summary>

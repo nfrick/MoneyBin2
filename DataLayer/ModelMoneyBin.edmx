@@ -288,6 +288,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Property Name="Historico" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Documento" Type="nvarchar" MaxLength="30" />
           <Property Name="Valor" Type="money" Nullable="false" />
+          <Property Name="Sinal" Type="int" />
           <Property Name="AfetaSaldo" Type="bit" Nullable="false" />
           <Property Name="Grupo" Type="nvarchar" MaxLength="15" />
           <Property Name="Categoria" Type="nvarchar" MaxLength="20" />
@@ -629,6 +630,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
     [vwBalance].[Historico] AS [Historico], 
     [vwBalance].[Documento] AS [Documento], 
     [vwBalance].[Valor] AS [Valor], 
+    [vwBalance].[Sinal] AS [Sinal], 
     [vwBalance].[AfetaSaldo] AS [AfetaSaldo], 
     [vwBalance].[Grupo] AS [Grupo], 
     [vwBalance].[Categoria] AS [Categoria], 
@@ -1062,6 +1064,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <Property Name="Descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Saldo" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="Conta" Relationship="MoneyBinModel.ContaBalanceItem" FromRole="BalanceItem" ToRole="Conta" />
+          <Property Name="Sinal" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_tbSerieHistorica_tbAtivos">
           <End Type="MoneyBinModel.Ativo" Role="tbAtivos" Multiplicity="1" />
@@ -1653,6 +1656,7 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
           <EntitySetMapping Name="Balance">
             <EntityTypeMapping TypeName="MoneyBinModel.BalanceItem">
               <MappingFragment StoreEntitySet="vwBalance">
+                <ScalarProperty Name="Sinal" ColumnName="Sinal" />
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
                 <ScalarProperty Name="Descricao" ColumnName="Descricao" />
                 <ScalarProperty Name="SubCategoria" ColumnName="SubCategoria" />

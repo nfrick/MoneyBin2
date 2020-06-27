@@ -26,6 +26,7 @@ namespace DataLayer
         public string SubCategoria { get; set; }
         public string Descricao { get; set; }
         public Nullable<decimal> Saldo { get; set; }
+        public int Sinal { get; set; }
     
         public virtual Conta Conta { get; set; }
     }

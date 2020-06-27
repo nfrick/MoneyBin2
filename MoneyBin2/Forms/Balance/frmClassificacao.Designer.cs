@@ -37,10 +37,6 @@
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.splitContainerTop = new System.Windows.Forms.SplitContainer();
             this.dgvClassificacao = new SuperGrid.SuperDGV();
-            this.grupoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoriaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subCategoriaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsClassificacao = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSubcategoriaAtual = new System.Windows.Forms.TextBox();
@@ -59,7 +55,6 @@
             this.buttonDesfazer = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.dgvBalance = new SuperGrid.SuperDGV();
-            this.bsBalance = new System.Windows.Forms.BindingSource(this.components);
             this.ContaCorrente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.historicoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,14 +62,20 @@
             this.afetaSaldoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsPopMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.bsClassificacao = new System.Windows.Forms.BindingSource(this.components);
+            this.bsBalance = new System.Windows.Forms.BindingSource(this.components);
+            this.grupoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoriaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subCategoriaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contaCorrenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.historicoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.afetaSaldoDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.grupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subCategoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Grupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricaoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -87,11 +88,11 @@
             this.splitContainerTop.Panel2.SuspendLayout();
             this.splitContainerTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassificacao)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsClassificacao)).BeginInit();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBalance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsClassificacao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBalance)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,7 +176,8 @@
             this.dgvClassificacao.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.grupoDataGridViewTextBoxColumn1,
             this.categoriaDataGridViewTextBoxColumn1,
-            this.subCategoriaDataGridViewTextBoxColumn1});
+            this.subCategoriaDataGridViewTextBoxColumn1,
+            this.Sinal});
             this.dgvClassificacao.DataSource = this.bsClassificacao;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
@@ -205,32 +207,8 @@
             this.dgvClassificacao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClassificacao.Size = new System.Drawing.Size(589, 228);
             this.dgvClassificacao.TabIndex = 0;
+            this.dgvClassificacao.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvClassificacao_CellFormatting);
             this.dgvClassificacao.SelectionChanged += new System.EventHandler(this.dgvClassificacao_SelectionChanged);
-            // 
-            // grupoDataGridViewTextBoxColumn1
-            // 
-            this.grupoDataGridViewTextBoxColumn1.DataPropertyName = "Grupo";
-            this.grupoDataGridViewTextBoxColumn1.HeaderText = "Grupo";
-            this.grupoDataGridViewTextBoxColumn1.Name = "grupoDataGridViewTextBoxColumn1";
-            this.grupoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // categoriaDataGridViewTextBoxColumn1
-            // 
-            this.categoriaDataGridViewTextBoxColumn1.DataPropertyName = "Categoria";
-            this.categoriaDataGridViewTextBoxColumn1.HeaderText = "Categoria";
-            this.categoriaDataGridViewTextBoxColumn1.Name = "categoriaDataGridViewTextBoxColumn1";
-            this.categoriaDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // subCategoriaDataGridViewTextBoxColumn1
-            // 
-            this.subCategoriaDataGridViewTextBoxColumn1.DataPropertyName = "SubCategoria";
-            this.subCategoriaDataGridViewTextBoxColumn1.HeaderText = "SubCategoria";
-            this.subCategoriaDataGridViewTextBoxColumn1.Name = "subCategoriaDataGridViewTextBoxColumn1";
-            this.subCategoriaDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // bsClassificacao
-            // 
-            this.bsClassificacao.DataSource = typeof(DataLayer.Classificacao);
             // 
             // panel2
             // 
@@ -467,9 +445,9 @@
             this.historicoDataGridViewTextBoxColumn1,
             this.valorDataGridViewTextBoxColumn1,
             this.afetaSaldoDataGridViewCheckBoxColumn1,
-            this.grupoDataGridViewTextBoxColumn,
-            this.categoriaDataGridViewTextBoxColumn,
-            this.subCategoriaDataGridViewTextBoxColumn,
+            this.Grupo,
+            this.Categoria,
+            this.SubCategoria,
             this.descricaoDataGridViewTextBoxColumn1});
             this.dgvBalance.DataSource = this.bsBalance;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -502,10 +480,6 @@
             this.dgvBalance.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvBalance_EditingControlShowing);
             this.dgvBalance.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBalance_RowValidated);
             this.dgvBalance.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvBalance_MouseClick);
-            // 
-            // bsBalance
-            // 
-            this.bsBalance.DataSource = typeof(DataLayer.BalanceItem);
             // 
             // ContaCorrente
             // 
@@ -554,6 +528,42 @@
             this.cmsPopMenu.Size = new System.Drawing.Size(61, 4);
             this.cmsPopMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmsPopMenu_ItemClicked);
             // 
+            // bsClassificacao
+            // 
+            this.bsClassificacao.DataSource = typeof(DataLayer.Classificacao);
+            // 
+            // bsBalance
+            // 
+            this.bsBalance.DataSource = typeof(DataLayer.BalanceItem);
+            // 
+            // grupoDataGridViewTextBoxColumn1
+            // 
+            this.grupoDataGridViewTextBoxColumn1.DataPropertyName = "Grupo";
+            this.grupoDataGridViewTextBoxColumn1.HeaderText = "Grupo";
+            this.grupoDataGridViewTextBoxColumn1.Name = "grupoDataGridViewTextBoxColumn1";
+            this.grupoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // categoriaDataGridViewTextBoxColumn1
+            // 
+            this.categoriaDataGridViewTextBoxColumn1.DataPropertyName = "Categoria";
+            this.categoriaDataGridViewTextBoxColumn1.HeaderText = "Categoria";
+            this.categoriaDataGridViewTextBoxColumn1.Name = "categoriaDataGridViewTextBoxColumn1";
+            this.categoriaDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // subCategoriaDataGridViewTextBoxColumn1
+            // 
+            this.subCategoriaDataGridViewTextBoxColumn1.DataPropertyName = "SubCategoria";
+            this.subCategoriaDataGridViewTextBoxColumn1.HeaderText = "SubCategoria";
+            this.subCategoriaDataGridViewTextBoxColumn1.Name = "subCategoriaDataGridViewTextBoxColumn1";
+            this.subCategoriaDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Sinal
+            // 
+            this.Sinal.DataPropertyName = "Sinal";
+            this.Sinal.HeaderText = "Sinal";
+            this.Sinal.Name = "Sinal";
+            this.Sinal.ReadOnly = true;
+            // 
             // contaCorrenteDataGridViewTextBoxColumn
             // 
             this.contaCorrenteDataGridViewTextBoxColumn.DataPropertyName = "ContaCorrente";
@@ -585,23 +595,23 @@
             this.afetaSaldoDataGridViewCheckBoxColumn1.HeaderText = "Afeta Saldo";
             this.afetaSaldoDataGridViewCheckBoxColumn1.Name = "afetaSaldoDataGridViewCheckBoxColumn1";
             // 
-            // grupoDataGridViewTextBoxColumn
+            // Grupo
             // 
-            this.grupoDataGridViewTextBoxColumn.DataPropertyName = "Grupo";
-            this.grupoDataGridViewTextBoxColumn.HeaderText = "Grupo";
-            this.grupoDataGridViewTextBoxColumn.Name = "grupoDataGridViewTextBoxColumn";
+            this.Grupo.DataPropertyName = "Grupo";
+            this.Grupo.HeaderText = "Grupo";
+            this.Grupo.Name = "Grupo";
             // 
-            // categoriaDataGridViewTextBoxColumn
+            // Categoria
             // 
-            this.categoriaDataGridViewTextBoxColumn.DataPropertyName = "Categoria";
-            this.categoriaDataGridViewTextBoxColumn.HeaderText = "Categoria";
-            this.categoriaDataGridViewTextBoxColumn.Name = "categoriaDataGridViewTextBoxColumn";
+            this.Categoria.DataPropertyName = "Categoria";
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
             // 
-            // subCategoriaDataGridViewTextBoxColumn
+            // SubCategoria
             // 
-            this.subCategoriaDataGridViewTextBoxColumn.DataPropertyName = "SubCategoria";
-            this.subCategoriaDataGridViewTextBoxColumn.HeaderText = "SubCategoria";
-            this.subCategoriaDataGridViewTextBoxColumn.Name = "subCategoriaDataGridViewTextBoxColumn";
+            this.SubCategoria.DataPropertyName = "SubCategoria";
+            this.SubCategoria.HeaderText = "SubCategoria";
+            this.SubCategoria.Name = "SubCategoria";
             // 
             // descricaoDataGridViewTextBoxColumn1
             // 
@@ -634,12 +644,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTop)).EndInit();
             this.splitContainerTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassificacao)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsClassificacao)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBalance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsClassificacao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsBalance)).EndInit();
             this.ResumeLayout(false);
 
@@ -675,20 +685,21 @@
         private System.Windows.Forms.Label labelCategoria;
         private System.Windows.Forms.Label labelSubCategoria;
         private System.Windows.Forms.ContextMenuStrip cmsPopMenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn grupoDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subCategoriaDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContaCorrente;
         private System.Windows.Forms.Button buttonDesfazer;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn grupoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subCategoriaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sinal;
         private System.Windows.Forms.DataGridViewTextBoxColumn contaCorrenteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn historicoDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn afetaSaldoDataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn grupoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subCategoriaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Grupo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn1;
     }
 }

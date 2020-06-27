@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cotacoes", "Cotacoes\Cotacoes.csproj", "{92B38440-F253-4E28-93D5-8267857FABBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeekendAnalysis", "WeekendAnalysis\WeekendAnalysis.csproj", "{E18B5AED-1528-4AA7-B6B3-C54BC34072B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{92B38440-F253-4E28-93D5-8267857FABBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92B38440-F253-4E28-93D5-8267857FABBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92B38440-F253-4E28-93D5-8267857FABBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E18B5AED-1528-4AA7-B6B3-C54BC34072B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E18B5AED-1528-4AA7-B6B3-C54BC34072B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E18B5AED-1528-4AA7-B6B3-C54BC34072B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E18B5AED-1528-4AA7-B6B3-C54BC34072B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
