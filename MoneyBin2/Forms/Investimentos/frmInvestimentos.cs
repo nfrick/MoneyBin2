@@ -618,9 +618,9 @@ namespace MoneyBin2 {
             }
 
             var allFiles = new List<string>();
-            foreach (var item in toolStripComboBoxConta.Items) {
-                var conta = (Conta)item;
-                var path = $@"{_balancePath}\{conta.Banco}\{conta.ContaCorrente}\Fundos {conta.Banco.ExtensaoFundos}";
+            foreach (var conta in toolStripComboBoxConta.Items.Cast<Conta>().Where(c=>c.Ativa)) {
+                //var conta = (Conta)item;
+                var path = $@"{_balancePath}\{conta.Banco.Sigla}\{conta.ContaCorrente}\Fundos {conta.Banco.ExtensaoFundos}";
                 if (Directory.Exists(path)) {
                     var files = Directory.GetFiles(path, $"*.{conta.Banco.ExtensaoFundos}").Where(f => f.Contains(mes));
                     if (files.Any()) {
