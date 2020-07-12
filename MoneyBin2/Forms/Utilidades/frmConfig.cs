@@ -24,18 +24,34 @@ namespace MoneyBin2 {
 
         public frmConfig() {
             InitializeComponent();
-            using (var ctx = new MoneyBinEntities()) {
-                comboBoxContaPadrao.DataSource = ctx.Contas.OrderBy(c => c.Apelido).ToList();
-                comboBoxContaPadrao.ValueMember = "ID";
-                comboBoxContaPadrao.DisplayMember = "Apelido";
-            }
-            comboBoxContaPadrao.SelectedIndex = Settings.Default.BalanceContaPadrao;
+
+            SetContaComboBox(comboBoxBalanceContaPadrao);
+            SetContaComboBox(comboBoxInvestimentosContaPadrao);
+
+            comboBoxBalanceContaPadrao.SelectedValue = Settings.Default.BalanceContaPadrao;
             radioButtonBalanceContaPadrao.Checked = Settings.Default.BalanceUsarContaPadrao;
+            radioButtonBalanceUltimaConta.Checked = !Settings.Default.BalanceUsarContaPadrao;
+
+            comboBoxInvestimentosContaPadrao.SelectedValue = Settings.Default.InvestimentosContaPadrao;
+            radioButtonInvestimentosContaPadrao.Checked = Settings.Default.InvestimentosUsarContaPadrao;
+            radioButtonInvestimentosUltimaConta.Checked = !Settings.Default.InvestimentosUsarContaPadrao;
+
             labelCalendarioPastaPagamentos.Text = Settings.Default.CalendarioPastaPagamentos;
             checkBoxBackgroundVisivel.Checked = Settings.Default.MainBackgroundVisivel;
             checkBoxBackgroundRodizio.Checked = Settings.Default.MainBackgroundRodizio;
             checkBoxBarraFerramentasVisivel.Checked = Settings.Default.MainBarraFerramentasVisivel;
             checkBoxBarraFerramentasImagemeTexto.Checked = Settings.Default.MainBarraFerramentasImagem;
+        }
+
+        private void SetContaComboBox(ComboBox combo)
+        {
+            using (var ctx = new MoneyBinEntities()) {
+                var contas = ctx.Contas.OrderBy(c => c.Apelido).ToList();
+                combo.DataSource = contas;
+                combo.ValueMember = "ID";
+                combo.DisplayMember = "Apelido";
+            }
+
         }
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e) {
@@ -79,7 +95,10 @@ namespace MoneyBin2 {
 
         private Form PleaseWaitDisplay(string message, Bitmap image = null) {
             var frm = new frmPleaseWait { labelMessage = { Text = message } };
-            if(image != null) frm.picture.Image = image;
+            if (image != null) {
+                frm.picture.Image = image;
+            }
+
             this.Invoke((MethodInvoker)delegate {
                 this.Cursor = Cursors.WaitCursor;
                 frm.Show();
@@ -268,8 +287,10 @@ namespace MoneyBin2 {
         #endregion DATABASE ------------------------------------
 
         private void buttonSaveSettings_Click(object sender, EventArgs e) {
-            Settings.Default.BalanceContaPadrao = comboBoxContaPadrao.SelectedIndex;
+            Settings.Default.BalanceContaPadrao = (int)comboBoxBalanceContaPadrao.SelectedValue;
             Settings.Default.BalanceUsarContaPadrao = radioButtonBalanceContaPadrao.Checked;
+            Settings.Default.InvestimentosContaPadrao = (int)comboBoxInvestimentosContaPadrao.SelectedValue;
+            Settings.Default.InvestimentosUsarContaPadrao = radioButtonInvestimentosContaPadrao.Checked;
             Settings.Default.CalendarioPastaPagamentos = labelCalendarioPastaPagamentos.Text;
             Settings.Default.MainBackgroundVisivel = checkBoxBackgroundVisivel.Checked;
             Settings.Default.MainBackgroundRodizio = checkBoxBackgroundRodizio.Checked;

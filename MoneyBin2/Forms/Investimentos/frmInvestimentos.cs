@@ -40,7 +40,8 @@ namespace MoneyBin2 {
 
         private Conta ContaAtual => (Conta)toolStripComboBoxConta.SelectedItem;
 
-        private readonly ToolStripCheckbox _chkShowAll = new ToolStripCheckbox("chkAcoesMostrarZeradas", "Mostrar zeradas", false) {
+        private readonly ToolStripCheckbox _chkShowAll = new ToolStripCheckbox("chkAcoesMostrarZeradas", "Mostrar zeradas", false)
+        {
             Tag = "Ações, Fundos, LCA, Resumo",
             ForeColor = SystemColors.ControlText,
             BackColor = SystemColors.Control
@@ -49,7 +50,8 @@ namespace MoneyBin2 {
         public frmInvestimentos() {
             InitializeComponent();
 
-            _chkShowAll.CheckedChanged += (sender, args) => {
+            _chkShowAll.CheckedChanged += (sender, args) =>
+            {
                 var showAll = ((ToolStripCheckbox)sender).Checked;
                 var sufixo = showAll ? "" : "NaoZerado";
                 bsAcoes.DataMember = "Acoes" + sufixo;
@@ -77,7 +79,7 @@ namespace MoneyBin2 {
             dgvOperacoes.FormatColumn("Valor Real", dgvOperacoes.StyleCurrency, 68);
             dgvOperacoes.FormatColumn("Valor Operação", dgvOperacoes.StyleCurrency, 95);
             dgvOperacoes.FormatColumn("Custos", dgvOperacoes.StyleCurrency, 68);
-            
+
             dgvVendas.FormatColumn("Data", dgvVendas.StyleDateTimeShort, 120);
             dgvVendas.FormatColumn("Antes", dgvVendas.StyleInteger, 75);
             dgvVendas.FormatColumn("Venda", dgvVendas.StyleInteger, 75);
@@ -173,15 +175,17 @@ namespace MoneyBin2 {
             toolStripComboBoxConta.ComboBox.DataSource = _ctx.Contas.ToList(); //bsContas;
             toolStripComboBoxConta.ComboBox.DisplayMember = "Apelido";
             toolStripComboBoxConta.ComboBox.ValueMember = "ID";
-            toolStripComboBoxConta.ComboBox.SelectedItem =
-                _ctx.Contas.Find(Settings.Default.InvestimentosUltimaConta);
+
+            toolStripComboBoxConta.ComboBox.SelectedValue =
+                Settings.Default.InvestimentosUsarContaPadrao
+                    ? Settings.Default.InvestimentosContaPadrao
+                    : Settings.Default.InvestimentosUltimaConta;
 
             GetBalancePath();
 
             _ctx.Operacoes.Local.CollectionChanged += LocalOnCollectionChanged;
             _ctx.FundosMeses.Local.CollectionChanged += LocalOnCollectionChanged;
             _ctx.LCAMeses.Local.CollectionChanged += LocalOnCollectionChanged;
-
         }
 
         private void LocalOnCollectionChanged(object o, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs) {
@@ -189,7 +193,8 @@ namespace MoneyBin2 {
         }
 
         private void frmInvestimentos_FormClosing(object sender, FormClosingEventArgs e) {
-            Settings.Default.InvestimentosUltimaConta = ContaAtual.ID;
+            Settings.Default.InvestimentosUltimaConta = (int)toolStripComboBoxConta.ComboBox.SelectedValue;
+            Settings.Default.Save();
 
             if (!_ctx.ChangeTracker.HasChanges()) {
                 return;
@@ -253,7 +258,8 @@ namespace MoneyBin2 {
         }
 
         private void dgvVendas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
-            var frm = new frmAssociarCompraComVenda {
+            var frm = new frmAssociarCompraComVenda
+            {
                 Saida = (Saida)bsVendas.Current,
                 AcaoAtual = (ContaAtivo)bsAcoes.Current
             };
@@ -262,7 +268,8 @@ namespace MoneyBin2 {
         }
 
         private frmEditarOperacao GetFrmEditarOperacao(Operacao op) {
-            var frm = new frmEditarOperacao {
+            var frm = new frmEditarOperacao
+            {
                 Acoes = ContaAtual.Acoes,
                 Operacao = op,
                 Ctx = _ctx
@@ -436,7 +443,7 @@ namespace MoneyBin2 {
                 .FirstOrDefault(ca => ca.Codigo == op.Codigo) ?? new ContaAtivo() { Conta = ContaAtual, Codigo = op.Codigo };
 
             bsAcoes.Position = bsAcoes.Find("Codigo", acaoAtual.Codigo);
-            
+
             //var row = dgvAcoes.Rows
             //    .Cast<DataGridViewRow>()
             //    .FirstOrDefault(r => r.Cells["Codigo"].Value.ToString().Equals(op.Codigo));
@@ -618,7 +625,7 @@ namespace MoneyBin2 {
             }
 
             var allFiles = new List<string>();
-            foreach (var conta in toolStripComboBoxConta.Items.Cast<Conta>().Where(c=>c.Ativa)) {
+            foreach (var conta in toolStripComboBoxConta.Items.Cast<Conta>().Where(c => c.Ativa)) {
                 //var conta = (Conta)item;
                 var path = $@"{_balancePath}\{conta.Banco.Sigla}\{conta.ContaCorrente}\Fundos {conta.Banco.ExtensaoFundos}";
                 if (Directory.Exists(path)) {

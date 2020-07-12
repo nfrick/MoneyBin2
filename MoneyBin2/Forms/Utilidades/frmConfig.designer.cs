@@ -52,9 +52,13 @@
             this.labelAbrirCom = new System.Windows.Forms.Label();
             this.radioButtonBalanceUltimaConta = new System.Windows.Forms.RadioButton();
             this.radioButtonBalanceContaPadrao = new System.Windows.Forms.RadioButton();
-            this.labelContaPadrao = new System.Windows.Forms.Label();
-            this.comboBoxContaPadrao = new System.Windows.Forms.ComboBox();
+            this.comboBoxBalanceContaPadrao = new System.Windows.Forms.ComboBox();
             this.tabPageDatabase = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radioButtonInvestimentosUltimaConta = new System.Windows.Forms.RadioButton();
+            this.radioButtonInvestimentosContaPadrao = new System.Windows.Forms.RadioButton();
+            this.comboBoxInvestimentosContaPadrao = new System.Windows.Forms.ComboBox();
+            this.groupBoxInvestimentos = new System.Windows.Forms.GroupBox();
             this.tlpDatabaseMain.SuspendLayout();
             this.tlpDatabaseLeftPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -64,6 +68,7 @@
             this.groupBoxCalendario.SuspendLayout();
             this.groupBoxBalance.SuspendLayout();
             this.tabPageDatabase.SuspendLayout();
+            this.groupBoxInvestimentos.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpDatabaseMain
@@ -238,6 +243,7 @@
             // tabPageSettings
             // 
             this.tabPageSettings.BackColor = System.Drawing.Color.Black;
+            this.tabPageSettings.Controls.Add(this.groupBoxInvestimentos);
             this.tabPageSettings.Controls.Add(this.buttonSaveSettings);
             this.tabPageSettings.Controls.Add(this.groupBoxBarraFerramentas);
             this.tabPageSettings.Controls.Add(this.groupBoxBackground);
@@ -371,12 +377,11 @@
             this.groupBoxBalance.Controls.Add(this.labelAbrirCom);
             this.groupBoxBalance.Controls.Add(this.radioButtonBalanceUltimaConta);
             this.groupBoxBalance.Controls.Add(this.radioButtonBalanceContaPadrao);
-            this.groupBoxBalance.Controls.Add(this.labelContaPadrao);
-            this.groupBoxBalance.Controls.Add(this.comboBoxContaPadrao);
+            this.groupBoxBalance.Controls.Add(this.comboBoxBalanceContaPadrao);
             this.groupBoxBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.groupBoxBalance.Location = new System.Drawing.Point(23, 26);
             this.groupBoxBalance.Name = "groupBoxBalance";
-            this.groupBoxBalance.Size = new System.Drawing.Size(350, 190);
+            this.groupBoxBalance.Size = new System.Drawing.Size(229, 190);
             this.groupBoxBalance.TabIndex = 10;
             this.groupBoxBalance.TabStop = false;
             this.groupBoxBalance.Text = "Balance";
@@ -385,7 +390,7 @@
             // 
             this.labelAbrirCom.AutoSize = true;
             this.labelAbrirCom.ForeColor = System.Drawing.Color.White;
-            this.labelAbrirCom.Location = new System.Drawing.Point(27, 98);
+            this.labelAbrirCom.Location = new System.Drawing.Point(23, 47);
             this.labelAbrirCom.Name = "labelAbrirCom";
             this.labelAbrirCom.Size = new System.Drawing.Size(99, 28);
             this.labelAbrirCom.TabIndex = 12;
@@ -395,7 +400,7 @@
             // 
             this.radioButtonBalanceUltimaConta.AutoSize = true;
             this.radioButtonBalanceUltimaConta.ForeColor = System.Drawing.Color.White;
-            this.radioButtonBalanceUltimaConta.Location = new System.Drawing.Point(176, 136);
+            this.radioButtonBalanceUltimaConta.Location = new System.Drawing.Point(35, 130);
             this.radioButtonBalanceUltimaConta.Name = "radioButtonBalanceUltimaConta";
             this.radioButtonBalanceUltimaConta.Size = new System.Drawing.Size(145, 32);
             this.radioButtonBalanceUltimaConta.TabIndex = 11;
@@ -407,31 +412,20 @@
             // 
             this.radioButtonBalanceContaPadrao.AutoSize = true;
             this.radioButtonBalanceContaPadrao.ForeColor = System.Drawing.Color.White;
-            this.radioButtonBalanceContaPadrao.Location = new System.Drawing.Point(176, 98);
+            this.radioButtonBalanceContaPadrao.Location = new System.Drawing.Point(35, 97);
             this.radioButtonBalanceContaPadrao.Name = "radioButtonBalanceContaPadrao";
-            this.radioButtonBalanceContaPadrao.Size = new System.Drawing.Size(153, 32);
+            this.radioButtonBalanceContaPadrao.Size = new System.Drawing.Size(17, 16);
             this.radioButtonBalanceContaPadrao.TabIndex = 10;
             this.radioButtonBalanceContaPadrao.TabStop = true;
-            this.radioButtonBalanceContaPadrao.Text = "Conta padrão";
             this.radioButtonBalanceContaPadrao.UseVisualStyleBackColor = true;
             // 
-            // labelContaPadrao
+            // comboBoxBalanceContaPadrao
             // 
-            this.labelContaPadrao.AutoSize = true;
-            this.labelContaPadrao.ForeColor = System.Drawing.Color.White;
-            this.labelContaPadrao.Location = new System.Drawing.Point(27, 50);
-            this.labelContaPadrao.Name = "labelContaPadrao";
-            this.labelContaPadrao.Size = new System.Drawing.Size(130, 28);
-            this.labelContaPadrao.TabIndex = 0;
-            this.labelContaPadrao.Text = "Conta Padrão";
-            // 
-            // comboBoxContaPadrao
-            // 
-            this.comboBoxContaPadrao.FormattingEnabled = true;
-            this.comboBoxContaPadrao.Location = new System.Drawing.Point(176, 47);
-            this.comboBoxContaPadrao.Name = "comboBoxContaPadrao";
-            this.comboBoxContaPadrao.Size = new System.Drawing.Size(144, 36);
-            this.comboBoxContaPadrao.TabIndex = 9;
+            this.comboBoxBalanceContaPadrao.FormattingEnabled = true;
+            this.comboBoxBalanceContaPadrao.Location = new System.Drawing.Point(58, 88);
+            this.comboBoxBalanceContaPadrao.Name = "comboBoxBalanceContaPadrao";
+            this.comboBoxBalanceContaPadrao.Size = new System.Drawing.Size(144, 36);
+            this.comboBoxBalanceContaPadrao.TabIndex = 9;
             // 
             // tabPageDatabase
             // 
@@ -444,6 +438,61 @@
             this.tabPageDatabase.Size = new System.Drawing.Size(867, 503);
             this.tabPageDatabase.TabIndex = 0;
             this.tabPageDatabase.Text = "Banco de Dados";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(27, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 28);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Abrir com";
+            // 
+            // radioButtonInvestimentosUltimaConta
+            // 
+            this.radioButtonInvestimentosUltimaConta.AutoSize = true;
+            this.radioButtonInvestimentosUltimaConta.ForeColor = System.Drawing.Color.White;
+            this.radioButtonInvestimentosUltimaConta.Location = new System.Drawing.Point(32, 130);
+            this.radioButtonInvestimentosUltimaConta.Name = "radioButtonInvestimentosUltimaConta";
+            this.radioButtonInvestimentosUltimaConta.Size = new System.Drawing.Size(145, 32);
+            this.radioButtonInvestimentosUltimaConta.TabIndex = 15;
+            this.radioButtonInvestimentosUltimaConta.TabStop = true;
+            this.radioButtonInvestimentosUltimaConta.Text = "Última conta";
+            this.radioButtonInvestimentosUltimaConta.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonInvestimentosContaPadrao
+            // 
+            this.radioButtonInvestimentosContaPadrao.AutoSize = true;
+            this.radioButtonInvestimentosContaPadrao.ForeColor = System.Drawing.Color.White;
+            this.radioButtonInvestimentosContaPadrao.Location = new System.Drawing.Point(32, 97);
+            this.radioButtonInvestimentosContaPadrao.Name = "radioButtonInvestimentosContaPadrao";
+            this.radioButtonInvestimentosContaPadrao.Size = new System.Drawing.Size(17, 16);
+            this.radioButtonInvestimentosContaPadrao.TabIndex = 14;
+            this.radioButtonInvestimentosContaPadrao.TabStop = true;
+            this.radioButtonInvestimentosContaPadrao.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxInvestimentosContaPadrao
+            // 
+            this.comboBoxInvestimentosContaPadrao.FormattingEnabled = true;
+            this.comboBoxInvestimentosContaPadrao.Location = new System.Drawing.Point(55, 88);
+            this.comboBoxInvestimentosContaPadrao.Name = "comboBoxInvestimentosContaPadrao";
+            this.comboBoxInvestimentosContaPadrao.Size = new System.Drawing.Size(144, 36);
+            this.comboBoxInvestimentosContaPadrao.TabIndex = 13;
+            // 
+            // groupBoxInvestimentos
+            // 
+            this.groupBoxInvestimentos.Controls.Add(this.label1);
+            this.groupBoxInvestimentos.Controls.Add(this.radioButtonInvestimentosUltimaConta);
+            this.groupBoxInvestimentos.Controls.Add(this.comboBoxInvestimentosContaPadrao);
+            this.groupBoxInvestimentos.Controls.Add(this.radioButtonInvestimentosContaPadrao);
+            this.groupBoxInvestimentos.ForeColor = System.Drawing.Color.Yellow;
+            this.groupBoxInvestimentos.Location = new System.Drawing.Point(268, 26);
+            this.groupBoxInvestimentos.Name = "groupBoxInvestimentos";
+            this.groupBoxInvestimentos.Size = new System.Drawing.Size(229, 190);
+            this.groupBoxInvestimentos.TabIndex = 16;
+            this.groupBoxInvestimentos.TabStop = false;
+            this.groupBoxInvestimentos.Text = "Investimentos";
             // 
             // frmConfig
             // 
@@ -475,6 +524,8 @@
             this.groupBoxBalance.ResumeLayout(false);
             this.groupBoxBalance.PerformLayout();
             this.tabPageDatabase.ResumeLayout(false);
+            this.groupBoxInvestimentos.ResumeLayout(false);
+            this.groupBoxInvestimentos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -496,14 +547,13 @@
         private System.Windows.Forms.TabPage tabPageDatabase;
         private System.Windows.Forms.TabPage tabPageSettings;
         private System.Windows.Forms.Label labelPastaDocumentos;
-        private System.Windows.Forms.Label labelContaPadrao;
         private System.Windows.Forms.GroupBox groupBoxBarraFerramentas;
         private System.Windows.Forms.GroupBox groupBoxBackground;
         private System.Windows.Forms.GroupBox groupBoxCalendario;
         private System.Windows.Forms.GroupBox groupBoxBalance;
         private System.Windows.Forms.RadioButton radioButtonBalanceUltimaConta;
         private System.Windows.Forms.RadioButton radioButtonBalanceContaPadrao;
-        private System.Windows.Forms.ComboBox comboBoxContaPadrao;
+        private System.Windows.Forms.ComboBox comboBoxBalanceContaPadrao;
         private System.Windows.Forms.CheckBox checkBoxBarraFerramentasImagemeTexto;
         private System.Windows.Forms.CheckBox checkBoxBarraFerramentasVisivel;
         private System.Windows.Forms.CheckBox checkBoxBackgroundRodizio;
@@ -511,5 +561,10 @@
         private System.Windows.Forms.Label labelCalendarioPastaPagamentos;
         private System.Windows.Forms.Label labelAbrirCom;
         private System.Windows.Forms.Button buttonSaveSettings;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton radioButtonInvestimentosUltimaConta;
+        private System.Windows.Forms.RadioButton radioButtonInvestimentosContaPadrao;
+        private System.Windows.Forms.ComboBox comboBoxInvestimentosContaPadrao;
+        private System.Windows.Forms.GroupBox groupBoxInvestimentos;
     }
 }

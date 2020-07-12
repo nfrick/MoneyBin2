@@ -163,5 +163,29 @@ namespace MoneyBin2.Properties {
                 return ((string)(this["MoneyBin2_RepServiceNF_ReportingService2005"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int InvestimentosContaPadrao {
+            get {
+                return ((int)(this["InvestimentosContaPadrao"]));
+            }
+            set {
+                this["InvestimentosContaPadrao"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool InvestimentosUsarContaPadrao {
+            get {
+                return ((bool)(this["InvestimentosUsarContaPadrao"]));
+            }
+            set {
+                this["InvestimentosUsarContaPadrao"] = value;
+            }
+        }
     }
 }

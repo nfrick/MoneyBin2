@@ -336,7 +336,7 @@ namespace Cotacoes {
         }
 
         private void ReportProgress(object sender, ProgressUpdate e) {
-            toolStripProgressBar1.Value = e.PercentageDone;
+            //toolStripProgressBar1.Value = e.PercentageDone;
         }
 
         public static async Task<string> AtualizarCotacoes(ObservableListSource<ContaAtivo> ativos,
@@ -417,6 +417,9 @@ namespace Cotacoes {
             AtualizarGrafico();
         }
 
+        private void dgvCotacoes_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+
+        }
         #endregion DATAGRIDVIEW
 
         private void chart1_MouseMove(object sender, MouseEventArgs e) {
@@ -442,9 +445,6 @@ namespace Cotacoes {
             }
         }
 
-        private void dgvCotacoes_DataError(object sender, DataGridViewDataErrorEventArgs e) {
-
-        }
     }
 
     public class ProgressUpdate {
