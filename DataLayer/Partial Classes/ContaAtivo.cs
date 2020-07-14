@@ -10,7 +10,7 @@ namespace DataLayer {
         #region CONTAATIVO
 
         public override string ToString() => $"ContaID: {ContaId}  Código: {Codigo}";
-        
+
         public decimal UltimoPreco => Ativo.AtivoUltimoPreco.PrecoUltimo;
 
         public DateTime UltimoPrecoData => Ativo.AtivoUltimoPreco.Data;
@@ -98,11 +98,12 @@ namespace DataLayer {
             using (var web = new WebClient()) {
                 try {
                     AlphaVantage cotacao;
+                    var i = 0;
                     do {
                         var json = web.DownloadString(request);
                         cotacao = JsonConvert.DeserializeObject<AlphaVantage>(json);
-                    } while (cotacao.MetaData == null);
-                    return cotacao;
+                    } while (cotacao.NoData && ++i < 10);
+                    return cotacao.NoData ? null : cotacao;
                 }
                 catch (System.Net.WebException ex) {
                     Console.WriteLine(ex.Message);

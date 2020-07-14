@@ -22,6 +22,8 @@ namespace DataLayer {
             var timeUTC = TimeZoneInfo.ConvertTimeToUtc(easternTime, easternZone);
             return timeUTC.ToLocalTime();
         }
+
+        public bool NoData => MetaData == null;
     }
 
     public class Header {
