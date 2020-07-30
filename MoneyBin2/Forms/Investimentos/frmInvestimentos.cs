@@ -2,6 +2,9 @@
 using DataLayer;
 using IEnumerableExtensions;
 using MoneyBin2.Properties;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using OfficeOpenXml.Table;
 using SuperPrompt;
 using System;
 using System.Collections;
@@ -60,6 +63,12 @@ namespace MoneyBin2 {
                 UpdateResumo();
             };
             toolStripMenu.Items.Insert(3, _chkShowAll);
+
+            SFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); ;
+            SFD.DefaultExt = "xlsx";
+            SFD.Filter = @"Excel Files|*.xlsx";
+            SFD.CheckFileExists = false;
+            SFD.OverwritePrompt = true;
         }
 
         #region FORM --------------------------------------------
@@ -657,6 +666,73 @@ namespace MoneyBin2 {
             sb.AppendFormat("TOTAL\t\t{0}", labelIRTotal.Text);
             Clipboard.SetText(sb.ToString());
         }
+
+        private void toolStripButtonExportar_Click(object sender, EventArgs e) {
+            SFD.FileName = $"Fundos conta {ContaAtual.Apelido}";
+            if (SFD.ShowDialog() == DialogResult.Cancel) {
+                return;
+            }
+
+            var pck = new ExcelPackage(new FileInfo(SFD.FileName));
+
+            var source = _chkShowAll.Checked ? ContaAtual.Fundos : ContaAtual.FundosNaoZerado;
+            foreach (var fundo in source) {
+                CriaPlanilha(pck, fundo);
+            }
+        }
+
+        private void CriaPlanilha(ExcelPackage pck, ContaFundo fundo) {
+            var ws = pck.Workbook.Worksheets.FirstOrDefault(s => s.Name == fundo.FundoApelido);
+            if (ws != null) {
+                pck.Workbook.Worksheets.Delete(fundo.FundoApelido);
+            }
+
+            ws = pck.Workbook.Worksheets.Add(fundo.FundoApelido);
+            ws.View.ShowGridLines = false;
+
+            var col = 1;
+            foreach (var column in dgvContasMeses.Columns.Cast<DataGridViewColumn>()) {
+                ws.Cells[1, col++].Value = column.HeaderText;
+            }
+
+            var row = 2;
+            foreach (var contaMes in fundo.ContasMeses) {
+                col = 1;
+                ws.Cells[row, col++].Value = contaMes.Mes;
+                ws.Cells[row, col++].Value = contaMes.Saldo;
+                ws.Cells[row, col++].Value = contaMes.CotaQtd;
+                ws.Cells[row, col++].Value = contaMes.CotaValor;
+                ws.Cells[row, col++].Value = contaMes.RendimentoBruto;
+                ws.Cells[row, col++].Value = contaMes.ImpostoRenda;
+                ws.Cells[row, col++].Value = contaMes.IOF;
+                ws.Cells[row, col++].Value = contaMes.RendimentoLiquido;
+                ws.Cells[row, col++].Value = contaMes.RendimentoMes / 100;
+                ws.Cells[row, col++].Value = contaMes.RendimentoAno / 100;
+                ws.Cells[row++, col++].Value = contaMes.Rendimento12Meses / 100;
+            }
+
+            row--;
+            col--;
+            ws.Cells[$"A2:A{row}"].Style.Numberformat.Format = "MMM-yyyy";
+            ws.Cells[$"A2:A{row}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+            ws.Cells[$"B2:B{row}"].Style.Numberformat.Format = "#,##0.00";
+            ws.Cells[$"C2:D{row}"].Style.Numberformat.Format = "#,##0.0000";
+            ws.Cells[$"E2:H{row}"].Style.Numberformat.Format = "#,##0.00";
+            ws.Cells[$"I2:K{row}"].Style.Numberformat.Format = "0.000%";
+            ws.Cells.AutoFitColumns(0);
+
+            var range = ws.Cells[1, 1, row, col];
+            var table = ws.Tables.Add(range, $"table{fundo.FundoApelido.Replace(' ', '_')}");
+            table.ShowTotal = true;
+            table.TableStyle = TableStyles.Light1;
+
+            ws.Column(6).Hidden = !fundo.ContasMeses.Any(c => c.ImpostoRenda != 0);
+            ws.Column(7).Hidden = !fundo.ContasMeses.Any(c => c.IOF != 0);
+            ws.View.FreezePanes(2, 1);
+
+            pck.Save();
+        }
+
         #endregion TOOLSTRIP -----------------------------------------------
 
         #region LEITURA DE EXTRATO --------------------------------------------

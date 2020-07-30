@@ -38,9 +38,6 @@
             this.groupBoxCriteria = new System.Windows.Forms.GroupBox();
             this.checkBoxGruposTodos = new System.Windows.Forms.CheckBox();
             this.dgvContas = new System.Windows.Forms.DataGridView();
-            this.selecionadaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.apelidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edsExport = new EFWinforms.EntityDataSource(this.components);
             this.checkBoxAfetaSaldo = new System.Windows.Forms.CheckBox();
             this.labelContas = new System.Windows.Forms.Label();
             this.checkedListBoxGrupos = new System.Windows.Forms.CheckedListBox();
@@ -49,9 +46,13 @@
             this.labelDataInicio = new System.Windows.Forms.Label();
             this.dtpTermino = new System.Windows.Forms.DateTimePicker();
             this.dtpInicio = new System.Windows.Forms.DateTimePicker();
+            this.bsContas = new System.Windows.Forms.BindingSource(this.components);
+            this.selecionadaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.apelidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBoxCriteria.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsContas)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonExport
@@ -222,8 +223,7 @@
             this.dgvContas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.selecionadaDataGridViewCheckBoxColumn,
             this.apelidoDataGridViewTextBoxColumn});
-            this.dgvContas.DataMember = "Contas";
-            this.dgvContas.DataSource = this.edsExport;
+            this.dgvContas.DataSource = this.bsContas;
             this.dgvContas.Location = new System.Drawing.Point(24, 55);
             this.dgvContas.Name = "dgvContas";
             this.dgvContas.RowHeadersVisible = false;
@@ -235,24 +235,6 @@
             this.dgvContas.TabIndex = 17;
             this.dgvContas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContas_CellEndEdit);
             // 
-            // selecionadaDataGridViewCheckBoxColumn
-            // 
-            this.selecionadaDataGridViewCheckBoxColumn.DataPropertyName = "Selecionada";
-            this.selecionadaDataGridViewCheckBoxColumn.HeaderText = "";
-            this.selecionadaDataGridViewCheckBoxColumn.Name = "selecionadaDataGridViewCheckBoxColumn";
-            this.selecionadaDataGridViewCheckBoxColumn.Width = 50;
-            // 
-            // apelidoDataGridViewTextBoxColumn
-            // 
-            this.apelidoDataGridViewTextBoxColumn.DataPropertyName = "Apelido";
-            this.apelidoDataGridViewTextBoxColumn.HeaderText = "Apelido";
-            this.apelidoDataGridViewTextBoxColumn.Name = "apelidoDataGridViewTextBoxColumn";
-            this.apelidoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // edsExport
-            // 
-            this.edsExport.DbContextType = typeof(DataLayer.MoneyBinEntities);
-            // 
             // checkBoxAfetaSaldo
             // 
             this.checkBoxAfetaSaldo.AutoSize = true;
@@ -262,7 +244,7 @@
             this.checkBoxAfetaSaldo.Name = "checkBoxAfetaSaldo";
             this.checkBoxAfetaSaldo.Size = new System.Drawing.Size(331, 27);
             this.checkBoxAfetaSaldo.TabIndex = 8;
-            this.checkBoxAfetaSaldo.Text = "Incluir apenas itens que afetem o saldo";
+            this.checkBoxAfetaSaldo.Text = "Incluir apenas itens que afetam o saldo";
             this.checkBoxAfetaSaldo.UseVisualStyleBackColor = true;
             this.checkBoxAfetaSaldo.CheckedChanged += new System.EventHandler(this.checkBoxAfetaSaldo_CheckedChanged);
             // 
@@ -339,12 +321,30 @@
             this.dtpInicio.TabIndex = 0;
             this.dtpInicio.ValueChanged += new System.EventHandler(this.dtpickers_ValueChanged);
             // 
+            // bsContas
+            // 
+            this.bsContas.DataSource = typeof(DataLayer.Conta);
+            // 
+            // selecionadaDataGridViewCheckBoxColumn
+            // 
+            this.selecionadaDataGridViewCheckBoxColumn.DataPropertyName = "Selecionada";
+            this.selecionadaDataGridViewCheckBoxColumn.HeaderText = "Selecionada";
+            this.selecionadaDataGridViewCheckBoxColumn.Name = "selecionadaDataGridViewCheckBoxColumn";
+            this.selecionadaDataGridViewCheckBoxColumn.Width = 30;
+            // 
+            // apelidoDataGridViewTextBoxColumn
+            // 
+            this.apelidoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.apelidoDataGridViewTextBoxColumn.DataPropertyName = "Apelido";
+            this.apelidoDataGridViewTextBoxColumn.HeaderText = "Apelido";
+            this.apelidoDataGridViewTextBoxColumn.Name = "apelidoDataGridViewTextBoxColumn";
+            // 
             // frmExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(564, 536);
+            this.ClientSize = new System.Drawing.Size(563, 528);
             this.Controls.Add(this.groupBoxCriteria);
             this.Controls.Add(this.buttonSair);
             this.Controls.Add(this.groupBox1);
@@ -366,6 +366,7 @@
             this.groupBoxCriteria.ResumeLayout(false);
             this.groupBoxCriteria.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsContas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -389,10 +390,10 @@
         private System.Windows.Forms.Label labelContas;
         private System.Windows.Forms.CheckBox checkBoxAfetaSaldo;
         private System.Windows.Forms.DataGridView dgvContas;
-        private EFWinforms.EntityDataSource edsExport;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn selecionadaDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apelidoDataGridViewTextBoxColumn;
         private System.Windows.Forms.CheckBox checkBoxGruposTodos;
         private System.Windows.Forms.RadioButton radioButtonExcel2;
+        private System.Windows.Forms.BindingSource bsContas;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn selecionadaDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apelidoDataGridViewTextBoxColumn;
     }
 }

@@ -225,6 +225,7 @@ namespace MoneyBin2 {
             this.toolStripButtonLerExtrato = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonLerExtratosMes = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonExportar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonPath = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -240,6 +241,7 @@ namespace MoneyBin2 {
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
+            this.SFD = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.bsOperacoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAcoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsContas)).BeginInit();
@@ -2030,6 +2032,7 @@ namespace MoneyBin2 {
             this.toolStripButtonLerExtrato,
             this.toolStripSeparator1,
             this.toolStripButtonLerExtratosMes,
+            this.toolStripButtonExportar,
             this.toolStripSeparator2,
             this.toolStripButtonPath,
             this.toolStripSeparator3,
@@ -2038,7 +2041,7 @@ namespace MoneyBin2 {
             this.toolStripButtonCopyToClipboard});
             this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(526, 28);
+            this.toolStripMenu.Size = new System.Drawing.Size(1295, 28);
             this.toolStripMenu.TabIndex = 0;
             // 
             // toolStripLabel1
@@ -2160,6 +2163,19 @@ namespace MoneyBin2 {
             this.toolStripButtonLerExtratosMes.ToolTipText = "Para cada conta, ler todos os extratos de um mês";
             this.toolStripButtonLerExtratosMes.Visible = false;
             this.toolStripButtonLerExtratosMes.Click += new System.EventHandler(this.toolStripButtonLerExtratosMes_Click);
+            // 
+            // toolStripButtonExportar
+            // 
+            this.toolStripButtonExportar.BackColor = System.Drawing.Color.Silver;
+            this.toolStripButtonExportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonExportar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonExportar.Image")));
+            this.toolStripButtonExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonExportar.Name = "toolStripButtonExportar";
+            this.toolStripButtonExportar.Size = new System.Drawing.Size(69, 25);
+            this.toolStripButtonExportar.Tag = "Fundos";
+            this.toolStripButtonExportar.Text = "Exportar";
+            this.toolStripButtonExportar.Visible = false;
+            this.toolStripButtonExportar.Click += new System.EventHandler(this.toolStripButtonExportar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -2543,6 +2559,8 @@ namespace MoneyBin2 {
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorMedioCompraReal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lucro;
         private System.Windows.Forms.DataGridViewTextBoxColumn LucroReal;
+        private System.Windows.Forms.ToolStripButton toolStripButtonExportar;
+        private System.Windows.Forms.SaveFileDialog SFD;
     }
 }
 

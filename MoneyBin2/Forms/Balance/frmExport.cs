@@ -4,6 +4,7 @@ using OfficeOpenXml.Table;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,11 @@ namespace MoneyBin2 {
         private readonly string _oneDriveFolder = Environment.GetEnvironmentVariable("ONEDRIVE");
         private readonly DateTime _lastExportDate = Properties.Settings.Default.ExportacaoUltimaData;
 
-        private IEnumerable<Conta> ContasSelecionadas => edsExport.DbContext.Set<Conta>().Local.Where(c => c.Selecionada);
+        //private IEnumerable<Conta> ContasSelecionadas => edsExport.DbContext.Set<Conta>().Local.Where(c => c.Selecionada);
+        private IEnumerable<Conta> ContasSelecionadas =>
+            dgvContas.Rows.Cast<DataGridViewRow>()
+            .Select(r => (Conta) r.DataBoundItem).Where(c => c.Selecionada);
+
         private IEnumerable<BalanceItem> ItensSelecionados =>
             checkBoxGruposTodos.Checked ?
                 ContasSelecionadas.SelectMany(c => c.BalanceFiltrado(dtpInicio.Value, dtpTermino.Value, checkBoxAfetaSaldo.Checked)) :
@@ -34,6 +39,9 @@ namespace MoneyBin2 {
         }
 
         private void frmExport_Load(object sender, EventArgs e) {
+            _ctx.Contas.Load();
+            bsContas.DataSource = _ctx.Contas.Local.ToBindingList();
+
             _saveAs = $@"{_myDocsFolder}\Money Bin Export.csv";
             radioButtonCSV.Checked = true;
             dgvContas.Sort(dgvContas.Columns[1], ListSortDirection.Ascending);
@@ -196,7 +204,8 @@ namespace MoneyBin2 {
             var itens = ItensSelecionados;
             var progressDialog = new frmProgressBar();
             var backgroundThread = new Thread(
-                () => {
+                () =>
+                {
                     progressDialog.Maximum = itens.Count();
                     progressDialog.UpdateProgress("Exportando \u2026");
                     var sw = new StreamWriter(_saveAs, false, Encoding.Default);
