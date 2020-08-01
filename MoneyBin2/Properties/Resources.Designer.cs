@@ -123,6 +123,16 @@ namespace MoneyBin2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clipboard {
+            get {
+                object obj = ResourceManager.GetObject("clipboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Config {
             get {
                 object obj = ResourceManager.GetObject("Config", resourceCulture);
@@ -273,6 +283,16 @@ namespace MoneyBin2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Pasta {
+            get {
+                object obj = ResourceManager.GetObject("Pasta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Pula_24 {
             get {
                 object obj = ResourceManager.GetObject("Pula_24", resourceCulture);
@@ -316,6 +336,16 @@ namespace MoneyBin2.Properties {
         internal static System.Drawing.Bitmap Revert_24 {
             get {
                 object obj = ResourceManager.GetObject("Revert_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Scale {
+            get {
+                object obj = ResourceManager.GetObject("Scale", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

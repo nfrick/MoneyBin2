@@ -501,6 +501,9 @@
     <None Include="Resources\dollar-icon.png" />
     <None Include="Resources\dollar48.png" />
     <None Include="Resources\SerieHistorica48.png" />
+    <None Include="Resources\Pasta.png" />
+    <None Include="Resources\Scale.png" />
+    <None Include="Resources\clipboard.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

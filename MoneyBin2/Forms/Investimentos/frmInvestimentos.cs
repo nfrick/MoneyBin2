@@ -131,8 +131,9 @@ namespace MoneyBin2 {
 
             // LCA
             dgvLCAs.Columns[0].Width = 70;
-            dgvLCAs.FormatColumn("Aplic.", dgvLCAs.StyleDateShort, 70);
-            dgvLCAs.FormatColumn("Venc.", dgvLCAs.StyleDateShort, 70);
+            dgvLCAs.FormatColumn("Número", null, 70);
+            dgvLCAs.FormatColumn("Aplic.", dgvLCAs.StyleDateShort, 69);
+            dgvLCAs.FormatColumn("Venc.", dgvLCAs.StyleDateShort, 69);
             dgvLCAs.FormatColumn("Taxa", dgvLCAs.StyleCurrency, 50);
             dgvLCAs.FormatColumn("Valor Emissão", dgvLCAs.StyleCurrency, 80);
             dgvLCAs.FormatColumn("Saldo", dgvLCAs.StyleCurrency, 70);
