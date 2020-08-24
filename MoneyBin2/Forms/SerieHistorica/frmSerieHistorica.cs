@@ -36,6 +36,12 @@ namespace MoneyBin2 {
             InitializeComponent();
 
             dgvAtivos.SetFont(12);
+
+            dgvSelecionados.FormatColumn("Código", null, 55);
+            dgvSelecionados.FormatColumn("Min", dgvSelecionados.StyleCurrency, 45);
+            dgvSelecionados.FormatColumn("Max", dgvSelecionados.StyleCurrency, 45);
+            dgvSelecionados.FormatColumn("Var", dgvSelecionados.StylePercent1, 55);
+            
             dgvSerieHistorica.SetFont(12);
             dgvSerieHistorica.FormatColumn("Data", dgvSerieHistorica.StyleDateLong, 100);
             dgvSerieHistorica.FormatColumn("Abertura", dgvSerieHistorica.StyleCurrency, 70);
@@ -95,6 +101,7 @@ namespace MoneyBin2 {
                 AtivoAtual.Codigo, _dtpickerInicio.Value, _dtpickerTermino.Value).ToObservableListSource();
             }
             bsSerieHistorica.DataSource = AtivoAtual.Cotacoes.ToBindingList();
+            bsSelecionados.DataSource = AtivosSelecionados.ToList();
             dgvSerieHistorica.Columns[0].Visible = false;
             GerarGrafico(this.chart);
         }
@@ -200,7 +207,7 @@ namespace MoneyBin2 {
             }
 
             ch.Series.Clear();
-            foreach (var ativo in AtivosSelecionados.Where(a => a.Cotacoes.Any())) {
+            foreach (var ativo in AtivosSelecionados.Where(a => a.TemCotacoes)) {
                 var serie = ch.Series.Add(ativo.Codigo);
                 serie.ChartType = SeriesChartType.Line;
                 foreach (var s in ativo.Cotacoes) {

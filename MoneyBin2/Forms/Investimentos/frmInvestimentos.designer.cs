@@ -95,6 +95,7 @@ namespace MoneyBin2 {
             this.dgvVendas = new SuperGrid.SuperDGV();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtdAntes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtdAcumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,71 +105,10 @@ namespace MoneyBin2 {
             this.ValorMedioCompraReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lucro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LucroReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvOperacoes = new SuperGrid.SuperDGV();
-            this.CustoOperacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvAcoes = new SuperGrid.SuperDGV();
-            this.UltimoPreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageFundos = new System.Windows.Forms.TabPage();
-            this.tlpFundos = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvMovimentos = new SuperGrid.SuperDGV();
-            this.dgvFundos = new SuperGrid.SuperDGV();
-            this.dgvContasMeses = new SuperGrid.SuperDGV();
-            this.tabPageLCA = new System.Windows.Forms.TabPage();
-            this.tlpLCA = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvLCAMeses = new SuperGrid.SuperDGV();
-            this.Mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Aplicacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Resgates = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IOF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RendimentoMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tlpLCATop = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvLCAMovimentos = new SuperGrid.SuperDGV();
-            this.dgvLCAs = new SuperGrid.SuperDGV();
-            this.tabPageResumo = new System.Windows.Forms.TabPage();
-            this.tlpResumo = new System.Windows.Forms.TableLayoutPanel();
-            this.chartResumoAcoes = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartResumoFundos = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartResumoTotal = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvResumoFundos = new SuperGrid.SuperDGV();
-            this.labelResumoFundos = new System.Windows.Forms.Label();
-            this.tlpResumoColumn0 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvResumoAcoes = new SuperGrid.SuperDGV();
-            this.labelResumoAcoes = new System.Windows.Forms.Label();
-            this.tabImpostoRenda = new System.Windows.Forms.TabPage();
-            this.labelIRTotal = new System.Windows.Forms.Label();
-            this.nupIR_Ano = new System.Windows.Forms.NumericUpDown();
-            this.dgvImpostoRenda = new SuperGrid.SuperDGV();
-            this.toolStripMenu = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBoxConta = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparatorSalvar = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabelLendoExtrato = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.SaldoAtual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RendimentoBruto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ImpostoRenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RendimentoLiquido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.SFD = new System.Windows.Forms.SaveFileDialog();
-            this.dataGridViewTextBoxColumn51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsVendas = new System.Windows.Forms.BindingSource(this.components);
             this.bsAcoes = new System.Windows.Forms.BindingSource(this.components);
             this.bsContas = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvOperacoes = new SuperGrid.SuperDGV();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdComSinalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -176,9 +116,17 @@ namespace MoneyBin2 {
             this.valorRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorOperacaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustoOperacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsOperacoes = new System.Windows.Forms.BindingSource(this.components);
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvAcoes = new SuperGrid.SuperDGV();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UltimoPreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageFundos = new System.Windows.Forms.TabPage();
+            this.tlpFundos = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvMovimentos = new SuperGrid.SuperDGV();
             this.dataDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.historicoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -189,9 +137,11 @@ namespace MoneyBin2 {
             this.bsMovimentos = new System.Windows.Forms.BindingSource(this.components);
             this.bsContasMeses = new System.Windows.Forms.BindingSource(this.components);
             this.bsFundos = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvFundos = new SuperGrid.SuperDGV();
             this.fundoNomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rendimentoLiquidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvContasMeses = new SuperGrid.SuperDGV();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -203,9 +153,22 @@ namespace MoneyBin2 {
             this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageLCA = new System.Windows.Forms.TabPage();
+            this.tlpLCA = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvLCAMeses = new SuperGrid.SuperDGV();
+            this.Mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aplicacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Resgates = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IOF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RendimentoMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsLCAMeses = new System.Windows.Forms.BindingSource(this.components);
             this.bsLCAs = new System.Windows.Forms.BindingSource(this.components);
+            this.tlpLCATop = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvLCAMovimentos = new SuperGrid.SuperDGV();
             this.dataDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.historicoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.impostoRendaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -213,26 +176,7 @@ namespace MoneyBin2 {
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsLCAMovimentos = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsResumoFundos = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsResumoAcoes = new System.Windows.Forms.BindingSource(this.components);
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsImpostoRenda = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStripButtonNovaOperacao = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSalvar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonDesfazer = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonBalanco = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLerExtrato = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLerExtratosMes = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonExportar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPath = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonCopyToClipboard = new System.Windows.Forms.ToolStripButton();
+            this.dgvLCAs = new SuperGrid.SuperDGV();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -242,6 +186,62 @@ namespace MoneyBin2 {
             this.RendimentoPercentual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RendimentoMensal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageResumo = new System.Windows.Forms.TabPage();
+            this.tlpResumo = new System.Windows.Forms.TableLayoutPanel();
+            this.chartResumoAcoes = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartResumoFundos = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartResumoTotal = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvResumoFundos = new SuperGrid.SuperDGV();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsResumoFundos = new System.Windows.Forms.BindingSource(this.components);
+            this.labelResumoFundos = new System.Windows.Forms.Label();
+            this.tlpResumoColumn0 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvResumoAcoes = new SuperGrid.SuperDGV();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsResumoAcoes = new System.Windows.Forms.BindingSource(this.components);
+            this.labelResumoAcoes = new System.Windows.Forms.Label();
+            this.tabImpostoRenda = new System.Windows.Forms.TabPage();
+            this.labelIRTotal = new System.Windows.Forms.Label();
+            this.nupIR_Ano = new System.Windows.Forms.NumericUpDown();
+            this.dgvImpostoRenda = new SuperGrid.SuperDGV();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsImpostoRenda = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripMenu = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripComboBoxConta = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSpace1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonNovaOperacao = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparatorSalvar = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonSalvar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDesfazer = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSpace2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonBalanco = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonLerExtrato = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonLerExtratosMes = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonExportar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonPath = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabelLendoExtrato = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripButtonCopyToClipboard = new System.Windows.Forms.ToolStripButton();
+            this.SaldoAtual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RendimentoBruto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImpostoRenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RendimentoLiquido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OFD = new System.Windows.Forms.OpenFileDialog();
+            this.SFD = new System.Windows.Forms.SaveFileDialog();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -249,19 +249,29 @@ namespace MoneyBin2 {
             this.tabPageAcoes.SuspendLayout();
             this.tlpAcoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsVendas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsAcoes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsContas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperacoes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsOperacoes)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAcoes)).BeginInit();
             this.tabPageFundos.SuspendLayout();
             this.tlpFundos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimentos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsMovimentos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsContasMeses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsFundos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFundos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContasMeses)).BeginInit();
             this.tabPageLCA.SuspendLayout();
             this.tlpLCA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMeses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsLCAMeses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsLCAs)).BeginInit();
             this.tlpLCATop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMovimentos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsLCAMovimentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAs)).BeginInit();
             this.tabPageResumo.SuspendLayout();
             this.tlpResumo.SuspendLayout();
@@ -270,25 +280,15 @@ namespace MoneyBin2 {
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoTotal)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoFundos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsResumoFundos)).BeginInit();
             this.tlpResumoColumn0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsResumoAcoes)).BeginInit();
             this.tabImpostoRenda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupIR_Ano)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImpostoRenda)).BeginInit();
-            this.toolStripMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsVendas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsAcoes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsContas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsOperacoes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsMovimentos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsContasMeses)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsFundos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsLCAMeses)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsLCAs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsLCAMovimentos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsResumoFundos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsResumoAcoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsImpostoRenda)).BeginInit();
+            this.toolStripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // Column1
@@ -455,6 +455,13 @@ namespace MoneyBin2 {
             this.QtdAntes.Name = "QtdAntes";
             this.QtdAntes.ReadOnly = true;
             // 
+            // dataGridViewTextBoxColumn51
+            // 
+            this.dataGridViewTextBoxColumn51.DataPropertyName = "Qtd";
+            this.dataGridViewTextBoxColumn51.HeaderText = "Venda";
+            this.dataGridViewTextBoxColumn51.Name = "dataGridViewTextBoxColumn51";
+            this.dataGridViewTextBoxColumn51.ReadOnly = true;
+            // 
             // QtdAcumulada
             // 
             this.QtdAcumulada.DataPropertyName = "QtdAcumulada";
@@ -518,6 +525,22 @@ namespace MoneyBin2 {
             this.LucroReal.Name = "LucroReal";
             this.LucroReal.ReadOnly = true;
             // 
+            // bsVendas
+            // 
+            this.bsVendas.DataMember = "Saidas";
+            this.bsVendas.DataSource = this.bsAcoes;
+            this.bsVendas.Sort = "Data DESC";
+            // 
+            // bsAcoes
+            // 
+            this.bsAcoes.DataMember = "AcoesNaoZerado";
+            this.bsAcoes.DataSource = this.bsContas;
+            this.bsAcoes.Sort = "Codigo ASC";
+            // 
+            // bsContas
+            // 
+            this.bsContas.DataSource = typeof(DataLayer.Conta);
+            // 
             // dgvOperacoes
             // 
             this.dgvOperacoes.AllowUserToAddRows = false;
@@ -579,12 +602,67 @@ namespace MoneyBin2 {
             this.dgvOperacoes.Tag = "2";
             this.dgvOperacoes.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOperacoes_CellMouseDoubleClick);
             // 
+            // dataDataGridViewTextBoxColumn
+            // 
+            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tipoDataGridViewTextBoxColumn
+            // 
+            this.tipoDataGridViewTextBoxColumn.DataPropertyName = "Tipo";
+            this.tipoDataGridViewTextBoxColumn.HeaderText = "Operação";
+            this.tipoDataGridViewTextBoxColumn.Name = "tipoDataGridViewTextBoxColumn";
+            this.tipoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdComSinalDataGridViewTextBoxColumn
+            // 
+            this.qtdComSinalDataGridViewTextBoxColumn.DataPropertyName = "QtdComSinal";
+            this.qtdComSinalDataGridViewTextBoxColumn.HeaderText = "Qtd";
+            this.qtdComSinalDataGridViewTextBoxColumn.Name = "qtdComSinalDataGridViewTextBoxColumn";
+            this.qtdComSinalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdAcumuladaDataGridViewTextBoxColumn
+            // 
+            this.qtdAcumuladaDataGridViewTextBoxColumn.DataPropertyName = "QtdAcumulada";
+            this.qtdAcumuladaDataGridViewTextBoxColumn.HeaderText = "Acum.";
+            this.qtdAcumuladaDataGridViewTextBoxColumn.Name = "qtdAcumuladaDataGridViewTextBoxColumn";
+            this.qtdAcumuladaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorRealDataGridViewTextBoxColumn
+            // 
+            this.valorRealDataGridViewTextBoxColumn.DataPropertyName = "ValorReal";
+            this.valorRealDataGridViewTextBoxColumn.HeaderText = "Valor Real";
+            this.valorRealDataGridViewTextBoxColumn.Name = "valorRealDataGridViewTextBoxColumn";
+            this.valorRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorDataGridViewTextBoxColumn1
+            // 
+            this.valorDataGridViewTextBoxColumn1.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn1.HeaderText = "Valor Nominal";
+            this.valorDataGridViewTextBoxColumn1.Name = "valorDataGridViewTextBoxColumn1";
+            this.valorDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // valorOperacaoDataGridViewTextBoxColumn
+            // 
+            this.valorOperacaoDataGridViewTextBoxColumn.DataPropertyName = "ValorOperacao";
+            this.valorOperacaoDataGridViewTextBoxColumn.HeaderText = "Valor Operação";
+            this.valorOperacaoDataGridViewTextBoxColumn.Name = "valorOperacaoDataGridViewTextBoxColumn";
+            this.valorOperacaoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // CustoOperacao
             // 
             this.CustoOperacao.DataPropertyName = "CustoOperacao";
             this.CustoOperacao.HeaderText = "Custos";
             this.CustoOperacao.Name = "CustoOperacao";
             this.CustoOperacao.ReadOnly = true;
+            // 
+            // bsOperacoes
+            // 
+            this.bsOperacoes.DataMember = "Operacoes";
+            this.bsOperacoes.DataSource = this.bsAcoes;
+            this.bsOperacoes.Sort = "Data DESC";
             // 
             // tableLayoutPanel3
             // 
@@ -656,6 +734,20 @@ namespace MoneyBin2 {
             this.dgvAcoes.Size = new System.Drawing.Size(403, 268);
             this.dgvAcoes.TabIndex = 0;
             // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "Codigo";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Código";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            this.dataGridViewTextBoxColumn27.DataPropertyName = "Qtd";
+            this.dataGridViewTextBoxColumn27.HeaderText = "Qtd";
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            this.dataGridViewTextBoxColumn27.ReadOnly = true;
+            // 
             // UltimoPreco
             // 
             this.UltimoPreco.DataPropertyName = "UltimoPreco";
@@ -678,7 +770,7 @@ namespace MoneyBin2 {
             this.tabPageFundos.Location = new System.Drawing.Point(4, 32);
             this.tabPageFundos.Name = "tabPageFundos";
             this.tabPageFundos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFundos.Size = new System.Drawing.Size(1311, 566);
+            this.tabPageFundos.Size = new System.Drawing.Size(1311, 562);
             this.tabPageFundos.TabIndex = 1;
             this.tabPageFundos.Text = "Fundos";
             // 
@@ -696,7 +788,7 @@ namespace MoneyBin2 {
             this.tlpFundos.RowCount = 2;
             this.tlpFundos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpFundos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpFundos.Size = new System.Drawing.Size(1305, 560);
+            this.tlpFundos.Size = new System.Drawing.Size(1305, 556);
             this.tlpFundos.TabIndex = 3;
             // 
             // dgvMovimentos
@@ -757,8 +849,75 @@ namespace MoneyBin2 {
             this.dgvMovimentos.RowHeadersWidth = 20;
             this.dgvMovimentos.RowTemplate.Height = 24;
             this.dgvMovimentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMovimentos.Size = new System.Drawing.Size(769, 274);
+            this.dgvMovimentos.Size = new System.Drawing.Size(769, 272);
             this.dgvMovimentos.TabIndex = 2;
+            // 
+            // dataDataGridViewTextBoxColumn1
+            // 
+            this.dataDataGridViewTextBoxColumn1.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn1.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn1.Name = "dataDataGridViewTextBoxColumn1";
+            this.dataDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // historicoDataGridViewTextBoxColumn
+            // 
+            this.historicoDataGridViewTextBoxColumn.DataPropertyName = "Historico";
+            this.historicoDataGridViewTextBoxColumn.HeaderText = "Histórico";
+            this.historicoDataGridViewTextBoxColumn.Name = "historicoDataGridViewTextBoxColumn";
+            this.historicoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorDataGridViewTextBoxColumn2
+            // 
+            this.valorDataGridViewTextBoxColumn2.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn2.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn2.Name = "valorDataGridViewTextBoxColumn2";
+            this.valorDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // impostoRendaDataGridViewTextBoxColumn
+            // 
+            this.impostoRendaDataGridViewTextBoxColumn.DataPropertyName = "ImpostoRenda";
+            this.impostoRendaDataGridViewTextBoxColumn.HeaderText = "I.R.";
+            this.impostoRendaDataGridViewTextBoxColumn.Name = "impostoRendaDataGridViewTextBoxColumn";
+            this.impostoRendaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iOFDataGridViewTextBoxColumn
+            // 
+            this.iOFDataGridViewTextBoxColumn.DataPropertyName = "IOF";
+            this.iOFDataGridViewTextBoxColumn.HeaderText = "IOF";
+            this.iOFDataGridViewTextBoxColumn.Name = "iOFDataGridViewTextBoxColumn";
+            this.iOFDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cotaQtdDataGridViewTextBoxColumn
+            // 
+            this.cotaQtdDataGridViewTextBoxColumn.DataPropertyName = "CotaQtd";
+            this.cotaQtdDataGridViewTextBoxColumn.HeaderText = "Qtd Cotas";
+            this.cotaQtdDataGridViewTextBoxColumn.Name = "cotaQtdDataGridViewTextBoxColumn";
+            this.cotaQtdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cotaValorDataGridViewTextBoxColumn
+            // 
+            this.cotaValorDataGridViewTextBoxColumn.DataPropertyName = "CotaValor";
+            this.cotaValorDataGridViewTextBoxColumn.HeaderText = "Valor Cota";
+            this.cotaValorDataGridViewTextBoxColumn.Name = "cotaValorDataGridViewTextBoxColumn";
+            this.cotaValorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bsMovimentos
+            // 
+            this.bsMovimentos.DataMember = "Movimentos";
+            this.bsMovimentos.DataSource = this.bsContasMeses;
+            this.bsMovimentos.Sort = "data DESC";
+            // 
+            // bsContasMeses
+            // 
+            this.bsContasMeses.DataMember = "ContasMeses";
+            this.bsContasMeses.DataSource = this.bsFundos;
+            this.bsContasMeses.Sort = "Mes DESC";
+            // 
+            // bsFundos
+            // 
+            this.bsFundos.DataMember = "FundosNaoZerado";
+            this.bsFundos.DataSource = this.bsContas;
+            this.bsFundos.Sort = "FundoApelido ASC";
             // 
             // dgvFundos
             // 
@@ -814,9 +973,30 @@ namespace MoneyBin2 {
             this.dgvFundos.RowHeadersWidth = 20;
             this.dgvFundos.RowTemplate.Height = 24;
             this.dgvFundos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFundos.Size = new System.Drawing.Size(524, 274);
+            this.dgvFundos.Size = new System.Drawing.Size(524, 272);
             this.dgvFundos.TabIndex = 5;
             this.dgvFundos.Tag = "1";
+            // 
+            // fundoNomeDataGridViewTextBoxColumn
+            // 
+            this.fundoNomeDataGridViewTextBoxColumn.DataPropertyName = "FundoApelido";
+            this.fundoNomeDataGridViewTextBoxColumn.HeaderText = "Fundo";
+            this.fundoNomeDataGridViewTextBoxColumn.Name = "fundoNomeDataGridViewTextBoxColumn";
+            this.fundoNomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // saldoDataGridViewTextBoxColumn
+            // 
+            this.saldoDataGridViewTextBoxColumn.DataPropertyName = "Saldo";
+            this.saldoDataGridViewTextBoxColumn.HeaderText = "Saldo";
+            this.saldoDataGridViewTextBoxColumn.Name = "saldoDataGridViewTextBoxColumn";
+            this.saldoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rendimentoLiquidoDataGridViewTextBoxColumn
+            // 
+            this.rendimentoLiquidoDataGridViewTextBoxColumn.DataPropertyName = "RendimentoLiquido";
+            this.rendimentoLiquidoDataGridViewTextBoxColumn.HeaderText = "Rend. Líquido";
+            this.rendimentoLiquidoDataGridViewTextBoxColumn.Name = "rendimentoLiquidoDataGridViewTextBoxColumn";
+            this.rendimentoLiquidoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dgvContasMeses
             // 
@@ -865,7 +1045,7 @@ namespace MoneyBin2 {
             this.dgvContasMeses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvContasMeses.EnableHeadersVisualStyles = false;
             this.dgvContasMeses.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvContasMeses.Location = new System.Drawing.Point(3, 283);
+            this.dgvContasMeses.Location = new System.Drawing.Point(3, 281);
             this.dgvContasMeses.MultiSelect = false;
             this.dgvContasMeses.Name = "dgvContasMeses";
             this.dgvContasMeses.ReadOnly = true;
@@ -881,10 +1061,87 @@ namespace MoneyBin2 {
             this.dgvContasMeses.RowHeadersWidth = 20;
             this.dgvContasMeses.RowTemplate.Height = 24;
             this.dgvContasMeses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContasMeses.Size = new System.Drawing.Size(1299, 274);
+            this.dgvContasMeses.Size = new System.Drawing.Size(1299, 272);
             this.dgvContasMeses.TabIndex = 1;
             this.dgvContasMeses.Tag = "8";
             this.dgvContasMeses.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
+            // 
+            // dataGridViewTextBoxColumn37
+            // 
+            this.dataGridViewTextBoxColumn37.DataPropertyName = "Mes";
+            this.dataGridViewTextBoxColumn37.HeaderText = "Mês";
+            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
+            this.dataGridViewTextBoxColumn37.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn36
+            // 
+            this.dataGridViewTextBoxColumn36.DataPropertyName = "Saldo";
+            this.dataGridViewTextBoxColumn36.HeaderText = "Saldo Mês";
+            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
+            this.dataGridViewTextBoxColumn36.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.DataPropertyName = "CotaQtd";
+            this.dataGridViewTextBoxColumn25.HeaderText = "Qtd Cotas";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn38
+            // 
+            this.dataGridViewTextBoxColumn38.DataPropertyName = "CotaValor";
+            this.dataGridViewTextBoxColumn38.HeaderText = "Valor Cota";
+            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
+            this.dataGridViewTextBoxColumn38.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.DataPropertyName = "RendimentoBruto";
+            this.dataGridViewTextBoxColumn24.HeaderText = "Rend. Bruto";
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn33
+            // 
+            this.dataGridViewTextBoxColumn33.DataPropertyName = "ImpostoRenda";
+            this.dataGridViewTextBoxColumn33.HeaderText = "I.R.";
+            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
+            this.dataGridViewTextBoxColumn33.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn34
+            // 
+            this.dataGridViewTextBoxColumn34.DataPropertyName = "IOF";
+            this.dataGridViewTextBoxColumn34.HeaderText = "IOF";
+            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
+            this.dataGridViewTextBoxColumn34.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn35
+            // 
+            this.dataGridViewTextBoxColumn35.DataPropertyName = "RendimentoLiquido";
+            this.dataGridViewTextBoxColumn35.HeaderText = "Rend. Líquido";
+            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
+            this.dataGridViewTextBoxColumn35.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn39
+            // 
+            this.dataGridViewTextBoxColumn39.DataPropertyName = "RendimentoMes";
+            this.dataGridViewTextBoxColumn39.HeaderText = "Rend. Mês";
+            this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
+            this.dataGridViewTextBoxColumn39.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn40
+            // 
+            this.dataGridViewTextBoxColumn40.DataPropertyName = "RendimentoAno";
+            this.dataGridViewTextBoxColumn40.HeaderText = "Rend. Ano";
+            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
+            this.dataGridViewTextBoxColumn40.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn41
+            // 
+            this.dataGridViewTextBoxColumn41.DataPropertyName = "Rendimento12Meses";
+            this.dataGridViewTextBoxColumn41.HeaderText = "Rend. 12 Meses";
+            this.dataGridViewTextBoxColumn41.Name = "dataGridViewTextBoxColumn41";
+            this.dataGridViewTextBoxColumn41.ReadOnly = true;
             // 
             // tabPageLCA
             // 
@@ -892,7 +1149,7 @@ namespace MoneyBin2 {
             this.tabPageLCA.Location = new System.Drawing.Point(4, 32);
             this.tabPageLCA.Name = "tabPageLCA";
             this.tabPageLCA.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLCA.Size = new System.Drawing.Size(1311, 566);
+            this.tabPageLCA.Size = new System.Drawing.Size(1311, 562);
             this.tabPageLCA.TabIndex = 3;
             this.tabPageLCA.Text = "LCA";
             this.tabPageLCA.UseVisualStyleBackColor = true;
@@ -909,7 +1166,7 @@ namespace MoneyBin2 {
             this.tlpLCA.RowCount = 2;
             this.tlpLCA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpLCA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpLCA.Size = new System.Drawing.Size(1305, 560);
+            this.tlpLCA.Size = new System.Drawing.Size(1305, 556);
             this.tlpLCA.TabIndex = 4;
             // 
             // dgvLCAMeses
@@ -956,7 +1213,7 @@ namespace MoneyBin2 {
             this.dgvLCAMeses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLCAMeses.EnableHeadersVisualStyles = false;
             this.dgvLCAMeses.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvLCAMeses.Location = new System.Drawing.Point(3, 283);
+            this.dgvLCAMeses.Location = new System.Drawing.Point(3, 281);
             this.dgvLCAMeses.Name = "dgvLCAMeses";
             this.dgvLCAMeses.ReadOnly = true;
             this.dgvLCAMeses.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -971,7 +1228,7 @@ namespace MoneyBin2 {
             this.dgvLCAMeses.RowHeadersWidth = 20;
             this.dgvLCAMeses.RowTemplate.Height = 24;
             this.dgvLCAMeses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLCAMeses.Size = new System.Drawing.Size(1299, 274);
+            this.dgvLCAMeses.Size = new System.Drawing.Size(1299, 272);
             this.dgvLCAMeses.TabIndex = 2;
             // 
             // Mes
@@ -1018,6 +1275,13 @@ namespace MoneyBin2 {
             this.IOF.ReadOnly = true;
             this.IOF.Visible = false;
             // 
+            // dataGridViewTextBoxColumn46
+            // 
+            this.dataGridViewTextBoxColumn46.DataPropertyName = "RendimentoLiquido";
+            this.dataGridViewTextBoxColumn46.HeaderText = "Rend. Líquido";
+            this.dataGridViewTextBoxColumn46.Name = "dataGridViewTextBoxColumn46";
+            this.dataGridViewTextBoxColumn46.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn43
             // 
             this.dataGridViewTextBoxColumn43.DataPropertyName = "SaldoAtual";
@@ -1032,6 +1296,18 @@ namespace MoneyBin2 {
             this.RendimentoMes.Name = "RendimentoMes";
             this.RendimentoMes.ReadOnly = true;
             // 
+            // bsLCAMeses
+            // 
+            this.bsLCAMeses.DataMember = "LCAMeses";
+            this.bsLCAMeses.DataSource = this.bsLCAs;
+            this.bsLCAMeses.Sort = "Mes DESC";
+            // 
+            // bsLCAs
+            // 
+            this.bsLCAs.DataMember = "LCAs";
+            this.bsLCAs.DataSource = this.bsContas;
+            this.bsLCAs.Sort = "Numero ASC";
+            // 
             // tlpLCATop
             // 
             this.tlpLCATop.ColumnCount = 2;
@@ -1044,7 +1320,7 @@ namespace MoneyBin2 {
             this.tlpLCATop.Name = "tlpLCATop";
             this.tlpLCATop.RowCount = 1;
             this.tlpLCATop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpLCATop.Size = new System.Drawing.Size(1299, 274);
+            this.tlpLCATop.Size = new System.Drawing.Size(1299, 272);
             this.tlpLCATop.TabIndex = 2;
             // 
             // dgvLCAMovimentos
@@ -1103,8 +1379,58 @@ namespace MoneyBin2 {
             this.dgvLCAMovimentos.RowHeadersWidth = 20;
             this.dgvLCAMovimentos.RowTemplate.Height = 24;
             this.dgvLCAMovimentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLCAMovimentos.Size = new System.Drawing.Size(661, 268);
+            this.dgvLCAMovimentos.Size = new System.Drawing.Size(661, 266);
             this.dgvLCAMovimentos.TabIndex = 1;
+            // 
+            // dataDataGridViewTextBoxColumn3
+            // 
+            this.dataDataGridViewTextBoxColumn3.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn3.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn3.Name = "dataDataGridViewTextBoxColumn3";
+            this.dataDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // historicoDataGridViewTextBoxColumn1
+            // 
+            this.historicoDataGridViewTextBoxColumn1.DataPropertyName = "Historico";
+            this.historicoDataGridViewTextBoxColumn1.HeaderText = "Histórico";
+            this.historicoDataGridViewTextBoxColumn1.Name = "historicoDataGridViewTextBoxColumn1";
+            this.historicoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // impostoRendaDataGridViewTextBoxColumn1
+            // 
+            this.impostoRendaDataGridViewTextBoxColumn1.DataPropertyName = "ImpostoRenda";
+            this.impostoRendaDataGridViewTextBoxColumn1.HeaderText = "I.R.";
+            this.impostoRendaDataGridViewTextBoxColumn1.Name = "impostoRendaDataGridViewTextBoxColumn1";
+            this.impostoRendaDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.impostoRendaDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // iOFDataGridViewTextBoxColumn2
+            // 
+            this.iOFDataGridViewTextBoxColumn2.DataPropertyName = "IOF";
+            this.iOFDataGridViewTextBoxColumn2.HeaderText = "I.O.F.";
+            this.iOFDataGridViewTextBoxColumn2.Name = "iOFDataGridViewTextBoxColumn2";
+            this.iOFDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.iOFDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn30
+            // 
+            this.dataGridViewTextBoxColumn30.DataPropertyName = "Rendimentos";
+            this.dataGridViewTextBoxColumn30.HeaderText = "Rend.";
+            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
+            this.dataGridViewTextBoxColumn30.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn31
+            // 
+            this.dataGridViewTextBoxColumn31.DataPropertyName = "ValorAtual";
+            this.dataGridViewTextBoxColumn31.HeaderText = "Valor Atual";
+            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
+            this.dataGridViewTextBoxColumn31.ReadOnly = true;
+            // 
+            // bsLCAMovimentos
+            // 
+            this.bsLCAMovimentos.DataMember = "LCAMovimentos";
+            this.bsLCAMovimentos.DataSource = this.bsLCAMeses;
+            this.bsLCAMovimentos.Sort = "Data DESC";
             // 
             // dgvLCAs
             // 
@@ -1165,8 +1491,71 @@ namespace MoneyBin2 {
             this.dgvLCAs.RowHeadersWidth = 20;
             this.dgvLCAs.RowTemplate.Height = 24;
             this.dgvLCAs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLCAs.Size = new System.Drawing.Size(626, 268);
+            this.dgvLCAs.Size = new System.Drawing.Size(626, 266);
             this.dgvLCAs.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "Codigo";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Número";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Aplicacao";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Aplic.";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "ValorEmissao";
+            this.dataGridViewTextBoxColumn22.HeaderText = "Valor Emissão";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "Vencimento";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Venc.";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            // 
+            // Saldo
+            // 
+            this.Saldo.DataPropertyName = "Saldo";
+            this.Saldo.HeaderText = "Saldo";
+            this.Saldo.Name = "Saldo";
+            this.Saldo.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn29
+            // 
+            this.dataGridViewTextBoxColumn29.DataPropertyName = "RendimentoLiquido";
+            this.dataGridViewTextBoxColumn29.HeaderText = "Rend. Líq.";
+            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
+            this.dataGridViewTextBoxColumn29.ReadOnly = true;
+            // 
+            // RendimentoPercentual
+            // 
+            this.RendimentoPercentual.DataPropertyName = "RendimentoPercentual";
+            this.RendimentoPercentual.HeaderText = "Rend. %";
+            this.RendimentoPercentual.Name = "RendimentoPercentual";
+            this.RendimentoPercentual.ReadOnly = true;
+            // 
+            // RendimentoMensal
+            // 
+            this.RendimentoMensal.DataPropertyName = "RendimentoMensal";
+            this.RendimentoMensal.HeaderText = "Rend. Mensal";
+            this.RendimentoMensal.Name = "RendimentoMensal";
+            this.RendimentoMensal.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "Taxa";
+            this.dataGridViewTextBoxColumn21.HeaderText = "Taxa";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
             // 
             // tabPageResumo
             // 
@@ -1175,7 +1564,7 @@ namespace MoneyBin2 {
             this.tabPageResumo.Location = new System.Drawing.Point(4, 32);
             this.tabPageResumo.Name = "tabPageResumo";
             this.tabPageResumo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageResumo.Size = new System.Drawing.Size(1311, 566);
+            this.tabPageResumo.Size = new System.Drawing.Size(1311, 562);
             this.tabPageResumo.TabIndex = 2;
             this.tabPageResumo.Text = "Resumo";
             // 
@@ -1196,7 +1585,7 @@ namespace MoneyBin2 {
             this.tlpResumo.RowCount = 2;
             this.tlpResumo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpResumo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpResumo.Size = new System.Drawing.Size(1305, 560);
+            this.tlpResumo.Size = new System.Drawing.Size(1305, 556);
             this.tlpResumo.TabIndex = 0;
             // 
             // chartResumoAcoes
@@ -1223,14 +1612,14 @@ namespace MoneyBin2 {
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartResumoAcoes.Series.Add(series1);
-            this.chartResumoAcoes.Size = new System.Drawing.Size(465, 274);
+            this.chartResumoAcoes.Size = new System.Drawing.Size(465, 272);
             this.chartResumoAcoes.TabIndex = 2;
-            this.chartResumoAcoes.Text = "chart2";
             title1.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title1.ForeColor = System.Drawing.Color.White;
             title1.Name = "Title1";
             title1.Text = "AAA";
             this.chartResumoAcoes.Titles.Add(title1);
+            this.chartResumoAcoes.DoubleClick += new System.EventHandler(this.chart_DoubleClick);
             // 
             // chartResumoFundos
             // 
@@ -1248,14 +1637,14 @@ namespace MoneyBin2 {
             legend2.IsTextAutoFit = false;
             legend2.Name = "Legend1";
             this.chartResumoFundos.Legends.Add(legend2);
-            this.chartResumoFundos.Location = new System.Drawing.Point(366, 283);
+            this.chartResumoFundos.Location = new System.Drawing.Point(366, 281);
             this.chartResumoFundos.Name = "chartResumoFundos";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chartResumoFundos.Series.Add(series2);
-            this.chartResumoFundos.Size = new System.Drawing.Size(465, 274);
+            this.chartResumoFundos.Size = new System.Drawing.Size(465, 272);
             this.chartResumoFundos.TabIndex = 3;
             this.chartResumoFundos.Text = "chart3";
             title2.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1263,6 +1652,7 @@ namespace MoneyBin2 {
             title2.Name = "Title1";
             title2.Text = "AAA";
             this.chartResumoFundos.Titles.Add(title2);
+            this.chartResumoFundos.DoubleClick += new System.EventHandler(this.chart_DoubleClick);
             // 
             // chartResumoTotal
             // 
@@ -1281,7 +1671,7 @@ namespace MoneyBin2 {
             this.chartResumoTotal.Location = new System.Drawing.Point(837, 3);
             this.chartResumoTotal.Name = "chartResumoTotal";
             this.tlpResumo.SetRowSpan(this.chartResumoTotal, 2);
-            this.chartResumoTotal.Size = new System.Drawing.Size(465, 554);
+            this.chartResumoTotal.Size = new System.Drawing.Size(465, 550);
             this.chartResumoTotal.TabIndex = 4;
             this.chartResumoTotal.Text = "chart4";
             title3.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1289,6 +1679,7 @@ namespace MoneyBin2 {
             title3.Name = "Title1";
             title3.Text = "AAA";
             this.chartResumoTotal.Titles.Add(title3);
+            this.chartResumoTotal.DoubleClick += new System.EventHandler(this.chart_DoubleClick);
             // 
             // tableLayoutPanel1
             // 
@@ -1297,12 +1688,12 @@ namespace MoneyBin2 {
             this.tableLayoutPanel1.Controls.Add(this.dgvResumoFundos, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelResumoFundos, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 283);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 281);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 293F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(357, 274);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(357, 272);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // dgvResumoFundos
@@ -1360,6 +1751,26 @@ namespace MoneyBin2 {
             this.dgvResumoFundos.Size = new System.Drawing.Size(351, 287);
             this.dgvResumoFundos.TabIndex = 2;
             // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "Item";
+            this.dataGridViewTextBoxColumn23.HeaderText = "Item";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            this.dataGridViewTextBoxColumn23.ReadOnly = true;
+            // 
+            // valorDataGridViewTextBoxColumn
+            // 
+            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
+            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bsResumoFundos
+            // 
+            this.bsResumoFundos.AllowNew = false;
+            this.bsResumoFundos.DataSource = typeof(DataLayer.Patrimonio);
+            this.bsResumoFundos.Sort = "Item ASC";
+            // 
             // labelResumoFundos
             // 
             this.labelResumoFundos.AutoSize = true;
@@ -1385,7 +1796,7 @@ namespace MoneyBin2 {
             this.tlpResumoColumn0.RowCount = 2;
             this.tlpResumoColumn0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tlpResumoColumn0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpResumoColumn0.Size = new System.Drawing.Size(357, 274);
+            this.tlpResumoColumn0.Size = new System.Drawing.Size(357, 272);
             this.tlpResumoColumn0.TabIndex = 6;
             // 
             // dgvResumoAcoes
@@ -1440,9 +1851,29 @@ namespace MoneyBin2 {
             this.dgvResumoAcoes.RowHeadersWidth = 20;
             this.dgvResumoAcoes.RowTemplate.Height = 24;
             this.dgvResumoAcoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResumoAcoes.Size = new System.Drawing.Size(351, 239);
+            this.dgvResumoAcoes.Size = new System.Drawing.Size(351, 237);
             this.dgvResumoAcoes.TabIndex = 1;
             this.dgvResumoAcoes.Tag = "";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Item";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Item";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // valorDataGridViewTextBoxColumn4
+            // 
+            this.valorDataGridViewTextBoxColumn4.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn4.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn4.Name = "valorDataGridViewTextBoxColumn4";
+            this.valorDataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // bsResumoAcoes
+            // 
+            this.bsResumoAcoes.AllowNew = false;
+            this.bsResumoAcoes.DataSource = typeof(DataLayer.Patrimonio);
+            this.bsResumoAcoes.Sort = "Item ASC";
             // 
             // labelResumoAcoes
             // 
@@ -1467,7 +1898,7 @@ namespace MoneyBin2 {
             this.tabImpostoRenda.Location = new System.Drawing.Point(4, 32);
             this.tabImpostoRenda.Name = "tabImpostoRenda";
             this.tabImpostoRenda.Padding = new System.Windows.Forms.Padding(3);
-            this.tabImpostoRenda.Size = new System.Drawing.Size(1311, 566);
+            this.tabImpostoRenda.Size = new System.Drawing.Size(1311, 562);
             this.tabImpostoRenda.TabIndex = 4;
             this.tabImpostoRenda.Text = "Imposto Renda";
             // 
@@ -1554,6 +1985,38 @@ namespace MoneyBin2 {
             this.dgvImpostoRenda.Size = new System.Drawing.Size(452, 320);
             this.dgvImpostoRenda.TabIndex = 4;
             // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Código";
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdDataGridViewTextBoxColumn
+            // 
+            this.qtdDataGridViewTextBoxColumn.DataPropertyName = "Qtd";
+            this.qtdDataGridViewTextBoxColumn.HeaderText = "Qtd";
+            this.qtdDataGridViewTextBoxColumn.Name = "qtdDataGridViewTextBoxColumn";
+            this.qtdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // precoDataGridViewTextBoxColumn
+            // 
+            this.precoDataGridViewTextBoxColumn.DataPropertyName = "Preco";
+            this.precoDataGridViewTextBoxColumn.HeaderText = "Preço";
+            this.precoDataGridViewTextBoxColumn.Name = "precoDataGridViewTextBoxColumn";
+            this.precoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bsImpostoRenda
+            // 
+            this.bsImpostoRenda.DataSource = typeof(DataLayer.SituacaoImpostoRenda);
+            // 
             // toolStripMenu
             // 
             this.toolStripMenu.Dock = System.Windows.Forms.DockStyle.None;
@@ -1561,12 +2024,12 @@ namespace MoneyBin2 {
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.toolStripComboBoxConta,
-            this.toolStripLabel3,
+            this.toolStripSpace1,
             this.toolStripButtonNovaOperacao,
             this.toolStripSeparatorSalvar,
             this.toolStripButtonSalvar,
             this.toolStripButtonDesfazer,
-            this.toolStripLabel2,
+            this.toolStripSpace2,
             this.toolStripButtonBalanco,
             this.toolStripButtonLerExtrato,
             this.toolStripSeparator1,
@@ -1580,7 +2043,7 @@ namespace MoneyBin2 {
             this.toolStripButtonCopyToClipboard});
             this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(586, 28);
+            this.toolStripMenu.Size = new System.Drawing.Size(568, 28);
             this.toolStripMenu.TabIndex = 0;
             // 
             // toolStripLabel1
@@ -1599,11 +2062,23 @@ namespace MoneyBin2 {
             this.toolStripComboBoxConta.Sorted = true;
             this.toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
             // 
-            // toolStripLabel3
+            // toolStripSpace1
             // 
-            this.toolStripLabel3.AutoSize = false;
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(60, 25);
+            this.toolStripSpace1.AutoSize = false;
+            this.toolStripSpace1.Name = "toolStripSpace1";
+            this.toolStripSpace1.Size = new System.Drawing.Size(60, 25);
+            // 
+            // toolStripButtonNovaOperacao
+            // 
+            this.toolStripButtonNovaOperacao.BackColor = System.Drawing.Color.DimGray;
+            this.toolStripButtonNovaOperacao.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripButtonNovaOperacao.Image = global::MoneyBin2.Properties.Resources.Add_24;
+            this.toolStripButtonNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNovaOperacao.Name = "toolStripButtonNovaOperacao";
+            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(137, 25);
+            this.toolStripButtonNovaOperacao.Tag = "Ações";
+            this.toolStripButtonNovaOperacao.Text = "Nova Operação";
+            this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
             // 
             // toolStripSeparatorSalvar
             // 
@@ -1611,30 +2086,118 @@ namespace MoneyBin2 {
             this.toolStripSeparatorSalvar.Size = new System.Drawing.Size(6, 28);
             this.toolStripSeparatorSalvar.Visible = false;
             // 
-            // toolStripLabel2
+            // toolStripButtonSalvar
             // 
-            this.toolStripLabel2.AutoSize = false;
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(10, 25);
-            this.toolStripLabel2.Tag = "Ações";
+            this.toolStripButtonSalvar.BackColor = System.Drawing.Color.ForestGreen;
+            this.toolStripButtonSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripButtonSalvar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.toolStripButtonSalvar.Image = global::MoneyBin2.Properties.Resources.Disquete;
+            this.toolStripButtonSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSalvar.Name = "toolStripButtonSalvar";
+            this.toolStripButtonSalvar.Size = new System.Drawing.Size(75, 25);
+            this.toolStripButtonSalvar.Text = "Salvar";
+            this.toolStripButtonSalvar.Visible = false;
+            this.toolStripButtonSalvar.Click += new System.EventHandler(this.toolStripButtonSalvar_Click);
+            // 
+            // toolStripButtonDesfazer
+            // 
+            this.toolStripButtonDesfazer.BackColor = System.Drawing.Color.DimGray;
+            this.toolStripButtonDesfazer.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripButtonDesfazer.Image = global::MoneyBin2.Properties.Resources.Revert_24;
+            this.toolStripButtonDesfazer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDesfazer.Name = "toolStripButtonDesfazer";
+            this.toolStripButtonDesfazer.Size = new System.Drawing.Size(91, 25);
+            this.toolStripButtonDesfazer.Text = "Desfazer";
+            this.toolStripButtonDesfazer.Visible = false;
+            this.toolStripButtonDesfazer.Click += new System.EventHandler(this.toolStripButtonDesfazer_Click);
+            // 
+            // toolStripSpace2
+            // 
+            this.toolStripSpace2.AutoSize = false;
+            this.toolStripSpace2.Name = "toolStripSpace2";
+            this.toolStripSpace2.Size = new System.Drawing.Size(10, 25);
+            this.toolStripSpace2.Tag = "Ações";
+            // 
+            // toolStripButtonBalanco
+            // 
+            this.toolStripButtonBalanco.BackColor = System.Drawing.Color.SeaShell;
+            this.toolStripButtonBalanco.Image = global::MoneyBin2.Properties.Resources.Scale;
+            this.toolStripButtonBalanco.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBalanco.Name = "toolStripButtonBalanco";
+            this.toolStripButtonBalanco.Size = new System.Drawing.Size(86, 25);
+            this.toolStripButtonBalanco.Tag = "Ações";
+            this.toolStripButtonBalanco.Text = "Balanço";
+            this.toolStripButtonBalanco.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
+            // 
+            // toolStripButtonLerExtrato
+            // 
+            this.toolStripButtonLerExtrato.BackColor = System.Drawing.Color.PaleGreen;
+            this.toolStripButtonLerExtrato.Image = global::MoneyBin2.Properties.Resources.Oculos;
+            this.toolStripButtonLerExtrato.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLerExtrato.Name = "toolStripButtonLerExtrato";
+            this.toolStripButtonLerExtrato.Size = new System.Drawing.Size(120, 25);
+            this.toolStripButtonLerExtrato.Tag = "Ações;Fundos;LCA";
+            this.toolStripButtonLerExtrato.Text = "Ler Extrato(s)";
+            this.toolStripButtonLerExtrato.ToolTipText = "Para a conta selecionada, ler extrato(s)";
+            this.toolStripButtonLerExtrato.Click += new System.EventHandler(this.toolStripButtonLerExtrato_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             this.toolStripSeparator1.Tag = "Fundos";
+            this.toolStripSeparator1.Visible = false;
+            // 
+            // toolStripButtonLerExtratosMes
+            // 
+            this.toolStripButtonLerExtratosMes.BackColor = System.Drawing.Color.NavajoWhite;
+            this.toolStripButtonLerExtratosMes.Image = global::MoneyBin2.Properties.Resources.Oculos;
+            this.toolStripButtonLerExtratosMes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLerExtratosMes.Name = "toolStripButtonLerExtratosMes";
+            this.toolStripButtonLerExtratosMes.Size = new System.Drawing.Size(141, 25);
+            this.toolStripButtonLerExtratosMes.Tag = "Fundos";
+            this.toolStripButtonLerExtratosMes.Text = "Ler Extratos Mês";
+            this.toolStripButtonLerExtratosMes.ToolTipText = "Para cada conta, ler todos os extratos de um mês";
+            this.toolStripButtonLerExtratosMes.Visible = false;
+            this.toolStripButtonLerExtratosMes.Click += new System.EventHandler(this.toolStripButtonLerExtratosMes_Click);
+            // 
+            // toolStripButtonExportar
+            // 
+            this.toolStripButtonExportar.BackColor = System.Drawing.Color.Silver;
+            this.toolStripButtonExportar.Image = global::MoneyBin2.Properties.Resources.Exportar;
+            this.toolStripButtonExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonExportar.Name = "toolStripButtonExportar";
+            this.toolStripButtonExportar.Size = new System.Drawing.Size(89, 25);
+            this.toolStripButtonExportar.Tag = "Fundos";
+            this.toolStripButtonExportar.Text = "Exportar";
+            this.toolStripButtonExportar.Visible = false;
+            this.toolStripButtonExportar.Click += new System.EventHandler(this.toolStripButtonExportar_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             this.toolStripSeparator2.Tag = "Fundos";
+            this.toolStripSeparator2.Visible = false;
+            // 
+            // toolStripButtonPath
+            // 
+            this.toolStripButtonPath.BackColor = System.Drawing.Color.LightBlue;
+            this.toolStripButtonPath.Image = global::MoneyBin2.Properties.Resources.Pasta;
+            this.toolStripButtonPath.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPath.Name = "toolStripButtonPath";
+            this.toolStripButtonPath.Size = new System.Drawing.Size(64, 25);
+            this.toolStripButtonPath.Tag = "Fundos";
+            this.toolStripButtonPath.Text = "Path:";
+            this.toolStripButtonPath.Visible = false;
+            this.toolStripButtonPath.Click += new System.EventHandler(this.toolStripButtonPath_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             this.toolStripSeparator3.Tag = "Fundos";
+            this.toolStripSeparator3.Visible = false;
             // 
             // toolStripLabelLendoExtrato
             // 
@@ -1649,6 +2212,18 @@ namespace MoneyBin2 {
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 25);
             this.toolStripProgressBar1.Visible = false;
+            // 
+            // toolStripButtonCopyToClipboard
+            // 
+            this.toolStripButtonCopyToClipboard.BackColor = System.Drawing.Color.PeachPuff;
+            this.toolStripButtonCopyToClipboard.Image = global::MoneyBin2.Properties.Resources.clipboard;
+            this.toolStripButtonCopyToClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCopyToClipboard.Name = "toolStripButtonCopyToClipboard";
+            this.toolStripButtonCopyToClipboard.Size = new System.Drawing.Size(181, 25);
+            this.toolStripButtonCopyToClipboard.Tag = "Imposto Renda";
+            this.toolStripButtonCopyToClipboard.Text = "Copiar para Clipboard";
+            this.toolStripButtonCopyToClipboard.Visible = false;
+            this.toolStripButtonCopyToClipboard.Click += new System.EventHandler(this.toolStripCopyToClipboard_Click);
             // 
             // SaldoAtual
             // 
@@ -1710,576 +2285,6 @@ namespace MoneyBin2 {
             this.OFD.Filter = "Text Files|*.txt";
             this.OFD.Multiselect = true;
             // 
-            // dataGridViewTextBoxColumn51
-            // 
-            this.dataGridViewTextBoxColumn51.DataPropertyName = "Qtd";
-            this.dataGridViewTextBoxColumn51.HeaderText = "Venda";
-            this.dataGridViewTextBoxColumn51.Name = "dataGridViewTextBoxColumn51";
-            this.dataGridViewTextBoxColumn51.ReadOnly = true;
-            // 
-            // bsVendas
-            // 
-            this.bsVendas.DataMember = "Saidas";
-            this.bsVendas.DataSource = this.bsAcoes;
-            this.bsVendas.Sort = "Data DESC";
-            // 
-            // bsAcoes
-            // 
-            this.bsAcoes.DataMember = "AcoesNaoZerado";
-            this.bsAcoes.DataSource = this.bsContas;
-            this.bsAcoes.Sort = "Codigo ASC";
-            // 
-            // bsContas
-            // 
-            this.bsContas.DataSource = typeof(DataLayer.Conta);
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tipoDataGridViewTextBoxColumn
-            // 
-            this.tipoDataGridViewTextBoxColumn.DataPropertyName = "Tipo";
-            this.tipoDataGridViewTextBoxColumn.HeaderText = "Operação";
-            this.tipoDataGridViewTextBoxColumn.Name = "tipoDataGridViewTextBoxColumn";
-            this.tipoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qtdComSinalDataGridViewTextBoxColumn
-            // 
-            this.qtdComSinalDataGridViewTextBoxColumn.DataPropertyName = "QtdComSinal";
-            this.qtdComSinalDataGridViewTextBoxColumn.HeaderText = "Qtd";
-            this.qtdComSinalDataGridViewTextBoxColumn.Name = "qtdComSinalDataGridViewTextBoxColumn";
-            this.qtdComSinalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qtdAcumuladaDataGridViewTextBoxColumn
-            // 
-            this.qtdAcumuladaDataGridViewTextBoxColumn.DataPropertyName = "QtdAcumulada";
-            this.qtdAcumuladaDataGridViewTextBoxColumn.HeaderText = "Acum.";
-            this.qtdAcumuladaDataGridViewTextBoxColumn.Name = "qtdAcumuladaDataGridViewTextBoxColumn";
-            this.qtdAcumuladaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valorRealDataGridViewTextBoxColumn
-            // 
-            this.valorRealDataGridViewTextBoxColumn.DataPropertyName = "ValorReal";
-            this.valorRealDataGridViewTextBoxColumn.HeaderText = "Valor Real";
-            this.valorRealDataGridViewTextBoxColumn.Name = "valorRealDataGridViewTextBoxColumn";
-            this.valorRealDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valorDataGridViewTextBoxColumn1
-            // 
-            this.valorDataGridViewTextBoxColumn1.DataPropertyName = "Valor";
-            this.valorDataGridViewTextBoxColumn1.HeaderText = "Valor Nominal";
-            this.valorDataGridViewTextBoxColumn1.Name = "valorDataGridViewTextBoxColumn1";
-            this.valorDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // valorOperacaoDataGridViewTextBoxColumn
-            // 
-            this.valorOperacaoDataGridViewTextBoxColumn.DataPropertyName = "ValorOperacao";
-            this.valorOperacaoDataGridViewTextBoxColumn.HeaderText = "Valor Operação";
-            this.valorOperacaoDataGridViewTextBoxColumn.Name = "valorOperacaoDataGridViewTextBoxColumn";
-            this.valorOperacaoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bsOperacoes
-            // 
-            this.bsOperacoes.DataMember = "Operacoes";
-            this.bsOperacoes.DataSource = this.bsAcoes;
-            this.bsOperacoes.Sort = "Data DESC";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "Codigo";
-            this.dataGridViewTextBoxColumn14.HeaderText = "Código";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn27
-            // 
-            this.dataGridViewTextBoxColumn27.DataPropertyName = "Qtd";
-            this.dataGridViewTextBoxColumn27.HeaderText = "Qtd";
-            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
-            this.dataGridViewTextBoxColumn27.ReadOnly = true;
-            // 
-            // dataDataGridViewTextBoxColumn1
-            // 
-            this.dataDataGridViewTextBoxColumn1.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn1.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn1.Name = "dataDataGridViewTextBoxColumn1";
-            this.dataDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // historicoDataGridViewTextBoxColumn
-            // 
-            this.historicoDataGridViewTextBoxColumn.DataPropertyName = "Historico";
-            this.historicoDataGridViewTextBoxColumn.HeaderText = "Histórico";
-            this.historicoDataGridViewTextBoxColumn.Name = "historicoDataGridViewTextBoxColumn";
-            this.historicoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valorDataGridViewTextBoxColumn2
-            // 
-            this.valorDataGridViewTextBoxColumn2.DataPropertyName = "Valor";
-            this.valorDataGridViewTextBoxColumn2.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn2.Name = "valorDataGridViewTextBoxColumn2";
-            this.valorDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // impostoRendaDataGridViewTextBoxColumn
-            // 
-            this.impostoRendaDataGridViewTextBoxColumn.DataPropertyName = "ImpostoRenda";
-            this.impostoRendaDataGridViewTextBoxColumn.HeaderText = "I.R.";
-            this.impostoRendaDataGridViewTextBoxColumn.Name = "impostoRendaDataGridViewTextBoxColumn";
-            this.impostoRendaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iOFDataGridViewTextBoxColumn
-            // 
-            this.iOFDataGridViewTextBoxColumn.DataPropertyName = "IOF";
-            this.iOFDataGridViewTextBoxColumn.HeaderText = "IOF";
-            this.iOFDataGridViewTextBoxColumn.Name = "iOFDataGridViewTextBoxColumn";
-            this.iOFDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cotaQtdDataGridViewTextBoxColumn
-            // 
-            this.cotaQtdDataGridViewTextBoxColumn.DataPropertyName = "CotaQtd";
-            this.cotaQtdDataGridViewTextBoxColumn.HeaderText = "Qtd Cotas";
-            this.cotaQtdDataGridViewTextBoxColumn.Name = "cotaQtdDataGridViewTextBoxColumn";
-            this.cotaQtdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cotaValorDataGridViewTextBoxColumn
-            // 
-            this.cotaValorDataGridViewTextBoxColumn.DataPropertyName = "CotaValor";
-            this.cotaValorDataGridViewTextBoxColumn.HeaderText = "Valor Cota";
-            this.cotaValorDataGridViewTextBoxColumn.Name = "cotaValorDataGridViewTextBoxColumn";
-            this.cotaValorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bsMovimentos
-            // 
-            this.bsMovimentos.DataMember = "Movimentos";
-            this.bsMovimentos.DataSource = this.bsContasMeses;
-            this.bsMovimentos.Sort = "data DESC";
-            // 
-            // bsContasMeses
-            // 
-            this.bsContasMeses.DataMember = "ContasMeses";
-            this.bsContasMeses.DataSource = this.bsFundos;
-            this.bsContasMeses.Sort = "Mes DESC";
-            // 
-            // bsFundos
-            // 
-            this.bsFundos.DataMember = "FundosNaoZerado";
-            this.bsFundos.DataSource = this.bsContas;
-            this.bsFundos.Sort = "FundoApelido ASC";
-            // 
-            // fundoNomeDataGridViewTextBoxColumn
-            // 
-            this.fundoNomeDataGridViewTextBoxColumn.DataPropertyName = "FundoApelido";
-            this.fundoNomeDataGridViewTextBoxColumn.HeaderText = "Fundo";
-            this.fundoNomeDataGridViewTextBoxColumn.Name = "fundoNomeDataGridViewTextBoxColumn";
-            this.fundoNomeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // saldoDataGridViewTextBoxColumn
-            // 
-            this.saldoDataGridViewTextBoxColumn.DataPropertyName = "Saldo";
-            this.saldoDataGridViewTextBoxColumn.HeaderText = "Saldo";
-            this.saldoDataGridViewTextBoxColumn.Name = "saldoDataGridViewTextBoxColumn";
-            this.saldoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rendimentoLiquidoDataGridViewTextBoxColumn
-            // 
-            this.rendimentoLiquidoDataGridViewTextBoxColumn.DataPropertyName = "RendimentoLiquido";
-            this.rendimentoLiquidoDataGridViewTextBoxColumn.HeaderText = "Rend. Líquido";
-            this.rendimentoLiquidoDataGridViewTextBoxColumn.Name = "rendimentoLiquidoDataGridViewTextBoxColumn";
-            this.rendimentoLiquidoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn37
-            // 
-            this.dataGridViewTextBoxColumn37.DataPropertyName = "Mes";
-            this.dataGridViewTextBoxColumn37.HeaderText = "Mês";
-            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
-            this.dataGridViewTextBoxColumn37.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn36
-            // 
-            this.dataGridViewTextBoxColumn36.DataPropertyName = "Saldo";
-            this.dataGridViewTextBoxColumn36.HeaderText = "Saldo Mês";
-            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
-            this.dataGridViewTextBoxColumn36.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.DataPropertyName = "CotaQtd";
-            this.dataGridViewTextBoxColumn25.HeaderText = "Qtd Cotas";
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn38
-            // 
-            this.dataGridViewTextBoxColumn38.DataPropertyName = "CotaValor";
-            this.dataGridViewTextBoxColumn38.HeaderText = "Valor Cota";
-            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
-            this.dataGridViewTextBoxColumn38.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn24
-            // 
-            this.dataGridViewTextBoxColumn24.DataPropertyName = "RendimentoBruto";
-            this.dataGridViewTextBoxColumn24.HeaderText = "Rend. Bruto";
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn33
-            // 
-            this.dataGridViewTextBoxColumn33.DataPropertyName = "ImpostoRenda";
-            this.dataGridViewTextBoxColumn33.HeaderText = "I.R.";
-            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
-            this.dataGridViewTextBoxColumn33.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn34
-            // 
-            this.dataGridViewTextBoxColumn34.DataPropertyName = "IOF";
-            this.dataGridViewTextBoxColumn34.HeaderText = "IOF";
-            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
-            this.dataGridViewTextBoxColumn34.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn35
-            // 
-            this.dataGridViewTextBoxColumn35.DataPropertyName = "RendimentoLiquido";
-            this.dataGridViewTextBoxColumn35.HeaderText = "Rend. Líquido";
-            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
-            this.dataGridViewTextBoxColumn35.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn39
-            // 
-            this.dataGridViewTextBoxColumn39.DataPropertyName = "RendimentoMes";
-            this.dataGridViewTextBoxColumn39.HeaderText = "Rend. Mês";
-            this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
-            this.dataGridViewTextBoxColumn39.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn40
-            // 
-            this.dataGridViewTextBoxColumn40.DataPropertyName = "RendimentoAno";
-            this.dataGridViewTextBoxColumn40.HeaderText = "Rend. Ano";
-            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
-            this.dataGridViewTextBoxColumn40.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn41
-            // 
-            this.dataGridViewTextBoxColumn41.DataPropertyName = "Rendimento12Meses";
-            this.dataGridViewTextBoxColumn41.HeaderText = "Rend. 12 Meses";
-            this.dataGridViewTextBoxColumn41.Name = "dataGridViewTextBoxColumn41";
-            this.dataGridViewTextBoxColumn41.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn46
-            // 
-            this.dataGridViewTextBoxColumn46.DataPropertyName = "RendimentoLiquido";
-            this.dataGridViewTextBoxColumn46.HeaderText = "Rend. Líquido";
-            this.dataGridViewTextBoxColumn46.Name = "dataGridViewTextBoxColumn46";
-            this.dataGridViewTextBoxColumn46.ReadOnly = true;
-            // 
-            // bsLCAMeses
-            // 
-            this.bsLCAMeses.DataMember = "LCAMeses";
-            this.bsLCAMeses.DataSource = this.bsLCAs;
-            this.bsLCAMeses.Sort = "Mes DESC";
-            // 
-            // bsLCAs
-            // 
-            this.bsLCAs.DataMember = "LCAs";
-            this.bsLCAs.DataSource = this.bsContas;
-            this.bsLCAs.Sort = "Numero ASC";
-            // 
-            // dataDataGridViewTextBoxColumn3
-            // 
-            this.dataDataGridViewTextBoxColumn3.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn3.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn3.Name = "dataDataGridViewTextBoxColumn3";
-            this.dataDataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // historicoDataGridViewTextBoxColumn1
-            // 
-            this.historicoDataGridViewTextBoxColumn1.DataPropertyName = "Historico";
-            this.historicoDataGridViewTextBoxColumn1.HeaderText = "Histórico";
-            this.historicoDataGridViewTextBoxColumn1.Name = "historicoDataGridViewTextBoxColumn1";
-            this.historicoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // impostoRendaDataGridViewTextBoxColumn1
-            // 
-            this.impostoRendaDataGridViewTextBoxColumn1.DataPropertyName = "ImpostoRenda";
-            this.impostoRendaDataGridViewTextBoxColumn1.HeaderText = "I.R.";
-            this.impostoRendaDataGridViewTextBoxColumn1.Name = "impostoRendaDataGridViewTextBoxColumn1";
-            this.impostoRendaDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.impostoRendaDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // iOFDataGridViewTextBoxColumn2
-            // 
-            this.iOFDataGridViewTextBoxColumn2.DataPropertyName = "IOF";
-            this.iOFDataGridViewTextBoxColumn2.HeaderText = "I.O.F.";
-            this.iOFDataGridViewTextBoxColumn2.Name = "iOFDataGridViewTextBoxColumn2";
-            this.iOFDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.iOFDataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn30
-            // 
-            this.dataGridViewTextBoxColumn30.DataPropertyName = "Rendimentos";
-            this.dataGridViewTextBoxColumn30.HeaderText = "Rend.";
-            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
-            this.dataGridViewTextBoxColumn30.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn31
-            // 
-            this.dataGridViewTextBoxColumn31.DataPropertyName = "ValorAtual";
-            this.dataGridViewTextBoxColumn31.HeaderText = "Valor Atual";
-            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
-            this.dataGridViewTextBoxColumn31.ReadOnly = true;
-            // 
-            // bsLCAMovimentos
-            // 
-            this.bsLCAMovimentos.DataMember = "LCAMovimentos";
-            this.bsLCAMovimentos.DataSource = this.bsLCAMeses;
-            this.bsLCAMovimentos.Sort = "Data DESC";
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.DataPropertyName = "Item";
-            this.dataGridViewTextBoxColumn23.HeaderText = "Item";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
-            // 
-            // valorDataGridViewTextBoxColumn
-            // 
-            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
-            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bsResumoFundos
-            // 
-            this.bsResumoFundos.AllowNew = false;
-            this.bsResumoFundos.DataSource = typeof(DataLayer.Patrimonio);
-            this.bsResumoFundos.Sort = "Item ASC";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Item";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Item";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // valorDataGridViewTextBoxColumn4
-            // 
-            this.valorDataGridViewTextBoxColumn4.DataPropertyName = "Valor";
-            this.valorDataGridViewTextBoxColumn4.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn4.Name = "valorDataGridViewTextBoxColumn4";
-            this.valorDataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // bsResumoAcoes
-            // 
-            this.bsResumoAcoes.AllowNew = false;
-            this.bsResumoAcoes.DataSource = typeof(DataLayer.Patrimonio);
-            this.bsResumoAcoes.Sort = "Item ASC";
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "Código";
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qtdDataGridViewTextBoxColumn
-            // 
-            this.qtdDataGridViewTextBoxColumn.DataPropertyName = "Qtd";
-            this.qtdDataGridViewTextBoxColumn.HeaderText = "Qtd";
-            this.qtdDataGridViewTextBoxColumn.Name = "qtdDataGridViewTextBoxColumn";
-            this.qtdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precoDataGridViewTextBoxColumn
-            // 
-            this.precoDataGridViewTextBoxColumn.DataPropertyName = "Preco";
-            this.precoDataGridViewTextBoxColumn.HeaderText = "Preço";
-            this.precoDataGridViewTextBoxColumn.Name = "precoDataGridViewTextBoxColumn";
-            this.precoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bsImpostoRenda
-            // 
-            this.bsImpostoRenda.DataSource = typeof(DataLayer.SituacaoImpostoRenda);
-            // 
-            // toolStripButtonNovaOperacao
-            // 
-            this.toolStripButtonNovaOperacao.BackColor = System.Drawing.Color.DimGray;
-            this.toolStripButtonNovaOperacao.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButtonNovaOperacao.Image = global::MoneyBin2.Properties.Resources.Add_24;
-            this.toolStripButtonNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNovaOperacao.Name = "toolStripButtonNovaOperacao";
-            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(137, 25);
-            this.toolStripButtonNovaOperacao.Tag = "Ações";
-            this.toolStripButtonNovaOperacao.Text = "Nova Operação";
-            this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
-            // 
-            // toolStripButtonSalvar
-            // 
-            this.toolStripButtonSalvar.BackColor = System.Drawing.Color.ForestGreen;
-            this.toolStripButtonSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButtonSalvar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.toolStripButtonSalvar.Image = global::MoneyBin2.Properties.Resources.Disquete;
-            this.toolStripButtonSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSalvar.Name = "toolStripButtonSalvar";
-            this.toolStripButtonSalvar.Size = new System.Drawing.Size(75, 25);
-            this.toolStripButtonSalvar.Text = "Salvar";
-            this.toolStripButtonSalvar.Visible = false;
-            this.toolStripButtonSalvar.Click += new System.EventHandler(this.toolStripButtonSalvar_Click);
-            // 
-            // toolStripButtonDesfazer
-            // 
-            this.toolStripButtonDesfazer.BackColor = System.Drawing.Color.DimGray;
-            this.toolStripButtonDesfazer.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButtonDesfazer.Image = global::MoneyBin2.Properties.Resources.Revert_24;
-            this.toolStripButtonDesfazer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDesfazer.Name = "toolStripButtonDesfazer";
-            this.toolStripButtonDesfazer.Size = new System.Drawing.Size(91, 25);
-            this.toolStripButtonDesfazer.Text = "Desfazer";
-            this.toolStripButtonDesfazer.Visible = false;
-            this.toolStripButtonDesfazer.Click += new System.EventHandler(this.toolStripButtonDesfazer_Click);
-            // 
-            // toolStripButtonBalanco
-            // 
-            this.toolStripButtonBalanco.BackColor = System.Drawing.Color.SeaShell;
-            this.toolStripButtonBalanco.Image = global::MoneyBin2.Properties.Resources.Scale;
-            this.toolStripButtonBalanco.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonBalanco.Name = "toolStripButtonBalanco";
-            this.toolStripButtonBalanco.Size = new System.Drawing.Size(86, 25);
-            this.toolStripButtonBalanco.Tag = "Ações";
-            this.toolStripButtonBalanco.Text = "Balanço";
-            this.toolStripButtonBalanco.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
-            // 
-            // toolStripButtonLerExtrato
-            // 
-            this.toolStripButtonLerExtrato.BackColor = System.Drawing.Color.PaleGreen;
-            this.toolStripButtonLerExtrato.Image = global::MoneyBin2.Properties.Resources.Oculos;
-            this.toolStripButtonLerExtrato.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLerExtrato.Name = "toolStripButtonLerExtrato";
-            this.toolStripButtonLerExtrato.Size = new System.Drawing.Size(120, 25);
-            this.toolStripButtonLerExtrato.Tag = "Ações;Fundos;LCA";
-            this.toolStripButtonLerExtrato.Text = "Ler Extrato(s)";
-            this.toolStripButtonLerExtrato.ToolTipText = "Para a conta selecionada, ler extrato(s)";
-            this.toolStripButtonLerExtrato.Click += new System.EventHandler(this.toolStripButtonLerExtrato_Click);
-            // 
-            // toolStripButtonLerExtratosMes
-            // 
-            this.toolStripButtonLerExtratosMes.BackColor = System.Drawing.Color.NavajoWhite;
-            this.toolStripButtonLerExtratosMes.Image = global::MoneyBin2.Properties.Resources.Oculos;
-            this.toolStripButtonLerExtratosMes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLerExtratosMes.Name = "toolStripButtonLerExtratosMes";
-            this.toolStripButtonLerExtratosMes.Size = new System.Drawing.Size(141, 25);
-            this.toolStripButtonLerExtratosMes.Tag = "Fundos";
-            this.toolStripButtonLerExtratosMes.Text = "Ler Extratos Mês";
-            this.toolStripButtonLerExtratosMes.ToolTipText = "Para cada conta, ler todos os extratos de um mês";
-            this.toolStripButtonLerExtratosMes.Visible = false;
-            this.toolStripButtonLerExtratosMes.Click += new System.EventHandler(this.toolStripButtonLerExtratosMes_Click);
-            // 
-            // toolStripButtonExportar
-            // 
-            this.toolStripButtonExportar.BackColor = System.Drawing.Color.Silver;
-            this.toolStripButtonExportar.Image = global::MoneyBin2.Properties.Resources.Exportar;
-            this.toolStripButtonExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonExportar.Name = "toolStripButtonExportar";
-            this.toolStripButtonExportar.Size = new System.Drawing.Size(89, 25);
-            this.toolStripButtonExportar.Tag = "Fundos";
-            this.toolStripButtonExportar.Text = "Exportar";
-            this.toolStripButtonExportar.Visible = false;
-            this.toolStripButtonExportar.Click += new System.EventHandler(this.toolStripButtonExportar_Click);
-            // 
-            // toolStripButtonPath
-            // 
-            this.toolStripButtonPath.BackColor = System.Drawing.Color.LightBlue;
-            this.toolStripButtonPath.Image = global::MoneyBin2.Properties.Resources.Pasta;
-            this.toolStripButtonPath.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPath.Name = "toolStripButtonPath";
-            this.toolStripButtonPath.Size = new System.Drawing.Size(64, 25);
-            this.toolStripButtonPath.Tag = "Fundos";
-            this.toolStripButtonPath.Text = "Path:";
-            this.toolStripButtonPath.Visible = false;
-            this.toolStripButtonPath.Click += new System.EventHandler(this.toolStripButtonPath_Click);
-            // 
-            // toolStripButtonCopyToClipboard
-            // 
-            this.toolStripButtonCopyToClipboard.BackColor = System.Drawing.Color.PeachPuff;
-            this.toolStripButtonCopyToClipboard.Image = global::MoneyBin2.Properties.Resources.clipboard;
-            this.toolStripButtonCopyToClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonCopyToClipboard.Name = "toolStripButtonCopyToClipboard";
-            this.toolStripButtonCopyToClipboard.Size = new System.Drawing.Size(181, 25);
-            this.toolStripButtonCopyToClipboard.Tag = "Imposto Renda";
-            this.toolStripButtonCopyToClipboard.Text = "Copiar para Clipboard";
-            this.toolStripButtonCopyToClipboard.Visible = false;
-            this.toolStripButtonCopyToClipboard.Click += new System.EventHandler(this.toolStripCopyToClipboard_Click);
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "Codigo";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Número";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "Aplicacao";
-            this.dataGridViewTextBoxColumn19.HeaderText = "Aplic.";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.DataPropertyName = "ValorEmissao";
-            this.dataGridViewTextBoxColumn22.HeaderText = "Valor Emissão";
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "Vencimento";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Venc.";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            // 
-            // Saldo
-            // 
-            this.Saldo.DataPropertyName = "Saldo";
-            this.Saldo.HeaderText = "Saldo";
-            this.Saldo.Name = "Saldo";
-            this.Saldo.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn29
-            // 
-            this.dataGridViewTextBoxColumn29.DataPropertyName = "RendimentoLiquido";
-            this.dataGridViewTextBoxColumn29.HeaderText = "Rend. Líq.";
-            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
-            this.dataGridViewTextBoxColumn29.ReadOnly = true;
-            // 
-            // RendimentoPercentual
-            // 
-            this.RendimentoPercentual.DataPropertyName = "RendimentoPercentual";
-            this.RendimentoPercentual.HeaderText = "Rend. %";
-            this.RendimentoPercentual.Name = "RendimentoPercentual";
-            this.RendimentoPercentual.ReadOnly = true;
-            // 
-            // RendimentoMensal
-            // 
-            this.RendimentoMensal.DataPropertyName = "RendimentoMensal";
-            this.RendimentoMensal.HeaderText = "Rend. Mensal";
-            this.RendimentoMensal.Name = "RendimentoMensal";
-            this.RendimentoMensal.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "Taxa";
-            this.dataGridViewTextBoxColumn21.HeaderText = "Taxa";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            // 
             // frmInvestimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -2305,19 +2310,29 @@ namespace MoneyBin2 {
             this.tabPageAcoes.ResumeLayout(false);
             this.tlpAcoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsVendas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsAcoes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsContas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperacoes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsOperacoes)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAcoes)).EndInit();
             this.tabPageFundos.ResumeLayout(false);
             this.tlpFundos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimentos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsMovimentos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsContasMeses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsFundos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFundos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContasMeses)).EndInit();
             this.tabPageLCA.ResumeLayout(false);
             this.tlpLCA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMeses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsLCAMeses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsLCAs)).EndInit();
             this.tlpLCATop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMovimentos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsLCAMovimentos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAs)).EndInit();
             this.tabPageResumo.ResumeLayout(false);
             this.tlpResumo.ResumeLayout(false);
@@ -2327,27 +2342,17 @@ namespace MoneyBin2 {
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoFundos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsResumoFundos)).EndInit();
             this.tlpResumoColumn0.ResumeLayout(false);
             this.tlpResumoColumn0.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsResumoAcoes)).EndInit();
             this.tabImpostoRenda.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nupIR_Ano)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImpostoRenda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsImpostoRenda)).EndInit();
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsVendas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsAcoes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsContas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsOperacoes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsMovimentos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsContasMeses)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsFundos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsLCAMeses)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsLCAs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsLCAMovimentos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsResumoFundos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsResumoAcoes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsImpostoRenda)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2361,8 +2366,8 @@ namespace MoneyBin2 {
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorSalvar;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripLabel toolStripSpace1;
+        private System.Windows.Forms.ToolStripLabel toolStripSpace2;
         private System.Windows.Forms.ToolStripButton toolStripButtonSalvar;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn agenciaDataGridViewTextBoxColumn;

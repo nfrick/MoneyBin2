@@ -863,5 +863,9 @@ namespace MoneyBin2 {
         }
         #endregion LEITURA DE EXTRATO -------------------------------
 
+        private void chart_DoubleClick(object sender, EventArgs e) {
+            var chart = (Chart)sender;
+            chart.ChartAreas[0].Area3DStyle.Enable3D = !chart.ChartAreas[0].Area3DStyle.Enable3D;
+        }
     }
 }
