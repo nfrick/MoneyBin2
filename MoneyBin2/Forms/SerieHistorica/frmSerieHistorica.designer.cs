@@ -29,6 +29,10 @@ namespace MoneyBin2 {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -37,33 +41,10 @@ namespace MoneyBin2 {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSerieHistorica));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvSerieHistorica = new SuperGrid.SuperDGV();
-            this.dgvAtivos = new SuperGrid.SuperDGV();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.chart = new ChartLibrary.SuperChart();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvSelectedDates = new SuperGrid.SuperDGV();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonDatesClear = new System.Windows.Forms.Button();
-            this.monthCalendarDatas = new System.Windows.Forms.MonthCalendar();
-            this.toolStripMenu = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonLerSerie = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.ofd = new System.Windows.Forms.OpenFileDialog();
-            this.bgWorker = new System.ComponentModel.BackgroundWorker();
-            this.dgvSelecionados = new SuperGrid.SuperDGV();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,14 +55,22 @@ namespace MoneyBin2 {
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsSerieHistorica = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvAtivos = new SuperGrid.SuperDGV();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsAtivos = new System.Windows.Forms.BindingSource(this.components);
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvSelecionados = new SuperGrid.SuperDGV();
             this.codigoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.variacaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsSelecionados = new System.Windows.Forms.BindingSource(this.components);
+            this.chart = new ChartLibrary.SuperChart();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvSelectedDates = new SuperGrid.SuperDGV();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,30 +81,44 @@ namespace MoneyBin2 {
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsSelectedDates = new System.Windows.Forms.BindingSource(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonDatesClear = new System.Windows.Forms.Button();
+            this.monthCalendarDatas = new System.Windows.Forms.MonthCalendar();
+            this.toolStripMenu = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonLerSerie = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonSemana = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonMes = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonTrimestre = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSemestre = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAno = new System.Windows.Forms.ToolStripButton();
+            this.ofd = new System.Windows.Forms.OpenFileDialog();
+            this.bgWorker = new System.ComponentModel.BackgroundWorker();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSerieHistorica)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSerieHistorica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtivos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsAtivos)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelecionados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSelecionados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedDates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSelectedDates)).BeginInit();
             this.panel2.SuspendLayout();
             this.toolStripMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSelecionados)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSerieHistorica)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsAtivos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSelecionados)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSelectedDates)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer
@@ -236,6 +239,74 @@ namespace MoneyBin2 {
             this.dgvSerieHistorica.Size = new System.Drawing.Size(1128, 458);
             this.dgvSerieHistorica.TabIndex = 1;
             // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Codigo";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Codigo";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Data";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Data";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "PrecoAbertura";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Abertura";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "PrecoMaximo";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Máximo";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "PrecoMinimo";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Mínimo";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "PrecoMedio";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Médio";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "PrecoUltimo";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Último";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "PrecoMelhorOfertaCompra";
+            this.dataGridViewTextBoxColumn10.HeaderText = "M.O. Compra";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "PrecoMelhorOfertaVenda";
+            this.dataGridViewTextBoxColumn11.HeaderText = "M.O. Venda";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // bsSerieHistorica
+            // 
+            this.bsSerieHistorica.DataSource = typeof(DataLayer.SerieHistorica);
+            // 
             // dgvAtivos
             // 
             this.dgvAtivos.AllowUserToAddRows = false;
@@ -290,6 +361,25 @@ namespace MoneyBin2 {
             this.dgvAtivos.TabIndex = 0;
             this.dgvAtivos.SelectionChanged += new System.EventHandler(this.dgvAtivos_SelectionChanged);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Código";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Nome";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Ativo";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // bsAtivos
+            // 
+            this.bsAtivos.DataSource = typeof(DataLayer.Ativo);
+            // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage3);
@@ -304,7 +394,7 @@ namespace MoneyBin2 {
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.splitContainer1);
+            this.tabPage3.Controls.Add(this.tableLayoutPanel3);
             this.tabPage3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
@@ -314,6 +404,96 @@ namespace MoneyBin2 {
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Gráfico";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgvSelecionados
+            // 
+            this.dgvSelecionados.AllowUserToAddRows = false;
+            this.dgvSelecionados.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvSelecionados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvSelecionados.AutoGenerateColumns = false;
+            this.dgvSelecionados.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvSelecionados.BackgroundColor = System.Drawing.Color.Black;
+            this.dgvSelecionados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSelecionados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvSelecionados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSelecionados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codigoDataGridViewTextBoxColumn1,
+            this.minDataGridViewTextBoxColumn,
+            this.maxDataGridViewTextBoxColumn,
+            this.variacaoDataGridViewTextBoxColumn});
+            this.dgvSelecionados.DataSource = this.bsSelecionados;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSelecionados.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvSelecionados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSelecionados.EnableHeadersVisualStyles = false;
+            this.dgvSelecionados.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvSelecionados.Location = new System.Drawing.Point(3, 3);
+            this.dgvSelecionados.Name = "dgvSelecionados";
+            this.dgvSelecionados.ReadOnly = true;
+            this.dgvSelecionados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSelecionados.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvSelecionados.RowHeadersVisible = false;
+            this.dgvSelecionados.RowHeadersWidth = 20;
+            this.dgvSelecionados.RowTemplate.Height = 24;
+            this.dgvSelecionados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSelecionados.Size = new System.Drawing.Size(272, 417);
+            this.dgvSelecionados.TabIndex = 5;
+            // 
+            // codigoDataGridViewTextBoxColumn1
+            // 
+            this.codigoDataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
+            this.codigoDataGridViewTextBoxColumn1.HeaderText = "Código";
+            this.codigoDataGridViewTextBoxColumn1.Name = "codigoDataGridViewTextBoxColumn1";
+            this.codigoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // minDataGridViewTextBoxColumn
+            // 
+            this.minDataGridViewTextBoxColumn.DataPropertyName = "Min";
+            this.minDataGridViewTextBoxColumn.HeaderText = "Min";
+            this.minDataGridViewTextBoxColumn.Name = "minDataGridViewTextBoxColumn";
+            this.minDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // maxDataGridViewTextBoxColumn
+            // 
+            this.maxDataGridViewTextBoxColumn.DataPropertyName = "Max";
+            this.maxDataGridViewTextBoxColumn.HeaderText = "Max";
+            this.maxDataGridViewTextBoxColumn.Name = "maxDataGridViewTextBoxColumn";
+            this.maxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // variacaoDataGridViewTextBoxColumn
+            // 
+            this.variacaoDataGridViewTextBoxColumn.DataPropertyName = "Variacao";
+            this.variacaoDataGridViewTextBoxColumn.HeaderText = "Var";
+            this.variacaoDataGridViewTextBoxColumn.Name = "variacaoDataGridViewTextBoxColumn";
+            this.variacaoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bsSelecionados
+            // 
+            this.bsSelecionados.DataSource = typeof(DataLayer.Ativo);
             // 
             // chart
             // 
@@ -350,7 +530,7 @@ namespace MoneyBin2 {
             legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
             this.chart.Legends.Add(legend1);
-            this.chart.Location = new System.Drawing.Point(0, 0);
+            this.chart.Location = new System.Drawing.Point(281, 2);
             this.chart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart.Name = "chart";
             this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
@@ -366,7 +546,7 @@ namespace MoneyBin2 {
             series1.XValueMember = "Data";
             series1.YValueMembers = "PrecoUltimo";
             this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(1329, 423);
+            this.chart.Size = new System.Drawing.Size(1299, 419);
             this.chart.TabIndex = 4;
             this.chart.Text = "chart";
             this.chart.DoubleClick += new System.EventHandler(this.chart_DoubleClick);
@@ -467,290 +647,6 @@ namespace MoneyBin2 {
             this.dgvSelectedDates.Size = new System.Drawing.Size(1169, 419);
             this.dgvSelectedDates.TabIndex = 7;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.buttonDatesClear);
-            this.panel2.Controls.Add(this.monthCalendarDatas);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(4, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(400, 415);
-            this.panel2.TabIndex = 8;
-            // 
-            // buttonDatesClear
-            // 
-            this.buttonDatesClear.Location = new System.Drawing.Point(12, 225);
-            this.buttonDatesClear.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonDatesClear.Name = "buttonDatesClear";
-            this.buttonDatesClear.Size = new System.Drawing.Size(100, 32);
-            this.buttonDatesClear.TabIndex = 3;
-            this.buttonDatesClear.Text = "Limpar";
-            this.buttonDatesClear.UseVisualStyleBackColor = true;
-            this.buttonDatesClear.Click += new System.EventHandler(this.buttonDatesClear_Click);
-            // 
-            // monthCalendarDatas
-            // 
-            this.monthCalendarDatas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthCalendarDatas.Location = new System.Drawing.Point(12, 11);
-            this.monthCalendarDatas.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
-            this.monthCalendarDatas.Name = "monthCalendarDatas";
-            this.monthCalendarDatas.TabIndex = 2;
-            this.monthCalendarDatas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.monthCalendarDatas_MouseDown);
-            // 
-            // toolStripMenu
-            // 
-            this.toolStripMenu.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripMenu.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStripMenu.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonLerSerie,
-            this.toolStripSeparator1,
-            this.toolStripLabel2,
-            this.toolStripLabel3});
-            this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
-            this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(336, 30);
-            this.toolStripMenu.TabIndex = 0;
-            // 
-            // toolStripButtonLerSerie
-            // 
-            this.toolStripButtonLerSerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.toolStripButtonLerSerie.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonLerSerie.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripButtonLerSerie.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLerSerie.Image")));
-            this.toolStripButtonLerSerie.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLerSerie.Name = "toolStripButtonLerSerie";
-            this.toolStripButtonLerSerie.Size = new System.Drawing.Size(79, 27);
-            this.toolStripButtonLerSerie.Text = "Ler Série";
-            this.toolStripButtonLerSerie.Click += new System.EventHandler(this.toolStripButtonLerSerie_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.AutoSize = false;
-            this.toolStripLabel2.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripLabel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(220, 24);
-            this.toolStripLabel2.Tag = "";
-            this.toolStripLabel2.Text = "Exibir cotações entre";
-            this.toolStripLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripLabel3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(19, 27);
-            this.toolStripLabel3.Tag = "";
-            this.toolStripLabel3.Text = "e";
-            // 
-            // bgWorker
-            // 
-            this.bgWorker.WorkerReportsProgress = true;
-            this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
-            this.bgWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_ProgressChanged);
-            this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
-            // 
-            // dgvSelecionados
-            // 
-            this.dgvSelecionados.AllowUserToAddRows = false;
-            this.dgvSelecionados.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.LightGreen;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvSelecionados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvSelecionados.AutoGenerateColumns = false;
-            this.dgvSelecionados.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvSelecionados.BackgroundColor = System.Drawing.Color.Black;
-            this.dgvSelecionados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSelecionados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvSelecionados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSelecionados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoDataGridViewTextBoxColumn1,
-            this.minDataGridViewTextBoxColumn,
-            this.maxDataGridViewTextBoxColumn,
-            this.variacaoDataGridViewTextBoxColumn});
-            this.dgvSelecionados.DataSource = this.bsSelecionados;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSelecionados.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvSelecionados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSelecionados.EnableHeadersVisualStyles = false;
-            this.dgvSelecionados.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvSelecionados.Location = new System.Drawing.Point(0, 0);
-            this.dgvSelecionados.Name = "dgvSelecionados";
-            this.dgvSelecionados.ReadOnly = true;
-            this.dgvSelecionados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSelecionados.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvSelecionados.RowHeadersVisible = false;
-            this.dgvSelecionados.RowHeadersWidth = 20;
-            this.dgvSelecionados.RowTemplate.Height = 24;
-            this.dgvSelecionados.Size = new System.Drawing.Size(250, 423);
-            this.dgvSelecionados.TabIndex = 5;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(4, 4);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.dgvSelecionados);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.chart);
-            this.splitContainer1.Size = new System.Drawing.Size(1583, 423);
-            this.splitContainer1.SplitterDistance = 250;
-            this.splitContainer1.TabIndex = 6;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Codigo";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Codigo";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Data";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Data";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "PrecoAbertura";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Abertura";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "PrecoMaximo";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Máximo";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "PrecoMinimo";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Mínimo";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "PrecoMedio";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Médio";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "PrecoUltimo";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Último";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "PrecoMelhorOfertaCompra";
-            this.dataGridViewTextBoxColumn10.HeaderText = "M.O. Compra";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "PrecoMelhorOfertaVenda";
-            this.dataGridViewTextBoxColumn11.HeaderText = "M.O. Venda";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // bsSerieHistorica
-            // 
-            this.bsSerieHistorica.DataSource = typeof(DataLayer.SerieHistorica);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Código";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Nome";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Ativo";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // bsAtivos
-            // 
-            this.bsAtivos.DataSource = typeof(DataLayer.Ativo);
-            // 
-            // codigoDataGridViewTextBoxColumn1
-            // 
-            this.codigoDataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
-            this.codigoDataGridViewTextBoxColumn1.HeaderText = "Código";
-            this.codigoDataGridViewTextBoxColumn1.Name = "codigoDataGridViewTextBoxColumn1";
-            this.codigoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // minDataGridViewTextBoxColumn
-            // 
-            this.minDataGridViewTextBoxColumn.DataPropertyName = "Min";
-            this.minDataGridViewTextBoxColumn.HeaderText = "Min";
-            this.minDataGridViewTextBoxColumn.Name = "minDataGridViewTextBoxColumn";
-            this.minDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // maxDataGridViewTextBoxColumn
-            // 
-            this.maxDataGridViewTextBoxColumn.DataPropertyName = "Max";
-            this.maxDataGridViewTextBoxColumn.HeaderText = "Max";
-            this.maxDataGridViewTextBoxColumn.Name = "maxDataGridViewTextBoxColumn";
-            this.maxDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // variacaoDataGridViewTextBoxColumn
-            // 
-            this.variacaoDataGridViewTextBoxColumn.DataPropertyName = "Variacao";
-            this.variacaoDataGridViewTextBoxColumn.HeaderText = "Var";
-            this.variacaoDataGridViewTextBoxColumn.Name = "variacaoDataGridViewTextBoxColumn";
-            this.variacaoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bsSelecionados
-            // 
-            this.bsSelecionados.DataSource = typeof(DataLayer.Ativo);
-            // 
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
@@ -818,6 +714,178 @@ namespace MoneyBin2 {
             // 
             this.bsSelectedDates.DataSource = typeof(DataLayer.SerieHistorica);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.buttonDatesClear);
+            this.panel2.Controls.Add(this.monthCalendarDatas);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(400, 415);
+            this.panel2.TabIndex = 8;
+            // 
+            // buttonDatesClear
+            // 
+            this.buttonDatesClear.Location = new System.Drawing.Point(12, 225);
+            this.buttonDatesClear.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonDatesClear.Name = "buttonDatesClear";
+            this.buttonDatesClear.Size = new System.Drawing.Size(100, 32);
+            this.buttonDatesClear.TabIndex = 3;
+            this.buttonDatesClear.Text = "Limpar";
+            this.buttonDatesClear.UseVisualStyleBackColor = true;
+            this.buttonDatesClear.Click += new System.EventHandler(this.buttonDatesClear_Click);
+            // 
+            // monthCalendarDatas
+            // 
+            this.monthCalendarDatas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthCalendarDatas.Location = new System.Drawing.Point(12, 11);
+            this.monthCalendarDatas.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
+            this.monthCalendarDatas.Name = "monthCalendarDatas";
+            this.monthCalendarDatas.TabIndex = 2;
+            this.monthCalendarDatas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.monthCalendarDatas_MouseDown);
+            // 
+            // toolStripMenu
+            // 
+            this.toolStripMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenu.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripMenu.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonLerSerie,
+            this.toolStripSeparator1,
+            this.toolStripLabel2,
+            this.toolStripLabel3,
+            this.toolStripSeparator2,
+            this.toolStripButtonSemana,
+            this.toolStripButtonMes,
+            this.toolStripButtonTrimestre,
+            this.toolStripButtonSemestre,
+            this.toolStripButtonAno});
+            this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
+            this.toolStripMenu.Name = "toolStripMenu";
+            this.toolStripMenu.Size = new System.Drawing.Size(675, 30);
+            this.toolStripMenu.TabIndex = 0;
+            // 
+            // toolStripButtonLerSerie
+            // 
+            this.toolStripButtonLerSerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.toolStripButtonLerSerie.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonLerSerie.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.toolStripButtonLerSerie.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLerSerie.Image")));
+            this.toolStripButtonLerSerie.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLerSerie.Name = "toolStripButtonLerSerie";
+            this.toolStripButtonLerSerie.Size = new System.Drawing.Size(79, 27);
+            this.toolStripButtonLerSerie.Text = "Ler Série";
+            this.toolStripButtonLerSerie.Click += new System.EventHandler(this.toolStripButtonLerSerie_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.AutoSize = false;
+            this.toolStripLabel2.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripLabel2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(220, 24);
+            this.toolStripLabel2.Tag = "";
+            this.toolStripLabel2.Text = "Exibir cotações entre";
+            this.toolStripLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripLabel3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(19, 27);
+            this.toolStripLabel3.Tag = "";
+            this.toolStripLabel3.Text = "e";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 30);
+            // 
+            // toolStripButtonSemana
+            // 
+            this.toolStripButtonSemana.BackColor = System.Drawing.Color.LightBlue;
+            this.toolStripButtonSemana.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonSemana.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSemana.Image")));
+            this.toolStripButtonSemana.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSemana.Name = "toolStripButtonSemana";
+            this.toolStripButtonSemana.Size = new System.Drawing.Size(75, 27);
+            this.toolStripButtonSemana.Text = "Semana";
+            this.toolStripButtonSemana.Click += new System.EventHandler(this.toolStripButtonPeriodo_Click);
+            // 
+            // toolStripButtonMes
+            // 
+            this.toolStripButtonMes.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.toolStripButtonMes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonMes.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonMes.Image")));
+            this.toolStripButtonMes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonMes.Name = "toolStripButtonMes";
+            this.toolStripButtonMes.Size = new System.Drawing.Size(45, 27);
+            this.toolStripButtonMes.Text = "Mês";
+            this.toolStripButtonMes.Click += new System.EventHandler(this.toolStripButtonPeriodo_Click);
+            // 
+            // toolStripButtonTrimestre
+            // 
+            this.toolStripButtonTrimestre.BackColor = System.Drawing.Color.LightBlue;
+            this.toolStripButtonTrimestre.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonTrimestre.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonTrimestre.Image")));
+            this.toolStripButtonTrimestre.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonTrimestre.Name = "toolStripButtonTrimestre";
+            this.toolStripButtonTrimestre.Size = new System.Drawing.Size(84, 27);
+            this.toolStripButtonTrimestre.Text = "Trimestre";
+            this.toolStripButtonTrimestre.Click += new System.EventHandler(this.toolStripButtonPeriodo_Click);
+            // 
+            // toolStripButtonSemestre
+            // 
+            this.toolStripButtonSemestre.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.toolStripButtonSemestre.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonSemestre.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSemestre.Image")));
+            this.toolStripButtonSemestre.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSemestre.Name = "toolStripButtonSemestre";
+            this.toolStripButtonSemestre.Size = new System.Drawing.Size(84, 27);
+            this.toolStripButtonSemestre.Text = "Semestre";
+            this.toolStripButtonSemestre.Click += new System.EventHandler(this.toolStripButtonPeriodo_Click);
+            // 
+            // toolStripButtonAno
+            // 
+            this.toolStripButtonAno.BackColor = System.Drawing.Color.LightBlue;
+            this.toolStripButtonAno.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAno.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAno.Image")));
+            this.toolStripButtonAno.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAno.Name = "toolStripButtonAno";
+            this.toolStripButtonAno.Size = new System.Drawing.Size(45, 27);
+            this.toolStripButtonAno.Text = "Ano";
+            this.toolStripButtonAno.Click += new System.EventHandler(this.toolStripButtonPeriodo_Click);
+            // 
+            // bgWorker
+            // 
+            this.bgWorker.WorkerReportsProgress = true;
+            this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
+            this.bgWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_ProgressChanged);
+            this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 278F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.dgvSelecionados, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.chart, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1583, 423);
+            this.tableLayoutPanel3.TabIndex = 7;
+            // 
             // frmSerieHistorica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -838,25 +906,22 @@ namespace MoneyBin2 {
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSerieHistorica)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSerieHistorica)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtivos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsAtivos)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelecionados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSelecionados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectedDates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSelectedDates)).EndInit();
             this.panel2.ResumeLayout(false);
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSelecionados)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bsSerieHistorica)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsAtivos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSelecionados)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSelectedDates)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -921,10 +986,16 @@ namespace MoneyBin2 {
         private System.Windows.Forms.BindingSource bsSelecionados;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn minDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn variacaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSemana;
+        private System.Windows.Forms.ToolStripButton toolStripButtonMes;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAno;
+        private System.Windows.Forms.ToolStripButton toolStripButtonTrimestre;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSemestre;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }

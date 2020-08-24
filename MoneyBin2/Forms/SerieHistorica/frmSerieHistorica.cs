@@ -40,8 +40,8 @@ namespace MoneyBin2 {
             dgvSelecionados.FormatColumn("Código", null, 55);
             dgvSelecionados.FormatColumn("Min", dgvSelecionados.StyleCurrency, 45);
             dgvSelecionados.FormatColumn("Max", dgvSelecionados.StyleCurrency, 45);
-            dgvSelecionados.FormatColumn("Var", dgvSelecionados.StylePercent1, 55);
-            
+            dgvSelecionados.FormatColumn("Var", dgvSelecionados.StylePercent1, 50);
+
             dgvSerieHistorica.SetFont(12);
             dgvSerieHistorica.FormatColumn("Data", dgvSerieHistorica.StyleDateLong, 100);
             dgvSerieHistorica.FormatColumn("Abertura", dgvSerieHistorica.StyleCurrency, 70);
@@ -65,7 +65,7 @@ namespace MoneyBin2 {
 
             _dtpickerInicio.Width = _dtpickerTermino.Width = 100;
             toolStripMenu.Items.Insert(3, _dtpickerInicio);
-            toolStripMenu.Items.Add(_dtpickerTermino);
+            toolStripMenu.Items.Insert(5, _dtpickerTermino);
             SetDates();
             _dtpickerInicio.ValueChanged += toolStripDates_SelectedIndexChanged;
             _dtpickerTermino.ValueChanged += toolStripDates_SelectedIndexChanged;
@@ -93,6 +93,31 @@ namespace MoneyBin2 {
 
         private void toolStripDates_SelectedIndexChanged(object sender, EventArgs e) {
             ResetCotacoes();
+        }
+        
+        private void toolStripButtonPeriodo_Click(object sender, EventArgs e) {
+            var btn = (ToolStripButton)sender;
+            var termino = _dtpickerTermino.Value;
+            var inicio = termino.AddDays(1 - termino.Day);
+            switch (btn.Text) {
+                case "Semana":
+                    _dtpickerInicio.Value = termino.AddDays(-7);
+                    break;
+                case "Mês":
+                    _dtpickerInicio.Value = inicio;
+                    break;
+                case "Trimestre":
+                    _dtpickerInicio.Value = inicio.AddMonths(-2);
+                    break;
+                case "Semestre":
+                    _dtpickerInicio.Value = inicio.AddMonths(-5);
+                    break;
+                case "Ano":
+                    _dtpickerInicio.Value = inicio.AddMonths(-11);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void RefreshSerieHistorica() {
