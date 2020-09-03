@@ -770,7 +770,7 @@ namespace MoneyBin2 {
             this.tabPageFundos.Location = new System.Drawing.Point(4, 32);
             this.tabPageFundos.Name = "tabPageFundos";
             this.tabPageFundos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFundos.Size = new System.Drawing.Size(1311, 562);
+            this.tabPageFundos.Size = new System.Drawing.Size(1311, 566);
             this.tabPageFundos.TabIndex = 1;
             this.tabPageFundos.Text = "Fundos";
             // 
@@ -788,7 +788,7 @@ namespace MoneyBin2 {
             this.tlpFundos.RowCount = 2;
             this.tlpFundos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpFundos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpFundos.Size = new System.Drawing.Size(1305, 556);
+            this.tlpFundos.Size = new System.Drawing.Size(1305, 560);
             this.tlpFundos.TabIndex = 3;
             // 
             // dgvMovimentos
@@ -849,7 +849,7 @@ namespace MoneyBin2 {
             this.dgvMovimentos.RowHeadersWidth = 20;
             this.dgvMovimentos.RowTemplate.Height = 24;
             this.dgvMovimentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMovimentos.Size = new System.Drawing.Size(769, 272);
+            this.dgvMovimentos.Size = new System.Drawing.Size(769, 274);
             this.dgvMovimentos.TabIndex = 2;
             // 
             // dataDataGridViewTextBoxColumn1
@@ -973,7 +973,7 @@ namespace MoneyBin2 {
             this.dgvFundos.RowHeadersWidth = 20;
             this.dgvFundos.RowTemplate.Height = 24;
             this.dgvFundos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFundos.Size = new System.Drawing.Size(524, 272);
+            this.dgvFundos.Size = new System.Drawing.Size(524, 274);
             this.dgvFundos.TabIndex = 5;
             this.dgvFundos.Tag = "1";
             // 
@@ -1045,7 +1045,7 @@ namespace MoneyBin2 {
             this.dgvContasMeses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvContasMeses.EnableHeadersVisualStyles = false;
             this.dgvContasMeses.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvContasMeses.Location = new System.Drawing.Point(3, 281);
+            this.dgvContasMeses.Location = new System.Drawing.Point(3, 283);
             this.dgvContasMeses.MultiSelect = false;
             this.dgvContasMeses.Name = "dgvContasMeses";
             this.dgvContasMeses.ReadOnly = true;
@@ -1061,7 +1061,7 @@ namespace MoneyBin2 {
             this.dgvContasMeses.RowHeadersWidth = 20;
             this.dgvContasMeses.RowTemplate.Height = 24;
             this.dgvContasMeses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContasMeses.Size = new System.Drawing.Size(1299, 272);
+            this.dgvContasMeses.Size = new System.Drawing.Size(1299, 274);
             this.dgvContasMeses.TabIndex = 1;
             this.dgvContasMeses.Tag = "8";
             this.dgvContasMeses.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);

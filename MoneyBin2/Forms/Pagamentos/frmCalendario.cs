@@ -182,6 +182,7 @@ namespace MoneyBin2 {
         }
 
         private void ProcurarAgendamentos() {
+            SuperMsgBox.ColorButtons();
             foreach (var item in
                 dgvCalendario.Rows.OfType<DataGridViewRow>()
                 .Select(r => (CalendarioItem)r.DataBoundItem)
@@ -191,6 +192,7 @@ namespace MoneyBin2 {
                     break;
                 }
             }
+            SuperMsgBox.Reset();
         }
 
         private bool ProcurarAgendamento(CalendarioItem item) {
@@ -247,6 +249,8 @@ namespace MoneyBin2 {
                 (r.Pagamento.Descricao != null || r.Pagamento.Valor != null || r.Valor != null))
                 .OrderBy(r => r.Data);
 
+            SuperMsgBox.ColorButtons();
+
             foreach (var item in naoPagos) {
                 var ip = item.Pagamento;
                 var valor = -1 * (item.Valor == null || item.Valor == 1 ? ip.Valor : item.Valor);
@@ -266,6 +270,8 @@ namespace MoneyBin2 {
                     found = pagamentos.Where(p => p.Valor == valor);
                 }
                 if (!found.Any()) {
+                    SuperMsgBox.SetColors(Color.White, Color.FromArgb(255, 48, 0, 0), Color.FromArgb(255, 32, 0, 0));
+                    SuperMsgBox.SetButtonText("OK", "Continue");
                     if (SuperMsgBox.Show($"{item.Descricao}:\n\n\tPagamento não encontrado.",
                                 header,
                                 SuperMsgBox.Buttons.OKCancel,
@@ -278,6 +284,7 @@ namespace MoneyBin2 {
 
                 var text = found.Select(f => f.ToString())
                     .Aggregate((i, j) => "\t" + i.ToString() + "\n" + j.ToString());
+                SuperMsgBox.ResetColors();
                 if (SuperMsgBox.Show($"{item.Descricao}:\n\n{text}\n\nConfirma?",
                         header, SuperMsgBox.Buttons.YesNo, SuperMsgBox.Icon.Question) ==
                             DialogResult.No) {
@@ -287,6 +294,7 @@ namespace MoneyBin2 {
                 item.Pago = true;
                 item.Valor = valor ?? 1;
             }
+            SuperMsgBox.Reset();
         }
 
 

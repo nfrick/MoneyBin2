@@ -677,19 +677,62 @@ namespace MoneyBin2 {
             var pck = new ExcelPackage(new FileInfo(SFD.FileName));
 
             var source = _chkShowAll.Checked ? ContaAtual.Fundos : ContaAtual.FundosNaoZerado;
+
+            CriaPlanilhaResumo(pck, source);
+
             foreach (var fundo in source) {
-                CriaPlanilha(pck, fundo);
+                CriaPlanilhaFundo(pck, fundo);
+            }
+
+            pck.Save();
+            if (MessageBox.Show("Dados exportados. Deseja abrir planilha?", Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                System.Diagnostics.Process.Start(SFD.FileName);
             }
         }
 
-        private void CriaPlanilha(ExcelPackage pck, ContaFundo fundo) {
-            var ws = pck.Workbook.Worksheets.FirstOrDefault(s => s.Name == fundo.FundoApelido);
-            if (ws != null) {
-                pck.Workbook.Worksheets.Delete(fundo.FundoApelido);
+        private void CriaPlanilhaResumo(ExcelPackage pck, IEnumerable<ContaFundo> fundos) {
+            var ws = InicializaPlanilha(pck, "Resumo");
+            var col = 1;
+            foreach (var column in dgvFundos.Columns.Cast<DataGridViewColumn>()) {
+                ws.Cells[1, col++].Value = column.HeaderText;
             }
 
-            ws = pck.Workbook.Worksheets.Add(fundo.FundoApelido);
+            var row = 2;
+            foreach (var fundo in fundos) {
+                col = 1;
+                ws.Cells[row, col++].Value = fundo.FundoApelido;
+                ws.Cells[row, col++].Value = fundo.Saldo;
+                ws.Cells[row++, col++].Value = fundo.RendimentoLiquido;
+            }
+            row--;
+            col--;
+            ws.Cells[$"A2:A{row}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+            ws.Cells[$"B2:C{row + 1}"].Style.Numberformat.Format = "#,##0.00";
+
+            var range = ws.Cells[1, 1, row, col];
+            var table = ws.Tables.Add(range, $"Resumo");
+            table.Columns[1].TotalsRowFunction = RowFunctions.Sum;
+            table.Columns[2].TotalsRowFunction = RowFunctions.Sum;
+            table.ShowTotal = true;
+            table.TableStyle = TableStyles.Medium8;
+            ws.Cells.AutoFitColumns(0);
+
+            ws.View.FreezePanes(2, 1);
+        }
+
+        private static ExcelWorksheet InicializaPlanilha(ExcelPackage pck, string nome) {
+            var ws = pck.Workbook.Worksheets.FirstOrDefault(s => s.Name == nome);
+            if (ws != null) {
+                pck.Workbook.Worksheets.Delete(nome);
+            }
+
+            ws = pck.Workbook.Worksheets.Add(nome);
             ws.View.ShowGridLines = false;
+            return ws;
+        }
+
+        private void CriaPlanilhaFundo(ExcelPackage pck, ContaFundo fundo) {
+            var ws = InicializaPlanilha(pck, fundo.FundoApelido);
 
             var col = 1;
             foreach (var column in dgvContasMeses.Columns.Cast<DataGridViewColumn>()) {
@@ -720,18 +763,16 @@ namespace MoneyBin2 {
             ws.Cells[$"C2:D{row}"].Style.Numberformat.Format = "#,##0.0000";
             ws.Cells[$"E2:H{row}"].Style.Numberformat.Format = "#,##0.00";
             ws.Cells[$"I2:K{row}"].Style.Numberformat.Format = "0.000%";
-            ws.Cells.AutoFitColumns(0);
 
             var range = ws.Cells[1, 1, row, col];
             var table = ws.Tables.Add(range, $"table{fundo.FundoApelido.Replace(' ', '_')}");
             table.ShowTotal = true;
             table.TableStyle = TableStyles.Light1;
 
-            ws.Column(6).Hidden = !fundo.ContasMeses.Any(c => c.ImpostoRenda != 0);
-            ws.Column(7).Hidden = !fundo.ContasMeses.Any(c => c.IOF != 0);
+            ws.Cells.AutoFitColumns(0);
+            ws.Column(6).Hidden = fundo.ContasMeses.All(c => c.ImpostoRenda == 0);
+            ws.Column(7).Hidden = fundo.ContasMeses.All(c => c.IOF == 0);
             ws.View.FreezePanes(2, 1);
-
-            pck.Save();
         }
 
         #endregion TOOLSTRIP -----------------------------------------------
