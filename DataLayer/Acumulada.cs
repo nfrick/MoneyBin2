@@ -15,7 +15,7 @@ namespace DataLayer
     public partial class Acumulada
     {
         public int OperacaoId { get; set; }
-        public int Qtd { get; set; }
+        public Nullable<int> Qtd { get; set; }
     
         public virtual Operacao Operacao { get; set; }
     }

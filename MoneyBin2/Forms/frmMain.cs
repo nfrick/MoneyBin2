@@ -159,5 +159,10 @@ namespace MoneyBin2 {
             var frm = new frmFundos() { MdiParent = this };
             frm.Show();
         }
+
+        private void toolStripButtonPesquisa_Click(object sender, EventArgs e) {
+            var frm = new frmPesquisa() { MdiParent = this };
+            frm.Show();
+        }
     }
 }

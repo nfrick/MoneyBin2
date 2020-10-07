@@ -281,11 +281,11 @@ namespace MoneyBin2 {
 
         #region DATAGRIDVIEW ---------------------------
         private void dgvBalance_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            var x = dgvBalance.Rows[e.RowIndex].DataBoundItem;
             try {
                 var item = (BalanceItem)dgvBalance.Rows[e.RowIndex].DataBoundItem;
                 if (!item.AfetaSaldo) {
                     e.CellStyle.ForeColor = Color.DarkGray;
+                    return;
                 }
 
                 if ((e.ColumnIndex == 3 || e.ColumnIndex == 5) && (decimal)e.Value < 0) {

@@ -14,14 +14,18 @@ namespace CEF_Rent {
         static void Main(string[] args) {
             const string textfile = @"D:\Users\Nelson Frick\Desktop\Fundos CEF.txt";
             try {
+                Console.Write("Lendo dados... ");
                 var textAsArray = File.ReadAllLines(textfile);
                 var dados = textAsArray.Select(r => new Info(r)).OrderBy(i => i.Fundo);
-                var x = dados.Count(); // Para forçar exception
+                Console.WriteLine($"Lidos {dados.Count()} fundos"); // Para forçar exception
                 //CriaPlanilha2();
                 CriaPlanilha(dados);
-                Console.WriteLine("Dados lidos corretamente");
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("Dados lidos corretamente.");
             }
             catch (Exception ex) {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"Erro: {ex.Message}");
             }
             finally {
@@ -83,6 +87,8 @@ namespace CEF_Rent {
 
         private static void CriaPlanilha(IEnumerable<Info> dados) {
             const string excelfile = @"D:\Users\Nelson Frick\SkyDrive\Documents\Financeiro\Caixa\Fundos CEF 3.xlsx";
+
+            Console.WriteLine("Criando planilha");
             var pck = new ExcelPackage(new FileInfo(excelfile));
             var ws = pck.Workbook.Worksheets.FirstOrDefault(s => s.Name == "CEF_Rent");
             if (ws == null) {
@@ -100,8 +106,10 @@ namespace CEF_Rent {
 
             ws.View.ShowGridLines = false;
 
+            Console.WriteLine("Gravando dados");
             var row = 1;
             foreach (var info in dados) {
+                Console.WriteLine($"\t{info.Fundo}");
                 ws.SetValue(++row, 1, info.Fundo);
                 ws.SetValue(row, 2, info.VariaçãoDia);
                 ws.SetValue(row, 3, info.AcumuladoMes);
@@ -116,12 +124,14 @@ namespace CEF_Rent {
             //table = ws.Tables.Add(new ExcelAddress(ws.Dimension.Address), "tblCEF_Rent");
             //table.TableStyle = TableStyles.Medium2;
 
+            Console.WriteLine("Formatando planilha");
             ws.Cells[$"A2:A{row}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
             ws.Cells[$"B2:E{row}"].Style.Numberformat.Format = "0.000%";
             ws.Cells.AutoFitColumns(0);
 
             ws.View.FreezePanes(2, 1);
 
+            Console.WriteLine("Salvando planilha");
             pck.Save();
         }
     }

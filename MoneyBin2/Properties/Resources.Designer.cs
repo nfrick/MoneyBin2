@@ -93,6 +93,16 @@ namespace MoneyBin2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Binóculos {
+            get {
+                object obj = ResourceManager.GetObject("Binóculos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Calendario {
             get {
                 object obj = ResourceManager.GetObject("Calendario", resourceCulture);

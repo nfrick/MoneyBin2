@@ -296,5 +296,50 @@ namespace DataLayer
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SituacaoImpostoRenda>("spSituacaoImpostoRenda", contaIDParameter, anoParameter);
         }
+    
+        public virtual ObjectResult<Pesquisa> spPesquisa(string contas, string inicio, string termino, string valorOperacao, string valor1, string valor2, Nullable<int> afetaSaldo, string grp, string cat, string desc)
+        {
+            var contasParameter = contas != null ?
+                new ObjectParameter("Contas", contas) :
+                new ObjectParameter("Contas", typeof(string));
+    
+            var inicioParameter = inicio != null ?
+                new ObjectParameter("Inicio", inicio) :
+                new ObjectParameter("Inicio", typeof(string));
+    
+            var terminoParameter = termino != null ?
+                new ObjectParameter("Termino", termino) :
+                new ObjectParameter("Termino", typeof(string));
+    
+            var valorOperacaoParameter = valorOperacao != null ?
+                new ObjectParameter("ValorOperacao", valorOperacao) :
+                new ObjectParameter("ValorOperacao", typeof(string));
+    
+            var valor1Parameter = valor1 != null ?
+                new ObjectParameter("Valor1", valor1) :
+                new ObjectParameter("Valor1", typeof(string));
+    
+            var valor2Parameter = valor2 != null ?
+                new ObjectParameter("Valor2", valor2) :
+                new ObjectParameter("Valor2", typeof(string));
+    
+            var afetaSaldoParameter = afetaSaldo.HasValue ?
+                new ObjectParameter("AfetaSaldo", afetaSaldo) :
+                new ObjectParameter("AfetaSaldo", typeof(int));
+    
+            var grpParameter = grp != null ?
+                new ObjectParameter("grp", grp) :
+                new ObjectParameter("grp", typeof(string));
+    
+            var catParameter = cat != null ?
+                new ObjectParameter("cat", cat) :
+                new ObjectParameter("cat", typeof(string));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("desc", desc) :
+                new ObjectParameter("desc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pesquisa>("spPesquisa", contasParameter, inicioParameter, terminoParameter, valorOperacaoParameter, valor1Parameter, valor2Parameter, afetaSaldoParameter, grpParameter, catParameter, descParameter);
+        }
     }
 }

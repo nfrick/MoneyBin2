@@ -48,8 +48,8 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus, Version=5.2.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPPlus.5.2.1\lib\net45\EPPlus.dll</HintPath>
+    <Reference Include="EPPlus, Version=5.3.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.3.2\lib\net45\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="LaMarvin.Windows.Forms.ColorPicker">
       <HintPath>..\..\Libraries\ColorPicker\Control\bin\LaMarvin.Windows.Forms.ColorPicker.dll</HintPath>
@@ -96,11 +96,16 @@
       <HintPath>..\..\Libraries\SuperReportSolution\SuperReport\bin\Debug\SuperReport.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -121,6 +126,12 @@
     </Compile>
     <Compile Include="Classes\DataForm.Designer.cs">
       <DependentUpon>DataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Balance\frmPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Balance\frmPesquisa.Designer.cs">
+      <DependentUpon>frmPesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Balance\frmRegras.cs">
       <SubType>Form</SubType>
@@ -272,6 +283,9 @@
     <EmbeddedResource Include="Classes\DataForm.resx">
       <DependentUpon>DataForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Balance\frmPesquisa.resx">
+      <DependentUpon>frmPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Balance\frmRegras.resx">
       <DependentUpon>frmRegras.cs</DependentUpon>
     </EmbeddedResource>
@@ -369,6 +383,7 @@
     <None Include="Properties\DataSources\DataLayer.Fundo.datasource" />
     <None Include="Properties\DataSources\DataLayer.Pagamento.datasource" />
     <None Include="Properties\DataSources\DataLayer.Patrimonio.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Pesquisa.datasource" />
     <None Include="Properties\DataSources\DataLayer.Regra.datasource" />
     <None Include="Properties\DataSources\DataLayer.SerieHistorica.datasource" />
     <None Include="Properties\DataSources\DataLayer.SituacaoImpostoRenda.datasource" />
@@ -504,6 +519,7 @@
     <None Include="Resources\Pasta.png" />
     <None Include="Resources\Scale.png" />
     <None Include="Resources\clipboard.png" />
+    <None Include="Resources\Binóculos.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

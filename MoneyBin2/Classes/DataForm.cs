@@ -58,7 +58,10 @@ namespace MoneyBin2 {
                     item.Text = SaveQuestion(_ctx.ChangesCount);
                 }
             }
+            UpdateStatusBar();
+        }
 
+        protected void UpdateStatusBar() {
             toolStripStatusLabelRecords.Text = $"Registros: {_mainBindingSource.Count}";
 
             toolStripStatusLabelAdded.Visible = _ctx.AddedAny;
