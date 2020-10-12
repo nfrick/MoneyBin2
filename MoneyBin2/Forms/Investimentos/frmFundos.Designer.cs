@@ -41,6 +41,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.dgvMeses = new SuperGrid.SuperDGV();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,8 +67,8 @@
             // toolStripContainer.ContentPanel
             // 
             this.toolStripContainer.ContentPanel.Controls.Add(this.tlpMain);
-            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(1363, 867);
-            this.toolStripContainer.Size = new System.Drawing.Size(1363, 867);
+            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(1426, 867);
+            this.toolStripContainer.Size = new System.Drawing.Size(1426, 867);
             // 
             // bsFundos
             // 
@@ -98,7 +99,8 @@
             this.dgvFundos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
+            this.dataGridViewTextBoxColumn4,
+            this.Tipo});
             this.dgvFundos.DataSource = this.bsFundos;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
@@ -125,7 +127,7 @@
             this.dgvFundos.RowHeadersWidth = 20;
             this.dgvFundos.RowTemplate.Height = 24;
             this.dgvFundos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFundos.Size = new System.Drawing.Size(741, 334);
+            this.dgvFundos.Size = new System.Drawing.Size(818, 334);
             this.dgvFundos.TabIndex = 0;
             this.dgvFundos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFundos_CellEndEdit);
             this.dgvFundos.SelectionChanged += new System.EventHandler(this.dgvFundos_SelectionChanged);
@@ -153,11 +155,17 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Apelido";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            // 
             // tlpMain
             // 
             this.tlpMain.ColumnCount = 2;
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 747F));
-            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 483F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 824F));
+            this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 406F));
             this.tlpMain.Controls.Add(this.dgvMeses, 1, 0);
             this.tlpMain.Controls.Add(this.dgvFundos, 0, 0);
             this.tlpMain.Controls.Add(this.chart, 0, 1);
@@ -167,7 +175,7 @@
             this.tlpMain.RowCount = 2;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 340F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 460F));
-            this.tlpMain.Size = new System.Drawing.Size(1363, 867);
+            this.tlpMain.Size = new System.Drawing.Size(1426, 867);
             this.tlpMain.TabIndex = 1;
             // 
             // dgvMeses
@@ -208,7 +216,7 @@
             this.dgvMeses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMeses.EnableHeadersVisualStyles = false;
             this.dgvMeses.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvMeses.Location = new System.Drawing.Point(750, 3);
+            this.dgvMeses.Location = new System.Drawing.Point(827, 3);
             this.dgvMeses.Name = "dgvMeses";
             this.dgvMeses.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -222,7 +230,7 @@
             this.dgvMeses.RowHeadersWidth = 20;
             this.dgvMeses.RowTemplate.Height = 24;
             this.dgvMeses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMeses.Size = new System.Drawing.Size(610, 334);
+            this.dgvMeses.Size = new System.Drawing.Size(596, 334);
             this.dgvMeses.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn6
@@ -296,14 +304,14 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(1357, 521);
+            this.chart.Size = new System.Drawing.Size(1420, 521);
             this.chart.TabIndex = 2;
             this.chart.Text = "superChart1";
             // 
             // frmFundos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
-            this.ClientSize = new System.Drawing.Size(1363, 867);
+            this.ClientSize = new System.Drawing.Size(1426, 867);
             this.Name = "frmFundos";
             this.Text = "Fundos";
             this.toolStripContainer.ContentPanel.ResumeLayout(false);
@@ -330,9 +338,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.BindingSource bsMeses;
+        private ChartLibrary.SuperChart chart;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private ChartLibrary.SuperChart chart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
     }
 }

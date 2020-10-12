@@ -36,6 +36,7 @@ namespace MoneyBin2 {
             dgvFundos.FormatColumn("Nome", null, 200);
             dgvFundos.FormatColumn("CNPJ", null, 160);
             dgvFundos.FormatColumn("Apelido", null, 200);
+            dgvFundos.FormatColumn("Tipo", null, 70);
 
             dgvMeses.FormatColumn("Mês", dgvMeses.StyleMMMAndYear, 90);
             dgvMeses.FormatColumn("Valor Cota", dgvMeses.StyleNumber(6), 90);

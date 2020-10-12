@@ -70,8 +70,17 @@ namespace MoneyBin2 {
 
 
         private void radioButtonValor_CheckedChanged(object sender, EventArgs e) {
+            var radio = (RadioButton)sender;
+            if (!radio.Checked) return;
             labelValor_e.Visible = textBoxValor2.Visible = radioButtonBetween.Checked;
             textBoxValor1.Visible = !radioButtonAll.Checked;
+            if (radioButtonAll.Checked) {
+                return;
+            }
+
+            textBoxValor1.Location = radioButtonBetween.Checked ? 
+                new Point(10, textBoxValor2.Location.Y) : new Point(radio.Location.X + 53, radio.Location.Y);
+
         }
 
         #region TOOLSTRIP ---------------------------
@@ -139,7 +148,7 @@ namespace MoneyBin2 {
             UpdateStatusBar();
 
         }
-        
+
         #endregion TOOLSTRIP ---------------------------
 
         #region DATAGRIDVIEW ---------------------------
