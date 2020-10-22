@@ -37,13 +37,13 @@ namespace MoneyBin2 {
             this.Agendado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.AgendadoData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pago = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PagamentoData = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsCalendar = new System.Windows.Forms.BindingSource(this.components);
             this.toolStripButtonPrevMonth = new System.Windows.Forms.ToolStripButton();
             this.toolStripComboBoxMes = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButtonNextMonth = new System.Windows.Forms.ToolStripButton();
             this.toolStripEncontrarPagamentos = new System.Windows.Forms.ToolStripButton();
+            this.Pago = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bsCalendar = new System.Windows.Forms.BindingSource(this.components);
             this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalendario)).BeginInit();
@@ -56,8 +56,8 @@ namespace MoneyBin2 {
             // toolStripContainer.ContentPanel
             // 
             this.toolStripContainer.ContentPanel.Controls.Add(this.dgvCalendario);
-            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(699, 364);
-            this.toolStripContainer.Size = new System.Drawing.Size(699, 364);
+            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(687, 364);
+            this.toolStripContainer.Size = new System.Drawing.Size(687, 364);
             // 
             // dgvCalendario
             // 
@@ -114,7 +114,7 @@ namespace MoneyBin2 {
             this.dgvCalendario.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCalendario.RowHeadersWidth = 20;
             this.dgvCalendario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCalendario.Size = new System.Drawing.Size(699, 364);
+            this.dgvCalendario.Size = new System.Drawing.Size(687, 364);
             this.dgvCalendario.TabIndex = 0;
             this.dgvCalendario.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCalendario_CellEndEdit);
             this.dgvCalendario.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCalendario_CellFormatting);
@@ -153,22 +153,11 @@ namespace MoneyBin2 {
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             // 
-            // Pago
-            // 
-            this.Pago.DataPropertyName = "Pago";
-            this.Pago.HeaderText = "Pago?";
-            this.Pago.Name = "Pago";
-            // 
             // PagamentoData
             // 
             this.PagamentoData.DataPropertyName = "PagamentoData";
             this.PagamentoData.HeaderText = "Data";
             this.PagamentoData.Name = "PagamentoData";
-            // 
-            // bsCalendar
-            // 
-            this.bsCalendar.AllowNew = false;
-            this.bsCalendar.DataSource = typeof(DataLayer.CalendarioItem);
             // 
             // toolStripButtonPrevMonth
             // 
@@ -215,11 +204,22 @@ namespace MoneyBin2 {
             this.toolStripEncontrarPagamentos.ToolTipText = "Encontrar pagamentos no extrato";
             this.toolStripEncontrarPagamentos.Click += new System.EventHandler(this.toolStripButtonEncontrarPagamentos_Click);
             // 
+            // Pago
+            // 
+            this.Pago.DataPropertyName = "Pago";
+            this.Pago.HeaderText = "Pago?";
+            this.Pago.Name = "Pago";
+            // 
+            // bsCalendar
+            // 
+            this.bsCalendar.AllowNew = false;
+            this.bsCalendar.DataSource = typeof(DataLayer.CalendarioItem);
+            // 
             // frmCalendario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 364);
+            this.ClientSize = new System.Drawing.Size(687, 364);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

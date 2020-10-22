@@ -583,18 +583,6 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
         <Function Name="spExportToAccessExtrato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Extrato">
           <Parameter Name="AccessDB" Type="nvarchar(max)" Mode="In" />
         </Function>
-        <Function Name="spPesquisa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Extrato">
-          <Parameter Name="Contas" Type="char" Mode="In" />
-          <Parameter Name="Inicio" Type="char" Mode="In" />
-          <Parameter Name="Termino" Type="char" Mode="In" />
-          <Parameter Name="ValorOperacao" Type="varchar" Mode="In" />
-          <Parameter Name="Valor1" Type="varchar" Mode="In" />
-          <Parameter Name="Valor2" Type="varchar" Mode="In" />
-          <Parameter Name="AfetaSaldo" Type="int" Mode="In" />
-          <Parameter Name="grp" Type="nvarchar" Mode="In" />
-          <Parameter Name="cat" Type="nvarchar" Mode="In" />
-          <Parameter Name="desc" Type="nvarchar" Mode="In" />
-        </Function>
         <Function Name="spCalendarioMeses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Pagamentos" />
         <Function Name="spCalendarioRefresh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Pagamentos">
           <Parameter Name="Ano" Type="smallint" Mode="In" />
@@ -913,18 +901,6 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
             <End Role="ContaAtivo" EntitySet="ContasAtivos" />
             <End Role="Entrada" EntitySet="Operacoes" />
           </AssociationSet>
-          <FunctionImport Name="spPesquisa" ReturnType="Collection(MoneyBinModel.Pesquisa)">
-            <Parameter Name="Contas" Mode="In" Type="String" />
-            <Parameter Name="Inicio" Mode="In" Type="String" />
-            <Parameter Name="Termino" Mode="In" Type="String" />
-            <Parameter Name="ValorOperacao" Mode="In" Type="String" />
-            <Parameter Name="Valor1" Mode="In" Type="String" />
-            <Parameter Name="Valor2" Mode="In" Type="String" />
-            <Parameter Name="AfetaSaldo" Mode="In" Type="Int32" />
-            <Parameter Name="grp" Mode="In" Type="String" />
-            <Parameter Name="cat" Mode="In" Type="String" />
-            <Parameter Name="desc" Mode="In" Type="String" />
-          </FunctionImport>
           </EntityContainer>
         <EntityType Name="CalendarioItem">
           <Key>
@@ -1925,24 +1901,6 @@ warning 6002: The table/view 'MoneyBin2.Extrato.vwBalance' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="spPesquisa" FunctionName="MoneyBinModel.Store.spPesquisa" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MoneyBinModel.Pesquisa">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ContaID" ColumnName="ContaID" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="Historico" ColumnName="Historico" />
-                <ScalarProperty Name="Documento" ColumnName="Documento" />
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
-                <ScalarProperty Name="AfetaSaldo" ColumnName="AfetaSaldo" />
-                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-                <ScalarProperty Name="SubCategoria" ColumnName="SubCategoria" />
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="Apelido" ColumnName="Apelido" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
