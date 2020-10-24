@@ -96,7 +96,7 @@ namespace DataLayer {
 
         #region Exporters -----------------
         public static string CSVHeader =>
-            "\"ID\",\"Conta\",,\"ContaID\"\"Data\",\"Historico\",\"Documento\",\"Valor\",\"AfetaSaldo\",\"Grupo\",\"Categoria\",\"SubCategoria\",\"Descricao\"";
+            "\"ID\",\"Conta\",\"ContaID\",\"Data\",\"Historico\",\"Documento\",\"Valor\",\"AfetaSaldo\",\"Grupo\",\"Categoria\",\"SubCategoria\",\"Descricao\"";
 
         public string ToCSV =>
             $"\"{ID}\",,\"{Conta.Apelido}\"\"{ContaID}\",\"{Data:MM/dd/yyyy}\",\"{Historico}\",\"{Documento}\",\"{Valor.ToString("0.00", CultureUS)}\",\"{AfetaSaldo}\",\"{Grupo}\",\"{Categoria}\",\"{SubCategoria}\",\"{Descricao}\"";

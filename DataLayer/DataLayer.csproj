@@ -234,6 +234,7 @@
     <Compile Include="Partial Classes\Operacao.cs" />
     <Compile Include="Partial Classes\OperacaoTipo.cs" />
     <Compile Include="Partial Classes\Pagamento.cs" />
+    <Compile Include="Partial Classes\Pesquisa.cs" />
     <Compile Include="Partial Classes\Regra.cs" />
     <Compile Include="Partial Classes\Saida.cs" />
     <Compile Include="Partial Classes\SerieHistorica.cs" />
