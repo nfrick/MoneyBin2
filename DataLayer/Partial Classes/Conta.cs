@@ -43,6 +43,13 @@ namespace DataLayer {
 
         public IEnumerable<BalanceItem> BalanceFiltrado(
             DateTime inicio,
+            DateTime termino) => Balance
+                    .Where(b => b.Data >= inicio && b.Data <= termino)
+                    .OrderByDescending(b => b.Data).ThenByDescending(b => b.ID);
+
+
+        public IEnumerable<BalanceItem> BalanceFiltrado(
+            DateTime inicio,
             DateTime termino,
             bool afetaSaldo = true,
             ListSortDirection sort = ListSortDirection.Ascending) =>

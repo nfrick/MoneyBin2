@@ -5,11 +5,12 @@ using System.Windows.Forms;
 using Syncfusion.WinForms.DataGrid;
 
 namespace MoneyBin2 {
-    public partial class DataForm : Form {
+    public partial class DataFormSf : Form {
         protected readonly MoneyBinEntities _ctx = new MoneyBinEntities();
-        protected BindingSource _mainBindingSource;
 
-        public DataForm() {
+        public SfDataGrid MainDGV;
+
+        public DataFormSf() {
             InitializeComponent();
         }
 
@@ -27,18 +28,14 @@ namespace MoneyBin2 {
             _ctx.Dispose();
         }
 
-        protected void ResizeForm(DataGridView dgv) {
-            Width = 20 + dgv.RowHeadersWidth +
-                        dgv.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
+        protected void ResizeForm() {
+            //Width = 20 + dgv.RowHeadersWidth +
+            //            dgv.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
 
-            if (MdiParent != null) {
-                Location = new Point((MdiParent.Width - this.Width) / 2,
-                (MdiParent.Height - Height) / 2);
-            }
-        }
-
-        protected void ResizeForm(SfDataGrid dgv) {
-
+            //if (MdiParent != null) {
+            //    Location = new Point((MdiParent.Width - this.Width) / 2,
+            //    (MdiParent.Height - Height) / 2);
+            //}
         }
 
         protected string SaveQuestion => 
@@ -66,32 +63,7 @@ namespace MoneyBin2 {
         }
 
         protected void UpdateStatusBar() {
-            toolStripStatusLabelRecords.Text = $"Registros: {_mainBindingSource.Count}";
-
-            toolStripStatusLabelAdded.Visible = _ctx.AddedAny;
-            toolStripStatusLabelAdded.Text = $"Novos: {_ctx.AddedCount}";
-
-            toolStripStatusLabelUpdated.Visible = _ctx.ModifiedAny;
-            toolStripStatusLabelUpdated.Text = $"Atualizados: {_ctx.ModifiedCount}";
-
-            toolStripStatusLabelDeleted.Visible = _ctx.DeletedAny;
-            toolStripStatusLabelDeleted.Text = $"Deletados: {_ctx.DeletedCount}";
-        }
-
-        protected void EnableSaveButtons(SfDataGrid dgv) {
-            var items = toolStripMenu.Items.Cast<ToolStripItem>()
-                .Where(i => (string)i.Tag == "Save");
-            foreach (var item in items) {
-                item.Visible = _ctx.ChangeTracker.HasChanges();
-                if (item.Text.StartsWith("Salvar")) {
-                    item.Text = SaveQuestion;
-                }
-            }
-            UpdateStatusBar(dgv);
-        }
-
-        protected void UpdateStatusBar(SfDataGrid dgv) {
-            toolStripStatusLabelRecords.Text = $@"Registros: {dgv.View.Records.Count}";
+            toolStripStatusLabelRecords.Text = $@"Registros: {MainDGV.View.Records.Count}";
 
             toolStripStatusLabelAdded.Visible = _ctx.AddedAny;
             toolStripStatusLabelAdded.Text = $@"Novos: {_ctx.AddedCount}";

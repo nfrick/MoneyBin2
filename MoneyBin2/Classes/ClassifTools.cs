@@ -1,8 +1,12 @@
 ﻿using DataLayer;
+using Syncfusion.Data.Extensions;
+using Syncfusion.WinForms.DataGrid;
+using Syncfusion.WinForms.DataGrid.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Syncfusion.WinForms.DataGrid.Interactivity;
 
 namespace MoneyBin2 {
     public static class ClassifTools {
@@ -67,6 +71,16 @@ namespace MoneyBin2 {
             }
         }
 
+        private static IEnumerable<BalanceItem> GetDGVData(SfDataGrid dgv) {
+            var bs = dgv.DataSource;
+            try {
+                return ((IOrderedEnumerable<BalanceItem>)bs).ToList();
+            }
+            catch (Exception) {
+                return ((IEnumerable<BalanceItem>)bs).ToList();
+            }
+        }
+
         public static IEnumerable<string> GetListOfGrupos(DataGridView dgv, int sinal = 0) {
             var source = GetDGVData(dgv);
 
@@ -80,6 +94,21 @@ namespace MoneyBin2 {
                 .Union(items)
                 .OrderBy(g => g);
         }
+
+        public static IEnumerable<string> GetListOfGrupos(SfDataGrid dgv, int sinal = 0) {
+            var source = GetDGVData(dgv);
+
+            var items = sinal == 0
+                ? source.Where(s => !string.IsNullOrEmpty(s.Grupo))
+                    .Select(s => s.Grupo)
+                : source.Where(c => c.Sinal == sinal && !string.IsNullOrEmpty(c.Grupo))
+                    .Select(c => c.Grupo);
+
+            return GetListOfGrupos(sinal)
+                .Union(items)
+                .OrderBy(g => g);
+        }
+
 
         public static IEnumerable<string> GetListOfCategorias(string grupo, int sinal = 0) {
             return sinal == 0 ?
@@ -101,6 +130,19 @@ namespace MoneyBin2 {
                     .Where(c => c.Sinal == item.Sinal &&
                         c.Grupo == item.Grupo &&
                         !string.IsNullOrEmpty(c.Categoria))
+                .Select(c => c.Categoria);
+
+            return GetListOfCategorias(item.Grupo, item.Sinal)
+                .Union(items)
+                .OrderBy(c => c);
+        }
+
+        public static IEnumerable<string> GetListOfCategorias(SfDataGrid dgv, BalanceItem item) {
+            var source = GetDGVData(dgv);
+            var items = source
+                .Where(c => c.Sinal == item.Sinal &&
+                            c.Grupo == item.Grupo &&
+                            !string.IsNullOrEmpty(c.Categoria))
                 .Select(c => c.Categoria);
 
             return GetListOfCategorias(item.Grupo, item.Sinal)
@@ -137,6 +179,19 @@ namespace MoneyBin2 {
             return GetListOfSubCategorias(item.Grupo, item.Categoria, item.Sinal)
                     .Union(items)
                     .OrderBy(s => s); ;
+        }
+
+        public static IEnumerable<string> GetListOfSubCategorias(SfDataGrid dgv, BalanceItem item) {
+            var source = GetDGVData(dgv);
+            var items = source.Where(c => c.Sinal == item.Sinal &&
+                                          c.Grupo == item.Grupo &&
+                                          c.Categoria == item.Categoria &&
+                                          !string.IsNullOrEmpty(c.SubCategoria))
+                .Select(c => c.SubCategoria);
+
+            return GetListOfSubCategorias(item.Grupo, item.Categoria, item.Sinal)
+                .Union(items)
+                .OrderBy(s => s); ;
         }
 
         public static void PopupOptions(object sender, MouseEventArgs e,
@@ -176,6 +231,32 @@ namespace MoneyBin2 {
             menu.Show(Cursor.Position);
         }
 
+        public static void PopupOptions(object sender, CellClickEventArgs e,
+            ContextMenuStrip menu) {
+            var dgv = (SfDataGrid)sender;
+
+            var item = (BalanceItem)e.DataRow.RowData;
+
+            IEnumerable<string> opcoes;
+            switch (e.DataColumn.GridColumn.HeaderText) {
+                case "Grupo":
+                    opcoes = GetListOfGrupos(dgv);
+                    break;
+                case "Categoria":
+                    opcoes = GetListOfCategorias(dgv, item);
+                    break;
+                default:
+                    opcoes = GetListOfSubCategorias(dgv, item);
+                    break;
+            }
+            menu.Items.Clear();
+            foreach (var opcao in opcoes.OrderBy(c => c)) {
+                menu.Items.Add(opcao);
+            }
+            menu.Tag = e.DataColumn.ColumnIndex;
+            menu.Show(Cursor.Position);
+        }
+        
         public static void PopupItemClicked(object sender, ToolStripItemClickedEventArgs e, DataGridView dgv) {
             var menu = (ContextMenuStrip)sender;
             var col = (int)menu.Tag;
@@ -185,6 +266,24 @@ namespace MoneyBin2 {
             }
 
             dgv.CurrentRow.Cells[col].Value = e.ClickedItem.Text;
+        }
+
+        public static void PopupItemClicked(object sender, ToolStripItemClickedEventArgs e, SfDataGrid dgv) {
+            var menu = (ContextMenuStrip)sender;
+            var col = (int)menu.Tag;
+            var atual = dgv.CurrentCell.CellRenderer.GetControlValue();
+            if (atual != null && atual.ToString() == e.ClickedItem.Text) {
+                return;
+            }
+            //dgv.CurrentCell.CellRenderer.SetControlValue(e.ClickedItem.Text);
+
+            var row = dgv.CurrentCell.RowIndex;
+            col = dgv.CurrentCell.ColumnIndex -1;
+
+            dgv.View.GetPropertyAccessProvider()
+                .SetValue(dgv.GetRecordAtRowIndex(row), dgv.Columns[col].MappingName, e.ClickedItem.Text);
+
+            dgv.Refresh();
         }
     }
 }

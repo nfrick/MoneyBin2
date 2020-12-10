@@ -1,12 +1,17 @@
 ﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Xml.Linq;
 
 namespace DataLayer {
+    [MetadataType(typeof(BalanceHelper))]
     public partial class BalanceItem : IEquatable<BalanceItem> {
         public override string ToString() {
             return $"{Data:d}  {Historico}  {Valor:C2}";
         }
+
+        public int Dia => Data.Day;
 
         private static readonly CultureInfo CultureUS = CultureInfo.CreateSpecificCulture("en-US");
         //private static readonly CultureInfo CultureBR = CultureInfo.CreateSpecificCulture("pt-BR");
@@ -99,7 +104,7 @@ namespace DataLayer {
             "\"ID\",\"Conta\",\"ContaID\",\"Data\",\"Historico\",\"Documento\",\"Valor\",\"AfetaSaldo\",\"Grupo\",\"Categoria\",\"SubCategoria\",\"Descricao\"";
 
         public string ToCSV =>
-            $"\"{ID}\",,\"{Conta.Apelido}\"\"{ContaID}\",\"{Data:MM/dd/yyyy}\",\"{Historico}\",\"{Documento}\",\"{Valor.ToString("0.00", CultureUS)}\",\"{AfetaSaldo}\",\"{Grupo}\",\"{Categoria}\",\"{SubCategoria}\",\"{Descricao}\"";
+            $"\"{ID}\",\"{Conta.Apelido}\",\"{ContaID}\",\"{Data:MM/dd/yyyy}\",\"{Historico}\",\"{Documento}\",\"{Valor.ToString("0.00", CultureUS)}\",\"{AfetaSaldo}\",\"{Grupo}\",\"{Categoria}\",\"{SubCategoria}\",\"{Descricao}\"";
 
         public XElement toXML() {
             return new XElement("BalanceItem",
@@ -119,5 +124,13 @@ namespace DataLayer {
         }
         #endregion Exporters -----------------
 
+
+        public class BalanceHelper {
+            [Display(Name = "Afeta Saldo")]
+            public bool AfetaSaldo { get; set; }
+
+            [Display(Name = "Histórico")]
+            public string Historico { get; set; }
+        }
     }
 }

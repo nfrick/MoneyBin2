@@ -193,7 +193,7 @@
             // 
             this.cmsPopMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsPopMenu.Name = "cmsPopMenu";
-            this.cmsPopMenu.Size = new System.Drawing.Size(61, 4);
+            this.cmsPopMenu.Size = new System.Drawing.Size(211, 32);
             this.cmsPopMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmsPopMenu_ItemClicked);
             // 
             // frmBalance

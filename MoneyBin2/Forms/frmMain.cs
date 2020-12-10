@@ -78,7 +78,12 @@ namespace MoneyBin2 {
         }
 
         private void toolStripButtonBalance_Click(object sender, EventArgs e) {
-            var frm = new frmBalance { MdiParent = this };
+            var frm = new frmBalanceSF { MdiParent = this };
+            frm.Show();
+        }
+
+        private void toolStripButtonBalanceAntigo_Click(object sender, EventArgs e) {
+            var frm = new frmBalance() { MdiParent = this };
             frm.Show();
         }
 

@@ -12,9 +12,6 @@ namespace MoneyBin2 {
 
         private readonly MoneyBinEntities _ctx = new MoneyBinEntities();
 
-        private readonly ToolStripButton _toolStripButtonBalance;
-        private readonly ToolStripButton _toolStripButtonByMonth;
-        private readonly ToolStripButton _toolStripButtonByGroup;
         private readonly ToolStripComboBox _toolStripComboBoxConta;
         private readonly ToolStripLabel _toolStripLabelConta;
         private readonly ToolStripLabel _toolStripLabelInicio;
@@ -24,81 +21,53 @@ namespace MoneyBin2 {
 
         public frmReport() {
             InitializeComponent();
-            RptPath = AppDomain.CurrentDomain.BaseDirectory + @"Reports\{0}.rdlc";
-            // 
-            // toolStripButtonBalance
-            // 
-            _toolStripButtonBalance = new ToolStripButton() {
-                BackColor = System.Drawing.Color.FromArgb(255, 255, 192),
-                DisplayStyle = ToolStripItemDisplayStyle.Text,
-                ForeColor = System.Drawing.Color.Black,
-                Name = "_toolStripButtonBalance",
-                Size = new System.Drawing.Size(80, 25),
+            SetServer(@"http://tyger-i7/reportserver");
+            PopulateServerReportMenu("/MoneyBin");
+            //PopulateLocalReportMenu();
+
+            tsddbLocalReports.Visible = true;
+
+            var _toolStripButtonBalance = new ToolStripMenuItem {
                 Tag = "Balance",
                 Text = "Balance"
             };
-            _toolStripButtonBalance.Click += new System.EventHandler(this.ToolStripButtonReport_Click);
+            _toolStripButtonBalance.Click += ToolStripButtonReport_Click;
+            tsddbLocalReports.DropDownItems.Add(_toolStripButtonBalance);
 
-            // 
-            // toolStripButtonByMonth
-            // 
-            _toolStripButtonByMonth = new ToolStripButton() {
-                BackColor = System.Drawing.Color.FromArgb(255, 224, 192),
-                DisplayStyle = ToolStripItemDisplayStyle.Text,
-                ForeColor = System.Drawing.Color.Black,
-                Name = "_toolStripButtonByMonth",
-                Size = new System.Drawing.Size(80, 25),
+            var _toolStripButtonByMonth = new ToolStripMenuItem {
                 Tag = "ComDescricao",
                 Text = "Por Mês"
             };
-            _toolStripButtonByMonth.Click += new System.EventHandler(this.ToolStripButtonReport_Click);
+            _toolStripButtonByMonth.Click += ToolStripButtonReport_Click;
+            tsddbLocalReports.DropDownItems.Add(_toolStripButtonByMonth);
 
-            // 
-            // toolStripButtonByGroup
-            // 
-            _toolStripButtonByGroup = new ToolStripButton() {
-                BackColor = System.Drawing.Color.FromArgb(192, 255, 192),
-                DisplayStyle = ToolStripItemDisplayStyle.Text,
-                ForeColor = System.Drawing.Color.Black,
-                Name = "_toolStripButtonByGroup",
-                Size = new System.Drawing.Size(80, 25),
+            var _toolStripButtonByGroup = new ToolStripMenuItem {
                 Tag = "PorGrupo",
                 Text = "Por Grupo"
             };
-            _toolStripButtonByGroup.Click += new System.EventHandler(this.ToolStripButtonReport_Click);
+            _toolStripButtonByGroup.Click += ToolStripButtonReport_Click;
+            tsddbLocalReports.DropDownItems.Add(_toolStripButtonByGroup);
 
-            // 
-            // toolStripLabelConta
-            // 
             _toolStripLabelConta = new ToolStripLabel("Conta:") {
                 ForeColor = System.Drawing.Color.Black,
                 Name = "_toolStripLabelConta",
                 Size = new System.Drawing.Size(51, 25)
             };
 
-            // 
-            // toolStripComboBoxConta
-            // 
             _toolStripComboBoxConta = new ToolStripComboBox {
                 AutoSize = false,
                 ForeColor = System.Drawing.Color.Black,
                 Name = "_toolStripComboBoxConta",
                 Size = new System.Drawing.Size(100, 28)
             };
-            _toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
+            _toolStripComboBoxConta.SelectedIndexChanged += toolStripComboBoxConta_SelectedIndexChanged;
 
-            // 
-            // toolStripLabelInicio
-            // 
             _toolStripLabelInicio = new ToolStripLabel("Início:") {
                 ForeColor = System.Drawing.Color.Black,
                 Name = "_toolStripLabelInicio",
                 Size = new System.Drawing.Size(48, 25)
             };
 
-            // 
-            // toolStripLabelTermino
-            // 
             _toolStripLabelTermino = new ToolStripLabel("Término:") {
                 ForeColor = System.Drawing.Color.Black,
                 Name = "_toolStripLabelTermino",
@@ -107,9 +76,6 @@ namespace MoneyBin2 {
 
             _toolStripDateTimeInicio.Width = _toolStripDateTimeTermino.Width = 110;
             toolStripMenu.Items.AddRange(new ToolStripItem[] {
-                _toolStripButtonBalance,
-                _toolStripButtonByMonth,
-                _toolStripButtonByGroup,
                 new ToolStripSeparator(),
                 _toolStripLabelConta,
                 _toolStripComboBoxConta,
@@ -120,12 +86,12 @@ namespace MoneyBin2 {
 
             _toolStripComboBoxConta.ComboBox.DataSource = _ctx.Contas.Where(a => a.Balance.Any()).OrderBy(b => b.Apelido).ToList();
             _toolStripComboBoxConta.ComboBox.DisplayMember = "Apelido";
-            _toolStripComboBoxConta.ComboBox.ValueMember = "Apelido";
+            _toolStripComboBoxConta.ComboBox.ValueMember = "ID";
             _toolStripComboBoxConta.Font = toolStripMenu.Font;
         }
 
         private void ToolStripButtonReport_Click(object sender, EventArgs e) {
-            var report = (string)((ToolStripButton)sender).Tag;
+            var report = (string)((ToolStripMenuItem)sender).Tag;
             var conta = (Conta)_toolStripComboBoxConta.SelectedItem;
 
             var dados = report == "PorGrupo"
@@ -133,9 +99,6 @@ namespace MoneyBin2 {
                 : conta.BalanceFiltrado(_toolStripDateTimeInicio.Value, _toolStripDateTimeTermino.Value);
 
             SetLocalReport(report, "Balance", $@"DataSet{report}", dados);
-
-            //SetServerReport("http://tyger-i7/reportserver", "/Investimentos/Tudo XTab");
-
         }
 
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
@@ -153,22 +116,6 @@ namespace MoneyBin2 {
                 _toolStripDateTimeTermino.MinDate = conta.DataMin;
                 _toolStripDateTimeTermino.MaxDate = conta.DataMax;
                 _toolStripDateTimeTermino.Value = conta.DataMax;
-            }
-        }
-
-        private IEnumerable<string> GetServerReports() {
-            // http://ssrstutorials.blogspot.com/2012/10/lesson-12-using-ssrs-web-services.html
-            var rs = new ReportingService2005 { Credentials = System.Net.CredentialCache.DefaultCredentials };
-
-            // Retrieve a list of all items from the report server database.   
-            try {
-                return rs.ListChildren("/", true).Where(i => i.Type == ItemTypeEnum.Report)
-                    .Select(i => i.Path);
-            }
-
-            catch (SoapException ex) {
-                Console.WriteLine(ex.Detail.OuterXml);
-                return null;
             }
         }
     }

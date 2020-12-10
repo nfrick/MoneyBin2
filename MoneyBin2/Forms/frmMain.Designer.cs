@@ -41,13 +41,14 @@
             this.toolStripButtonConfig = new System.Windows.Forms.ToolStripButton();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.extratoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.balanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.balanceToolStripMenuItemBalanceSF = new System.Windows.Forms.ToolStripMenuItem();
             this.bancosEContasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classificaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.balanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pagamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calendárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pagamentosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -250,31 +251,31 @@
             // extratoToolStripMenuItem
             // 
             this.extratoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.balanceToolStripMenuItem,
+            this.balanceToolStripMenuItemBalanceSF,
             this.bancosEContasToolStripMenuItem,
             this.regrasToolStripMenuItem,
             this.classificaçãoToolStripMenuItem,
             this.pesquisaToolStripMenuItem,
             this.exportarToolStripMenuItem,
-            this.relatóriosToolStripMenuItem});
+            this.relatóriosToolStripMenuItem,
+            this.balanceToolStripMenuItem});
             this.extratoToolStripMenuItem.Image = global::MoneyBin2.Properties.Resources.Binóculos;
             this.extratoToolStripMenuItem.Name = "extratoToolStripMenuItem";
             this.extratoToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.extratoToolStripMenuItem.Text = "Extrato";
             // 
-            // balanceToolStripMenuItem
+            // balanceToolStripMenuItemBalanceSF
             // 
-            this.balanceToolStripMenuItem.Image = global::MoneyBin2.Properties.Resources.Dinheiro;
-            this.balanceToolStripMenuItem.Name = "balanceToolStripMenuItem";
-            this.balanceToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
-            this.balanceToolStripMenuItem.Text = "Balance";
-            this.balanceToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonBalance_Click);
+            this.balanceToolStripMenuItemBalanceSF.Name = "balanceToolStripMenuItemBalanceSF";
+            this.balanceToolStripMenuItemBalanceSF.Size = new System.Drawing.Size(216, 26);
+            this.balanceToolStripMenuItemBalanceSF.Text = "Balance";
+            this.balanceToolStripMenuItemBalanceSF.Click += new System.EventHandler(this.toolStripButtonBalance_Click);
             // 
             // bancosEContasToolStripMenuItem
             // 
             this.bancosEContasToolStripMenuItem.Image = global::MoneyBin2.Properties.Resources.Banco;
             this.bancosEContasToolStripMenuItem.Name = "bancosEContasToolStripMenuItem";
-            this.bancosEContasToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.bancosEContasToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.bancosEContasToolStripMenuItem.Text = "Bancos e Contas";
             this.bancosEContasToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonContas_Click);
             // 
@@ -282,7 +283,7 @@
             // 
             this.regrasToolStripMenuItem.Image = global::MoneyBin2.Properties.Resources.Regras;
             this.regrasToolStripMenuItem.Name = "regrasToolStripMenuItem";
-            this.regrasToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.regrasToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.regrasToolStripMenuItem.Text = "Regras";
             this.regrasToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonRegras_Click);
             // 
@@ -290,7 +291,7 @@
             // 
             this.classificaçãoToolStripMenuItem.Image = global::MoneyBin2.Properties.Resources.Classificar;
             this.classificaçãoToolStripMenuItem.Name = "classificaçãoToolStripMenuItem";
-            this.classificaçãoToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.classificaçãoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.classificaçãoToolStripMenuItem.Text = "Classificação";
             this.classificaçãoToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonClassificacao_Click);
             // 
@@ -298,7 +299,7 @@
             // 
             this.pesquisaToolStripMenuItem.Image = global::MoneyBin2.Properties.Resources.Binóculos;
             this.pesquisaToolStripMenuItem.Name = "pesquisaToolStripMenuItem";
-            this.pesquisaToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.pesquisaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.pesquisaToolStripMenuItem.Text = "Pesquisa";
             this.pesquisaToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonPesquisa_Click);
             // 
@@ -306,7 +307,7 @@
             // 
             this.exportarToolStripMenuItem.Image = global::MoneyBin2.Properties.Resources.Exportar;
             this.exportarToolStripMenuItem.Name = "exportarToolStripMenuItem";
-            this.exportarToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.exportarToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.exportarToolStripMenuItem.Text = "Exportar";
             this.exportarToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonExportar_Click);
             // 
@@ -314,9 +315,17 @@
             // 
             this.relatóriosToolStripMenuItem.Image = global::MoneyBin2.Properties.Resources.Relatorios;
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
-            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
             this.relatóriosToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonRelatorios_Click);
+            // 
+            // balanceToolStripMenuItem
+            // 
+            this.balanceToolStripMenuItem.Image = global::MoneyBin2.Properties.Resources.Dinheiro;
+            this.balanceToolStripMenuItem.Name = "balanceToolStripMenuItem";
+            this.balanceToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.balanceToolStripMenuItem.Text = "Balance (antigo)";
+            this.balanceToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonBalanceAntigo_Click);
             // 
             // pagamentosToolStripMenuItem
             // 
@@ -527,6 +536,7 @@
         private System.Windows.Forms.ToolStripMenuItem fundosToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonPesquisa;
         private System.Windows.Forms.ToolStripMenuItem pesquisaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem balanceToolStripMenuItemBalanceSF;
     }
 }
 

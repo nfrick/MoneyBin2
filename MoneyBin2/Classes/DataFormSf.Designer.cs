@@ -1,5 +1,5 @@
 ﻿namespace MoneyBin2 {
-    partial class DataForm {
+    partial class DataFormSf {
         /// <summary>
         /// Required designer variable.
         /// </summary>
