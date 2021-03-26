@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+# Money Bin
 
-You can use the [editor on GitHub](https://github.com/nfrick/MoneyBin2/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Este é um sistema de controle de contas bancárias pessoais, pagamentos e investimentos.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Módulos
+### Money Bin
+Controle de contas bancárias, extratos, pagamentos e investimentos.
 
-### Markdown
+Funcionalidades:
+-Leitura de extratos de conta corrente nos seguintes formatos CSV, TXT e PDF
+-Leitura de arquivo de cotações do mês da BOVESPA
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+### Cotações
+Cotações da BOVESPA através da API MarketStack (https://marketstack.com)
 
-# Header 1
-## Header 2
-### Header 3
+### CEF_Rentabilidade
+Importa dados de rentabilidades de fundos de investimento para planilha. Futuramente a funcionalidade da planilha será passada para o sistema.
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/nfrick/MoneyBin2/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
