@@ -42,9 +42,10 @@ Aplicação para controle de extrato bancário, pagamentos e investimentos (aç�
 1. Controle de investimentos em ações, com registro de compras e vendas.
 2. Acompanhamento de histórico de cotações.
 3. Controle de investimentos em fundos de ações e LCA.
+4. Relatórios e análises diversas pelo SQL Server Reporting Services.
 
 ### Cotações
-Cotações de ações obtidas da API MarketStack.
+Obtém cotações de ações da API MarketStack. Faz gráficos e análises simples.
 
 ### Rentabilidade
 Leitura de rentabilidades de fundos de ações CEF e Banco do Brasil para planilha.
