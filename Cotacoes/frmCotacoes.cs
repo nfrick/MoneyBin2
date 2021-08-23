@@ -1,17 +1,16 @@
-﻿using Cotacoes.Properties;
-using DataLayer;
-using IEnumerableExtensions;
-using SuperPrompt;
-//using Settings;
+﻿using DataLayer;
+using Syncfusion.Data;
+using Syncfusion.WinForms.DataGrid;
+using Syncfusion.WinForms.DataGrid.Enums;
+using Syncfusion.WinForms.DataGrid.Events;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Tulpep.NotificationWindow;
+using NF_sfDataGridExtensions;
 
 // How to use async and parallel - https://www.youtube.com/watch?v=ZTKGRJy5P2M&t=1474s
 
@@ -32,7 +31,7 @@ namespace Cotacoes {
         public frmCotacoes() {
             InitializeComponent();
 
-            dgvTotal.AutoGenerateColumns = false;
+            dgvCotacoes.AutoGenerateColumns = false;
 
             _ctx.Contas
                 .Include("Acoes.Entradas.Associacoes")
@@ -40,7 +39,7 @@ namespace Cotacoes {
 
             bsContas.DataSource = _ctx.Contas.Local
                 .Where(c => c.PossuiAcoes)
-                .OrderBy(c => c.Apelido).ToObservableListSource();
+                .OrderBy(c => c.Apelido).ToList();
 
             var cbx = toolStripComboBoxConta.ComboBox;
             cbx.DataSource = bsContas;
@@ -50,37 +49,84 @@ namespace Cotacoes {
         }
 
         private void frmCotacoes_Load(object sender, EventArgs e) {
-            dgvCotacoes.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            sfDataGridExtensions.FormatGrid(dgvCotacoes);
 
-            dgvCotacoes.FormatColumn("Ativo", null, 80);
-            dgvCotacoes.FormatColumn("Last Trade Date", dgvCotacoes.StyleDayAndTime, 95);
-            dgvCotacoes.FormatColumn("S", dgvCotacoes.StyleTrend, 20);
-            dgvCotacoes.FormatColumn("Change %", dgvCotacoes.StylePercent, 65);
+            dgvCotacoes.AllowDraggingColumns = true;
+            dgvCotacoes.FrozenColumnCount = 1;
+            dgvCotacoes.AddNewRowPosition = RowPosition.None;
+            dgvCotacoes.ShowRowHeader = false;
+            dgvCotacoes.SearchController.AllowFiltering = true;
+            dgvCotacoes.AllowDraggingColumns = false;
+            dgvCotacoes.AllowFiltering = false;
 
-            dgvCotacoes.FormatColumn("Qtd", dgvCotacoes.StyleInteger, 65);
-            dgvCotacoes.FormatColumn("Qtd Vendável", dgvCotacoes.StyleInteger, 65);
+            sfDataGridExtensions.SelectionColumn(dgvCotacoes);
+            dgvCotacoes.Columns.Add(new GridTextColumn { MappingName = "Codigo", HeaderText = "Ativo", Width = 80, AllowGrouping = true, Visible = true });
+            dgvCotacoes.Columns.Add(new GridDateTimeColumn { MappingName = "LastTradeDate", Format = "dd/MM/yy", Width = 80, HeaderText = "Last Trade", AllowHeaderTextWrapping = true });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "PreviousClose", Width = 70, Format = "N2", HeaderText = "Last Trade", AllowHeaderTextWrapping = true });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "LastOpen", Width = 70, Format = "N2", HeaderText = "Last Open", AllowHeaderTextWrapping = true });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "LastClose", Width = 70, Format = "N2", HeaderText = "Last Close", AllowHeaderTextWrapping = true });
+            dgvCotacoes.Columns.Add(new GridTextColumn { MappingName = "Trend", Width = 30, HeaderText = "" });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "DayLow", Width = 70, Format = "N2", HeaderText = "Day Low", AllowHeaderTextWrapping = true });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "DayHigh", Width = 70, Format = "N2", HeaderText = "Day High", AllowHeaderTextWrapping = true });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "RangeLow", Width = 70, Format = "N2", HeaderText = "Range Low", AllowHeaderTextWrapping = true, Visible = false });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "RangeHigh", Width = 70, Format = "N2", HeaderText = "Range High", AllowHeaderTextWrapping = true, Visible = false });
 
-            dgvCotacoes.FormatColumn("Last Trade", dgvCotacoes.StyleCurrency, 75);
-            dgvCotacoes.FormatColumn("Previous Close", dgvCotacoes.StyleCurrency, 75);
-            dgvCotacoes.FormatColumn("Open", dgvCotacoes.StyleCurrency, 75);
-            dgvCotacoes.FormatColumn("Day Low", dgvCotacoes.StyleCurrency, 75);
-            dgvCotacoes.FormatColumn("Day High", dgvCotacoes.StyleCurrency, 75);
-            dgvCotacoes.FormatColumn("VM Compra Nominal", dgvCotacoes.StyleCurrency, 75);
-            dgvCotacoes.FormatColumn("VM Compra Real", dgvCotacoes.StyleCurrency, 75);
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "Qtd", Width = 70, Format = "N0" });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "Patrimonio", Width = 130, Format = "N2", HeaderText = "Patrimônio" });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "ValorMedioCompra", Width = 70, Format = "N2", HeaderText = "VM Nominal", AllowHeaderTextWrapping = true });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "ValorMedioCompraReal", Width = 70, Format = "N2", HeaderText = "VM Real", AllowHeaderTextWrapping = true });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "LucroReal", Width = 120, Format = "N2", HeaderText = "Lucro Real", AllowHeaderTextWrapping = true });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "QtdVendavel", Width = 70, Format = "N0", HeaderText = "Qtd Vendavel", AllowHeaderTextWrapping = true });
+            dgvCotacoes.Columns.Add(new GridNumericColumn { MappingName = "LucroImediato", Width = 120, Format = "N2", HeaderText = "Lucro Imediato", AllowHeaderTextWrapping = true });
 
-            dgvCotacoes.FormatColumn("Patrimônio", dgvCotacoes.StyleCurrency, 95);
-            dgvCotacoes.FormatColumn("Lucro Real", dgvCotacoes.StyleCurrency, 95);
-            dgvCotacoes.FormatColumn("Lucro Imediato", dgvCotacoes.StyleCurrency, 95);
+            dgvCotacoes.Style.TableSummaryRowStyle.HorizontalAlignment = HorizontalAlignment.Right;
 
-            dgvTotal.FormatAsTotal(dgvCotacoes);
+            var tableSummaryRow1 = new GridTableSummaryRow
+            {
+                Name = "TableSummary",
+                ShowSummaryInRow = false,
+                Position = VerticalPosition.Bottom
+            };
 
-            foreach (ToolStripItem i in toolStripDropDownButtonFrequencia.DropDownItems) {
-                i.Click += FrequenciaButtonsClick;
-            }
+            var summaryColumnPatrimonio = new GridSummaryColumn
+            {
+                Name = "TotalPatrimonio",
+                SummaryType = SummaryType.DoubleAggregate,
+                Format = "{Sum:N2}",
+                MappingName = "Patrimonio"
+            };
+
+            var summaryColumnLucroReal = new GridSummaryColumn
+            {
+                Name = "TotalLucroReal",
+                SummaryType = SummaryType.DoubleAggregate,
+                Format = "{Sum:N2}",
+                MappingName = "LucroReal"
+            };
+
+            var summaryColumnLucroImediato = new GridSummaryColumn
+            {
+                Name = "TotalLucroImediato",
+                SummaryType = SummaryType.DoubleAggregate,
+                Format = "{Sum:N2}",
+                MappingName = "LucroImediato"
+            };
+
+            tableSummaryRow1.SummaryColumns.Add(summaryColumnPatrimonio);
+            tableSummaryRow1.SummaryColumns.Add(summaryColumnLucroReal);
+            tableSummaryRow1.SummaryColumns.Add(summaryColumnLucroImediato);
+
+            this.dgvCotacoes.TableSummaryRows.Add(tableSummaryRow1);
+            dgvCotacoes.SummaryCalculationMode = CalculationMode.OnDemandCaptionSummary;
+
+            dgvCotacoes.ColumnHeaderContextMenu = new ContextMenuStrip();
+            dgvCotacoes.ColumnHeaderContextMenu.Items.Add("Colunas", null, ColumnPicker_Click);
 
             chart1.ChartAreas[0].AxisX.MajorGrid.LineColor =
-            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = dgvCotacoes.GridColor;
-            Width = 25 + dgvCotacoes.GridVisibleWidth();
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.DimGray;
+
+            chart1.Series.Clear();
+            CarregarDados();
         }
 
         private void frmCotacoes_Resize(object sender, EventArgs e) {
@@ -104,324 +150,106 @@ namespace Cotacoes {
         }
         #endregion FORM
 
-        #region TIMER ----------------------------
-        protected override void OnLoad(EventArgs e) {
-            base.OnLoad(e);
-            if (DesignMode) {
-                return;
-            }
-
-            var agora = DateTime.Now;
-            if (toolStripMenuItemDesligado.Checked ||
-                     agora.Hour < 10 || agora.Hour > 17 ||
-                     agora.DayOfWeek == DayOfWeek.Saturday ||
-                     agora.DayOfWeek == DayOfWeek.Sunday) {
-                DefinirFrequencia(toolStripMenuItemDesligado);
-                CarregarDados(true);
-            }
-            else {
-                DefinirFrequencia(toolStripMenuItem5minutos);
-            }
-        }
-
-        private async void AtualizarDados(object state) {
-            // do your stuff here
-            try {
-                var ativos = (ObservableListSource<ContaAtivo>)bsCotacoes.DataSource;
-                var progress = CreateProgress();
-                toolStripStatusLabelDuracao.Text = await AtualizarCotacoes(ativos, progress);
-                ResultadoAtualizacao = true;
-            }
-            catch (Exception) {
-                ResultadoAtualizacao = false;
-            }
-            // do not access control directly, use BeginInvoke!
-        }
-
-        public int Erros { get; set; }
-
-        private bool ResultadoAtualizacao {
-            set {
-                if (InvokeRequired) {
-                    BeginInvoke(new Action(() =>
-                    {
-                        CarregarDados();
-                        if (!value) {
-                            Erros++;
-                        }
-                        else if (DateTime.Now.Hour >= 17 && DateTime.Now.Minute >= 12) {
-                            DefinirFrequencia(toolStripMenuItemDesligado);
-                        }
-                    }));
-                }
-            }
-        }
-
-        /// <summary>
-        /// Acerta a frequencia para o valor do botão indicado
-        /// </summary>
-        /// <param name="botao">Botão a ser selecionado</param>
-        private void DefinirFrequencia(ToolStripMenuItem botao = null) {
-            var frequencias = toolStripDropDownButtonFrequencia
-                .DropDownItems.OfType<ToolStripMenuItem>().ToList();
-
-            if (botao == null) {
-                foreach (var frequencia in frequencias) {
-                    if (frequencia.Checked) {
-                        botao = frequencia;
-                    }
-                }
-            }
-
-            foreach (var frequencia in frequencias) {
-                frequencia.Checked = (frequencia == botao);
-            }
-
-            AjustarTimer(Convert.ToInt32(botao.Tag));
-            toolStripDropDownButtonFrequencia.Text = $@"Frequência: {botao.Text}";
-            if ((string)botao.Tag == "0") {
-                AtualizarGrafico();
-            }
-        }
-
-        private void AjustarTimer(int period) {
-            period = period == 0 ? Timeout.Infinite : period * 60 * 1000;
-            var dueTime = period == Timeout.Infinite ? Timeout.Infinite : 0;
-            if (_updateTimer == null) {
-                _updateTimer = new System.Threading.Timer(AtualizarDados, null, dueTime, period);
-            }
-            else {
-                _updateTimer.Change(dueTime, period);
-            }
-        }
-
-        #endregion TIMER -------------------------
-
         #region DADOS E ATUALIZAÇÕES
-        private void CarregarDados(bool recarregarListaDeAtivos = false) {
+
+        private void CarregarDados() {
             if (ContaAtual == null) {
                 return;
             }
 
-            if (recarregarListaDeAtivos) {
-                _acoes.Remove(a => a.ContaId > 0);
-                _acoes.AddRange(ContaAtual.AcoesNaoZerado);
-                bsCotacoes.DataSource = _acoes;
+            foreach (var acao in ContaAtual.AcoesNaoZerado) {
+                acao.ObterCotacoes();
+                acao.FiltrarCotacoes();
             }
-            else {
-                bsCotacoes.Sort = "Codigo";
-                dgvCotacoes.Refresh();
-            }
-            dgvTotal.Refresh();
 
-            AtualizarGrafico();
+            dgvCotacoes.DataSource = ContaAtual.AcoesNaoZerado;
 
             toolStripStatusLabelAtualizadoEm.Text = $@"Atualizado em: {DateTime.Now}";
-            toolStripStatusLabelErros.Text = $@"Erros: {Erros}";
 
-            // Alerta de venda
-            if (_acoes.Any(a => a.AlertaVenda >= 1.00m && a.AlertaVenda < 1.004m)) {
-                var x = _acoes.Where(a => a.AlertaVenda > 1.00m && a.AlertaVenda < 1.004m)
-                    .Select(a => $"{a.Codigo} - Compra: {a.ValorMedioCompra:c2} - Atual: {a.LastTrade:c2}");
-                var popup = new PopupNotifier
-                {
-                    Size = new Size(450, 75 * x.Count()),
-                    Delay = 10000,
-                    Image = Resources.alert_icon,
-                    HeaderColor = Color.Red,
-                    TitleColor = Color.Red,
-                    TitleFont = new Font("Segoe UI Semibold", 18),
-                    TitlePadding = new Padding(10),
-                    TitleText = "Alerta de Venda de Ações",
-                    ContentFont = new Font("Segoe UI", 14),
-                    ContentText = x.Aggregate((current, next) => current + "\n" + next),
-                    ContentPadding = new Padding(10)
-                };
-                popup.Popup();
-            }
-
-            // Resize if number of Ativos changes
-            var oldHeight = (int)tableLayoutPanel1.RowStyles[0].Height;
-            var newHeight = dgvCotacoes.ColumnHeadersHeight +
-                (dgvCotacoes.RowTemplate.Height + 2) *
-                Math.Min(10, bsCotacoes.Count);
-
-            if (oldHeight == newHeight) {
-                return;
-            }
-
-            tableLayoutPanel1.RowStyles[0].Height = newHeight;
-            Height = Height - oldHeight + newHeight;
+            tableLayoutPanel1.RowStyles[0].Height = (float)dgvCotacoes.TableControl.RowHeights.TotalExtent + 30;
+            Width = (int)dgvCotacoes.TableControl.ColumnWidths.TotalExtent + 25;
         }
 
-        private void AtualizarGrafico() {
-            chart1.Series.Clear();
+        private void AtualizarGrafico(IEnumerable<ContaAtivo> added, IEnumerable<ContaAtivo> removed) {
 
-            double chartMax = 0;
-            double chartMin = 1000;
+            foreach (var ativo in removed) {
+                var serie = chart1.Series.FindByName(ativo.Codigo);
+                if (serie != null) {
+                    chart1.Series.Remove(serie);
+                }
+            }
+            foreach (var ativo in added) {
+                if (!ativo.HasTrades) {
+                    ativo.ObterCotacoes();
+                    ativo.FiltrarCotacoes();
+                }
 
-            var rows = dgvCotacoes.SelectedRows.Count == 0
-                ? dgvCotacoes.SelectedCells.Cast<DataGridViewCell>()
-                    .Select(r => r.OwningRow)
-                : dgvCotacoes.SelectedRows.Cast<DataGridViewRow>();
-
-            foreach (var row in rows) {
-                AtualizarGraficoAcao(row, ref chartMin, ref chartMax);
+                var serie = chart1.Series.FindByName(ativo.Codigo);
+                if (serie == null) {
+                    AtualizarGraficoAcao(ativo);
+                }
             }
 
-            chart1.SetYAxisMinMax(chartMin, chartMax);
-            //            dgvTotal.Refresh();
+            chart1.SetYAxisMinMax();
         }
 
-        private void AtualizarGraficoAcao(DataGridViewRow row, ref double chartMin, ref double chartMax) {
-            var codigo = row.Cells[0].Value.ToString();
-            var ativo = _acoes.First(a => a.Codigo == codigo);
-            if (!ativo.HasTrades) {
-                ativo.AtualizarCotacao();
-            }
-
-            var serie = chart1.Series.Add(codigo);
+        private void AtualizarGraficoAcao(ContaAtivo ativo) {
+            var serie = chart1.Series.Add(ativo.Codigo);
             serie.ChartType = SeriesChartType.Line;
             foreach (var trade in ativo.Cotacoes) {
                 serie.Points.AddXY(trade.Key, trade.Value.close);
             }
-            chartMax = Math.Max(chartMax, ativo.DayHigh);
-            chartMin = Math.Min(chartMin, ativo.DayLow);
-        }
-
-        private void FrequenciaButtonsClick(object sender, EventArgs e) {
-            DefinirFrequencia((ToolStripMenuItem)sender);
         }
         #endregion DADOS E ATUALIZAÇÕES
 
         #region TOOLBAR
-        private void toolStripButtonAdicionarAcao_Click(object sender, EventArgs e) {
-            var acoesEmExibicao = _acoes.Select(a => a.Codigo);
-            var lista = _ctx.Ativos.Select(a => a.Codigo).Except(acoesEmExibicao).ToArray();
-            if (PromptDialog.InputListMulti(Text, "Adicionar Ações", lista, out var codigos) ==
-                DialogResult.Cancel) {
-                return;
-            }
-
-            _acoes.AddRange(codigos.Select(c => new ContaAtivo() { ContaId = 0, Codigo = c }));
-            CarregarDados();
-        }
-
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
             bsContas.Position = toolStripComboBoxConta.SelectedIndex;
-            CarregarDados(true);
-        }
-
-        private async void toolStripButtonAtualizar_Click(object sender, EventArgs e) {
-            var botao = (ToolStripButton)sender;
-            botao.Enabled = false;
-
-            var ativosAAtualizar = botao.Name.Contains("Todos") ?
-                _acoes :
-                dgvCotacoes.SelectedRows
-                .Cast<DataGridViewRow>()
-                .Select(r => (ContaAtivo)r.DataBoundItem).ToObservableListSource();
-
-            var progress = CreateProgress();
-            toolStripStatusLabelDuracao.Text = await AtualizarCotacoes(ativosAAtualizar, progress);
             CarregarDados();
-            toolStripProgressBar1.Value = 0;
-            botao.Enabled = true;
         }
-
-        private Progress<ProgressUpdate> CreateProgress() {
-            var progress = new Progress<ProgressUpdate>();
-            progress.ProgressChanged += ReportProgress;
-            return progress;
-        }
-
-        private void ReportProgress(object sender, ProgressUpdate e) {
-            //toolStripProgressBar1.Value = e.PercentageDone;
-        }
-
-        public static async Task<string> AtualizarCotacoes(ObservableListSource<ContaAtivo> ativos,
-            IProgress<ProgressUpdate> progress) {
-            var prog = new ProgressUpdate(ativos.Count());
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-            await Task.Run(() =>
-            {
-                Parallel.ForEach<ContaAtivo>(ativos, (ativo) =>
-                {
-                    ativo.AtualizarCotacao();
-                    prog.Increment();
-                    progress.Report(prog);
-                });
-            });
-
-            watch.Stop();
-            return $"Duração: {watch.ElapsedMilliseconds / 1000:F2} s";
-        }
-
-        private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
-            OFD.DefaultExt = "csv";
-            OFD.Filter = @"CSV iles|*.csv";
-            OFD.Multiselect = true;
-            if (OFD.ShowDialog() != DialogResult.OK) {
-                return;
-            }
-
-            foreach (var fileName in OFD.FileNames) {
-                //FinanceData.AtualizarPorExtrato(fileName);
-            }
-        }
-
         #endregion TOOLBAR
 
         #region DATAGRIDVIEW
-        private void dgvCotacoes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            try {
-                var row = dgvCotacoes.Rows[e.RowIndex];
-                var cell = row.Cells[e.ColumnIndex];
 
-                var acao = (ContaAtivo)row.DataBoundItem;
+        private void sfDataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            AtualizarGrafico(e.AddedItems.Cast<ContaAtivo>(), e.RemovedItems.Cast<ContaAtivo>());
+        }
 
-                var forecolor = e.RowIndex % 2 == 0 ? dgvCotacoes.DefaultCellStyle.ForeColor : dgvCotacoes.AlternatingRowsDefaultCellStyle.ForeColor;
-                switch (e.ColumnIndex) {
-                    case 4: // Trend
-                        var s = cell.Value as string;
-                        cell.Style.ForeColor = s == ContaAtivo.TrendUp ? Color.LightGreen : (s == ContaAtivo.TrendDown ? Color.OrangeRed : Color.Gray);
+        private void sfDataGrid1_QueryRowStyle(object sender, QueryRowStyleEventArgs e) {
+            sfDataGridExtensions.QueryRowStyle(sender, e);
+        }
+
+        private void sfDataGrid1_QueryCellStyle(object sender, QueryCellStyleEventArgs e) {
+            if (e.Column.MappingName == "Trend")
+            {
+                e.Style.Font.Facename = "WingDings";
+                switch (e.DisplayText)
+                {
+                    case ContaAtivo.TrendDown:
+                        e.Style.TextColor = Color.OrangeRed;
                         break;
-                    case 5 when acao.AlertaVenda < 1.004m: // Last Trade
-                        cell.Style.ForeColor = Color.White;
-                        cell.Style.BackColor = acao.AlertaVenda < 1.002m ? Color.Tomato : Color.Goldenrod;
+                    case ContaAtivo.TrendNeutral:
+                        e.Style.TextColor = Color.BurlyWood;
                         break;
-                    case 6: // Change %
-                    case 13: // Lucro Real
-                        cell.Style.ForeColor = Convert.ToDecimal(cell.Value) < 0 ? Color.OrangeRed : forecolor;
+                    case ContaAtivo.TrendNone:
+                        e.Style.TextColor = Color.DarkGray;
                         break;
                 }
             }
-            catch (Exception exception) {
-                Console.WriteLine(exception);
+            else if (e.Column.MappingName == "LucroReal") {
+                var item = (ContaAtivo)e.DataRow.RowData;
+                if (item.LucroReal < 0) {
+                    e.Style.TextColor = Color.OrangeRed;
+                }
             }
         }
 
-        private void dgvCotacoes_SelectionChanged(object sender, EventArgs e) {
-            AtualizarGrafico();
+        private void ColumnPicker_Click(object sender, EventArgs e) {
+            sfDataGridExtensions.ColumnPicker(dgvCotacoes);
         }
 
-        private void dgvTotal_SelectionChanged(object sender, EventArgs e) {
-            dgvTotal.ClearSelection();
-        }
-
-        private void dgvCotacoes_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
-            dgvTotal.Columns[e.Column.Index].Width = e.Column.Width;
-        }
-
-        private void dgvCotacoes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
-            AtualizarGrafico();
-        }
-
-        private void dgvCotacoes_DataError(object sender, DataGridViewDataErrorEventArgs e) {
-
-        }
         #endregion DATAGRIDVIEW
-
+        
         private void chart1_MouseMove(object sender, MouseEventArgs e) {
             var pos = e.Location;
             if (_prevPosition.HasValue && pos == _prevPosition.Value) {
@@ -439,26 +267,10 @@ namespace Cotacoes {
 
                 var xVal = result.ChartArea.AxisX.PixelPositionToValue(pos.X);
                 var yVal = result.ChartArea.AxisY.PixelPositionToValue(pos.Y);
-                var hora = (new DateTime(1899, 12, 31)).AddDays(xVal).ToString("hh:mm");
+                var hora = (new DateTime(1899, 12, 31)).AddDays(xVal).ToString("dd-MM-yy");
 
                 _tooltip.Show($"{hora} - {yVal:C2}", this.chart1, pos.X, pos.Y - 15);
             }
         }
-
-    }
-
-    public class ProgressUpdate {
-        public int Count { get; set; } = 0;
-        public int Done { get; set; } = 0;
-
-        public ProgressUpdate(int count) {
-            Count = count;
-        }
-
-        public void Increment() {
-            Done++;
-        }
-
-        public int PercentageDone => 100 * Done / Count;
     }
 }

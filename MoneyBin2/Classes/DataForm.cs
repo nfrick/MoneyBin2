@@ -1,8 +1,8 @@
 ﻿using DataLayer;
+using Syncfusion.WinForms.DataGrid;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Syncfusion.WinForms.DataGrid;
 
 namespace MoneyBin2 {
     public partial class DataForm : Form {
@@ -24,7 +24,9 @@ namespace MoneyBin2 {
                     e.Cancel = Save();
                     break;
             }
-            _ctx.Dispose();
+            if (!e.Cancel) {
+                _ctx.Dispose();
+            }
         }
 
         protected void ResizeForm(DataGridView dgv) {
@@ -41,14 +43,14 @@ namespace MoneyBin2 {
 
         }
 
-        protected string SaveQuestion => 
+        protected string SaveQuestion =>
              $"Salvar {_ctx.ChangesCount} alteraç" + (_ctx.ChangesCount == 1 ? "ão" : "ões");
-        
+
         protected DialogResult AskIfSave() {
             var alteracoes = _ctx.ChangesCount;
             return alteracoes == 0
                 ? DialogResult.No
-                : MessageBox.Show(@"{SaveQuestion}?", this.Text,
+                : MessageBox.Show($"{SaveQuestion}?", this.Text,
                     MessageBoxButtons.YesNoCancel,
                     MessageBoxIcon.Question);
         }

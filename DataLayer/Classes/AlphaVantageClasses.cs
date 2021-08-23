@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace DataLayer {
 
@@ -14,9 +15,13 @@ namespace DataLayer {
 
         [JsonProperty(PropertyName = "Time Series (5min)")]
         public Dictionary<DateTime, StockInfo> TimeSeries5 { get; set; }
+        
+        [JsonProperty(PropertyName = "Time Series (Daily)")]
+        public Dictionary<DateTime, StockInfo> DailySeries { get; set; }
 
-        public Dictionary<DateTime, StockInfo> TimeSeries => TimeSeries5?.ToDictionary(c => EasternToLocalTime(c.Key), c => c.Value) ?? TimeSeries1.ToDictionary(c => EasternToLocalTime(c.Key), c => c.Value);
-
+        //public Dictionary<DateTime, StockInfo> TimeSeries => TimeSeries5?.ToDictionary(c => EasternToLocalTime(c.Key), c => c.Value) ?? TimeSeries1.ToDictionary(c => EasternToLocalTime(c.Key), c => c.Value);
+        public Dictionary<DateTime, StockInfo> TimeSeries => DailySeries;
+        
         public static DateTime EasternToLocalTime(DateTime easternTime) {
             var easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
             var timeUTC = TimeZoneInfo.ConvertTimeToUtc(easternTime, easternZone);
@@ -62,4 +67,5 @@ namespace DataLayer {
         [JsonProperty(PropertyName = "5. volume")]
         public int volume { get; set; }
     }
+    
 }

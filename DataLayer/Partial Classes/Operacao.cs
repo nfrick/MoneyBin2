@@ -26,8 +26,7 @@ namespace DataLayer {
 
         public decimal ValorOperacaoReal => Qtd * ValorReal;
 
-        public decimal CustoOperacao => IncideTaxa ?
-            20 + (ValorOperacao * (TaxaNegociacao + TaxaLiquidacao) / 100) : 0.0m;
+        public decimal CustoOperacao => IncideTaxa ? 20 + (ValorOperacao * (TaxaNegociacao + TaxaLiquidacao) / 100) : 0.0m;
 
         public decimal CustoOperacaoReal => IncideTaxa ?
             20 + (ValorOperacaoReal * (TaxaNegociacao + TaxaLiquidacao) / 100) : 0.0m;

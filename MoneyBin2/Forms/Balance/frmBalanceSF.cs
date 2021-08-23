@@ -1,16 +1,19 @@
 ﻿using DataLayer;
 using MoneyBin2.Properties;
 using NFExtensions;
+using Syncfusion.Data;
 using Syncfusion.Data.Extensions;
 using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
 using Syncfusion.WinForms.DataGrid.Events;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using NF_sfDataGridExtensions;
 
 namespace MoneyBin2 {
     public partial class frmBalanceSF : DataFormSf {
@@ -209,6 +212,17 @@ namespace MoneyBin2 {
                 ColumnName = "Data",
                 SortDirection = ListSortDirection.Descending
             });
+            dgvBalance.SortColumnDescriptions.Add(new SortColumnDescription()
+            {
+                ColumnName = "Dia",
+                SortDirection = ListSortDirection.Descending
+            });
+            dgvBalance.SortColumnDescriptions.Add(new SortColumnDescription()
+            {
+                ColumnName = "Valor",
+                SortDirection = ListSortDirection.Ascending
+            });
+
 
             dgvBalance.GroupColumnDescriptions.CollectionChanged += GroupColumnDescriptions_CollectionChanged;
             dgvBalance.GroupCaptionTextFormat = "{Key}";
@@ -219,7 +233,7 @@ namespace MoneyBin2 {
             });
             #endregion
 
-            Width = (int) sfDataGridExtensions.GetWidth(dgvBalance);
+            Width = (int)sfDataGridExtensions.GetWidth(dgvBalance);
             Width -= 70;
         }
 
@@ -280,11 +294,11 @@ namespace MoneyBin2 {
                 return;
             }
             var item = (BalanceItem)e.DataRow.RowData;
-            var valor = x != "Valor" ? item.Valor : item.Saldo;
+            var valor = x == "Valor" ? item.Valor : item.Saldo;
             if (valor >= 0) {
                 return;
             }
-            e.Style.TextColor = Color.OrangeRed;
+            e.Style.TextColor = Color.Orange;
         }
 
         private void dgvBalance_CurrentCellEndEdit(object sender, CurrentCellEndEditEventArgs e) {
@@ -318,24 +332,13 @@ namespace MoneyBin2 {
                 }
             }
         }
-        #endregion DATAGRID
-
-        private void toolStripTextBoxProcurar_TextChanged(object sender, EventArgs e) {
-            var txt = ((ToolStripTextBox)sender).Text;
-            if (string.IsNullOrEmpty(txt)) {
-                dgvBalance.SearchController.ClearSearch();
-            }
-            else {
-                dgvBalance.SearchController.Search(txt);
-            }
-        }
 
         private void FilterItemChanged(object sender, EventArgs e) {
             dgvBalance.ShowBusyIndicator = true;
             if (ContaAtual.ID == 0) {
                 dgvBalance.DataSource = _ctx.Balance
-                .Where(b => b.Data >= _dtpInicio.Value && b.Data <= _dtpTermino.Value)
-                .ToObservableCollection();
+                    .Where(b => b.Data >= _dtpInicio.Value && b.Data <= _dtpTermino.Value)
+                    .ToObservableCollection();
                 dgvBalance.Columns["Conta.Apelido"].Visible = true;
             }
             else {
@@ -346,6 +349,17 @@ namespace MoneyBin2 {
             }
 
             dgvBalance.ShowBusyIndicator = false;
+        }
+        #endregion DATAGRID
+
+        private void toolStripTextBoxProcurar_TextChanged(object sender, EventArgs e) {
+            var txt = ((ToolStripTextBox)sender).Text;
+            if (string.IsNullOrEmpty(txt)) {
+                dgvBalance.SearchController.ClearSearch();
+            }
+            else {
+                dgvBalance.SearchController.Search(txt);
+            }
         }
     }
 }

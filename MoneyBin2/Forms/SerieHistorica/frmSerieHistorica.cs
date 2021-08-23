@@ -159,11 +159,10 @@ namespace MoneyBin2 {
             }
 
             bgWorker.RunWorkerAsync(ofd.FileNames);
-            if (MessageBox.Show(@"Deletar arquivo(s)?", @"Ler Série", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
-                DialogResult.Yes) {
-                foreach (var arquivo in ofd.FileNames) {
-                    File.Delete(arquivo);
-                }
+            if (MessageBox.Show(@"Deletar arquivo(s)?", @"Ler Série", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) != DialogResult.Yes) return;
+            foreach (var arquivo in ofd.FileNames) {
+                File.Delete(arquivo);
             }
         }
 

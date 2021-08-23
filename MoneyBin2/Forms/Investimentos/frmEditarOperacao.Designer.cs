@@ -41,6 +41,7 @@
             this.nudValorNominal = new System.Windows.Forms.NumericUpDown();
             this.labelTotalNominal = new System.Windows.Forms.Label();
             this.labelTotalReal = new System.Windows.Forms.Label();
+            this.buttonNovoCodigo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudCustoOperacao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtd)).BeginInit();
@@ -59,7 +60,6 @@
             // 
             // comboBoxAtivo
             // 
-            this.comboBoxAtivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAtivo.FormattingEnabled = true;
             this.comboBoxAtivo.Location = new System.Drawing.Point(144, 19);
             this.comboBoxAtivo.Name = "comboBoxAtivo";
@@ -117,7 +117,7 @@
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Font = new System.Drawing.Font("Wingdings", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.buttonOK.Location = new System.Drawing.Point(322, 22);
+            this.buttonOK.Location = new System.Drawing.Point(366, 22);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(55, 42);
             this.buttonOK.TabIndex = 7;
@@ -130,7 +130,7 @@
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.Font = new System.Drawing.Font("Wingdings", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonCancelar.ForeColor = System.Drawing.Color.Red;
-            this.buttonCancelar.Location = new System.Drawing.Point(322, 70);
+            this.buttonCancelar.Location = new System.Drawing.Point(366, 70);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(55, 42);
             this.buttonCancelar.TabIndex = 8;
@@ -151,9 +151,9 @@
             // nudCustoOperacao
             // 
             this.nudCustoOperacao.DecimalPlaces = 2;
+            this.nudCustoOperacao.Enabled = false;
             this.nudCustoOperacao.Location = new System.Drawing.Point(144, 237);
             this.nudCustoOperacao.Name = "nudCustoOperacao";
-            this.nudCustoOperacao.ReadOnly = true;
             this.nudCustoOperacao.Size = new System.Drawing.Size(139, 30);
             this.nudCustoOperacao.TabIndex = 6;
             this.nudCustoOperacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -247,7 +247,7 @@
             this.labelTotalNominal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.labelTotalNominal.Location = new System.Drawing.Point(289, 167);
             this.labelTotalNominal.Name = "labelTotalNominal";
-            this.labelTotalNominal.Size = new System.Drawing.Size(90, 17);
+            this.labelTotalNominal.Size = new System.Drawing.Size(132, 59);
             this.labelTotalNominal.TabIndex = 18;
             this.labelTotalNominal.Text = "labelValorNominal";
             // 
@@ -256,9 +256,21 @@
             this.labelTotalReal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.labelTotalReal.Location = new System.Drawing.Point(289, 207);
             this.labelTotalReal.Name = "labelTotalReal";
-            this.labelTotalReal.Size = new System.Drawing.Size(90, 17);
+            this.labelTotalReal.Size = new System.Drawing.Size(132, 59);
             this.labelTotalReal.TabIndex = 19;
             this.labelTotalReal.Text = "labelValorReal";
+            // 
+            // buttonNovoCodigo
+            // 
+            this.buttonNovoCodigo.BackColor = System.Drawing.Color.Ivory;
+            this.buttonNovoCodigo.Font = new System.Drawing.Font("Arial Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNovoCodigo.Image = global::MoneyBin2.Properties.Resources.Add_24;
+            this.buttonNovoCodigo.Location = new System.Drawing.Point(289, 19);
+            this.buttonNovoCodigo.Name = "buttonNovoCodigo";
+            this.buttonNovoCodigo.Size = new System.Drawing.Size(39, 33);
+            this.buttonNovoCodigo.TabIndex = 20;
+            this.buttonNovoCodigo.UseVisualStyleBackColor = false;
+            this.buttonNovoCodigo.Click += new System.EventHandler(this.buttonNovoCodigo_Click);
             // 
             // frmEditarOperacao
             // 
@@ -267,7 +279,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlText;
             this.CancelButton = this.buttonCancelar;
-            this.ClientSize = new System.Drawing.Size(395, 290);
+            this.ClientSize = new System.Drawing.Size(434, 288);
+            this.Controls.Add(this.buttonNovoCodigo);
             this.Controls.Add(this.labelTotalReal);
             this.Controls.Add(this.labelTotalNominal);
             this.Controls.Add(this.labelValorNominal);
@@ -326,5 +339,6 @@
         private System.Windows.Forms.NumericUpDown nudValorNominal;
         private System.Windows.Forms.Label labelTotalNominal;
         private System.Windows.Forms.Label labelTotalReal;
+        private System.Windows.Forms.Button buttonNovoCodigo;
     }
 }

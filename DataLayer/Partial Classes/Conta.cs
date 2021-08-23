@@ -30,11 +30,11 @@ namespace DataLayer {
 
         public decimal Saldo => BalanceHasData ?
             Balance.OrderByDescending(b => b.Data)
-                .ThenByDescending(b => b.ID).First().Saldo ?? 0 : 0;
+                .ThenByDescending(b => b.Data).First().Saldo ?? 0 : 0;
 
         public decimal SaldoUltimoMes => BalanceHasData ?
             Balance.OrderByDescending(b => b.Data)
-                .ThenByDescending(b => b.ID)
+                .ThenByDescending(b => b.Valor)
                 .SkipWhile(b => b.Data > DateTime.Today.AddDays(-DateTime.Today.Day))
                 .First().Saldo ?? 0 : 0;
 
@@ -271,7 +271,7 @@ namespace DataLayer {
             Acoes.Where(a => a.Qtd > 0).ToObservableListSource();
 
         public ObservableListSource<ContaAtivo> AcoesZerado =>
-            Acoes.Where(a => a.Qtd == 0).ToObservableListSource();
+            Acoes.Where(a => a.Qtd == 0).OrderBy(a=>a.CCodigo).ToObservableListSource();
 
         public ObservableListSource<Patrimonio> PatrimonioAcoes => Acoes
             .Select(a => new Patrimonio { Tipo = "Ações", Item = a.Codigo, Valor = a.Total })

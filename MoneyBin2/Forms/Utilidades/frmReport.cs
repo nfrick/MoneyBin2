@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Services.Protocols;
 using System.Windows.Forms;
+using IEnumerableExtensions;
 
 namespace MoneyBin2 {
     public partial class frmReport : SuperReportViewer {

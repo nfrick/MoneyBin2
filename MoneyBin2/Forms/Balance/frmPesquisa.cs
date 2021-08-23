@@ -30,8 +30,7 @@ namespace MoneyBin2 {
 
         private Exportador _exportador => (Exportador)toolStripComboBoxFormato.SelectedItem;
 
-        private readonly ToolStripComboBox toolStripComboBoxFormato = new ToolStripComboBox()
-        {
+        private readonly ToolStripComboBox toolStripComboBoxFormato = new ToolStripComboBox() {
             Name = "toolStripButtonFormato",
             Size = new Size(200, 30),
         };
@@ -237,8 +236,7 @@ namespace MoneyBin2 {
             var itens = (IEnumerable<Pesquisa>)bsPesquisa.DataSource;
             var progressDialog = new frmProgressBar();
             var backgroundThread = new Thread(
-                () =>
-                {
+                () => {
                     progressDialog.Maximum = itens.Count();
                     progressDialog.UpdateProgress("Exportando \u2026");
                     var sw = new StreamWriter(_saveAs, false, Encoding.Default);

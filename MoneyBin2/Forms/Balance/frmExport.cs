@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -25,7 +26,7 @@ namespace MoneyBin2 {
         //private IEnumerable<Conta> ContasSelecionadas => edsExport.DbContext.Set<Conta>().Local.Where(c => c.Selecionada);
         private IEnumerable<Conta> ContasSelecionadas =>
             dgvContas.Rows.Cast<DataGridViewRow>()
-            .Select(r => (Conta) r.DataBoundItem).Where(c => c.Selecionada);
+            .Select(r => (Conta)r.DataBoundItem).Where(c => c.Selecionada);
 
         private IEnumerable<BalanceItem> ItensSelecionados =>
             checkBoxGruposTodos.Checked ?
@@ -239,23 +240,25 @@ namespace MoneyBin2 {
         }
 
         private bool ExportToExcel() {
-            var pck = new ExcelPackage(new FileInfo(_saveAs));
-            if (radioButtonExcel.Checked) {
-                CriaPlanilha(pck, "Balance", ItensSelecionados);
-            }
-            else {
-                foreach (var conta in ContasSelecionadas) {
-                    var itens = checkBoxGruposTodos.Checked
-                        ? conta.BalanceFiltrado(dtpInicio.Value, dtpTermino.Value, checkBoxAfetaSaldo.Checked)
-                        : conta.BalanceFiltrado(dtpInicio.Value, dtpTermino.Value, _gruposChecked,
-                            checkBoxAfetaSaldo.Checked);
-                    CriaPlanilha(pck, conta.Apelido, itens);
+            using (var pck = new ExcelPackage(new FileInfo(_saveAs))) {
+
+                if (radioButtonExcel.Checked) {
+                    CriaPlanilha(pck, "Balance", ItensSelecionados);
+                }
+                else {
+                    foreach (var conta in ContasSelecionadas) {
+                        var itens = checkBoxGruposTodos.Checked
+                            ? conta.BalanceFiltrado(dtpInicio.Value, dtpTermino.Value, checkBoxAfetaSaldo.Checked)
+                            : conta.BalanceFiltrado(dtpInicio.Value, dtpTermino.Value, _gruposChecked,
+                                checkBoxAfetaSaldo.Checked);
+                        CriaPlanilha(pck, conta.Apelido, itens);
+                    }
                 }
             }
             return true;
         }
 
-        private static void CriaPlanilha(ExcelPackage pck, string tabLabel, IEnumerable<BalanceItem> items) {
+        private static async Task CriaPlanilha(ExcelPackage pck, string tabLabel, IEnumerable<BalanceItem> items) {
             var ws = pck.Workbook.Worksheets.FirstOrDefault(s => s.Name == tabLabel);
             if (ws != null) {
                 pck.Workbook.Worksheets.Delete(tabLabel);
@@ -310,7 +313,7 @@ namespace MoneyBin2 {
 
             ws.View.FreezePanes(2, 1);
 
-            pck.Save();
+            await pck.SaveAsync();
         }
 
         private bool ExportToExtrato() {

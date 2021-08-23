@@ -1,134 +1,292 @@
-﻿using OfficeOpenXml;
+﻿using DataLayer;
+using OfficeOpenXml;
 using OfficeOpenXml.Style;
+using OfficeOpenXml.Table;
+using Ookii.Dialogs.WinForms;
 using Syncfusion.Windows.Forms;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Clipboard = System.Windows.Clipboard;
 
 
-namespace CEF_Rentabilidade2 {
+namespace Rentabilidades {
     public partial class Form1 : MetroForm {
+        private readonly string _excelFile = Properties.Settings.Default.ExcelFilePath;
+        //private readonly string _excelFile = @"D:\Users\Nelson Frick\SkyDrive\Documents\Financeiro\Caixa\Fundos BB e CEF2.xlsm";
+
+       #region FORM
+
         public Form1() {
             InitializeComponent();
             SetTabs();
             MessageBoxAdv.Office2007Theme = Office2007Theme.Black;
         }
 
-        private void SetTabs() {
-            rtbText.SelectionTabs = new[] { 400, 500, 600, 700, 800, 900, 1000 };
+        private void toolStripButtonColar_Click(object sender, EventArgs e) {
+            var text = (rtbText.TextLength > 0 ? "\n" : "") + Info.RemoveComments(Clipboard.GetText());
+            rtbText.AppendText(text);
+            rtbText.Lines = rtbText.Lines.Where(l => !string.IsNullOrEmpty(l)).ToArray();
         }
 
-        private void sfButtonProcess_Click(object sender, EventArgs e) {
+        private void toolStripButtonProcessCEF_Click(object sender, EventArgs e) {
+            //private async void toolStripButtonProcessCEF_Click(object sender, EventArgs e) {
+            var dados = ProcessarCEF();
+            //await CriaPlanilhaCEF(dados);
+            CriaPlanilhaCEF(dados);
+            ShowSuccess(dados.Select(d => d.Fundo));
+        }
+
+        private void toolStripButtonCEFMoneyBin_Click(object sender, EventArgs e) {
+            var dados = ProcessarCEF();
+            if (dados == null) {
+                return;
+            }
+            AddToDatabase(dados, "CEF");
+            ShowSuccess(dados.Select(d => d.Fundo));
+        }
+
+        private void toolStripButtonProcessBB_Click(object sender, EventArgs e) {
+            //private async void toolStripButtonProcessarBB_Click(object sender, EventArgs e) {
+            var dados = ProcessarBB();
+            if (dados == null) {
+                return;
+            }
+            //await CriaPlanilhaBB(dados);
+            CriaPlanilhaBB(dados);
+            ShowSuccess(dados.Select(d => d.Fundo));
+        }
+
+        private void toolStripButtonBBMoneyBin_Click(object sender, EventArgs e) {
+            var dados = ProcessarBB();
+            if (dados == null) {
+                return;
+            }
+            AddToDatabase(dados, "BB");
+            ShowSuccess(dados.Select(d => d.Fundo));
+        }
+
+        #endregion
+
+        private List<InfoCEF> ProcessarCEF() {
             var textAsArray = rtbText.Lines;
             try {
                 rtbText.Clear();
                 rtbText.SelectionTabs = null;
                 rtbText.Text = "Lendo dados... ";
-                var dados = textAsArray.Select(r => new Info(r)).OrderBy(i => i.Fundo).ToList();
+                var dados = textAsArray.Where(r => !string.IsNullOrEmpty(r.Trim()))
+                    .Select(r => new InfoCEF(r)).OrderBy(i => i.Fundo)
+                    .Where(d => !string.IsNullOrEmpty(d.Fundo))
+                    .ToList();
                 rtbText.AppendText($"Lidos {dados.Count} fundos\n"); // Para forçar exception
-                CriaPlanilha(dados);
-
-                MessageBoxAdv.Show(this, $"{dados.Count} fundos lidos corretamente.",
-                    Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return dados;
             }
             catch (Exception ex) {
-                MessageBoxAdv.Show(this, $"Erro: \n\n{ex.Message}",
-                    Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                SetTabs();
+                ShowError(ex);
                 rtbText.Lines = textAsArray;
+                return null;
             }
         }
 
-        private void CriaPlanilha(IEnumerable<Info> dados) {
-            const string excelfile = @"D:\Users\Nelson Frick\SkyDrive\Documents\Financeiro\Caixa\Fundos CEF 3.xlsx";
+        private void CriaPlanilhaCEF(IEnumerable<InfoCEF> dados) {
+            //private async Task CriaPlanilhaCEF(IEnumerable<InfoCEF> dados) {
+            using (var pck = new ExcelPackage(new FileInfo(_excelFile))) {
+                var table = AbrePlanilha(pck, "CEF");
+                var ws = table.WorkSheet;
 
-            rtbText.AppendText("Criando planilha\n");
-            var pck = new ExcelPackage(new FileInfo(excelfile));
-            var ws = pck.Workbook.Worksheets.FirstOrDefault(s => s.Name == "CEF_Rent");
-            if (ws == null) {
-                ws = pck.Workbook.Worksheets.Add("CEF_Rent");
-                ws.SetValue(1, 1, "Fundo");
-                ws.SetValue(1, 2, "Var. Dia");
-                ws.SetValue(1, 3, "Acum. Mês");
-                ws.SetValue(1, 4, "Acum. Ano");
-                ws.SetValue(1, 5, "Acum. 12 Meses");
+                try {
+                    //var range = ws.Cells["A1"].LoadFromCollection(dados, true, //    OfficeOpenXml.Table.TableStyles.Medium8,
+                    //    BindingFlags.Instance | BindingFlags.Public,
+                    //    dados.First().OrderedProperties);
+
+                    rtbText.AppendText("Gravando dados...\n");
+                    int row = 2;
+                    table.InsertRow(1, dados.Count() - 1);
+                    // Fundo	Var. Dia	Mês	Ano	12 Meses	Valor Cota
+                    foreach (var dado in dados) {
+                        ws.Cells[row, 1].Value = dado.Fundo;
+                        ws.Cells[row, 2].Value = dado.VariaçãoDia;
+                        ws.Cells[row, 3].Value = dado.AcumuladoMes;
+                        ws.Cells[row, 4].Value = dado.AcumuladoAno;
+                        ws.Cells[row, 5].Value = dado.Acumulado12M;
+                        ws.Cells[row, 6].Value = dado.ValorCota;
+                        row++;
+                    }
+                    row--;
+
+                    rtbText.AppendText("Formatando planilha...\n");
+                    ws.Cells[$"A2:A{row}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+                    ws.Cells[$"B2:E{row}"].Style.Numberformat.Format = "0.000%";
+                    ws.Cells[$"F2:F{row}"].Style.Numberformat.Format = "#,##0.0000";
+
+                    ws.Cells[$"A1:F1"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    ws.Cells[$"A1:F1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    ws.Cells[$"A1:F1"].Style.WrapText = true;
+
+                    table.Range.AutoFitColumns(0);
+                    ws.View.FreezePanes(2, 1);
+                    ws.View.ZoomScale = 130;
+
+                    rtbText.AppendText("Salvando planilha...\n");
+                    //await pck.SaveAsync();
+                    pck.Save();
+                }
+                catch (Exception e) {
+                    Console.WriteLine(e);
+                    throw;
+                }
             }
-            else {
-                var dim = new ExcelAddress(2, 1, ws.Dimension.Rows, ws.Dimension.Columns);
-                ws.Cells[dim.Address].Clear();
+        }
+
+        private List<InfoBB> ProcessarBB() {
+            var textAsArray = rtbText.Lines;
+            try {
+                rtbText.Clear();
+                rtbText.SelectionTabs = null;
+                rtbText.Text = "Lendo dados... ";
+                var dados = textAsArray.Where(r => !string.IsNullOrEmpty(r.Trim()))
+                    .Select(r => new InfoBB(r)).OrderBy(i => i.Fundo)
+                    .Where(d => !string.IsNullOrEmpty(d.Fundo))
+                    .ToList();
+                rtbText.AppendText($"Lidos {dados.Count} fundos\n"); // Para forçar exception
+                return dados;
             }
+            catch (Exception ex) {
+                ShowError(ex);
+                rtbText.Lines = textAsArray;
+                return null;
+            }
+        }
+
+        private void CriaPlanilhaBB(IEnumerable<InfoBB> dados) {
+            //private async Task CriaPlanilhaBB(IEnumerable<InfoBB> dados) {
+            using (var pck = new ExcelPackage(new FileInfo(_excelFile))) {
+                var table = AbrePlanilha(pck, "BB");
+                var ws = table.WorkSheet;
+
+                rtbText.AppendText("Gravando dados...\n");
+                //var range = ws.Cells["A1"].LoadFromCollection(dados, true, OfficeOpenXml.Table.TableStyles.Medium8,
+                //    BindingFlags.Instance | BindingFlags.Public, dados.First().OrderedProperties);
+
+                int row = 2;
+                table.InsertRow(1, dados.Count() - 1);
+                // Fundo	Var. Dia	Mês	    Mês Anterior	Ano	12 Meses	Taxa Adm.	Data Cotação	Valor Cota
+
+                foreach (var dado in dados) {
+                    ws.Cells[row, 1].Value = dado.Fundo;
+                    ws.Cells[row, 2].Value = dado.VariaçãoDia;
+                    ws.Cells[row, 3].Value = dado.AcumuladoMes;
+                    ws.Cells[row, 4].Value = dado.MesAnterior;
+                    ws.Cells[row, 5].Value = dado.AcumuladoAno;
+                    ws.Cells[row, 6].Value = dado.Acumulado12M;
+                    ws.Cells[row, 7].Value = dado.TaxaAdm;
+                    ws.Cells[row, 8].Value = dado.DataCotacao;
+                    ws.Cells[row, 9].Value = dado.ValorCota;
+                    row++;
+                }
+                row--;
+
+                rtbText.AppendText("Formatando planilha...\n");
+                ws.Cells[$"A2:A{row}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+                ws.Cells[$"B2:F{row}"].Style.Numberformat.Format = "0.000%";
+                ws.Cells[$"G2:G{row}"].Style.Numberformat.Format = "0.00%";
+                ws.Cells[$"H2:H{row}"].Style.Numberformat.Format = "dd-MM-yyyy";
+                ws.Cells[$"I2:I{row}"].Style.Numberformat.Format = "#,##0.00000";
+
+                ws.Cells[$"A1:I1"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                ws.Cells[$"A1:I1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                ws.Cells[$"A1:I1"].Style.WrapText = true;
+
+                table.Range.AutoFitColumns();
+                ws.View.FreezePanes(2, 1);
+                ws.View.ZoomScale = 130;
+
+                rtbText.AppendText("Salvando planilha...\n");
+                //await pck.SaveAsync();
+                pck.Save();
+            }
+        }
+
+        private ExcelTable AbrePlanilha(ExcelPackage pck, string bank) {
+            var sheet = $"{bank}_Rent";
+            var tableName = $"tbl{sheet}";
+
+            rtbText.AppendText($"Criando planilha {sheet}\n");
+            var ws = pck.Workbook.Worksheets.FirstOrDefault(s => s.Name == sheet) ??
+                pck.Workbook.Worksheets.Add(sheet);
+
+            pck.Workbook.Worksheets.MoveAfter(sheet, bank);
 
             ws.View.ShowGridLines = false;
-
-            rtbText.AppendText("Gravando dados...\n");
-            var row = 1;
-            foreach (var info in dados) {
-                rtbText.AppendText($"\t{info.Fundo}\n");
-                ws.SetValue(++row, 1, info.Fundo);
-                ws.SetValue(row, 2, info.VariaçãoDia);
-                ws.SetValue(row, 3, info.AcumuladoMes);
-                ws.SetValue(row, 4, info.AcumuladoAno);
-                ws.SetValue(row, 5, info.Acumulado12M);
+            if (ws.Cells["A1"].Value == null)
+            {
+                var headers = bank == "BB" ? new InfoBB("").ColumnHeaders : new InfoCEF("").ColumnHeaders;
+                for (var i = 0; i < headers.Count(); i++) {
+                    ws.Cells[1, i + 1].Value = headers[i];
+                }
+                ws.Tables.Add(ws.Cells[1, 1, ws.Dimension.End.Row + 1, ws.Dimension.End.Column], tableName);
             }
 
-            Console.WriteLine("Formatando planilha");
-            ws.Cells[$"A2:A{row}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-            ws.Cells[$"B2:E{row}"].Style.Numberformat.Format = "0.000%";
-            ws.Cells.AutoFitColumns(0);
-
-            ws.View.FreezePanes(2, 1);
-
-            rtbText.AppendText("Salvando planilha...\n");
-            pck.Save();
+            var table = ws.Tables[tableName];
+            if (table.Range.Rows > 2)
+                table.DeleteRow(1, table.Range.Rows - 2);
+            table.TableStyle = TableStyles.Medium8;
+            return table;
         }
 
-        private void sfButtonColar_Click(object sender, EventArgs e) {
-            if (rtbText.TextLength > 0) {
-                rtbText.AppendText("\n");
+        private void ShowSuccess(IEnumerable<string> fundos) {
+            taskDialog.MainIcon = TaskDialogIcon.Information;
+            taskDialog.MainInstruction = $"{fundos.Count()} fundos lidos corretamente.";
+            taskDialog.ExpandedInformation = string.Join("\n", fundos);
+            taskDialog.ShowDialog();
+            SetTabs();
+        }
+
+        private void ShowError(Exception ex) {
+            ShowError("Erro ao ler arquivo.", ex.Message);
+        }
+
+        private void ShowError(string mainMessage, string expandedInfo) {
+            taskDialog.MainIcon = TaskDialogIcon.Warning;
+            taskDialog.MainInstruction = mainMessage;
+            taskDialog.ExpandedInformation = expandedInfo;
+            taskDialog.ShowDialog();
+            SetTabs();
+        }
+
+        private void AddToDatabase(IEnumerable<Info> dados, string banco) {
+            using (var ctx = new MoneyBinEntities()) {
+                var novoMes = "2019-01";
+                var rentsAtuais = ctx.Rentabilidades.Where(r => r.Banco == banco);
+                if (rentsAtuais.Any()) {
+                    var ultimoMes = ctx.Rentabilidades.Where(r => r.Banco == banco)
+                        .Select(r => r.Mes).Max();
+
+                    novoMes = ultimoMes.AddMonths(1).ToString("yyyy-MM");
+                }
+                if (SuperPrompt.PromptDialog
+                    .InputString($"Rentabilidade {banco}", "Entre o mês", ref novoMes) ==
+                    DialogResult.Cancel) {
+                    return;
+                }
+
+                var rents = dados.Select(d => d.ToRentabilidade(novoMes, banco)).OrderBy(r => r.FundoNome);
+                foreach (var rent in rents) {
+                    rent.FundoId = ctx.Fundos.First(f => f.NomeTabRent == rent.FundoNome).ID;
+                }
+                ctx.Rentabilidades.AddRange(rents);
+                if (ctx.SaveChanges(out var errorMessage)) {
+                    return;
+                }
+                ShowError("Erro ao adicionar ao database.", errorMessage);
             }
-            rtbText.AppendText(Clipboard.GetText());
-            rtbText.Lines = rtbText.Lines.Where(l => !string.IsNullOrEmpty(l)).ToArray();
-        }
-    }
-
-    public class Info {
-        public string Fundo { get; set; }
-        public string Dados { get; set; }
-        public decimal VariaçãoDia { get; set; }
-        public decimal AcumuladoMes { get; set; }
-        public decimal AcumuladoAno { get; set; }
-        public decimal Acumulado12M { get; set; }
-
-        private readonly Regex _regexData = new Regex(@"\d{2}\/\d{2}\/\d{4}");
-
-        private static readonly char[] Seps = new[] { ' ', '\t' };
-
-        public Info(string linha) {
-            var match = _regexData.Match(linha);
-            if (!match.Success) {
-                return;
-            }
-
-            Fundo = linha.Substring(0, match.Index).Trim();
-            Fundo = Regex.Replace(Fundo, @"\(\d\)", "").Trim();
-            var dados = linha.Substring(match.Index + 11).Trim().Split(Seps);
-            VariaçãoDia = Parse(dados, 2);
-            AcumuladoMes = Parse(dados, 3);
-            AcumuladoAno = Parse(dados, 4);
-            Acumulado12M = Parse(dados, 5);
         }
 
-        private static decimal Parse(IReadOnlyList<string> values, int pos) {
-            return pos < values.Count ?
-                !decimal.TryParse(values[pos], out var result) ? 0 : result / 100 :
-                -1000;
+        private void SetTabs() {
+            rtbText.Clear();
+            rtbText.SelectionTabs = new[] { 400, 500, 600, 700, 800, 900, 1000 };
         }
-
-        public override string ToString() => $"{Fundo} - Dia: {VariaçãoDia}  Mês: {AcumuladoMes}  Ano: {AcumuladoAno}  12M: {Acumulado12M}";
     }
 }

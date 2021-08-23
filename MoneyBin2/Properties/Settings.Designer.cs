@@ -12,7 +12,7 @@ namespace MoneyBin2.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -67,18 +67,6 @@ namespace MoneyBin2.Properties {
             }
             set {
                 this["MainBarraFerramentasImagem"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool MainBackgroundRodizio {
-            get {
-                return ((bool)(this["MainBackgroundRodizio"]));
-            }
-            set {
-                this["MainBackgroundRodizio"] = value;
             }
         }
         
@@ -185,6 +173,30 @@ namespace MoneyBin2.Properties {
             }
             set {
                 this["InvestimentosUsarContaPadrao"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MainBackgroundRod {
+            get {
+                return ((bool)(this["MainBackgroundRod"]));
+            }
+            set {
+                this["MainBackgroundRod"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public int MainBackgroundTempo {
+            get {
+                return ((int)(this["MainBackgroundTempo"]));
+            }
+            set {
+                this["MainBackgroundTempo"] = value;
             }
         }
     }

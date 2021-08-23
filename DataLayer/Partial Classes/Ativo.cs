@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using IEnumerableExtensions;
 
 namespace DataLayer {
     public partial class Ativo {

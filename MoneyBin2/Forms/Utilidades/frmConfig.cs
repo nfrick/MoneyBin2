@@ -37,14 +37,16 @@ namespace MoneyBin2 {
             radioButtonInvestimentosUltimaConta.Checked = !Settings.Default.InvestimentosUsarContaPadrao;
 
             labelCalendarioPastaPagamentos.Text = Settings.Default.CalendarioPastaPagamentos;
+            
             checkBoxBackgroundVisivel.Checked = Settings.Default.MainBackgroundVisivel;
-            checkBoxBackgroundRodizio.Checked = Settings.Default.MainBackgroundRodizio;
+            checkBoxBackgroundRodizio.Checked = Settings.Default.MainBackgroundRod;
+            trackBarTempo.Value = Settings.Default.MainBackgroundTempo;
+
             checkBoxBarraFerramentasVisivel.Checked = Settings.Default.MainBarraFerramentasVisivel;
             checkBoxBarraFerramentasImagemeTexto.Checked = Settings.Default.MainBarraFerramentasImagem;
         }
 
-        private void SetContaComboBox(ComboBox combo)
-        {
+        private void SetContaComboBox(ComboBox combo) {
             using (var ctx = new MoneyBinEntities()) {
                 var contas = ctx.Contas.OrderBy(c => c.Apelido).ToList();
                 combo.DataSource = contas;
@@ -293,7 +295,8 @@ namespace MoneyBin2 {
             Settings.Default.InvestimentosUsarContaPadrao = radioButtonInvestimentosContaPadrao.Checked;
             Settings.Default.CalendarioPastaPagamentos = labelCalendarioPastaPagamentos.Text;
             Settings.Default.MainBackgroundVisivel = checkBoxBackgroundVisivel.Checked;
-            Settings.Default.MainBackgroundRodizio = checkBoxBackgroundRodizio.Checked;
+            Settings.Default.MainBackgroundRod = checkBoxBackgroundRodizio.Checked;
+            Settings.Default.MainBackgroundTempo = trackBarTempo.Value;
             Settings.Default.MainBarraFerramentasVisivel = checkBoxBarraFerramentasVisivel.Checked;
             Settings.Default.MainBarraFerramentasImagem = checkBoxBarraFerramentasImagemeTexto.Checked;
             Settings.Default.Save();
@@ -307,6 +310,10 @@ namespace MoneyBin2 {
             }
 
             labelCalendarioPastaPagamentos.Text = FBD.SelectedPath;
+        }
+
+        private void trackBarTempo_ValueChanged(object sender, EventArgs e) {
+            labelTempo.Text = $"Tempo: {trackBarTempo.Value} segundos";
         }
     }
 }

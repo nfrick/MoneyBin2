@@ -26,14 +26,15 @@ namespace MoneyBin2 {
             toolbarVisivelToolStripMenuItem.Checked = Settings.Default.MainBarraFerramentasVisivel;
             toolbarImagemApenasToolStripMenuItem.Checked = Settings.Default.MainBarraFerramentasImagem;
             backgroundVisívelToolStripMenuItem.Checked = Settings.Default.MainBackgroundVisivel;
-            backgroundRodízioToolStripMenuItem.Checked = Settings.Default.MainBackgroundRodizio;
+            backgroundRodízioToolStripMenuItem.Checked = Settings.Default.MainBackgroundRod;
+            timerBackground.Interval = Settings.Default.MainBackgroundTempo * 1000;
         }
 
         private void SalvaConfiguracoes() {
             Settings.Default.MainBarraFerramentasVisivel = toolbarVisivelToolStripMenuItem.Checked;
             Settings.Default.MainBarraFerramentasImagem = toolbarImagemApenasToolStripMenuItem.Checked;
             Settings.Default.MainBackgroundVisivel = backgroundVisívelToolStripMenuItem.Checked;
-            Settings.Default.MainBackgroundRodizio = backgroundRodízioToolStripMenuItem.Checked;
+            Settings.Default.MainBackgroundRod = backgroundRodízioToolStripMenuItem.Checked;
             Settings.Default.Save();
         }
 

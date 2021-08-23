@@ -38,6 +38,11 @@
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.groupBoxInvestimentos = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radioButtonInvestimentosUltimaConta = new System.Windows.Forms.RadioButton();
+            this.comboBoxInvestimentosContaPadrao = new System.Windows.Forms.ComboBox();
+            this.radioButtonInvestimentosContaPadrao = new System.Windows.Forms.RadioButton();
             this.buttonSaveSettings = new System.Windows.Forms.Button();
             this.groupBoxBarraFerramentas = new System.Windows.Forms.GroupBox();
             this.checkBoxBarraFerramentasImagemeTexto = new System.Windows.Forms.CheckBox();
@@ -54,21 +59,19 @@
             this.radioButtonBalanceContaPadrao = new System.Windows.Forms.RadioButton();
             this.comboBoxBalanceContaPadrao = new System.Windows.Forms.ComboBox();
             this.tabPageDatabase = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.radioButtonInvestimentosUltimaConta = new System.Windows.Forms.RadioButton();
-            this.radioButtonInvestimentosContaPadrao = new System.Windows.Forms.RadioButton();
-            this.comboBoxInvestimentosContaPadrao = new System.Windows.Forms.ComboBox();
-            this.groupBoxInvestimentos = new System.Windows.Forms.GroupBox();
+            this.trackBarTempo = new System.Windows.Forms.TrackBar();
+            this.labelTempo = new System.Windows.Forms.Label();
             this.tlpDatabaseMain.SuspendLayout();
             this.tlpDatabaseLeftPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
+            this.groupBoxInvestimentos.SuspendLayout();
             this.groupBoxBarraFerramentas.SuspendLayout();
             this.groupBoxBackground.SuspendLayout();
             this.groupBoxCalendario.SuspendLayout();
             this.groupBoxBalance.SuspendLayout();
             this.tabPageDatabase.SuspendLayout();
-            this.groupBoxInvestimentos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTempo)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpDatabaseMain
@@ -257,6 +260,61 @@
             this.tabPageSettings.TabIndex = 1;
             this.tabPageSettings.Text = "Settings";
             // 
+            // groupBoxInvestimentos
+            // 
+            this.groupBoxInvestimentos.Controls.Add(this.label1);
+            this.groupBoxInvestimentos.Controls.Add(this.radioButtonInvestimentosUltimaConta);
+            this.groupBoxInvestimentos.Controls.Add(this.comboBoxInvestimentosContaPadrao);
+            this.groupBoxInvestimentos.Controls.Add(this.radioButtonInvestimentosContaPadrao);
+            this.groupBoxInvestimentos.ForeColor = System.Drawing.Color.Yellow;
+            this.groupBoxInvestimentos.Location = new System.Drawing.Point(268, 26);
+            this.groupBoxInvestimentos.Name = "groupBoxInvestimentos";
+            this.groupBoxInvestimentos.Size = new System.Drawing.Size(229, 190);
+            this.groupBoxInvestimentos.TabIndex = 16;
+            this.groupBoxInvestimentos.TabStop = false;
+            this.groupBoxInvestimentos.Text = "Investimentos";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(27, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 28);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Abrir com";
+            // 
+            // radioButtonInvestimentosUltimaConta
+            // 
+            this.radioButtonInvestimentosUltimaConta.AutoSize = true;
+            this.radioButtonInvestimentosUltimaConta.ForeColor = System.Drawing.Color.White;
+            this.radioButtonInvestimentosUltimaConta.Location = new System.Drawing.Point(32, 130);
+            this.radioButtonInvestimentosUltimaConta.Name = "radioButtonInvestimentosUltimaConta";
+            this.radioButtonInvestimentosUltimaConta.Size = new System.Drawing.Size(145, 32);
+            this.radioButtonInvestimentosUltimaConta.TabIndex = 15;
+            this.radioButtonInvestimentosUltimaConta.TabStop = true;
+            this.radioButtonInvestimentosUltimaConta.Text = "Última conta";
+            this.radioButtonInvestimentosUltimaConta.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxInvestimentosContaPadrao
+            // 
+            this.comboBoxInvestimentosContaPadrao.FormattingEnabled = true;
+            this.comboBoxInvestimentosContaPadrao.Location = new System.Drawing.Point(55, 88);
+            this.comboBoxInvestimentosContaPadrao.Name = "comboBoxInvestimentosContaPadrao";
+            this.comboBoxInvestimentosContaPadrao.Size = new System.Drawing.Size(144, 36);
+            this.comboBoxInvestimentosContaPadrao.TabIndex = 13;
+            // 
+            // radioButtonInvestimentosContaPadrao
+            // 
+            this.radioButtonInvestimentosContaPadrao.AutoSize = true;
+            this.radioButtonInvestimentosContaPadrao.ForeColor = System.Drawing.Color.White;
+            this.radioButtonInvestimentosContaPadrao.Location = new System.Drawing.Point(32, 97);
+            this.radioButtonInvestimentosContaPadrao.Name = "radioButtonInvestimentosContaPadrao";
+            this.radioButtonInvestimentosContaPadrao.Size = new System.Drawing.Size(17, 16);
+            this.radioButtonInvestimentosContaPadrao.TabIndex = 14;
+            this.radioButtonInvestimentosContaPadrao.TabStop = true;
+            this.radioButtonInvestimentosContaPadrao.UseVisualStyleBackColor = true;
+            // 
             // buttonSaveSettings
             // 
             this.buttonSaveSettings.ForeColor = System.Drawing.Color.Black;
@@ -276,7 +334,7 @@
             this.groupBoxBarraFerramentas.Controls.Add(this.checkBoxBarraFerramentasImagemeTexto);
             this.groupBoxBarraFerramentas.Controls.Add(this.checkBoxBarraFerramentasVisivel);
             this.groupBoxBarraFerramentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.groupBoxBarraFerramentas.Location = new System.Drawing.Point(265, 328);
+            this.groupBoxBarraFerramentas.Location = new System.Drawing.Point(614, 328);
             this.groupBoxBarraFerramentas.Name = "groupBoxBarraFerramentas";
             this.groupBoxBarraFerramentas.Size = new System.Drawing.Size(229, 147);
             this.groupBoxBarraFerramentas.TabIndex = 14;
@@ -307,12 +365,14 @@
             // 
             // groupBoxBackground
             // 
+            this.groupBoxBackground.Controls.Add(this.labelTempo);
+            this.groupBoxBackground.Controls.Add(this.trackBarTempo);
             this.groupBoxBackground.Controls.Add(this.checkBoxBackgroundRodizio);
             this.groupBoxBackground.Controls.Add(this.checkBoxBackgroundVisivel);
             this.groupBoxBackground.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.groupBoxBackground.Location = new System.Drawing.Point(23, 328);
             this.groupBoxBackground.Name = "groupBoxBackground";
-            this.groupBoxBackground.Size = new System.Drawing.Size(229, 147);
+            this.groupBoxBackground.Size = new System.Drawing.Size(573, 147);
             this.groupBoxBackground.TabIndex = 13;
             this.groupBoxBackground.TabStop = false;
             this.groupBoxBackground.Text = "Background";
@@ -439,60 +499,28 @@
             this.tabPageDatabase.TabIndex = 0;
             this.tabPageDatabase.Text = "Banco de Dados";
             // 
-            // label1
+            // trackBarTempo
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(27, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 28);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Abrir com";
+            this.trackBarTempo.Location = new System.Drawing.Point(159, 85);
+            this.trackBarTempo.Maximum = 120;
+            this.trackBarTempo.Minimum = 5;
+            this.trackBarTempo.Name = "trackBarTempo";
+            this.trackBarTempo.Size = new System.Drawing.Size(383, 56);
+            this.trackBarTempo.SmallChange = 5;
+            this.trackBarTempo.TabIndex = 9;
+            this.trackBarTempo.TickFrequency = 5;
+            this.trackBarTempo.Value = 60;
+            this.trackBarTempo.ValueChanged += new System.EventHandler(this.trackBarTempo_ValueChanged);
             // 
-            // radioButtonInvestimentosUltimaConta
+            // labelTempo
             // 
-            this.radioButtonInvestimentosUltimaConta.AutoSize = true;
-            this.radioButtonInvestimentosUltimaConta.ForeColor = System.Drawing.Color.White;
-            this.radioButtonInvestimentosUltimaConta.Location = new System.Drawing.Point(32, 130);
-            this.radioButtonInvestimentosUltimaConta.Name = "radioButtonInvestimentosUltimaConta";
-            this.radioButtonInvestimentosUltimaConta.Size = new System.Drawing.Size(145, 32);
-            this.radioButtonInvestimentosUltimaConta.TabIndex = 15;
-            this.radioButtonInvestimentosUltimaConta.TabStop = true;
-            this.radioButtonInvestimentosUltimaConta.Text = "Última conta";
-            this.radioButtonInvestimentosUltimaConta.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonInvestimentosContaPadrao
-            // 
-            this.radioButtonInvestimentosContaPadrao.AutoSize = true;
-            this.radioButtonInvestimentosContaPadrao.ForeColor = System.Drawing.Color.White;
-            this.radioButtonInvestimentosContaPadrao.Location = new System.Drawing.Point(32, 97);
-            this.radioButtonInvestimentosContaPadrao.Name = "radioButtonInvestimentosContaPadrao";
-            this.radioButtonInvestimentosContaPadrao.Size = new System.Drawing.Size(17, 16);
-            this.radioButtonInvestimentosContaPadrao.TabIndex = 14;
-            this.radioButtonInvestimentosContaPadrao.TabStop = true;
-            this.radioButtonInvestimentosContaPadrao.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxInvestimentosContaPadrao
-            // 
-            this.comboBoxInvestimentosContaPadrao.FormattingEnabled = true;
-            this.comboBoxInvestimentosContaPadrao.Location = new System.Drawing.Point(55, 88);
-            this.comboBoxInvestimentosContaPadrao.Name = "comboBoxInvestimentosContaPadrao";
-            this.comboBoxInvestimentosContaPadrao.Size = new System.Drawing.Size(144, 36);
-            this.comboBoxInvestimentosContaPadrao.TabIndex = 13;
-            // 
-            // groupBoxInvestimentos
-            // 
-            this.groupBoxInvestimentos.Controls.Add(this.label1);
-            this.groupBoxInvestimentos.Controls.Add(this.radioButtonInvestimentosUltimaConta);
-            this.groupBoxInvestimentos.Controls.Add(this.comboBoxInvestimentosContaPadrao);
-            this.groupBoxInvestimentos.Controls.Add(this.radioButtonInvestimentosContaPadrao);
-            this.groupBoxInvestimentos.ForeColor = System.Drawing.Color.Yellow;
-            this.groupBoxInvestimentos.Location = new System.Drawing.Point(268, 26);
-            this.groupBoxInvestimentos.Name = "groupBoxInvestimentos";
-            this.groupBoxInvestimentos.Size = new System.Drawing.Size(229, 190);
-            this.groupBoxInvestimentos.TabIndex = 16;
-            this.groupBoxInvestimentos.TabStop = false;
-            this.groupBoxInvestimentos.Text = "Investimentos";
+            this.labelTempo.AutoSize = true;
+            this.labelTempo.ForeColor = System.Drawing.Color.White;
+            this.labelTempo.Location = new System.Drawing.Point(154, 47);
+            this.labelTempo.Name = "labelTempo";
+            this.labelTempo.Size = new System.Drawing.Size(75, 28);
+            this.labelTempo.TabIndex = 10;
+            this.labelTempo.Text = "Tempo:";
             // 
             // frmConfig
             // 
@@ -515,6 +543,8 @@
             this.tlpDatabaseLeftPanel.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPageSettings.ResumeLayout(false);
+            this.groupBoxInvestimentos.ResumeLayout(false);
+            this.groupBoxInvestimentos.PerformLayout();
             this.groupBoxBarraFerramentas.ResumeLayout(false);
             this.groupBoxBarraFerramentas.PerformLayout();
             this.groupBoxBackground.ResumeLayout(false);
@@ -524,8 +554,7 @@
             this.groupBoxBalance.ResumeLayout(false);
             this.groupBoxBalance.PerformLayout();
             this.tabPageDatabase.ResumeLayout(false);
-            this.groupBoxInvestimentos.ResumeLayout(false);
-            this.groupBoxInvestimentos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTempo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -566,5 +595,7 @@
         private System.Windows.Forms.RadioButton radioButtonInvestimentosContaPadrao;
         private System.Windows.Forms.ComboBox comboBoxInvestimentosContaPadrao;
         private System.Windows.Forms.GroupBox groupBoxInvestimentos;
+        private System.Windows.Forms.Label labelTempo;
+        private System.Windows.Forms.TrackBar trackBarTempo;
     }
 }

@@ -6,6 +6,7 @@ using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using OfficeOpenXml.Table;
 using SuperPrompt;
+using Syncfusion.Data.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,19 +22,19 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MoneyBin2 {
 
-    public enum posicao {
-        Papel,
-        Nada,
-        Cotação,
-        VarPercent,
-        QtdComprada,
-        Compra,
-        Venda,
-        QtdVendida,
-        Max,
-        Min,
-        Fech
-    }
+    //public enum posicao {
+    //    Papel,
+    //    Nada,
+    //    Cotação,
+    //    VarPercent,
+    //    QtdComprada,
+    //    Compra,
+    //    Venda,
+    //    QtdVendida,
+    //    Max,
+    //    Min,
+    //    Fech
+    //}
 
     public partial class frmInvestimentos : Form {
         private const string DialogTitle = "Ler extrato de fundo";
@@ -43,8 +44,7 @@ namespace MoneyBin2 {
 
         private Conta ContaAtual => (Conta)toolStripComboBoxConta.SelectedItem;
 
-        private readonly ToolStripCheckbox _chkShowAll = new ToolStripCheckbox("chkAcoesMostrarZeradas", "Mostrar zeradas", false)
-        {
+        private readonly ToolStripCheckbox _chkShowAll = new ToolStripCheckbox("chkAcoesMostrarZeradas", "Mostrar zeradas", false) {
             Tag = "Ações, Fundos, LCA, Resumo",
             ForeColor = SystemColors.ControlText,
             BackColor = SystemColors.Control
@@ -53,8 +53,7 @@ namespace MoneyBin2 {
         public frmInvestimentos() {
             InitializeComponent();
 
-            _chkShowAll.CheckedChanged += (sender, args) =>
-            {
+            _chkShowAll.CheckedChanged += (sender, args) => {
                 var showAll = ((ToolStripCheckbox)sender).Checked;
                 var sufixo = showAll ? "" : "NaoZerado";
                 bsAcoes.DataMember = "Acoes" + sufixo;
@@ -268,8 +267,7 @@ namespace MoneyBin2 {
         }
 
         private void dgvVendas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
-            var frm = new frmAssociarCompraComVenda
-            {
+            var frm = new frmAssociarCompraComVenda {
                 Saida = (Saida)bsVendas.Current,
                 AcaoAtual = (ContaAtivo)bsAcoes.Current
             };
@@ -278,8 +276,7 @@ namespace MoneyBin2 {
         }
 
         private frmEditarOperacao GetFrmEditarOperacao(Operacao op) {
-            var frm = new frmEditarOperacao
-            {
+            var frm = new frmEditarOperacao {
                 Acoes = ContaAtual.Acoes,
                 Operacao = op,
                 Ctx = _ctx
@@ -443,32 +440,28 @@ namespace MoneyBin2 {
         private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
             var acaoAtual = (ContaAtivo)bsAcoes.Current;
 
-            var op = new Operacao() { Codigo = acaoAtual.Codigo };
+            var op = new Operacao { ContaId = ContaAtual.ID, Codigo = acaoAtual.Codigo };
             var frm = GetFrmEditarOperacao(op);
             if (frm.ShowDialog() == DialogResult.Cancel) {
                 return;
             }
 
-            acaoAtual = ContaAtual.Acoes
-                .FirstOrDefault(ca => ca.Codigo == op.Codigo) ?? new ContaAtivo() { Conta = ContaAtual, Codigo = op.Codigo };
+            acaoAtual = ContaAtual.Acoes.FirstOrDefault(ca => ca.Codigo == op.Codigo);
 
-            bsAcoes.Position = bsAcoes.Find("Codigo", acaoAtual.Codigo);
+            if (acaoAtual == null) {
+                acaoAtual = new ContaAtivo { Conta = ContaAtual, Codigo = op.Codigo };
+                ContaAtual.Acoes.Add(acaoAtual);
+            }
 
-            //var row = dgvAcoes.Rows
-            //    .Cast<DataGridViewRow>()
-            //    .FirstOrDefault(r => r.Cells["Codigo"].Value.ToString().Equals(op.Codigo));
-            //if (row != null) {
-            //    dgvAcoes.Rows[row.Index].Selected = true;
-            //}
+            bsAcoes.Position = bsAcoes.ToList<ContaAtivo>().TakeWhile(a => a.Codigo != acaoAtual.Codigo).Count();
 
-            //var tipo = (OperacaoTipo)frm.comboBoxOperacao.SelectedItem;
-            //var operacoes = EDS.DbContext.Set<Operacao>();
             if (op.IsEntrada) {
                 acaoAtual.Operacoes.Add(op.ToEntrada);
             }
             else {
                 acaoAtual.Operacoes.Add(op.ToSaida);
             }
+
             dgvAcoes.Refresh();
             RefreshDataAcoes();
         }
@@ -872,7 +865,7 @@ namespace MoneyBin2 {
                 return;
             }
 
-            var fundosNoDatabase = _ctx.Fundos.Local;
+            var fundosNoDatabase = _ctx.Fundos.ToList(); //.Local;
 
             var fundo = fundosNoDatabase.FirstOrDefault(f => f.CNPJ == extrato.CNPJ);
             if (fundo == null) {

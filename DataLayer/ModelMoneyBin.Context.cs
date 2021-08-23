@@ -49,6 +49,9 @@ namespace DataLayer
         public virtual DbSet<Acumulada> QtdsAcumuladas { get; set; }
         public virtual DbSet<Associacao> Associacoes { get; set; }
         public virtual DbSet<ContaAtivo> ContasAtivos { get; set; }
+        public virtual DbSet<CarteiraAtivo> CarteiraAtivos { get; set; }
+        public virtual DbSet<Carteira> Carteiras { get; set; }
+        public virtual DbSet<Rentabilidade> Rentabilidades { get; set; }
     
         public virtual int spBalanceSelectByGrupoCatSubCat(string grp, string cat, string sub)
         {

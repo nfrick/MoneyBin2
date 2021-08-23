@@ -19,6 +19,7 @@ namespace DataLayer
         {
             this.Contas = new ObservableListSource<ContaFundo>();
             this.Meses = new ObservableListSource<FundoMes>();
+            this.Rentabilidades = new ObservableListSource<Rentabilidade>();
         }
     
         public int ID { get; set; }
@@ -26,10 +27,17 @@ namespace DataLayer
         public string CNPJ { get; set; }
         public string Apelido { get; set; }
         public string Tipo { get; set; }
+        public string NomeTabRent { get; set; }
+        public Nullable<decimal> TaxaAdmin { get; set; }
+        public string Aplicacao { get; set; }
+        public string Resgate { get; set; }
+        public Nullable<int> BancoID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<ContaFundo> Contas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<FundoMes> Meses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableListSource<Rentabilidade> Rentabilidades { get; set; }
     }
 }
