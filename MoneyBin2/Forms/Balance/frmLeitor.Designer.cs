@@ -62,9 +62,9 @@ namespace MoneyBin2 {
             this.SubCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonSalvar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLerArquivo = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonRemove = new System.Windows.Forms.ToolStripButton();
+            this.tsbSalvar = new System.Windows.Forms.ToolStripButton();
+            this.tsbLerArquivo = new System.Windows.Forms.ToolStripButton();
+            this.tsbRemove = new System.Windows.Forms.ToolStripButton();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
             this.cmsPopMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -451,46 +451,46 @@ namespace MoneyBin2 {
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonSalvar,
-            this.toolStripButtonLerArquivo,
-            this.toolStripButtonRemove});
+            this.tsbSalvar,
+            this.tsbLerArquivo,
+            this.tsbRemove});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(286, 27);
             this.toolStrip1.TabIndex = 0;
             // 
-            // toolStripButtonSalvar
+            // tsbSalvar
             // 
-            this.toolStripButtonSalvar.BackColor = System.Drawing.Color.Gainsboro;
-            this.toolStripButtonSalvar.ForeColor = System.Drawing.Color.Black;
-            this.toolStripButtonSalvar.Image = global::MoneyBin2.Properties.Resources.OK;
-            this.toolStripButtonSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSalvar.Name = "toolStripButtonSalvar";
-            this.toolStripButtonSalvar.Size = new System.Drawing.Size(73, 24);
-            this.toolStripButtonSalvar.Text = "Salvar";
-            this.toolStripButtonSalvar.Click += new System.EventHandler(this.toolStripButtonSalvar_Click);
+            this.tsbSalvar.BackColor = System.Drawing.Color.Gainsboro;
+            this.tsbSalvar.ForeColor = System.Drawing.Color.Black;
+            this.tsbSalvar.Image = global::MoneyBin2.Properties.Resources.OK;
+            this.tsbSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSalvar.Name = "tsbSalvar";
+            this.tsbSalvar.Size = new System.Drawing.Size(73, 24);
+            this.tsbSalvar.Text = "Salvar";
+            this.tsbSalvar.Click += new System.EventHandler(this.tsbSalvar_Click);
             // 
-            // toolStripButtonLerArquivo
+            // tsbLerArquivo
             // 
-            this.toolStripButtonLerArquivo.BackColor = System.Drawing.Color.Wheat;
-            this.toolStripButtonLerArquivo.ForeColor = System.Drawing.Color.Black;
-            this.toolStripButtonLerArquivo.Image = global::MoneyBin2.Properties.Resources.Oculos;
-            this.toolStripButtonLerArquivo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLerArquivo.Name = "toolStripButtonLerArquivo";
-            this.toolStripButtonLerArquivo.Size = new System.Drawing.Size(109, 24);
-            this.toolStripButtonLerArquivo.Text = "Ler Arquivo";
-            this.toolStripButtonLerArquivo.Click += new System.EventHandler(this.toolStripButtonLerArquivo_Click);
+            this.tsbLerArquivo.BackColor = System.Drawing.Color.Wheat;
+            this.tsbLerArquivo.ForeColor = System.Drawing.Color.Black;
+            this.tsbLerArquivo.Image = global::MoneyBin2.Properties.Resources.Oculos;
+            this.tsbLerArquivo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLerArquivo.Name = "tsbLerArquivo";
+            this.tsbLerArquivo.Size = new System.Drawing.Size(109, 24);
+            this.tsbLerArquivo.Text = "Ler Arquivo";
+            this.tsbLerArquivo.Click += new System.EventHandler(this.tsbLerArquivo_Click);
             // 
-            // toolStripButtonRemove
+            // tsbRemove
             // 
-            this.toolStripButtonRemove.BackColor = System.Drawing.Color.SeaShell;
-            this.toolStripButtonRemove.ForeColor = System.Drawing.Color.Black;
-            this.toolStripButtonRemove.Image = global::MoneyBin2.Properties.Resources.Delete;
-            this.toolStripButtonRemove.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRemove.Name = "toolStripButtonRemove";
-            this.toolStripButtonRemove.Size = new System.Drawing.Size(92, 24);
-            this.toolStripButtonRemove.Text = "Remover";
-            this.toolStripButtonRemove.Click += new System.EventHandler(this.toolStripButtonRemove_Click);
+            this.tsbRemove.BackColor = System.Drawing.Color.SeaShell;
+            this.tsbRemove.ForeColor = System.Drawing.Color.Black;
+            this.tsbRemove.Image = global::MoneyBin2.Properties.Resources.Delete;
+            this.tsbRemove.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRemove.Name = "tsbRemove";
+            this.tsbRemove.Size = new System.Drawing.Size(92, 24);
+            this.tsbRemove.Text = "Remover";
+            this.tsbRemove.Click += new System.EventHandler(this.tsbRemove_Click);
             // 
             // OFD
             // 
@@ -561,9 +561,9 @@ namespace MoneyBin2 {
         private System.Windows.Forms.Label labelConta;
         private System.Windows.Forms.OpenFileDialog OFD;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSalvar;
-        private System.Windows.Forms.ToolStripButton toolStripButtonLerArquivo;
-        private System.Windows.Forms.ToolStripButton toolStripButtonRemove;
+        private System.Windows.Forms.ToolStripButton tsbSalvar;
+        private System.Windows.Forms.ToolStripButton tsbLerArquivo;
+        private System.Windows.Forms.ToolStripButton tsbRemove;
         private System.Windows.Forms.ContextMenuStrip cmsPopMenu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn addToDBDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;

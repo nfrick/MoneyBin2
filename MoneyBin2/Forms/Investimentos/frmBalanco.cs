@@ -13,10 +13,10 @@ namespace MoneyBin2 {
 
         private void Vendas_Load(object sender, EventArgs e) {
             dgvBalanco.Columns[0].Width = 70;
-            //dgvBalanco.FormatColumn(dgvBalanco.StyleDate, 90, 1);
-            //dgvBalanco.FormatColumn(dgvBalanco, 2, 3, GridStyles.StyleInteger, 80);
-            //dgvBalanco.FormatColumn(dgvBalanco, 4, 6, GridStyles.StyleCurrency, 80);
-            //dgvBalanco.FormatColumn(dgvBalanco, 7, 8, GridStyles.StyleCurrency, 90);
+            //dgvBalanco.FormatColumnByHeader(dgvBalanco.StyleDate, 90, 1);
+            //dgvBalanco.FormatColumnByHeader(dgvBalanco, 2, 3, GridStyles.StyleInteger, 80);
+            //dgvBalanco.FormatColumnByHeader(dgvBalanco, 4, 6, GridStyles.StyleCurrency, 80);
+            //dgvBalanco.FormatColumnByHeader(dgvBalanco, 7, 8, GridStyles.StyleCurrency, 90);
 
             //dgvBalanco.FormatGridAsTotal(dgvTotal, dgvBalanco);
 

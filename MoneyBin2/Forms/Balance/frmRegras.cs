@@ -20,22 +20,22 @@ namespace MoneyBin2 {
 
             splitContainer.Panel2Collapsed = true;
 
-            dgvRegras.FormatColumn("Regra", null, 450);
-            dgvRegras.FormatColumn("Afeta Saldo", null, 40);
-            dgvRegras.FormatColumn("Grupo", null, 150);
-            dgvRegras.FormatColumn("Categoria", null, 150);
-            dgvRegras.FormatColumn("SubCategoria", null, 150);
-            dgvRegras.FormatColumn("Descrição", null, 150);
-            dgvRegras.FormatColumn("Add", null, 40);
-            dgvRegras.FormatColumn("Ocorr.", dgvRegras.StyleInteger, 60);
+            dgvRegras.FormatColumnByHeader("Regra", null, 450);
+            dgvRegras.FormatColumnByHeader("Afeta Saldo", null, 40);
+            dgvRegras.FormatColumnByHeader("Grupo", null, 150);
+            dgvRegras.FormatColumnByHeader("Categoria", null, 150);
+            dgvRegras.FormatColumnByHeader("SubCategoria", null, 150);
+            dgvRegras.FormatColumnByHeader("Descrição", null, 150);
+            dgvRegras.FormatColumnByHeader("Add", null, 40);
+            dgvRegras.FormatColumnByHeader("Ocorr.", dgvRegras.StyleInteger, 60);
 
-            dgvBalance.FormatColumn("Data", dgvBalance.StyleDateShort, 80);
-            dgvBalance.FormatColumn("Histórico", null, 400);
-            dgvBalance.FormatColumn("Valor", dgvBalance.StyleCurrency, 100);
-            dgvBalance.FormatColumn("Grupo", null, 120);
-            dgvBalance.FormatColumn("Categoria", null, 120);
-            dgvBalance.FormatColumn("SubCategoria", null, 200);
-            dgvBalance.FormatColumn("Descrição", null, 200);
+            dgvBalance.FormatColumnByHeader("Data", dgvBalance.StyleDateShort, 80);
+            dgvBalance.FormatColumnByHeader("Histórico", null, 400);
+            dgvBalance.FormatColumnByHeader("Valor", dgvBalance.StyleCurrency, 100);
+            dgvBalance.FormatColumnByHeader("Grupo", null, 120);
+            dgvBalance.FormatColumnByHeader("Categoria", null, 120);
+            dgvBalance.FormatColumnByHeader("SubCategoria", null, 200);
+            dgvBalance.FormatColumnByHeader("Descrição", null, 200);
 
             ResizeForm(dgvRegras);
 
@@ -45,24 +45,24 @@ namespace MoneyBin2 {
             toolStripContainer.TopToolStripPanel.Controls.Remove(toolStripRegras);
         }
 
-        private void toolStripButtonNovaRegra_Click(object sender, EventArgs e) {
+        private void tsbNovaRegra_Click(object sender, EventArgs e) {
             dgvRegras.Rows[dgvRegras.NewRowIndex].Cells[0].Selected = true;
             dgvRegras.FirstDisplayedScrollingRowIndex = dgvRegras.NewRowIndex;
         }
 
-        protected override void toolStripButtonSave_Click(object sender, EventArgs e) {
+        protected override void tsbSave_Click(object sender, EventArgs e) {
             if (!dgvRegras.EndEdit()) {
                 return;
             }
-            base.toolStripButtonSave_Click(sender, e);
+            base.tsbSave_Click(sender, e);
         }
 
-        protected override void toolStripButtonRevert_Click(object sender, EventArgs e) {
-            base.toolStripButtonRevert_Click(sender, e);
+        protected override void tsbRevert_Click(object sender, EventArgs e) {
+            base.tsbRevert_Click(sender, e);
             dgvRegras.Refresh();
         }
 
-        private void toolStripButtonTestar_Click(object sender, EventArgs e) {
+        private void tsbTestar_Click(object sender, EventArgs e) {
             if (dgvRegras.CurrentRow == null) {
                 return;
             }
@@ -79,7 +79,7 @@ namespace MoneyBin2 {
             splitContainer.Panel2Collapsed = true;
         }
 
-        private void toolStripButtonOcorrencias_Click(object sender, EventArgs e) {
+        private void tsbOcorrencias_Click(object sender, EventArgs e) {
             var progressDialog = new frmProgressBar();
             var backgroundThread = new Thread(
                 () => {

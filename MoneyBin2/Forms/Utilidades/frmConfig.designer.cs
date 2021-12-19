@@ -48,6 +48,8 @@
             this.checkBoxBarraFerramentasImagemeTexto = new System.Windows.Forms.CheckBox();
             this.checkBoxBarraFerramentasVisivel = new System.Windows.Forms.CheckBox();
             this.groupBoxBackground = new System.Windows.Forms.GroupBox();
+            this.labelTempo = new System.Windows.Forms.Label();
+            this.trackBarTempo = new System.Windows.Forms.TrackBar();
             this.checkBoxBackgroundRodizio = new System.Windows.Forms.CheckBox();
             this.checkBoxBackgroundVisivel = new System.Windows.Forms.CheckBox();
             this.groupBoxCalendario = new System.Windows.Forms.GroupBox();
@@ -59,8 +61,6 @@
             this.radioButtonBalanceContaPadrao = new System.Windows.Forms.RadioButton();
             this.comboBoxBalanceContaPadrao = new System.Windows.Forms.ComboBox();
             this.tabPageDatabase = new System.Windows.Forms.TabPage();
-            this.trackBarTempo = new System.Windows.Forms.TrackBar();
-            this.labelTempo = new System.Windows.Forms.Label();
             this.tlpDatabaseMain.SuspendLayout();
             this.tlpDatabaseLeftPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -68,10 +68,10 @@
             this.groupBoxInvestimentos.SuspendLayout();
             this.groupBoxBarraFerramentas.SuspendLayout();
             this.groupBoxBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTempo)).BeginInit();
             this.groupBoxCalendario.SuspendLayout();
             this.groupBoxBalance.SuspendLayout();
             this.tabPageDatabase.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarTempo)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpDatabaseMain
@@ -377,6 +377,29 @@
             this.groupBoxBackground.TabStop = false;
             this.groupBoxBackground.Text = "Background";
             // 
+            // labelTempo
+            // 
+            this.labelTempo.AutoSize = true;
+            this.labelTempo.ForeColor = System.Drawing.Color.White;
+            this.labelTempo.Location = new System.Drawing.Point(154, 47);
+            this.labelTempo.Name = "labelTempo";
+            this.labelTempo.Size = new System.Drawing.Size(75, 28);
+            this.labelTempo.TabIndex = 10;
+            this.labelTempo.Text = "Tempo:";
+            // 
+            // trackBarTempo
+            // 
+            this.trackBarTempo.Location = new System.Drawing.Point(159, 85);
+            this.trackBarTempo.Maximum = 120;
+            this.trackBarTempo.Minimum = 5;
+            this.trackBarTempo.Name = "trackBarTempo";
+            this.trackBarTempo.Size = new System.Drawing.Size(383, 56);
+            this.trackBarTempo.SmallChange = 5;
+            this.trackBarTempo.TabIndex = 9;
+            this.trackBarTempo.TickFrequency = 5;
+            this.trackBarTempo.Value = 5;
+            this.trackBarTempo.ValueChanged += new System.EventHandler(this.trackBarTempo_ValueChanged);
+            // 
             // checkBoxBackgroundRodizio
             // 
             this.checkBoxBackgroundRodizio.AutoSize = true;
@@ -499,29 +522,6 @@
             this.tabPageDatabase.TabIndex = 0;
             this.tabPageDatabase.Text = "Banco de Dados";
             // 
-            // trackBarTempo
-            // 
-            this.trackBarTempo.Location = new System.Drawing.Point(159, 85);
-            this.trackBarTempo.Maximum = 120;
-            this.trackBarTempo.Minimum = 5;
-            this.trackBarTempo.Name = "trackBarTempo";
-            this.trackBarTempo.Size = new System.Drawing.Size(383, 56);
-            this.trackBarTempo.SmallChange = 5;
-            this.trackBarTempo.TabIndex = 9;
-            this.trackBarTempo.TickFrequency = 5;
-            this.trackBarTempo.Value = 60;
-            this.trackBarTempo.ValueChanged += new System.EventHandler(this.trackBarTempo_ValueChanged);
-            // 
-            // labelTempo
-            // 
-            this.labelTempo.AutoSize = true;
-            this.labelTempo.ForeColor = System.Drawing.Color.White;
-            this.labelTempo.Location = new System.Drawing.Point(154, 47);
-            this.labelTempo.Name = "labelTempo";
-            this.labelTempo.Size = new System.Drawing.Size(75, 28);
-            this.labelTempo.TabIndex = 10;
-            this.labelTempo.Text = "Tempo:";
-            // 
             // frmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
@@ -537,6 +537,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuração";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmConfig_FormClosing);
+            this.Load += new System.EventHandler(this.frmConfig_Load);
             this.tlpDatabaseMain.ResumeLayout(false);
             this.tlpDatabaseMain.PerformLayout();
             this.tlpDatabaseLeftPanel.ResumeLayout(false);
@@ -549,12 +550,12 @@
             this.groupBoxBarraFerramentas.PerformLayout();
             this.groupBoxBackground.ResumeLayout(false);
             this.groupBoxBackground.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTempo)).EndInit();
             this.groupBoxCalendario.ResumeLayout(false);
             this.groupBoxCalendario.PerformLayout();
             this.groupBoxBalance.ResumeLayout(false);
             this.groupBoxBalance.PerformLayout();
             this.tabPageDatabase.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarTempo)).EndInit();
             this.ResumeLayout(false);
 
         }

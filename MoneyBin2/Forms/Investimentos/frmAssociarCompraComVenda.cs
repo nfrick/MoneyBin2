@@ -17,19 +17,19 @@ namespace MoneyBin2 {
         }
 
         private void AssociarCompraComVenda_Load(object sender, EventArgs e) {
-            dgvAssociadas.FormatColumn("Data", dgvAssociadas.StyleDateTimeShort, 115);
-            dgvAssociadas.FormatColumn("Qtd", dgvAssociadas.StyleInteger, 65);
-            dgvAssociadas.FormatColumn("Tipo", dgvAssociadas.StyleBase, 100);
-            dgvAssociadas.FormatColumn("Associado", dgvAssociadas.StyleInteger, 65);
-            dgvAssociadas.FormatColumn("Disponível", dgvAssociadas.StyleInteger, 65);
-            dgvAssociadas.FormatColumn("Valor", dgvAssociadas.StyleCurrency, 60);
+            dgvAssociadas.FormatColumnByHeader("Data", dgvAssociadas.StyleDateTimeShort, 115);
+            dgvAssociadas.FormatColumnByHeader("Qtd", dgvAssociadas.StyleInteger, 65);
+            dgvAssociadas.FormatColumnByHeader("Tipo", dgvAssociadas.StyleBase, 100);
+            dgvAssociadas.FormatColumnByHeader("Associado", dgvAssociadas.StyleInteger, 65);
+            dgvAssociadas.FormatColumnByHeader("Disponível", dgvAssociadas.StyleInteger, 65);
+            dgvAssociadas.FormatColumnByHeader("Valor", dgvAssociadas.StyleCurrency, 60);
 
-            dgvDisponiveis.FormatColumn("Data", dgvDisponiveis.StyleDateTimeShort, 115);
-            dgvDisponiveis.FormatColumn("Qtd", dgvDisponiveis.StyleInteger, 65);
-            dgvDisponiveis.FormatColumn("Tipo", dgvDisponiveis.StyleBase, 100);
-            dgvDisponiveis.FormatColumn("Associado", dgvDisponiveis.StyleInteger, 65);
-            dgvDisponiveis.FormatColumn("Disponível", dgvDisponiveis.StyleInteger, 65);
-            dgvDisponiveis.FormatColumn("Valor", dgvDisponiveis.StyleCurrency, 60);
+            dgvDisponiveis.FormatColumnByHeader("Data", dgvDisponiveis.StyleDateTimeShort, 115);
+            dgvDisponiveis.FormatColumnByHeader("Qtd", dgvDisponiveis.StyleInteger, 65);
+            dgvDisponiveis.FormatColumnByHeader("Tipo", dgvDisponiveis.StyleBase, 100);
+            dgvDisponiveis.FormatColumnByHeader("Associado", dgvDisponiveis.StyleInteger, 65);
+            dgvDisponiveis.FormatColumnByHeader("Disponível", dgvDisponiveis.StyleInteger, 65);
+            dgvDisponiveis.FormatColumnByHeader("Valor", dgvDisponiveis.StyleCurrency, 60);
 
             bsAssociadas.DataSource = Saida.Associacoes;
             bsDisponiveis.DataSource = AcaoAtual.EntradasDisponiveis(Saida);

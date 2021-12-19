@@ -15,20 +15,20 @@ namespace MoneyBin2 {
 
             PopulateClassificacao();
 
-            dgvClassificacao.FormatColumn("Grupo", null, 120);
-            dgvClassificacao.FormatColumn("Categoria", null, 150);
-            dgvClassificacao.FormatColumn("SubCategoria", null, -1);
-            dgvClassificacao.FormatColumn("Sinal", dgvBalance.StyleInteger, 40);
+            dgvClassificacao.FormatColumnByHeader("Grupo", null, 120);
+            dgvClassificacao.FormatColumnByHeader("Categoria", null, 150);
+            dgvClassificacao.FormatColumnByHeader("SubCategoria", null, -1);
+            dgvClassificacao.FormatColumnByHeader("Sinal", dgvBalance.StyleInteger, 40);
 
-            dgvBalance.FormatColumn("Conta", null, 80);
-            dgvBalance.FormatColumn("Data", dgvBalance.StyleDateShort, 80);
-            dgvBalance.FormatColumn("Histórico", null, 300);
-            dgvBalance.FormatColumn("Valor", dgvBalance.StyleCurrency, 100);
-            dgvBalance.FormatColumn("Afeta Saldo", null, 40);
-            dgvBalance.FormatColumn("Grupo", null, 120);
-            dgvBalance.FormatColumn("Categoria", null, 140);
-            dgvBalance.FormatColumn("SubCategoria", null, 200);
-            dgvBalance.FormatColumn("Descrição", null, 200);
+            dgvBalance.FormatColumnByHeader("Conta", null, 80);
+            dgvBalance.FormatColumnByHeader("Data", dgvBalance.StyleDateShort, 80);
+            dgvBalance.FormatColumnByHeader("Histórico", null, 300);
+            dgvBalance.FormatColumnByHeader("Valor", dgvBalance.StyleCurrency, 100);
+            dgvBalance.FormatColumnByHeader("Afeta Saldo", null, 40);
+            dgvBalance.FormatColumnByHeader("Grupo", null, 120);
+            dgvBalance.FormatColumnByHeader("Categoria", null, 140);
+            dgvBalance.FormatColumnByHeader("SubCategoria", null, 200);
+            dgvBalance.FormatColumnByHeader("Descrição", null, 200);
         }
 
         private void PopulateClassificacao() {

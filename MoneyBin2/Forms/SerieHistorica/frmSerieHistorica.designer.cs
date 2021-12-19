@@ -85,16 +85,16 @@ namespace MoneyBin2 {
             this.buttonDatesClear = new System.Windows.Forms.Button();
             this.monthCalendarDatas = new System.Windows.Forms.MonthCalendar();
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonLerSerie = new System.Windows.Forms.ToolStripButton();
+            this.tsbLerSerie = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonSemana = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonMes = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonTrimestre = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSemestre = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonAno = new System.Windows.Forms.ToolStripButton();
+            this.tsbSemana = new System.Windows.Forms.ToolStripButton();
+            this.tsbMes = new System.Windows.Forms.ToolStripButton();
+            this.tsbTrimestre = new System.Windows.Forms.ToolStripButton();
+            this.tsbSemestre = new System.Windows.Forms.ToolStripButton();
+            this.tsbAno = new System.Windows.Forms.ToolStripButton();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -752,32 +752,32 @@ namespace MoneyBin2 {
             this.toolStripMenu.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonLerSerie,
+            this.tsbLerSerie,
             this.toolStripSeparator1,
             this.toolStripLabel2,
             this.toolStripLabel3,
             this.toolStripSeparator2,
-            this.toolStripButtonSemana,
-            this.toolStripButtonMes,
-            this.toolStripButtonTrimestre,
-            this.toolStripButtonSemestre,
-            this.toolStripButtonAno});
+            this.tsbSemana,
+            this.tsbMes,
+            this.tsbTrimestre,
+            this.tsbSemestre,
+            this.tsbAno});
             this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(675, 30);
             this.toolStripMenu.TabIndex = 0;
             // 
-            // toolStripButtonLerSerie
+            // tsbLerSerie
             // 
-            this.toolStripButtonLerSerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.toolStripButtonLerSerie.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonLerSerie.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripButtonLerSerie.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLerSerie.Image")));
-            this.toolStripButtonLerSerie.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLerSerie.Name = "toolStripButtonLerSerie";
-            this.toolStripButtonLerSerie.Size = new System.Drawing.Size(79, 27);
-            this.toolStripButtonLerSerie.Text = "Ler Série";
-            this.toolStripButtonLerSerie.Click += new System.EventHandler(this.toolStripButtonLerSerie_Click);
+            this.tsbLerSerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tsbLerSerie.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbLerSerie.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tsbLerSerie.Image = ((System.Drawing.Image)(resources.GetObject("tsbLerSerie.Image")));
+            this.tsbLerSerie.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLerSerie.Name = "tsbLerSerie";
+            this.tsbLerSerie.Size = new System.Drawing.Size(79, 27);
+            this.tsbLerSerie.Text = "Ler Série";
+            this.tsbLerSerie.Click += new System.EventHandler(this.tsbLerSerie_Click);
             // 
             // toolStripSeparator1
             // 
@@ -809,60 +809,60 @@ namespace MoneyBin2 {
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 30);
             // 
-            // toolStripButtonSemana
+            // tsbSemana
             // 
-            this.toolStripButtonSemana.BackColor = System.Drawing.Color.LightBlue;
-            this.toolStripButtonSemana.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonSemana.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSemana.Image")));
-            this.toolStripButtonSemana.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSemana.Name = "toolStripButtonSemana";
-            this.toolStripButtonSemana.Size = new System.Drawing.Size(75, 27);
-            this.toolStripButtonSemana.Text = "Semana";
-            this.toolStripButtonSemana.Click += new System.EventHandler(this.toolStripButtonPeriodo_Click);
+            this.tsbSemana.BackColor = System.Drawing.Color.LightBlue;
+            this.tsbSemana.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbSemana.Image = ((System.Drawing.Image)(resources.GetObject("tsbSemana.Image")));
+            this.tsbSemana.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSemana.Name = "tsbSemana";
+            this.tsbSemana.Size = new System.Drawing.Size(75, 27);
+            this.tsbSemana.Text = "Semana";
+            this.tsbSemana.Click += new System.EventHandler(this.tsbPeriodo_Click);
             // 
-            // toolStripButtonMes
+            // tsbMes
             // 
-            this.toolStripButtonMes.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.toolStripButtonMes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonMes.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonMes.Image")));
-            this.toolStripButtonMes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonMes.Name = "toolStripButtonMes";
-            this.toolStripButtonMes.Size = new System.Drawing.Size(45, 27);
-            this.toolStripButtonMes.Text = "Mês";
-            this.toolStripButtonMes.Click += new System.EventHandler(this.toolStripButtonPeriodo_Click);
+            this.tsbMes.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.tsbMes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbMes.Image = ((System.Drawing.Image)(resources.GetObject("tsbMes.Image")));
+            this.tsbMes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbMes.Name = "tsbMes";
+            this.tsbMes.Size = new System.Drawing.Size(45, 27);
+            this.tsbMes.Text = "Mês";
+            this.tsbMes.Click += new System.EventHandler(this.tsbPeriodo_Click);
             // 
-            // toolStripButtonTrimestre
+            // tsbTrimestre
             // 
-            this.toolStripButtonTrimestre.BackColor = System.Drawing.Color.LightBlue;
-            this.toolStripButtonTrimestre.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonTrimestre.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonTrimestre.Image")));
-            this.toolStripButtonTrimestre.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonTrimestre.Name = "toolStripButtonTrimestre";
-            this.toolStripButtonTrimestre.Size = new System.Drawing.Size(84, 27);
-            this.toolStripButtonTrimestre.Text = "Trimestre";
-            this.toolStripButtonTrimestre.Click += new System.EventHandler(this.toolStripButtonPeriodo_Click);
+            this.tsbTrimestre.BackColor = System.Drawing.Color.LightBlue;
+            this.tsbTrimestre.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbTrimestre.Image = ((System.Drawing.Image)(resources.GetObject("tsbTrimestre.Image")));
+            this.tsbTrimestre.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbTrimestre.Name = "tsbTrimestre";
+            this.tsbTrimestre.Size = new System.Drawing.Size(84, 27);
+            this.tsbTrimestre.Text = "Trimestre";
+            this.tsbTrimestre.Click += new System.EventHandler(this.tsbPeriodo_Click);
             // 
-            // toolStripButtonSemestre
+            // tsbSemestre
             // 
-            this.toolStripButtonSemestre.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.toolStripButtonSemestre.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonSemestre.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSemestre.Image")));
-            this.toolStripButtonSemestre.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSemestre.Name = "toolStripButtonSemestre";
-            this.toolStripButtonSemestre.Size = new System.Drawing.Size(84, 27);
-            this.toolStripButtonSemestre.Text = "Semestre";
-            this.toolStripButtonSemestre.Click += new System.EventHandler(this.toolStripButtonPeriodo_Click);
+            this.tsbSemestre.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.tsbSemestre.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbSemestre.Image = ((System.Drawing.Image)(resources.GetObject("tsbSemestre.Image")));
+            this.tsbSemestre.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSemestre.Name = "tsbSemestre";
+            this.tsbSemestre.Size = new System.Drawing.Size(84, 27);
+            this.tsbSemestre.Text = "Semestre";
+            this.tsbSemestre.Click += new System.EventHandler(this.tsbPeriodo_Click);
             // 
-            // toolStripButtonAno
+            // tsbAno
             // 
-            this.toolStripButtonAno.BackColor = System.Drawing.Color.LightBlue;
-            this.toolStripButtonAno.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonAno.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAno.Image")));
-            this.toolStripButtonAno.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAno.Name = "toolStripButtonAno";
-            this.toolStripButtonAno.Size = new System.Drawing.Size(45, 27);
-            this.toolStripButtonAno.Text = "Ano";
-            this.toolStripButtonAno.Click += new System.EventHandler(this.toolStripButtonPeriodo_Click);
+            this.tsbAno.BackColor = System.Drawing.Color.LightBlue;
+            this.tsbAno.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbAno.Image = ((System.Drawing.Image)(resources.GetObject("tsbAno.Image")));
+            this.tsbAno.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAno.Name = "tsbAno";
+            this.tsbAno.Size = new System.Drawing.Size(45, 27);
+            this.tsbAno.Text = "Ano";
+            this.tsbAno.Click += new System.EventHandler(this.tsbPeriodo_Click);
             // 
             // bgWorker
             // 
@@ -932,7 +932,7 @@ namespace MoneyBin2 {
         private System.Windows.Forms.OpenFileDialog ofd;
         private System.ComponentModel.BackgroundWorker bgWorker;
         private System.Windows.Forms.ToolStrip toolStripMenu;
-        private System.Windows.Forms.ToolStripButton toolStripButtonLerSerie;
+        private System.Windows.Forms.ToolStripButton tsbLerSerie;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -981,11 +981,11 @@ namespace MoneyBin2 {
         private System.Windows.Forms.DataGridViewTextBoxColumn maxDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn variacaoDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSemana;
-        private System.Windows.Forms.ToolStripButton toolStripButtonMes;
-        private System.Windows.Forms.ToolStripButton toolStripButtonAno;
-        private System.Windows.Forms.ToolStripButton toolStripButtonTrimestre;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSemestre;
+        private System.Windows.Forms.ToolStripButton tsbSemana;
+        private System.Windows.Forms.ToolStripButton tsbMes;
+        private System.Windows.Forms.ToolStripButton tsbAno;
+        private System.Windows.Forms.ToolStripButton tsbTrimestre;
+        private System.Windows.Forms.ToolStripButton tsbSemestre;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }

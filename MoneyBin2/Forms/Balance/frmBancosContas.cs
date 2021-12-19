@@ -28,45 +28,45 @@ namespace MoneyBin2 {
             _mainBindingSource = bsBancos;
             EnableSaveButtons();
 
-            dgvBancos.FormatColumn("Nome", null, 250);
-            dgvBancos.FormatColumn("Sigla", null, 80);
-            dgvBancos.FormatColumn("Ext. Extrato", null, 70);
-            dgvBancos.FormatColumn("Ext. Fundos", null, 70);
+            dgvBancos.FormatColumnByHeader("Nome", null, 250);
+            dgvBancos.FormatColumnByHeader("Sigla", null, 80);
+            dgvBancos.FormatColumnByHeader("Ext. Extrato", null, 70);
+            dgvBancos.FormatColumnByHeader("Ext. Fundos", null, 70);
 
-            dgvContas.FormatColumn("Apelido", null, 80);
-            dgvContas.FormatColumn("Dono", null, 80);
-            dgvContas.FormatColumn("Agência", null, 70);
-            dgvContas.FormatColumn("Conta", null, 80);
-            dgvContas.FormatColumn("Op.", null, 40);
-            dgvContas.FormatColumn("Gerente", null, 180);
-            dgvContas.FormatColumn("Telefone", null, 90);
-            dgvContas.FormatColumn("Celular", null, 90);
-            dgvContas.FormatColumn("E-Mail", null, 150);
-            dgvContas.FormatColumn("Data Min", dgvContas.StyleDateShort, 80);
-            dgvContas.FormatColumn("Data Max", dgvContas.StyleDateShort, 80);
-            dgvContas.FormatColumn("Saldo", dgvContas.StyleCurrency, 80);
+            dgvContas.FormatColumnByHeader("Apelido", null, 80);
+            dgvContas.FormatColumnByHeader("Dono", null, 80);
+            dgvContas.FormatColumnByHeader("Agência", null, 70);
+            dgvContas.FormatColumnByHeader("Conta", null, 80);
+            dgvContas.FormatColumnByHeader("Op.", null, 40);
+            dgvContas.FormatColumnByHeader("Gerente", null, 180);
+            dgvContas.FormatColumnByHeader("Telefone", null, 90);
+            dgvContas.FormatColumnByHeader("Celular", null, 90);
+            dgvContas.FormatColumnByHeader("E-Mail", null, 150);
+            dgvContas.FormatColumnByHeader("Data Min", dgvContas.StyleDateShort, 80);
+            dgvContas.FormatColumnByHeader("Data Max", dgvContas.StyleDateShort, 80);
+            dgvContas.FormatColumnByHeader("Saldo", dgvContas.StyleCurrency, 80);
 
             ResizeForm(dgvContas);
 
-            var toolStripButtonBanco = new ToolStripButton {
+            var tsbBanco = new ToolStripButton {
                 Image = global::MoneyBin2.Properties.Resources.Banco,
                 ImageTransparentColor = System.Drawing.Color.Magenta,
-                Name = "toolStripButtonBanco",
+                Name = "tsbBanco",
                 Size = new System.Drawing.Size(114, 24),
                 Text = "Novo Banco"
             };
-            toolStripButtonBanco.Click += toolStripButtonNovoBanco_Click;
-            toolStripMenu.Items.Add(toolStripButtonBanco);
+            tsbBanco.Click += tsbNovoBanco_Click;
+            toolStripMenu.Items.Add(tsbBanco);
 
-            var toolStripButtonConta = new ToolStripButton {
+            var tsbConta = new ToolStripButton {
                 Image = global::MoneyBin2.Properties.Resources.Carteira,
                 ImageTransparentColor = System.Drawing.Color.Magenta,
-                Name = "toolStripButtonConta",
+                Name = "tsbConta",
                 Size = new System.Drawing.Size(111, 24),
                 Text = "Nova Conta"
             };
-            toolStripButtonConta.Click += toolStripButtonNovaConta_Click;
-            toolStripMenu.Items.Add(toolStripButtonConta);
+            tsbConta.Click += tsbNovaConta_Click;
+            toolStripMenu.Items.Add(tsbConta);
 
             splitContainerBanco.Panel2Collapsed = true;
             splitContainerConta.Panel2Collapsed = true;
@@ -80,7 +80,7 @@ namespace MoneyBin2 {
 
 
         #region TOOLSTRIP ---------------------------
-        private void toolStripButtonNovoBanco_Click(object sender, EventArgs e) {
+        private void tsbNovoBanco_Click(object sender, EventArgs e) {
             bsBancos.Add(new Banco());
             bsBancos.ResetBindings(true);
             bsBancos.MoveLast();
@@ -88,7 +88,7 @@ namespace MoneyBin2 {
             BancoToggleEdit();
         }
 
-        private void toolStripButtonNovaConta_Click(object sender, EventArgs e) {
+        private void tsbNovaConta_Click(object sender, EventArgs e) {
             var novaConta = new Conta() { Banco = BancoAtual };
             BancoAtual.Contas.Add(novaConta);
             dgvContas.Refresh();

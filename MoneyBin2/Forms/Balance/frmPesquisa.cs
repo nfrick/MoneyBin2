@@ -31,7 +31,7 @@ namespace MoneyBin2 {
         private Exportador _exportador => (Exportador)toolStripComboBoxFormato.SelectedItem;
 
         private readonly ToolStripComboBox toolStripComboBoxFormato = new ToolStripComboBox() {
-            Name = "toolStripButtonFormato",
+            Name = "tsbFormato",
             Size = new Size(200, 30),
         };
 
@@ -73,18 +73,18 @@ namespace MoneyBin2 {
             toolStripMenu.Items.Insert(2, toolStripComboBoxFormato);
             toolStripMenu.Items.Insert(2, new ToolStripLabel { Text = "Exportar" });
 
-            toolStripButtonSave.Text = "Pesquisar";
-            toolStripButtonSave.Image = Properties.Resources.Binóculos;
-            toolStripButtonSave.Click -= toolStripButtonSave_Click;
-            toolStripButtonSave.Click += toolStripButtonProcurar_Click;
+            tsbSave.Text = "Pesquisar";
+            tsbSave.Image = Properties.Resources.Binóculos;
+            tsbSave.Click -= tsbSave_Click;
+            tsbSave.Click += tsbProcurar_Click;
 
-            toolStripButtonRevert.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButtonRevert.Image = Properties.Resources.Exportar;
-            toolStripButtonRevert.ToolTipText = "Exportar";
-            toolStripButtonRevert.BackColor = Color.Aquamarine;
-            toolStripButtonRevert.Enabled = false;
-            toolStripButtonRevert.Click -= toolStripButtonRevert_Click;
-            toolStripButtonRevert.Click += buttonExport_Click;
+            tsbRevert.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbRevert.Image = Properties.Resources.Exportar;
+            tsbRevert.ToolTipText = "Exportar";
+            tsbRevert.BackColor = Color.Aquamarine;
+            tsbRevert.Enabled = false;
+            tsbRevert.Click -= tsbRevert_Click;
+            tsbRevert.Click += buttonExport_Click;
 
             var font = new Font("Segoe UI", 11.0F, FontStyle.Regular, GraphicsUnit.Point, 0);
             foreach (var item in toolStripMenu.Items.Cast<ToolStripItem>()
@@ -94,16 +94,16 @@ namespace MoneyBin2 {
 
             UpdateStatusBar();
 
-            dgvPesquisa.FormatColumn("Conta", null, 80);
-            dgvPesquisa.FormatColumn("Data", dgvPesquisa.StyleDateShort, 80);
-            dgvPesquisa.FormatColumn("Histórico", null, 300);
-            dgvPesquisa.FormatColumn("Documento", null, 120);
-            dgvPesquisa.FormatColumn("Valor", dgvPesquisa.StyleCurrency, 100);
-            dgvPesquisa.FormatColumn("Afeta Saldo", null, 40);
-            dgvPesquisa.FormatColumn("Grupo", null, 120);
-            dgvPesquisa.FormatColumn("Categoria", null, 140);
-            dgvPesquisa.FormatColumn("SubCategoria", null, 200);
-            dgvPesquisa.FormatColumn("Descrição", null, 200);
+            dgvPesquisa.FormatColumnByHeader("Conta", null, 80);
+            dgvPesquisa.FormatColumnByHeader("Data", dgvPesquisa.StyleDateShort, 80);
+            dgvPesquisa.FormatColumnByHeader("Histórico", null, 300);
+            dgvPesquisa.FormatColumnByHeader("Documento", null, 120);
+            dgvPesquisa.FormatColumnByHeader("Valor", dgvPesquisa.StyleCurrency, 100);
+            dgvPesquisa.FormatColumnByHeader("Afeta Saldo", null, 40);
+            dgvPesquisa.FormatColumnByHeader("Grupo", null, 120);
+            dgvPesquisa.FormatColumnByHeader("Categoria", null, 140);
+            dgvPesquisa.FormatColumnByHeader("SubCategoria", null, 200);
+            dgvPesquisa.FormatColumnByHeader("Descrição", null, 200);
             dgvPesquisa.Columns[3].Visible = false;
 
             ResizeForm(dgvPesquisa);
@@ -122,7 +122,7 @@ namespace MoneyBin2 {
 
 
         #region TOOLSTRIP ---------------------------
-        private void toolStripButtonProcurar_Click(object sender, EventArgs e) {
+        private void tsbProcurar_Click(object sender, EventArgs e) {
 
             bsPesquisa.DataSource = null;
             dgvPesquisa.Refresh();
@@ -380,7 +380,7 @@ namespace MoneyBin2 {
         #endregion DATAGRIDVIEW ------------------------
 
         private void bsPesquisa_DataSourceChanged(object sender, EventArgs e) {
-            toolStripComboBoxFormato.Enabled = toolStripButtonRevert.Enabled =
+            toolStripComboBoxFormato.Enabled = tsbRevert.Enabled =
                 bsPesquisa.CurrencyManager.Count > 0;
         }
 

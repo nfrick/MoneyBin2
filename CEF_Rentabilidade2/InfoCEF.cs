@@ -12,7 +12,8 @@ namespace Rentabilidades {
                 return;
             }
 
-            Fundo = RemoveComments(linha.Substring(0, match.Index).Trim());
+            //Fundo = RemoveComments(linha.Substring(0, match.Index).Trim());
+            Fundo = linha.Substring(0, match.Index).Trim();
             var dados = linha.Substring(match.Index + 11).Trim().Split(Seps);
             ValorCota = ParseDecimal(dados, 1, 1);
             VariaçãoDia = ParseDecimal(dados, 2);

@@ -216,22 +216,22 @@ namespace MoneyBin2 {
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxConta = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSpace1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButtonNovaOperacao = new System.Windows.Forms.ToolStripButton();
+            this.tsbNovaOperacao = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparatorSalvar = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonSalvar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonDesfazer = new System.Windows.Forms.ToolStripButton();
+            this.tsbSalvar = new System.Windows.Forms.ToolStripButton();
+            this.tsbDesfazer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSpace2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButtonBalanco = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLerExtrato = new System.Windows.Forms.ToolStripButton();
+            this.tsbBalanco = new System.Windows.Forms.ToolStripButton();
+            this.tsbLerExtrato = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonLerExtratosMes = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonExportar = new System.Windows.Forms.ToolStripButton();
+            this.tsbLerExtratosMes = new System.Windows.Forms.ToolStripButton();
+            this.tsbExportar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonPath = new System.Windows.Forms.ToolStripButton();
+            this.tsbPath = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabelLendoExtrato = new System.Windows.Forms.ToolStripLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripButtonCopyToClipboard = new System.Windows.Forms.ToolStripButton();
+            this.tsbCopyToClipboard = new System.Windows.Forms.ToolStripButton();
             this.SaldoAtual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RendimentoBruto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -2025,22 +2025,22 @@ namespace MoneyBin2 {
             this.toolStripLabel1,
             this.toolStripComboBoxConta,
             this.toolStripSpace1,
-            this.toolStripButtonNovaOperacao,
+            this.tsbNovaOperacao,
             this.toolStripSeparatorSalvar,
-            this.toolStripButtonSalvar,
-            this.toolStripButtonDesfazer,
+            this.tsbSalvar,
+            this.tsbDesfazer,
             this.toolStripSpace2,
-            this.toolStripButtonBalanco,
-            this.toolStripButtonLerExtrato,
+            this.tsbBalanco,
+            this.tsbLerExtrato,
             this.toolStripSeparator1,
-            this.toolStripButtonLerExtratosMes,
-            this.toolStripButtonExportar,
+            this.tsbLerExtratosMes,
+            this.tsbExportar,
             this.toolStripSeparator2,
-            this.toolStripButtonPath,
+            this.tsbPath,
             this.toolStripSeparator3,
             this.toolStripLabelLendoExtrato,
             this.toolStripProgressBar1,
-            this.toolStripButtonCopyToClipboard});
+            this.tsbCopyToClipboard});
             this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(568, 28);
@@ -2068,17 +2068,17 @@ namespace MoneyBin2 {
             this.toolStripSpace1.Name = "toolStripSpace1";
             this.toolStripSpace1.Size = new System.Drawing.Size(60, 25);
             // 
-            // toolStripButtonNovaOperacao
+            // tsbNovaOperacao
             // 
-            this.toolStripButtonNovaOperacao.BackColor = System.Drawing.Color.DimGray;
-            this.toolStripButtonNovaOperacao.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButtonNovaOperacao.Image = global::MoneyBin2.Properties.Resources.Add_24;
-            this.toolStripButtonNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNovaOperacao.Name = "toolStripButtonNovaOperacao";
-            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(137, 25);
-            this.toolStripButtonNovaOperacao.Tag = "Ações";
-            this.toolStripButtonNovaOperacao.Text = "Nova Operação";
-            this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
+            this.tsbNovaOperacao.BackColor = System.Drawing.Color.DimGray;
+            this.tsbNovaOperacao.ForeColor = System.Drawing.SystemColors.Control;
+            this.tsbNovaOperacao.Image = global::MoneyBin2.Properties.Resources.Add_24;
+            this.tsbNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNovaOperacao.Name = "tsbNovaOperacao";
+            this.tsbNovaOperacao.Size = new System.Drawing.Size(137, 25);
+            this.tsbNovaOperacao.Tag = "Ações";
+            this.tsbNovaOperacao.Text = "Nova Operação";
+            this.tsbNovaOperacao.Click += new System.EventHandler(this.tsbNovaOperacao_Click);
             // 
             // toolStripSeparatorSalvar
             // 
@@ -2086,30 +2086,30 @@ namespace MoneyBin2 {
             this.toolStripSeparatorSalvar.Size = new System.Drawing.Size(6, 28);
             this.toolStripSeparatorSalvar.Visible = false;
             // 
-            // toolStripButtonSalvar
+            // tsbSalvar
             // 
-            this.toolStripButtonSalvar.BackColor = System.Drawing.Color.ForestGreen;
-            this.toolStripButtonSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButtonSalvar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.toolStripButtonSalvar.Image = global::MoneyBin2.Properties.Resources.Disquete;
-            this.toolStripButtonSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSalvar.Name = "toolStripButtonSalvar";
-            this.toolStripButtonSalvar.Size = new System.Drawing.Size(75, 25);
-            this.toolStripButtonSalvar.Text = "Salvar";
-            this.toolStripButtonSalvar.Visible = false;
-            this.toolStripButtonSalvar.Click += new System.EventHandler(this.toolStripButtonSalvar_Click);
+            this.tsbSalvar.BackColor = System.Drawing.Color.ForestGreen;
+            this.tsbSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbSalvar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.tsbSalvar.Image = global::MoneyBin2.Properties.Resources.Disquete;
+            this.tsbSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSalvar.Name = "tsbSalvar";
+            this.tsbSalvar.Size = new System.Drawing.Size(75, 25);
+            this.tsbSalvar.Text = "Salvar";
+            this.tsbSalvar.Visible = false;
+            this.tsbSalvar.Click += new System.EventHandler(this.tsbSalvar_Click);
             // 
-            // toolStripButtonDesfazer
+            // tsbDesfazer
             // 
-            this.toolStripButtonDesfazer.BackColor = System.Drawing.Color.DimGray;
-            this.toolStripButtonDesfazer.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButtonDesfazer.Image = global::MoneyBin2.Properties.Resources.Revert_24;
-            this.toolStripButtonDesfazer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDesfazer.Name = "toolStripButtonDesfazer";
-            this.toolStripButtonDesfazer.Size = new System.Drawing.Size(91, 25);
-            this.toolStripButtonDesfazer.Text = "Desfazer";
-            this.toolStripButtonDesfazer.Visible = false;
-            this.toolStripButtonDesfazer.Click += new System.EventHandler(this.toolStripButtonDesfazer_Click);
+            this.tsbDesfazer.BackColor = System.Drawing.Color.DimGray;
+            this.tsbDesfazer.ForeColor = System.Drawing.SystemColors.Control;
+            this.tsbDesfazer.Image = global::MoneyBin2.Properties.Resources.Revert_24;
+            this.tsbDesfazer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDesfazer.Name = "tsbDesfazer";
+            this.tsbDesfazer.Size = new System.Drawing.Size(91, 25);
+            this.tsbDesfazer.Text = "Desfazer";
+            this.tsbDesfazer.Visible = false;
+            this.tsbDesfazer.Click += new System.EventHandler(this.tsbDesfazer_Click);
             // 
             // toolStripSpace2
             // 
@@ -2118,28 +2118,28 @@ namespace MoneyBin2 {
             this.toolStripSpace2.Size = new System.Drawing.Size(10, 25);
             this.toolStripSpace2.Tag = "Ações";
             // 
-            // toolStripButtonBalanco
+            // tsbBalanco
             // 
-            this.toolStripButtonBalanco.BackColor = System.Drawing.Color.SeaShell;
-            this.toolStripButtonBalanco.Image = global::MoneyBin2.Properties.Resources.Scale;
-            this.toolStripButtonBalanco.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonBalanco.Name = "toolStripButtonBalanco";
-            this.toolStripButtonBalanco.Size = new System.Drawing.Size(86, 25);
-            this.toolStripButtonBalanco.Tag = "Ações";
-            this.toolStripButtonBalanco.Text = "Balanço";
-            this.toolStripButtonBalanco.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
+            this.tsbBalanco.BackColor = System.Drawing.Color.SeaShell;
+            this.tsbBalanco.Image = global::MoneyBin2.Properties.Resources.Scale;
+            this.tsbBalanco.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBalanco.Name = "tsbBalanco";
+            this.tsbBalanco.Size = new System.Drawing.Size(86, 25);
+            this.tsbBalanco.Tag = "Ações";
+            this.tsbBalanco.Text = "Balanço";
+            this.tsbBalanco.Click += new System.EventHandler(this.tsbResumoVendas_Click);
             // 
-            // toolStripButtonLerExtrato
+            // tsbLerExtrato
             // 
-            this.toolStripButtonLerExtrato.BackColor = System.Drawing.Color.PaleGreen;
-            this.toolStripButtonLerExtrato.Image = global::MoneyBin2.Properties.Resources.Oculos;
-            this.toolStripButtonLerExtrato.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLerExtrato.Name = "toolStripButtonLerExtrato";
-            this.toolStripButtonLerExtrato.Size = new System.Drawing.Size(120, 25);
-            this.toolStripButtonLerExtrato.Tag = "Ações;Fundos;LCA";
-            this.toolStripButtonLerExtrato.Text = "Ler Extrato(s)";
-            this.toolStripButtonLerExtrato.ToolTipText = "Para a conta selecionada, ler extrato(s)";
-            this.toolStripButtonLerExtrato.Click += new System.EventHandler(this.toolStripButtonLerExtrato_Click);
+            this.tsbLerExtrato.BackColor = System.Drawing.Color.PaleGreen;
+            this.tsbLerExtrato.Image = global::MoneyBin2.Properties.Resources.Oculos;
+            this.tsbLerExtrato.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLerExtrato.Name = "tsbLerExtrato";
+            this.tsbLerExtrato.Size = new System.Drawing.Size(120, 25);
+            this.tsbLerExtrato.Tag = "Ações;Fundos;LCA";
+            this.tsbLerExtrato.Text = "Ler Extrato(s)";
+            this.tsbLerExtrato.ToolTipText = "Para a conta selecionada, ler extrato(s)";
+            this.tsbLerExtrato.Click += new System.EventHandler(this.tsbLerExtrato_Click);
             // 
             // toolStripSeparator1
             // 
@@ -2148,30 +2148,30 @@ namespace MoneyBin2 {
             this.toolStripSeparator1.Tag = "Fundos";
             this.toolStripSeparator1.Visible = false;
             // 
-            // toolStripButtonLerExtratosMes
+            // tsbLerExtratosMes
             // 
-            this.toolStripButtonLerExtratosMes.BackColor = System.Drawing.Color.NavajoWhite;
-            this.toolStripButtonLerExtratosMes.Image = global::MoneyBin2.Properties.Resources.Oculos;
-            this.toolStripButtonLerExtratosMes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLerExtratosMes.Name = "toolStripButtonLerExtratosMes";
-            this.toolStripButtonLerExtratosMes.Size = new System.Drawing.Size(141, 25);
-            this.toolStripButtonLerExtratosMes.Tag = "Fundos";
-            this.toolStripButtonLerExtratosMes.Text = "Ler Extratos Mês";
-            this.toolStripButtonLerExtratosMes.ToolTipText = "Para cada conta, ler todos os extratos de um mês";
-            this.toolStripButtonLerExtratosMes.Visible = false;
-            this.toolStripButtonLerExtratosMes.Click += new System.EventHandler(this.toolStripButtonLerExtratosMes_Click);
+            this.tsbLerExtratosMes.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tsbLerExtratosMes.Image = global::MoneyBin2.Properties.Resources.Oculos;
+            this.tsbLerExtratosMes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLerExtratosMes.Name = "tsbLerExtratosMes";
+            this.tsbLerExtratosMes.Size = new System.Drawing.Size(141, 25);
+            this.tsbLerExtratosMes.Tag = "Fundos";
+            this.tsbLerExtratosMes.Text = "Ler Extratos Mês";
+            this.tsbLerExtratosMes.ToolTipText = "Para cada conta, ler todos os extratos de um mês";
+            this.tsbLerExtratosMes.Visible = false;
+            this.tsbLerExtratosMes.Click += new System.EventHandler(this.tsbLerExtratosMes_Click);
             // 
-            // toolStripButtonExportar
+            // tsbExportar
             // 
-            this.toolStripButtonExportar.BackColor = System.Drawing.Color.Silver;
-            this.toolStripButtonExportar.Image = global::MoneyBin2.Properties.Resources.Exportar;
-            this.toolStripButtonExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonExportar.Name = "toolStripButtonExportar";
-            this.toolStripButtonExportar.Size = new System.Drawing.Size(89, 25);
-            this.toolStripButtonExportar.Tag = "Fundos";
-            this.toolStripButtonExportar.Text = "Exportar";
-            this.toolStripButtonExportar.Visible = false;
-            this.toolStripButtonExportar.Click += new System.EventHandler(this.toolStripButtonExportar_Click);
+            this.tsbExportar.BackColor = System.Drawing.Color.Silver;
+            this.tsbExportar.Image = global::MoneyBin2.Properties.Resources.Exportar;
+            this.tsbExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbExportar.Name = "tsbExportar";
+            this.tsbExportar.Size = new System.Drawing.Size(89, 25);
+            this.tsbExportar.Tag = "Fundos";
+            this.tsbExportar.Text = "Exportar";
+            this.tsbExportar.Visible = false;
+            this.tsbExportar.Click += new System.EventHandler(this.tsbExportar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -2180,17 +2180,17 @@ namespace MoneyBin2 {
             this.toolStripSeparator2.Tag = "Fundos";
             this.toolStripSeparator2.Visible = false;
             // 
-            // toolStripButtonPath
+            // tsbPath
             // 
-            this.toolStripButtonPath.BackColor = System.Drawing.Color.LightBlue;
-            this.toolStripButtonPath.Image = global::MoneyBin2.Properties.Resources.Pasta;
-            this.toolStripButtonPath.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPath.Name = "toolStripButtonPath";
-            this.toolStripButtonPath.Size = new System.Drawing.Size(64, 25);
-            this.toolStripButtonPath.Tag = "Fundos";
-            this.toolStripButtonPath.Text = "Path:";
-            this.toolStripButtonPath.Visible = false;
-            this.toolStripButtonPath.Click += new System.EventHandler(this.toolStripButtonPath_Click);
+            this.tsbPath.BackColor = System.Drawing.Color.LightBlue;
+            this.tsbPath.Image = global::MoneyBin2.Properties.Resources.Pasta;
+            this.tsbPath.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPath.Name = "tsbPath";
+            this.tsbPath.Size = new System.Drawing.Size(64, 25);
+            this.tsbPath.Tag = "Fundos";
+            this.tsbPath.Text = "Path:";
+            this.tsbPath.Visible = false;
+            this.tsbPath.Click += new System.EventHandler(this.tsbPath_Click);
             // 
             // toolStripSeparator3
             // 
@@ -2213,17 +2213,17 @@ namespace MoneyBin2 {
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 25);
             this.toolStripProgressBar1.Visible = false;
             // 
-            // toolStripButtonCopyToClipboard
+            // tsbCopyToClipboard
             // 
-            this.toolStripButtonCopyToClipboard.BackColor = System.Drawing.Color.PeachPuff;
-            this.toolStripButtonCopyToClipboard.Image = global::MoneyBin2.Properties.Resources.clipboard;
-            this.toolStripButtonCopyToClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonCopyToClipboard.Name = "toolStripButtonCopyToClipboard";
-            this.toolStripButtonCopyToClipboard.Size = new System.Drawing.Size(181, 25);
-            this.toolStripButtonCopyToClipboard.Tag = "Imposto Renda";
-            this.toolStripButtonCopyToClipboard.Text = "Copiar para Clipboard";
-            this.toolStripButtonCopyToClipboard.Visible = false;
-            this.toolStripButtonCopyToClipboard.Click += new System.EventHandler(this.toolStripCopyToClipboard_Click);
+            this.tsbCopyToClipboard.BackColor = System.Drawing.Color.PeachPuff;
+            this.tsbCopyToClipboard.Image = global::MoneyBin2.Properties.Resources.clipboard;
+            this.tsbCopyToClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCopyToClipboard.Name = "tsbCopyToClipboard";
+            this.tsbCopyToClipboard.Size = new System.Drawing.Size(181, 25);
+            this.tsbCopyToClipboard.Tag = "Imposto Renda";
+            this.tsbCopyToClipboard.Text = "Copiar para Clipboard";
+            this.tsbCopyToClipboard.Visible = false;
+            this.tsbCopyToClipboard.Click += new System.EventHandler(this.toolStripCopyToClipboard_Click);
             // 
             // SaldoAtual
             // 
@@ -2360,17 +2360,17 @@ namespace MoneyBin2 {
         #endregion
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStrip toolStripMenu;
-        private System.Windows.Forms.ToolStripButton toolStripButtonNovaOperacao;
-        private System.Windows.Forms.ToolStripButton toolStripButtonBalanco;
+        private System.Windows.Forms.ToolStripButton tsbNovaOperacao;
+        private System.Windows.Forms.ToolStripButton tsbBalanco;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxConta;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorSalvar;
         private System.Windows.Forms.ToolStripLabel toolStripSpace1;
         private System.Windows.Forms.ToolStripLabel toolStripSpace2;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSalvar;
+        private System.Windows.Forms.ToolStripButton tsbSalvar;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonLerExtrato;
+        private System.Windows.Forms.ToolStripButton tsbLerExtrato;
         private System.Windows.Forms.OpenFileDialog OFD;
         private System.Windows.Forms.ToolStripLabel toolStripLabelLendoExtrato;
         private System.Windows.Forms.BindingSource bsAcoes;
@@ -2378,15 +2378,15 @@ namespace MoneyBin2 {
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-       private System.Windows.Forms.ToolStripButton toolStripButtonCopyToClipboard;
+       private System.Windows.Forms.ToolStripButton tsbCopyToClipboard;
        private System.Windows.Forms.DataGridViewTextBoxColumn SaldoAtual;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn RendimentoBruto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImpostoRenda;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn RendimentoLiquido;
-        private System.Windows.Forms.ToolStripButton toolStripButtonLerExtratosMes;
-        private System.Windows.Forms.ToolStripButton toolStripButtonPath;
+        private System.Windows.Forms.ToolStripButton tsbLerExtratosMes;
+        private System.Windows.Forms.ToolStripButton tsbPath;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -2453,7 +2453,7 @@ namespace MoneyBin2 {
         private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn4;
-        private System.Windows.Forms.ToolStripButton toolStripButtonDesfazer;
+        private System.Windows.Forms.ToolStripButton tsbDesfazer;
         private SuperDGV dgvLCAMeses;
         private System.Windows.Forms.BindingSource bsLCAMeses;
         private SuperDGV dgvLCAMovimentos;
@@ -2503,7 +2503,7 @@ namespace MoneyBin2 {
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorMedioCompraReal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lucro;
         private System.Windows.Forms.DataGridViewTextBoxColumn LucroReal;
-        private System.Windows.Forms.ToolStripButton toolStripButtonExportar;
+        private System.Windows.Forms.ToolStripButton tsbExportar;
         private System.Windows.Forms.SaveFileDialog SFD;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;

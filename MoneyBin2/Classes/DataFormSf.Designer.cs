@@ -30,9 +30,9 @@
             this.toolStripStatusLabelUpdated = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDeleted = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparatorSave = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonRevert = new System.Windows.Forms.ToolStripButton();
+            this.tsbRevert = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparatorUndo = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer.TopToolStripPanel.SuspendLayout();
@@ -111,26 +111,26 @@
             this.toolStripMenu.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonSave,
+            this.tsbSave,
             this.toolStripSeparatorSave,
-            this.toolStripButtonRevert,
+            this.tsbRevert,
             this.toolStripSeparatorUndo});
             this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(188, 27);
             this.toolStripMenu.TabIndex = 0;
             // 
-            // toolStripButtonSave
+            // tsbSave
             // 
-            this.toolStripButtonSave.BackColor = System.Drawing.Color.PaleGreen;
-            this.toolStripButtonSave.ForeColor = System.Drawing.Color.Black;
-            this.toolStripButtonSave.Image = global::MoneyBin2.Properties.Resources.Disquete;
-            this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSave.Name = "toolStripButtonSave";
-            this.toolStripButtonSave.Size = new System.Drawing.Size(73, 24);
-            this.toolStripButtonSave.Tag = "Save";
-            this.toolStripButtonSave.Text = "Salvar";
-            this.toolStripButtonSave.Click += new System.EventHandler(this.toolStripButtonSave_Click);
+            this.tsbSave.BackColor = System.Drawing.Color.PaleGreen;
+            this.tsbSave.ForeColor = System.Drawing.Color.Black;
+            this.tsbSave.Image = global::MoneyBin2.Properties.Resources.Disquete;
+            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSave.Name = "tsbSave";
+            this.tsbSave.Size = new System.Drawing.Size(73, 24);
+            this.tsbSave.Tag = "Save";
+            this.tsbSave.Text = "Salvar";
+            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // toolStripSeparatorSave
             // 
@@ -138,17 +138,17 @@
             this.toolStripSeparatorSave.Size = new System.Drawing.Size(6, 27);
             this.toolStripSeparatorSave.Tag = "Save";
             // 
-            // toolStripButtonRevert
+            // tsbRevert
             // 
-            this.toolStripButtonRevert.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.toolStripButtonRevert.ForeColor = System.Drawing.Color.Black;
-            this.toolStripButtonRevert.Image = global::MoneyBin2.Properties.Resources.Revert_24;
-            this.toolStripButtonRevert.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRevert.Name = "toolStripButtonRevert";
-            this.toolStripButtonRevert.Size = new System.Drawing.Size(91, 24);
-            this.toolStripButtonRevert.Tag = "Save";
-            this.toolStripButtonRevert.Text = "Desfazer";
-            this.toolStripButtonRevert.Click += new System.EventHandler(this.toolStripButtonRevert_Click);
+            this.tsbRevert.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.tsbRevert.ForeColor = System.Drawing.Color.Black;
+            this.tsbRevert.Image = global::MoneyBin2.Properties.Resources.Revert_24;
+            this.tsbRevert.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRevert.Name = "tsbRevert";
+            this.tsbRevert.Size = new System.Drawing.Size(91, 24);
+            this.tsbRevert.Tag = "Save";
+            this.tsbRevert.Text = "Desfazer";
+            this.tsbRevert.Click += new System.EventHandler(this.tsbRevert_Click);
             // 
             // toolStripSeparatorUndo
             // 
@@ -188,9 +188,9 @@
         protected System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelAdded;
         protected System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelUpdated;
         protected System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDeleted;
-        protected System.Windows.Forms.ToolStripButton toolStripButtonSave;
+        protected System.Windows.Forms.ToolStripButton tsbSave;
         protected System.Windows.Forms.ToolStripSeparator toolStripSeparatorSave;
-        protected System.Windows.Forms.ToolStripButton toolStripButtonRevert;
+        protected System.Windows.Forms.ToolStripButton tsbRevert;
         protected System.Windows.Forms.ToolStripSeparator toolStripSeparatorUndo;
         protected System.Windows.Forms.StatusStrip statusStrip;
         protected System.Windows.Forms.ToolStrip toolStripMenu;

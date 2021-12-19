@@ -105,7 +105,7 @@ namespace MoneyBin2 {
             toolStripStatusLabelDeleted.Text = $@"Deletados: {_ctx.DeletedCount}";
         }
 
-        protected virtual void toolStripButtonSave_Click(object sender, System.EventArgs e) {
+        protected virtual void tsbSave_Click(object sender, System.EventArgs e) {
             Save();
             EnableSaveButtons();
         }
@@ -119,7 +119,7 @@ namespace MoneyBin2 {
             return false;
         }
 
-        protected virtual void toolStripButtonRevert_Click(object sender, System.EventArgs e) {
+        protected virtual void tsbRevert_Click(object sender, System.EventArgs e) {
             var alteracoes = _ctx.ChangesCount;
             var pergunta = $"{alteracoes} alteraç" + (alteracoes == 1 ?
             "ão será desfeita" : "ões serão desfeitas") + ". Confirma?";

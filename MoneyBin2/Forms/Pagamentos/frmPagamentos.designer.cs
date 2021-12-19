@@ -81,7 +81,7 @@ namespace MoneyBin2 {
             this.textBoxValor = new System.Windows.Forms.TextBox();
             this.checkBoxJan = new System.Windows.Forms.CheckBox();
             this.toolStripPagamentos = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonNovo = new System.Windows.Forms.ToolStripButton();
+            this.tsbNovo = new System.Windows.Forms.ToolStripButton();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.cmsPopMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripContainer.ContentPanel.SuspendLayout();
@@ -752,22 +752,22 @@ namespace MoneyBin2 {
             this.toolStripPagamentos.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStripPagamentos.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStripPagamentos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonNovo});
+            this.tsbNovo});
             this.toolStripPagamentos.Location = new System.Drawing.Point(3, 0);
             this.toolStripPagamentos.Name = "toolStripPagamentos";
             this.toolStripPagamentos.Size = new System.Drawing.Size(375, 27);
             this.toolStripPagamentos.TabIndex = 0;
             // 
-            // toolStripButtonNovo
+            // tsbNovo
             // 
-            this.toolStripButtonNovo.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.toolStripButtonNovo.ForeColor = System.Drawing.Color.Black;
-            this.toolStripButtonNovo.Image = global::MoneyBin2.Properties.Resources.Add_24;
-            this.toolStripButtonNovo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNovo.Name = "toolStripButtonNovo";
-            this.toolStripButtonNovo.Size = new System.Drawing.Size(148, 24);
-            this.toolStripButtonNovo.Text = "Novo Pagamento";
-            this.toolStripButtonNovo.Click += new System.EventHandler(this.toolStripButtonNovo_Click);
+            this.tsbNovo.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.tsbNovo.ForeColor = System.Drawing.Color.Black;
+            this.tsbNovo.Image = global::MoneyBin2.Properties.Resources.Add_24;
+            this.tsbNovo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNovo.Name = "tsbNovo";
+            this.tsbNovo.Size = new System.Drawing.Size(148, 24);
+            this.tsbNovo.Text = "Novo Pagamento";
+            this.tsbNovo.Click += new System.EventHandler(this.tsbNovo_Click);
             // 
             // errorProvider
             // 
@@ -811,11 +811,11 @@ namespace MoneyBin2 {
         #endregion
         //private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStrip toolStripPagamentos;
-        //private System.Windows.Forms.ToolStripButton toolStripButtonSalvar;
-        //private System.Windows.Forms.ToolStripButton toolStripButtonDesfazer;
+        //private System.Windows.Forms.ToolStripButton tsbSalvar;
+        //private System.Windows.Forms.ToolStripButton tsbDesfazer;
         private System.Windows.Forms.ErrorProvider errorProvider;
         //private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonNovo;
+        private System.Windows.Forms.ToolStripButton tsbNovo;
         private System.Windows.Forms.BindingSource bsPagamentos;
         private System.Windows.Forms.CheckBox checkBoxOut;
         private System.Windows.Forms.CheckBox checkBoxNov;
@@ -847,9 +847,7 @@ namespace MoneyBin2 {
         private CheckableButton chkbtnAnoInteiro;
         private CheckableButton chkbtnInativo;
         private CheckableButton chkbtnMeses;
-        //private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private SuperDGV dgvPagamentos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn grupoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn subCategoriaDataGridViewTextBoxColumn;

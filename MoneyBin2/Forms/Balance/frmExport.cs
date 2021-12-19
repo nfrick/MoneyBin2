@@ -243,7 +243,7 @@ namespace MoneyBin2 {
             using (var pck = new ExcelPackage(new FileInfo(_saveAs))) {
 
                 if (radioButtonExcel.Checked) {
-                    CriaPlanilha(pck, "Balance", ItensSelecionados);
+                    _ = CriaPlanilha(pck, "Balance", ItensSelecionados);
                 }
                 else {
                     foreach (var conta in ContasSelecionadas) {
@@ -251,7 +251,7 @@ namespace MoneyBin2 {
                             ? conta.BalanceFiltrado(dtpInicio.Value, dtpTermino.Value, checkBoxAfetaSaldo.Checked)
                             : conta.BalanceFiltrado(dtpInicio.Value, dtpTermino.Value, _gruposChecked,
                                 checkBoxAfetaSaldo.Checked);
-                        CriaPlanilha(pck, conta.Apelido, itens);
+                        _ = CriaPlanilha(pck, conta.Apelido, itens);
                     }
                 }
             }

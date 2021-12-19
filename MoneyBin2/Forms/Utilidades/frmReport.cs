@@ -28,26 +28,26 @@ namespace MoneyBin2 {
 
             tsddbLocalReports.Visible = true;
 
-            var _toolStripButtonBalance = new ToolStripMenuItem {
+            var _tsbBalance = new ToolStripMenuItem {
                 Tag = "Balance",
                 Text = "Balance"
             };
-            _toolStripButtonBalance.Click += ToolStripButtonReport_Click;
-            tsddbLocalReports.DropDownItems.Add(_toolStripButtonBalance);
+            _tsbBalance.Click += ToolStripButtonReport_Click;
+            tsddbLocalReports.DropDownItems.Add(_tsbBalance);
 
-            var _toolStripButtonByMonth = new ToolStripMenuItem {
+            var _tsbByMonth = new ToolStripMenuItem {
                 Tag = "ComDescricao",
                 Text = "Por Mês"
             };
-            _toolStripButtonByMonth.Click += ToolStripButtonReport_Click;
-            tsddbLocalReports.DropDownItems.Add(_toolStripButtonByMonth);
+            _tsbByMonth.Click += ToolStripButtonReport_Click;
+            tsddbLocalReports.DropDownItems.Add(_tsbByMonth);
 
-            var _toolStripButtonByGroup = new ToolStripMenuItem {
+            var _tsbByGroup = new ToolStripMenuItem {
                 Tag = "PorGrupo",
                 Text = "Por Grupo"
             };
-            _toolStripButtonByGroup.Click += ToolStripButtonReport_Click;
-            tsddbLocalReports.DropDownItems.Add(_toolStripButtonByGroup);
+            _tsbByGroup.Click += ToolStripButtonReport_Click;
+            tsddbLocalReports.DropDownItems.Add(_tsbByGroup);
 
             _toolStripLabelConta = new ToolStripLabel("Conta:") {
                 ForeColor = System.Drawing.Color.Black,

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Windows.Forms;
 using Toxy;
 using Toxy.Parsers;
 
@@ -26,9 +27,9 @@ namespace DataLayer {
         protected static char[] _dash = new[] { '-' };
 
         public ComprovantePDF(string path) {
-            var parser = new PDFTextParser(new ParserContext(path));
-            Texto = parser.Parse();
             try {
+                var parser = new PDFTextParser(new ParserContext(path));
+                Texto = parser.Parse();
                 _textAsArray = Texto.Split(_newline).Select(r => r.Trim()).Where(r => !string.IsNullOrEmpty(r))
                     .ToArray();
                 if (_textAsArray.First() == "Comprovante") {
@@ -38,16 +39,16 @@ namespace DataLayer {
                     LerPagamento();
                 }
             }
-            catch {
-
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally {
                 if (!DadosOK) {
                     var data = System.IO.Path.GetFileName(path).Substring(0, 10);
-                    var DataArquivo = DateTime.ParseExact(data, "yyyy-MM-dd",
+                    var dataArquivo = DateTime.ParseExact(data, "yyyy-MM-dd",
                         CultureInfo.InvariantCulture);
-                    Agendamento = Agendamento.Year > 2000 ? Agendamento : DataArquivo;
-                    Pagamento = Pagamento.Year > 2000 ? Pagamento : DataArquivo;
+                    Agendamento = Agendamento.Year > 2000 ? Agendamento : dataArquivo;
+                    Pagamento = Pagamento.Year > 2000 ? Pagamento : dataArquivo;
                     Valor = Valor == 0 ? 1 : Valor;
                 }
             }
@@ -56,7 +57,7 @@ namespace DataLayer {
         private void LerPagamento() {
             string[] temp;
             DateTime d;
-            // Pagamntos normais começam com SISBB, boletos começam com a data
+            // Pagamentos normais começam com SISBB, boletos começam com a data
             if (_textAsArray[0].EndsWith("caixa", StringComparison.CurrentCultureIgnoreCase)) {
                 if (GetLine("Data/hora da operação", _blank, out temp)) {
                     if (DateTime.TryParse($"{temp.Take(temp.Length - 1).Last()} {temp.Last()}", out d)) {

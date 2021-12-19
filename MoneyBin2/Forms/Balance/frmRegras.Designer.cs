@@ -61,9 +61,9 @@ namespace MoneyBin2 {
             this.labelTesteResultado = new System.Windows.Forms.Label();
             this.labelTesteFechar = new System.Windows.Forms.Label();
             this.toolStripRegras = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonNovaRegra = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonTestar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOcorrencias = new System.Windows.Forms.ToolStripButton();
+            this.tsbNovaRegra = new System.Windows.Forms.ToolStripButton();
+            this.tsbTestar = new System.Windows.Forms.ToolStripButton();
+            this.tsbOcorrencias = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -400,46 +400,46 @@ namespace MoneyBin2 {
             this.toolStripRegras.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStripRegras.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStripRegras.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonNovaRegra,
-            this.toolStripButtonTestar,
-            this.toolStripButtonOcorrencias});
+            this.tsbNovaRegra,
+            this.tsbTestar,
+            this.tsbOcorrencias});
             this.toolStripRegras.Location = new System.Drawing.Point(6, 0);
             this.toolStripRegras.Name = "toolStripRegras";
             this.toolStripRegras.Size = new System.Drawing.Size(246, 27);
             this.toolStripRegras.TabIndex = 0;
             // 
-            // toolStripButtonNovaRegra
+            // tsbNovaRegra
             // 
-            this.toolStripButtonNovaRegra.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonNovaRegra.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaRegra.Image")));
-            this.toolStripButtonNovaRegra.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNovaRegra.Name = "toolStripButtonNovaRegra";
-            this.toolStripButtonNovaRegra.Size = new System.Drawing.Size(91, 24);
-            this.toolStripButtonNovaRegra.Text = "Nova Regra";
-            this.toolStripButtonNovaRegra.Click += new System.EventHandler(this.toolStripButtonNovaRegra_Click);
+            this.tsbNovaRegra.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbNovaRegra.Image = ((System.Drawing.Image)(resources.GetObject("tsbNovaRegra.Image")));
+            this.tsbNovaRegra.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNovaRegra.Name = "tsbNovaRegra";
+            this.tsbNovaRegra.Size = new System.Drawing.Size(91, 24);
+            this.tsbNovaRegra.Text = "Nova Regra";
+            this.tsbNovaRegra.Click += new System.EventHandler(this.tsbNovaRegra_Click);
             // 
-            // toolStripButtonTestar
+            // tsbTestar
             // 
-            this.toolStripButtonTestar.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.toolStripButtonTestar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonTestar.ForeColor = System.Drawing.Color.Black;
-            this.toolStripButtonTestar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonTestar.Image")));
-            this.toolStripButtonTestar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonTestar.Name = "toolStripButtonTestar";
-            this.toolStripButtonTestar.Size = new System.Drawing.Size(52, 24);
-            this.toolStripButtonTestar.Text = "Testar";
-            this.toolStripButtonTestar.Click += new System.EventHandler(this.toolStripButtonTestar_Click);
+            this.tsbTestar.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.tsbTestar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbTestar.ForeColor = System.Drawing.Color.Black;
+            this.tsbTestar.Image = ((System.Drawing.Image)(resources.GetObject("tsbTestar.Image")));
+            this.tsbTestar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbTestar.Name = "tsbTestar";
+            this.tsbTestar.Size = new System.Drawing.Size(52, 24);
+            this.tsbTestar.Text = "Testar";
+            this.tsbTestar.Click += new System.EventHandler(this.tsbTestar_Click);
             // 
-            // toolStripButtonOcorrencias
+            // tsbOcorrencias
             // 
-            this.toolStripButtonOcorrencias.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonOcorrencias.ForeColor = System.Drawing.Color.Black;
-            this.toolStripButtonOcorrencias.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOcorrencias.Image")));
-            this.toolStripButtonOcorrencias.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOcorrencias.Name = "toolStripButtonOcorrencias";
-            this.toolStripButtonOcorrencias.Size = new System.Drawing.Size(91, 24);
-            this.toolStripButtonOcorrencias.Text = "Ocorrências";
-            this.toolStripButtonOcorrencias.Click += new System.EventHandler(this.toolStripButtonOcorrencias_Click);
+            this.tsbOcorrencias.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbOcorrencias.ForeColor = System.Drawing.Color.Black;
+            this.tsbOcorrencias.Image = ((System.Drawing.Image)(resources.GetObject("tsbOcorrencias.Image")));
+            this.tsbOcorrencias.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbOcorrencias.Name = "tsbOcorrencias";
+            this.tsbOcorrencias.Size = new System.Drawing.Size(91, 24);
+            this.tsbOcorrencias.Text = "Ocorrências";
+            this.tsbOcorrencias.Click += new System.EventHandler(this.tsbOcorrencias_Click);
             // 
             // frmRegras
             // 
@@ -476,8 +476,8 @@ namespace MoneyBin2 {
         private System.Windows.Forms.BindingSource bsBalance;
 
         private System.Windows.Forms.ToolStrip toolStripRegras;
-        private System.Windows.Forms.ToolStripButton toolStripButtonNovaRegra;
-        private System.Windows.Forms.ToolStripButton toolStripButtonTestar;
+        private System.Windows.Forms.ToolStripButton tsbNovaRegra;
+        private System.Windows.Forms.ToolStripButton tsbTestar;
 
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
@@ -488,7 +488,7 @@ namespace MoneyBin2 {
         private System.Windows.Forms.DataGridViewTextBoxColumn categoriaDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn subCategoriaDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonOcorrencias;
+        private System.Windows.Forms.ToolStripButton tsbOcorrencias;
         private System.Windows.Forms.TableLayoutPanel tlpBalance;
         private System.Windows.Forms.Panel panelEdit;
         private System.Windows.Forms.Label labelTesteResultado;

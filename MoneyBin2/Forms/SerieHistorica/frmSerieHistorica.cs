@@ -37,20 +37,20 @@ namespace MoneyBin2 {
 
             dgvAtivos.SetFont(12);
 
-            dgvSelecionados.FormatColumn("Código", null, 55);
-            dgvSelecionados.FormatColumn("Min", dgvSelecionados.StyleCurrency, 45);
-            dgvSelecionados.FormatColumn("Max", dgvSelecionados.StyleCurrency, 45);
-            dgvSelecionados.FormatColumn("Var", dgvSelecionados.StylePercent1, 50);
+            dgvSelecionados.FormatColumnByHeader("Código", null, 55);
+            dgvSelecionados.FormatColumnByHeader("Min", dgvSelecionados.StyleCurrency, 45);
+            dgvSelecionados.FormatColumnByHeader("Max", dgvSelecionados.StyleCurrency, 45);
+            dgvSelecionados.FormatColumnByHeader("Var", dgvSelecionados.StylePercent1, 50);
 
             dgvSerieHistorica.SetFont(12);
-            dgvSerieHistorica.FormatColumn("Data", dgvSerieHistorica.StyleDateLong, 100);
-            dgvSerieHistorica.FormatColumn("Abertura", dgvSerieHistorica.StyleCurrency, 70);
-            dgvSerieHistorica.FormatColumn("Máximo", dgvSerieHistorica.StyleCurrency, 70);
-            dgvSerieHistorica.FormatColumn("Mínimo", dgvSerieHistorica.StyleCurrency, 70);
-            dgvSerieHistorica.FormatColumn("Médio", dgvSerieHistorica.StyleCurrency, 70);
-            dgvSerieHistorica.FormatColumn("Último", dgvSerieHistorica.StyleCurrency, 70);
-            dgvSerieHistorica.FormatColumn("M.O. Compra", dgvSerieHistorica.StyleCurrency, 70);
-            dgvSerieHistorica.FormatColumn("M.O. Venda", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumnByHeader("Data", dgvSerieHistorica.StyleDateLong, 100);
+            dgvSerieHistorica.FormatColumnByHeader("Abertura", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumnByHeader("Máximo", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumnByHeader("Mínimo", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumnByHeader("Médio", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumnByHeader("Último", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumnByHeader("M.O. Compra", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumnByHeader("M.O. Venda", dgvSerieHistorica.StyleCurrency, 70);
 
             for (var col = 0; col < dgvSerieHistorica.Columns.Count; col++) {
                 dgvSelectedDates.Columns[col].HeaderText = dgvSerieHistorica.Columns[col].HeaderText;
@@ -95,7 +95,7 @@ namespace MoneyBin2 {
             ResetCotacoes();
         }
         
-        private void toolStripButtonPeriodo_Click(object sender, EventArgs e) {
+        private void tsbPeriodo_Click(object sender, EventArgs e) {
             var btn = (ToolStripButton)sender;
             var termino = _dtpickerTermino.Value;
             var inicio = termino.AddDays(1 - termino.Day);
@@ -150,7 +150,7 @@ namespace MoneyBin2 {
 
         #region LER ARQUIVOS
 
-        private void toolStripButtonLerSerie_Click(object sender, EventArgs e) {
+        private void tsbLerSerie_Click(object sender, EventArgs e) {
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             ofd.Filter = @"Arquivos|*.zip;*.txt";
             ofd.Multiselect = true;

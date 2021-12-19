@@ -33,16 +33,16 @@ namespace MoneyBin2 {
             bsFundos.DataSource = _ctx.Fundos.Local.ToObservableListSource();
             _mainBindingSource = bsFundos;
 
-            dgvFundos.FormatColumn("Nome", null, 200);
-            dgvFundos.FormatColumn("CNPJ", null, 160);
-            dgvFundos.FormatColumn("Apelido", null, 200);
-            dgvFundos.FormatColumn("Tipo", null, 70);
+            dgvFundos.FormatColumnByHeader("Nome", null, 200);
+            dgvFundos.FormatColumnByHeader("CNPJ", null, 160);
+            dgvFundos.FormatColumnByHeader("Apelido", null, 200);
+            dgvFundos.FormatColumnByHeader("Tipo", null, 70);
 
-            dgvMeses.FormatColumn("Mês", dgvMeses.StyleMMMAndYear, 90);
-            dgvMeses.FormatColumn("Valor Cota", dgvMeses.StyleNumber(6), 90);
-            dgvMeses.FormatColumn("Rend. Mês", dgvMeses.StyleNumber(6), 90);
-            dgvMeses.FormatColumn("Rend. Ano", dgvMeses.StyleNumber(6), 90);
-            dgvMeses.FormatColumn("Rend. 12 Meses", dgvMeses.StyleNumber(6), 90);
+            dgvMeses.FormatColumnByHeader("Mês", dgvMeses.StyleMMMAndYear, 90);
+            dgvMeses.FormatColumnByHeader("Valor Cota", dgvMeses.StyleNumber(6), 90);
+            dgvMeses.FormatColumnByHeader("Rend. Mês", dgvMeses.StyleNumber(6), 90);
+            dgvMeses.FormatColumnByHeader("Rend. Ano", dgvMeses.StyleNumber(6), 90);
+            dgvMeses.FormatColumnByHeader("Rend. 12 Meses", dgvMeses.StyleNumber(6), 90);
 
             _cbxGrafico.SelectedIndexChanged += CbxOnSelectedIndexChanged;
 
@@ -53,13 +53,13 @@ namespace MoneyBin2 {
             GerarGrafico();
         }
 
-        protected override void toolStripButtonSave_Click(object sender, System.EventArgs e) {
-            base.toolStripButtonSave_Click(sender, e);
+        protected override void tsbSave_Click(object sender, System.EventArgs e) {
+            base.tsbSave_Click(sender, e);
             dgvFundos.Refresh();
         }
 
-        protected override void toolStripButtonRevert_Click(object sender, System.EventArgs e) {
-            base.toolStripButtonRevert_Click(sender, e);
+        protected override void tsbRevert_Click(object sender, System.EventArgs e) {
+            base.tsbRevert_Click(sender, e);
             dgvFundos.Refresh();
         }
 

@@ -25,7 +25,7 @@ namespace Rentabilidades {
         public InfoBB(string linha) {
             var dados = linha.Trim().Split(Seps);
             //Fundo	Dia	Acum. Mês	Dezembro	2021	12 Meses	24 Meses	36 Meses	PL Médio 12 meses	Taxa de Adm.(aa)	Data Cotação	Cota R$	Data Início R$
-            Fundo = RemoveComments(dados[0]);
+            Fundo = dados[0]; //RemoveComments(dados[0]);
             VariaçãoDia = ParseDecimal(dados, 1);
             AcumuladoMes = ParseDecimal(dados, 2);
             MesAnterior = ParseDecimal(dados, 3);

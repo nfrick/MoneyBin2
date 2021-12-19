@@ -74,93 +74,93 @@ namespace MoneyBin2 {
         private void frmInvestimentos_Load(object sender, EventArgs e) {
 
             // AÇÕES
-            dgvAcoes.FormatColumn("Código", dgvAcoes.StyleBase, 60);
-            dgvAcoes.FormatColumn("Qtd", dgvAcoes.StyleInteger, 60);
-            dgvAcoes.FormatColumn("Último Preço", dgvAcoes.StyleCurrency, 70);
-            dgvAcoes.FormatColumn("Total", dgvAcoes.StyleCurrency, 95);
+            dgvAcoes.FormatColumnByHeader("Código", dgvAcoes.StyleBase, 60);
+            dgvAcoes.FormatColumnByHeader("Qtd", dgvAcoes.StyleInteger, 60);
+            dgvAcoes.FormatColumnByHeader("Último Preço", dgvAcoes.StyleCurrency, 70);
+            dgvAcoes.FormatColumnByHeader("Total", dgvAcoes.StyleCurrency, 95);
 
-            dgvOperacoes.FormatColumn("Data", dgvOperacoes.StyleDateTimeShort, 120);
-            dgvOperacoes.FormatColumn("Operação", dgvOperacoes.StyleBase, 100);
-            dgvOperacoes.FormatColumn("Qtd", dgvOperacoes.StyleInteger, 65);
-            dgvOperacoes.FormatColumn("Acum.", dgvOperacoes.StyleInteger, 65);
-            dgvOperacoes.FormatColumn("Valor Nominal", dgvOperacoes.StyleCurrency, 68);
-            dgvOperacoes.FormatColumn("Valor Real", dgvOperacoes.StyleCurrency, 68);
-            dgvOperacoes.FormatColumn("Valor Operação", dgvOperacoes.StyleCurrency, 95);
-            dgvOperacoes.FormatColumn("Custos", dgvOperacoes.StyleCurrency, 68);
+            dgvOperacoes.FormatColumnByHeader("Data", dgvOperacoes.StyleDateTimeShort, 120);
+            dgvOperacoes.FormatColumnByHeader("Operação", dgvOperacoes.StyleBase, 100);
+            dgvOperacoes.FormatColumnByHeader("Qtd", dgvOperacoes.StyleInteger, 65);
+            dgvOperacoes.FormatColumnByHeader("Acum.", dgvOperacoes.StyleInteger, 65);
+            dgvOperacoes.FormatColumnByHeader("Valor Nominal", dgvOperacoes.StyleCurrency, 68);
+            dgvOperacoes.FormatColumnByHeader("Valor Real", dgvOperacoes.StyleCurrency, 68);
+            dgvOperacoes.FormatColumnByHeader("Valor Operação", dgvOperacoes.StyleCurrency, 95);
+            dgvOperacoes.FormatColumnByHeader("Custos", dgvOperacoes.StyleCurrency, 68);
 
-            dgvVendas.FormatColumn("Data", dgvVendas.StyleDateTimeShort, 120);
-            dgvVendas.FormatColumn("Antes", dgvVendas.StyleInteger, 75);
-            dgvVendas.FormatColumn("Venda", dgvVendas.StyleInteger, 75);
-            dgvVendas.FormatColumn("Depois", dgvVendas.StyleInteger, 75);
-            dgvVendas.FormatColumn("Valor", dgvVendas.StyleCurrency, 75);
-            dgvVendas.FormatColumn("Valor Real", dgvVendas.StyleCurrency, 75);
-            dgvVendas.FormatColumn("Compras", dgvVendas.StyleInteger, 75);
-            dgvVendas.FormatColumn("Pendente", dgvVendas.StyleInteger, 75);
-            dgvVendas.FormatColumn("VM Compra", dgvVendas.StyleCurrency, 75);
-            dgvVendas.FormatColumn("VM Compra Real", dgvVendas.StyleCurrency, 75);
-            dgvVendas.FormatColumn("Lucro", dgvVendas.StyleCurrency, 75);
-            dgvVendas.FormatColumn("Lucro Real", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumnByHeader("Data", dgvVendas.StyleDateTimeShort, 120);
+            dgvVendas.FormatColumnByHeader("Antes", dgvVendas.StyleInteger, 75);
+            dgvVendas.FormatColumnByHeader("Venda", dgvVendas.StyleInteger, 75);
+            dgvVendas.FormatColumnByHeader("Depois", dgvVendas.StyleInteger, 75);
+            dgvVendas.FormatColumnByHeader("Valor", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumnByHeader("Valor Real", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumnByHeader("Compras", dgvVendas.StyleInteger, 75);
+            dgvVendas.FormatColumnByHeader("Pendente", dgvVendas.StyleInteger, 75);
+            dgvVendas.FormatColumnByHeader("VM Compra", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumnByHeader("VM Compra Real", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumnByHeader("Lucro", dgvVendas.StyleCurrency, 75);
+            dgvVendas.FormatColumnByHeader("Lucro Real", dgvVendas.StyleCurrency, 75);
 
             // FUNDOS
-            dgvFundos.FormatColumn("Fundo", dgvFundos.StyleBase, -1);
-            dgvFundos.FormatColumn("Saldo", dgvFundos.StyleCurrency, 100);
-            dgvFundos.FormatColumn("Rend. Líquido", dgvFundos.StyleCurrency, 95);
+            dgvFundos.FormatColumnByHeader("Fundo", dgvFundos.StyleBase, -1);
+            dgvFundos.FormatColumnByHeader("Saldo", dgvFundos.StyleCurrency, 100);
+            dgvFundos.FormatColumnByHeader("Rend. Líquido", dgvFundos.StyleCurrency, 95);
 
             //0 mes, 1 saldo, 2 qtd cotas, 3 valor cota, 4 rend bruto, 5 ir, 6 iof, 7 rendliquido, 8 rend mes, rend ano, rend12 meses
-            dgvContasMeses.FormatColumn("Mês", dgvContasMeses.StyleMMMAndYear, 80);
-            dgvContasMeses.FormatColumn("Saldo Mês", dgvContasMeses.StyleCurrency, 100);
-            dgvContasMeses.FormatColumn("Qtd Cotas", dgvContasMeses.StyleNumber(6), 120);
-            dgvContasMeses.FormatColumn("Valor Cota", dgvContasMeses.StyleNumber(6), 95);
-            dgvContasMeses.FormatColumn("Rend. Bruto", dgvContasMeses.StyleCurrency, 95);
-            dgvContasMeses.FormatColumn("I.R.", dgvContasMeses.StyleCurrency, 60);
-            dgvContasMeses.FormatColumn("IOF", dgvContasMeses.StyleCurrency, 60);
-            dgvContasMeses.FormatColumn("Rend. Líquido", dgvContasMeses.StyleCurrency, 85);
-            dgvContasMeses.FormatColumn("Rend. Mês", dgvContasMeses.StyleNumber(4), 95);
-            dgvContasMeses.FormatColumn("Rend. Ano", dgvContasMeses.StyleNumber(4), 95);
-            dgvContasMeses.FormatColumn("Rend. 12 Meses", dgvContasMeses.StyleNumber(4), 95);
+            dgvContasMeses.FormatColumnByHeader("Mês", dgvContasMeses.StyleMMMAndYear, 80);
+            dgvContasMeses.FormatColumnByHeader("Saldo Mês", dgvContasMeses.StyleCurrency, 100);
+            dgvContasMeses.FormatColumnByHeader("Qtd Cotas", dgvContasMeses.StyleNumber(6), 120);
+            dgvContasMeses.FormatColumnByHeader("Valor Cota", dgvContasMeses.StyleNumber(6), 95);
+            dgvContasMeses.FormatColumnByHeader("Rend. Bruto", dgvContasMeses.StyleCurrency, 95);
+            dgvContasMeses.FormatColumnByHeader("I.R.", dgvContasMeses.StyleCurrency, 60);
+            dgvContasMeses.FormatColumnByHeader("IOF", dgvContasMeses.StyleCurrency, 60);
+            dgvContasMeses.FormatColumnByHeader("Rend. Líquido", dgvContasMeses.StyleCurrency, 85);
+            dgvContasMeses.FormatColumnByHeader("Rend. Mês", dgvContasMeses.StyleNumber(4), 95);
+            dgvContasMeses.FormatColumnByHeader("Rend. Ano", dgvContasMeses.StyleNumber(4), 95);
+            dgvContasMeses.FormatColumnByHeader("Rend. 12 Meses", dgvContasMeses.StyleNumber(4), 95);
 
             // data, historico, valor, IR, IOF, Qtd Cotas, Valor Cota
-            dgvMovimentos.FormatColumn("Data", dgvMovimentos.StyleDateShort, 75);
-            dgvMovimentos.FormatColumn("Histórico", dgvMovimentos.StyleBase, -1);
-            dgvMovimentos.FormatColumn("Valor", dgvMovimentos.StyleCurrency, 90);
-            dgvMovimentos.FormatColumn("I.R.", dgvMovimentos.StyleCurrency, 70);
-            dgvMovimentos.FormatColumn("IOF", dgvMovimentos.StyleCurrency, 70);
-            dgvMovimentos.FormatColumn("Qtd Cotas", dgvMovimentos.StyleNumber(4), 95);
-            dgvMovimentos.FormatColumn("Valor Cota", dgvMovimentos.StyleNumber(6), 95);
+            dgvMovimentos.FormatColumnByHeader("Data", dgvMovimentos.StyleDateShort, 75);
+            dgvMovimentos.FormatColumnByHeader("Histórico", dgvMovimentos.StyleBase, -1);
+            dgvMovimentos.FormatColumnByHeader("Valor", dgvMovimentos.StyleCurrency, 90);
+            dgvMovimentos.FormatColumnByHeader("I.R.", dgvMovimentos.StyleCurrency, 70);
+            dgvMovimentos.FormatColumnByHeader("IOF", dgvMovimentos.StyleCurrency, 70);
+            dgvMovimentos.FormatColumnByHeader("Qtd Cotas", dgvMovimentos.StyleNumber(4), 95);
+            dgvMovimentos.FormatColumnByHeader("Valor Cota", dgvMovimentos.StyleNumber(6), 95);
 
             // LCA
             dgvLCAs.Columns[0].Width = 70;
-            dgvLCAs.FormatColumn("Número", null, 70);
-            dgvLCAs.FormatColumn("Aplic.", dgvLCAs.StyleDateShort, 69);
-            dgvLCAs.FormatColumn("Venc.", dgvLCAs.StyleDateShort, 69);
-            dgvLCAs.FormatColumn("Taxa", dgvLCAs.StyleCurrency, 50);
-            dgvLCAs.FormatColumn("Valor Emissão", dgvLCAs.StyleCurrency, 80);
-            dgvLCAs.FormatColumn("Saldo", dgvLCAs.StyleCurrency, 70);
-            dgvLCAs.FormatColumn("Rend. Líq.", dgvLCAs.StyleCurrency, 80);
-            dgvLCAs.FormatColumn("Rend. %", dgvLCAs.StylePercent, 60);
-            dgvLCAs.FormatColumn("Rend. Mensal", dgvLCAs.StylePercent, 55);
+            dgvLCAs.FormatColumnByHeader("Número", null, 70);
+            dgvLCAs.FormatColumnByHeader("Aplic.", dgvLCAs.StyleDateShort, 69);
+            dgvLCAs.FormatColumnByHeader("Venc.", dgvLCAs.StyleDateShort, 69);
+            dgvLCAs.FormatColumnByHeader("Taxa", dgvLCAs.StyleCurrency, 50);
+            dgvLCAs.FormatColumnByHeader("Valor Emissão", dgvLCAs.StyleCurrency, 80);
+            dgvLCAs.FormatColumnByHeader("Saldo", dgvLCAs.StyleCurrency, 70);
+            dgvLCAs.FormatColumnByHeader("Rend. Líq.", dgvLCAs.StyleCurrency, 80);
+            dgvLCAs.FormatColumnByHeader("Rend. %", dgvLCAs.StylePercent, 60);
+            dgvLCAs.FormatColumnByHeader("Rend. Mensal", dgvLCAs.StylePercent, 55);
 
 
-            dgvLCAMeses.FormatColumn("Mês", dgvLCAMeses.StyleMMMAndYear, 80);
-            dgvLCAMeses.FormatColumn("Aplicações", dgvLCAMeses.StyleCurrency, 90);
-            dgvLCAMeses.FormatColumn("Resgates", dgvLCAMeses.StyleCurrency, 90);
-            dgvLCAMeses.FormatColumn("Rend. Bruto", dgvLCAMeses.StyleCurrency, 90);
-            //dgvLCAMeses.FormatColumn("I.R.", dgvLCAMeses.StyleCurrency, 60);
-            //dgvLCAMeses.FormatColumn("I.O.F.", dgvLCAMeses.StyleCurrency, 60);
-            dgvLCAMeses.FormatColumn("Rend. Líquido", dgvLCAMeses.StyleCurrency, 80);
-            dgvLCAMeses.FormatColumn("Saldo", dgvLCAMeses.StyleCurrency, 90);
-            dgvLCAMeses.FormatColumn("Rend. Mês", dgvLCAMeses.StylePercent, 70);
+            dgvLCAMeses.FormatColumnByHeader("Mês", dgvLCAMeses.StyleMMMAndYear, 80);
+            dgvLCAMeses.FormatColumnByHeader("Aplicações", dgvLCAMeses.StyleCurrency, 90);
+            dgvLCAMeses.FormatColumnByHeader("Resgates", dgvLCAMeses.StyleCurrency, 90);
+            dgvLCAMeses.FormatColumnByHeader("Rend. Bruto", dgvLCAMeses.StyleCurrency, 90);
+            //dgvLCAMeses.FormatColumnByHeader("I.R.", dgvLCAMeses.StyleCurrency, 60);
+            //dgvLCAMeses.FormatColumnByHeader("I.O.F.", dgvLCAMeses.StyleCurrency, 60);
+            dgvLCAMeses.FormatColumnByHeader("Rend. Líquido", dgvLCAMeses.StyleCurrency, 80);
+            dgvLCAMeses.FormatColumnByHeader("Saldo", dgvLCAMeses.StyleCurrency, 90);
+            dgvLCAMeses.FormatColumnByHeader("Rend. Mês", dgvLCAMeses.StylePercent, 70);
 
-            dgvLCAMovimentos.FormatColumn("Data", dgvLCAMeses.StyleDateShort, 70);
-            dgvLCAMovimentos.FormatColumn("Histórico", dgvLCAMeses.StyleBase, -1);
-            //dgvLCAMovimentos.FormatColumn("I.R.", dgvLCAMeses.StyleCurrency, 60);
-            //dgvLCAMovimentos.FormatColumn("I.O.F.", dgvLCAMeses.StyleCurrency, 60);
-            dgvLCAMovimentos.FormatColumn("Rend.", dgvLCAMeses.StyleCurrency, 90);
-            dgvLCAMovimentos.FormatColumn("Valor Atual", dgvLCAMeses.StyleCurrency, 90);
+            dgvLCAMovimentos.FormatColumnByHeader("Data", dgvLCAMeses.StyleDateShort, 70);
+            dgvLCAMovimentos.FormatColumnByHeader("Histórico", dgvLCAMeses.StyleBase, -1);
+            //dgvLCAMovimentos.FormatColumnByHeader("I.R.", dgvLCAMeses.StyleCurrency, 60);
+            //dgvLCAMovimentos.FormatColumnByHeader("I.O.F.", dgvLCAMeses.StyleCurrency, 60);
+            dgvLCAMovimentos.FormatColumnByHeader("Rend.", dgvLCAMeses.StyleCurrency, 90);
+            dgvLCAMovimentos.FormatColumnByHeader("Valor Atual", dgvLCAMeses.StyleCurrency, 90);
 
             // RESUMO
-            dgvResumoAcoes.FormatColumn("Item", dgvResumoAcoes.StyleBase, -1);
-            dgvResumoAcoes.FormatColumn("Valor", dgvResumoAcoes.StyleCurrency, 100);
+            dgvResumoAcoes.FormatColumnByHeader("Item", dgvResumoAcoes.StyleBase, -1);
+            dgvResumoAcoes.FormatColumnByHeader("Valor", dgvResumoAcoes.StyleCurrency, 100);
             dgvResumoAcoes.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dgvResumoFundos.CopyFormatFrom(dgvResumoAcoes);
 
@@ -410,9 +410,9 @@ namespace MoneyBin2 {
                     .ToObservableListSource();
             dgvImpostoRenda.DataSource = IR;
             dgvImpostoRenda.Columns[0].Width = 70;
-            dgvImpostoRenda.FormatColumn("Qtd", dgvImpostoRenda.StyleInteger, 60);
-            dgvImpostoRenda.FormatColumn("Preço", dgvImpostoRenda.StyleCurrency, 60);
-            dgvImpostoRenda.FormatColumn("Total", dgvImpostoRenda.StyleCurrency, 90);
+            dgvImpostoRenda.FormatColumnByHeader("Qtd", dgvImpostoRenda.StyleInteger, 60);
+            dgvImpostoRenda.FormatColumnByHeader("Preço", dgvImpostoRenda.StyleCurrency, 60);
+            dgvImpostoRenda.FormatColumnByHeader("Total", dgvImpostoRenda.StyleCurrency, 90);
             labelIRTotal.Text = @"Total: " + (IR.Any() ? $"{IR.Sum(t => t.Total):N2}" : "0.00");
         }
         #endregion TAB IMPOSTO RENDA -----------------------------------------
@@ -437,7 +437,7 @@ namespace MoneyBin2 {
         }
 
         #region TOOLSTRIP AÇÕES --------------------------------------
-        private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
+        private void tsbNovaOperacao_Click(object sender, EventArgs e) {
             var acaoAtual = (ContaAtivo)bsAcoes.Current;
 
             var op = new Operacao { ContaId = ContaAtual.ID, Codigo = acaoAtual.Codigo };
@@ -466,37 +466,37 @@ namespace MoneyBin2 {
             RefreshDataAcoes();
         }
 
-        private void toolStripButtonResumoVendas_Click(object sender, EventArgs e) {
+        private void tsbResumoVendas_Click(object sender, EventArgs e) {
             //var frm = new frmBalanco() { Conta = ContaAtual.ID };
             //frm.ShowDialog();
         }
         #endregion TOOLSTRIP AÇÕES --------------------------------------
 
         #region TOOLSTRIP SALVAR --------------------------------------
-        private void toolStripButtonSalvar_Click(object sender, EventArgs e) {
+        private void tsbSalvar_Click(object sender, EventArgs e) {
             if (!_ctx.SaveChanges(out var message)) {
                 MessageBox.Show(message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             RefreshSalvar();
         }
 
-        private void toolStripButtonDesfazer_Click(object sender, EventArgs e) {
+        private void tsbDesfazer_Click(object sender, EventArgs e) {
             _ctx.RevertChanges();
             RefreshDataAcoes();
         }
 
         private void RefreshSalvar() {
-            toolStripButtonSalvar.Visible = toolStripButtonDesfazer.Visible =
+            tsbSalvar.Visible = tsbDesfazer.Visible =
             toolStripSeparatorSalvar.Visible = _ctx.ChangeTracker.HasChanges();
 
             var alts = _ctx.ChangesCount;
 
-            toolStripButtonSalvar.Text = $" Salvar {alts} alteraç" + (alts == 1 ? "ão" : "ões");
+            tsbSalvar.Text = $" Salvar {alts} alteraç" + (alts == 1 ? "ão" : "ões");
         }
         #endregion TOOLSTRIP SALVAR --------------------------------------
 
         #region TOOLSTRIP LEITURA ----------------------------
-        private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
+        private void tsbLerExtrato_Click(object sender, EventArgs e) {
             string[] files;
 
             var tabLabel = tabControlInvestimentos.SelectedTab.Text;
@@ -587,7 +587,7 @@ namespace MoneyBin2 {
             }
         }
 
-        private void toolStripButtonPath_Click(object sender, EventArgs e) {
+        private void tsbPath_Click(object sender, EventArgs e) {
             SetBalancePath();
         }
 
@@ -596,7 +596,7 @@ namespace MoneyBin2 {
             while (_balancePath == null || !Directory.Exists(_balancePath)) {
                 SetBalancePath();
             }
-            toolStripButtonPath.Text = $@"Path: {_balancePath}";
+            tsbPath.Text = $@"Path: {_balancePath}";
         }
 
         private void SetBalancePath() {
@@ -610,17 +610,17 @@ namespace MoneyBin2 {
             }
             Settings.Default.InvestimentosBalancePath = _balancePath;
             Settings.Default.Save();
-            toolStripButtonPath.Text = $@"Path: {_balancePath}";
+            tsbPath.Text = $@"Path: {_balancePath}";
         }
 
         private void ToggleLeitura() {
-            toolStripButtonLerExtrato.Visible = !toolStripButtonLerExtrato.Visible;
+            tsbLerExtrato.Visible = !tsbLerExtrato.Visible;
             toolStripLabelLendoExtrato.Visible = !toolStripLabelLendoExtrato.Visible;
             toolStripProgressBar1.Visible = !toolStripProgressBar1.Visible;
             toolStripMenu.Refresh();
         }
 
-        private void toolStripButtonLerExtratosMes_Click(object sender, EventArgs e) {
+        private void tsbLerExtratosMes_Click(object sender, EventArgs e) {
             var mes = DateTime.Today.AddMonths(-1).ToString("yyyy-MM");
             if (PromptDialog.InputString(DialogTitle, "Selecione o mês:", ref mes) ==
                 DialogResult.Cancel) {
@@ -661,7 +661,7 @@ namespace MoneyBin2 {
             Clipboard.SetText(sb.ToString());
         }
 
-        private void toolStripButtonExportar_Click(object sender, EventArgs e) {
+        private void tsbExportar_Click(object sender, EventArgs e) {
             SFD.FileName = $"Fundos conta {ContaAtual.Apelido}";
             if (SFD.ShowDialog() == DialogResult.Cancel) {
                 return;

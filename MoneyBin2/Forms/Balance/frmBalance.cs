@@ -22,12 +22,12 @@ namespace MoneyBin2 {
             Size = new Size(100, 33),
         };
 
-        private readonly ToolStripButton toolStripButtonProcurar = new ToolStripButton {
+        private readonly ToolStripButton tsbProcurar = new ToolStripButton {
             BackColor = Color.FromArgb(0, 0, 192),
             DisplayStyle = ToolStripItemDisplayStyle.Text,
             Font = new Font("Webdings", 12F, FontStyle.Bold, GraphicsUnit.Point, 2),
             ForeColor = SystemColors.Control,
-            Name = "toolStripButtonProcurar",
+            Name = "tsbProcurar",
             Size = new Size(35, 30),
             Text = "L",
             ToolTipText = "Localizar em qualquer campo",
@@ -44,12 +44,12 @@ namespace MoneyBin2 {
             Size = new Size(121, 33)
         };
 
-        private readonly ToolStripButton toolStripButtonSelecionar = new ToolStripButton {
+        private readonly ToolStripButton tsbSelecionar = new ToolStripButton {
             BackColor = Color.FromArgb(192, 0, 0),
             DisplayStyle = ToolStripItemDisplayStyle.Text,
             Font = new Font("Wingdings", 12F, FontStyle.Regular, GraphicsUnit.Point, 2),
             ForeColor = SystemColors.Control,
-            Name = "toolStripButtonSelecionar",
+            Name = "tsbSelecionar",
             Size = new Size(35, 30),
             Text = "è",
             ToolTipText = "Selecionar itens",
@@ -110,16 +110,16 @@ namespace MoneyBin2 {
             toolStripMenu.Items.Add(_dtpInicio);
             toolStripMenu.Items.Add(lblTermino);
             toolStripMenu.Items.Add(_dtpTermino);
-            toolStripMenu.Items.Add(toolStripButtonProcurar);
+            toolStripMenu.Items.Add(tsbProcurar);
             toolStripMenu.Items.Add(new ToolStripLabel("Grupo:"));
             toolStripMenu.Items.Add(toolStripComboBoxGrupo);
-            toolStripMenu.Items.Add(toolStripButtonSelecionar);
+            toolStripMenu.Items.Add(tsbSelecionar);
             toolStripMenu.Items.Add(toolStripSeparator1);
             toolStripMenu.Items.Add(_chkboxAutoMode);
             toolStripMenu.Items.Add(new ToolStripSeparator());
             toolStripMenu.Items.Add(new ToolStripLabel("Procurar:"));
             toolStripMenu.Items.Add(toolStripTextBoxProcurar);
-            toolStripMenu.Items.Add(toolStripButtonProcurar);
+            toolStripMenu.Items.Add(tsbProcurar);
             toolStripMenu.Items.Add(new ToolStripSeparator());
             toolStripMenu.Items.Add(_chkboxRegex);
             toolStripMenu.Items.Add(new ToolStripSeparator());
@@ -134,11 +134,11 @@ namespace MoneyBin2 {
             toolStripTextBoxProcurar.KeyDown += toolStripTextBoxProcurar_KeyDown;
             toolStripTextBoxProcurar.Validated += toolStripTextBoxProcurar_Validated;
             toolStripTextBoxProcurar.TextChanged += toolStripTextBoxProcurar_TextChanged;
-            toolStripButtonProcurar.Click += toolStripButtonProcurar_Click;
+            tsbProcurar.Click += tsbProcurar_Click;
             _chkboxAutoMode.CheckedChanged += ToggleAutoMode;
             _chkboxDocumento.CheckedChanged += ShowDocumento;
             toolStripComboBoxConta.SelectedIndexChanged += FilterItemChanged;
-            toolStripButtonSelecionar.Click += FilterItemChanged;
+            tsbSelecionar.Click += FilterItemChanged;
             _dtpInicio.ValueChanged += FilterItemChanged;
             _dtpTermino.ValueChanged += FilterItemChanged;
 
@@ -150,16 +150,16 @@ namespace MoneyBin2 {
                     ? _ctx.Contas.Find(Settings.Default.BalanceContaPadrao)
                     : _ctx.Contas.Find(Settings.Default.BalanceUltimaConta);
 
-            dgvBalance.FormatColumn("Data", dgvBalance.StyleDateShort, 80);
-            dgvBalance.FormatColumn("Histórico", null, 300);
-            dgvBalance.FormatColumn("Documento", null, 120);
-            dgvBalance.FormatColumn("Valor", dgvBalance.StyleCurrency, 100);
-            dgvBalance.FormatColumn("Afeta Saldo", null, 40);
-            dgvBalance.FormatColumn("Saldo", dgvBalance.StyleCurrency, 100);
-            dgvBalance.FormatColumn("Grupo", null, 120);
-            dgvBalance.FormatColumn("Categoria", null, 140);
-            dgvBalance.FormatColumn("SubCategoria", null, 200);
-            dgvBalance.FormatColumn("Descrição", null, 200);
+            dgvBalance.FormatColumnByHeader("Data", dgvBalance.StyleDateShort, 80);
+            dgvBalance.FormatColumnByHeader("Histórico", null, 300);
+            dgvBalance.FormatColumnByHeader("Documento", null, 120);
+            dgvBalance.FormatColumnByHeader("Valor", dgvBalance.StyleCurrency, 100);
+            dgvBalance.FormatColumnByHeader("Afeta Saldo", null, 40);
+            dgvBalance.FormatColumnByHeader("Saldo", dgvBalance.StyleCurrency, 100);
+            dgvBalance.FormatColumnByHeader("Grupo", null, 120);
+            dgvBalance.FormatColumnByHeader("Categoria", null, 140);
+            dgvBalance.FormatColumnByHeader("SubCategoria", null, 200);
+            dgvBalance.FormatColumnByHeader("Descrição", null, 200);
             dgvBalance.Columns[2].Visible = false;
 
             ResizeForm(dgvBalance);
@@ -183,7 +183,7 @@ namespace MoneyBin2 {
                 toolStripComboBoxGrupo.ComboBox.Items.AddRange(ContaAtual.Grupos.ToArray());
                 toolStripComboBoxGrupo.ComboBox.SelectedIndex = 0;
             }
-            if (((ToolStripItem)sender).Name == "toolStripButtonSelecionar" ||
+            if (((ToolStripItem)sender).Name == "tsbSelecionar" ||
                 _chkboxAutoMode.Checked) {
                 QueryDatabase();
             }
@@ -191,7 +191,7 @@ namespace MoneyBin2 {
             var grupo = toolStripComboBoxGrupo.SelectedIndex == 0
                 ? ""
                 : $"Grupo = '{toolStripComboBoxGrupo.SelectedItem}' e ";
-            toolStripButtonSelecionar.ToolTipText =
+            tsbSelecionar.ToolTipText =
                 $"Selecionar itens com {grupo}data entre {_dtpInicio.Value:d} e {_dtpTermino.Value:d}";
         }
 
@@ -207,7 +207,7 @@ namespace MoneyBin2 {
         }
 
         private void ToggleAutoMode(object sender, EventArgs e) {
-            toolStripButtonSelecionar.Visible = !_chkboxAutoMode.Checked;
+            tsbSelecionar.Visible = !_chkboxAutoMode.Checked;
         }
 
         private void ShowDocumento(object sender, EventArgs e) {
@@ -215,14 +215,14 @@ namespace MoneyBin2 {
             ResizeForm(dgvBalance);
         }
 
-        protected override void toolStripButtonSave_Click(object sender, EventArgs e) {
+        protected override void tsbSave_Click(object sender, EventArgs e) {
             dgvBalance.EndEdit();
-            base.toolStripButtonSave_Click(sender, e);
+            base.tsbSave_Click(sender, e);
         }
 
-        protected override void toolStripButtonRevert_Click(object sender, EventArgs e) {
+        protected override void tsbRevert_Click(object sender, EventArgs e) {
             dgvBalance.EndEdit();
-            base.toolStripButtonRevert_Click(sender, e);
+            base.tsbRevert_Click(sender, e);
             dgvBalance.Refresh();
         }
 
@@ -240,7 +240,7 @@ namespace MoneyBin2 {
         }
 
         private void toolStripTextBoxProcurar_TextChanged(object sender, EventArgs e) {
-            toolStripButtonProcurar.Visible = !string.IsNullOrEmpty(toolStripTextBoxProcurar.Text);
+            tsbProcurar.Visible = !string.IsNullOrEmpty(toolStripTextBoxProcurar.Text);
         }
 
         private void SelectFirstRow() {
@@ -249,7 +249,7 @@ namespace MoneyBin2 {
             dgvBalance.Rows[0].Selected = true;
         }
 
-        private void toolStripButtonProcurar_Click(object sender, EventArgs e) {
+        private void tsbProcurar_Click(object sender, EventArgs e) {
             Procurar();
         }
 

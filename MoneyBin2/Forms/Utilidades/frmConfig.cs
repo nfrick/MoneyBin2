@@ -24,7 +24,8 @@ namespace MoneyBin2 {
 
         public frmConfig() {
             InitializeComponent();
-
+        }
+        private void frmConfig_Load(object sender, EventArgs e) {
             SetContaComboBox(comboBoxBalanceContaPadrao);
             SetContaComboBox(comboBoxInvestimentosContaPadrao);
 
@@ -37,13 +38,15 @@ namespace MoneyBin2 {
             radioButtonInvestimentosUltimaConta.Checked = !Settings.Default.InvestimentosUsarContaPadrao;
 
             labelCalendarioPastaPagamentos.Text = Settings.Default.CalendarioPastaPagamentos;
-            
-            checkBoxBackgroundVisivel.Checked = Settings.Default.MainBackgroundVisivel;
-            checkBoxBackgroundRodizio.Checked = Settings.Default.MainBackgroundRod;
+
+            var frm = (frmMain)this.MdiParent;
+
+            checkBoxBackgroundVisivel.Checked = frm.tsmiBackgroundVisivel.Checked;
+            checkBoxBackgroundRodizio.Checked = frm.tsmiBackgroundRodizio.Checked;
             trackBarTempo.Value = Settings.Default.MainBackgroundTempo;
 
-            checkBoxBarraFerramentasVisivel.Checked = Settings.Default.MainBarraFerramentasVisivel;
-            checkBoxBarraFerramentasImagemeTexto.Checked = Settings.Default.MainBarraFerramentasImagem;
+            checkBoxBarraFerramentasVisivel.Checked = frm.tsmiToolbarVisivel.Checked;
+            checkBoxBarraFerramentasImagemeTexto.Checked = frm.tsmiToolbarImagemApenas.Checked;
         }
 
         private void SetContaComboBox(ComboBox combo) {
@@ -300,7 +303,7 @@ namespace MoneyBin2 {
             Settings.Default.MainBarraFerramentasVisivel = checkBoxBarraFerramentasVisivel.Checked;
             Settings.Default.MainBarraFerramentasImagem = checkBoxBarraFerramentasImagemeTexto.Checked;
             Settings.Default.Save();
-            ((frmMain)this.Parent.Parent).AtualizaConfiguracoes();
+            ((frmMain)this.Parent.Parent).CarregaConfiguracoes();
         }
 
         private void labelCalendarioPastaPagamentos_DoubleClick(object sender, EventArgs e) {
@@ -308,7 +311,6 @@ namespace MoneyBin2 {
             if (FBD.ShowDialog() == DialogResult.Cancel) {
                 return;
             }
-
             labelCalendarioPastaPagamentos.Text = FBD.SelectedPath;
         }
 

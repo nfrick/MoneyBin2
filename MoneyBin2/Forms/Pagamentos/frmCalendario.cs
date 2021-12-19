@@ -18,17 +18,17 @@ namespace MoneyBin2 {
         public frmCalendario() {
             InitializeComponent();
             _mainBindingSource = bsCalendar;
-            toolStripMenu.Items.Add(toolStripButtonPrevMonth);
+            toolStripMenu.Items.Add(tsbPrevMonth);
             toolStripMenu.Items.Add(toolStripComboBoxMes);
-            toolStripMenu.Items.Add(toolStripButtonNextMonth);
+            toolStripMenu.Items.Add(tsbNextMonth);
             toolStripMenu.Items.Add(toolStripEncontrarPagamentos);
 
-            dgvCalendario.FormatColumn("Dia", dgvCalendario.StyleInteger, 40);
-            dgvCalendario.FormatColumn("Descrição", null, 180);
-            dgvCalendario.FormatColumn("Agendado?", null, 70);
-            dgvCalendario.FormatColumn("Pago?", null, 70);
-            dgvCalendario.FormatColumn("Data", dgvCalendario.StyleDateTimeShort, 110);
-            dgvCalendario.FormatColumn("Valor", dgvCalendario.StyleCurrency, 90);
+            dgvCalendario.FormatColumnByHeader("Dia", dgvCalendario.StyleInteger, 40);
+            dgvCalendario.FormatColumnByHeader("Descrição", null, 180);
+            dgvCalendario.FormatColumnByHeader("Agendado?", null, 70);
+            dgvCalendario.FormatColumnByHeader("Pago?", null, 70);
+            dgvCalendario.FormatColumnByHeader("Data", dgvCalendario.StyleDateTimeShort, 110);
+            dgvCalendario.FormatColumnByHeader("Valor", dgvCalendario.StyleCurrency, 90);
 
             var meses = _ctx.spCalendarioMeses().ToList();
 
@@ -140,18 +140,18 @@ namespace MoneyBin2 {
             UpdateToolbarButtons();
         }
 
-        protected override void toolStripButtonSave_Click(object sender, EventArgs e) {
+        protected override void tsbSave_Click(object sender, EventArgs e) {
             dgvCalendario.EndEdit();
-            base.toolStripButtonSave_Click(sender, e);
+            base.tsbSave_Click(sender, e);
         }
 
-        protected override void toolStripButtonRevert_Click(object sender, EventArgs e) {
+        protected override void tsbRevert_Click(object sender, EventArgs e) {
             dgvCalendario.EndEdit();
-            base.toolStripButtonRevert_Click(sender, e);
+            base.tsbRevert_Click(sender, e);
             dgvCalendario.Refresh();
         }
 
-        private void toolStripButtonMonth_Click(object sender, EventArgs e) {
+        private void tsbMonth_Click(object sender, EventArgs e) {
             var btn = sender as ToolStripButton;
             toolStripComboBoxMes.ComboBox.SelectedIndex += int.Parse((string)btn.Tag);
             EnableNavigationButtons();
@@ -170,11 +170,11 @@ namespace MoneyBin2 {
 
         private void EnableNavigationButtons() {
             var cbx = toolStripComboBoxMes.ComboBox;
-            toolStripButtonPrevMonth.Enabled = cbx.SelectedIndex < cbx.Items.Count - 1;
-            toolStripButtonNextMonth.Enabled = cbx.SelectedIndex > 0;
+            tsbPrevMonth.Enabled = cbx.SelectedIndex < cbx.Items.Count - 1;
+            tsbNextMonth.Enabled = cbx.SelectedIndex > 0;
         }
 
-        private void toolStripButtonEncontrarPagamentos_Click(object sender, EventArgs e) {
+        private void tsbEncontrarPagamentos_Click(object sender, EventArgs e) {
             ProcurarAgendamentos();
             ProcurarPagamentos();
             dgvCalendario.Refresh();

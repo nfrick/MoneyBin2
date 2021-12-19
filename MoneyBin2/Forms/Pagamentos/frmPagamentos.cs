@@ -26,12 +26,12 @@ namespace MoneyBin2 {
 
             splitContainer.Panel2Collapsed = true;
 
-            dgvPagamentos.FormatColumn("Grupo", null, 100);
-            dgvPagamentos.FormatColumn("Categoria", null, 200);
-            dgvPagamentos.FormatColumn("SubCategoria", null, 150);
-            dgvPagamentos.FormatColumn("Descrição", null, 150);
-            dgvPagamentos.FormatColumn("Dia", dgvPagamentos.StyleInteger, 50);
-            dgvPagamentos.FormatColumn("Valor", dgvPagamentos.StyleCurrency, 80);
+            dgvPagamentos.FormatColumnByHeader("Grupo", null, 100);
+            dgvPagamentos.FormatColumnByHeader("Categoria", null, 200);
+            dgvPagamentos.FormatColumnByHeader("SubCategoria", null, 150);
+            dgvPagamentos.FormatColumnByHeader("Descrição", null, 150);
+            dgvPagamentos.FormatColumnByHeader("Dia", dgvPagamentos.StyleInteger, 50);
+            dgvPagamentos.FormatColumnByHeader("Valor", dgvPagamentos.StyleCurrency, 80);
             for (var col = 7; col < dgvPagamentos.ColumnCount; col++) {
                 dgvPagamentos.Columns[col].Width = 50;
             }
@@ -108,17 +108,17 @@ namespace MoneyBin2 {
         #endregion DATAGRIDVIEW -------------------
 
         #region TOOLSTRIP -------------------
-        protected override void toolStripButtonSave_Click(object sender, EventArgs e) {
+        protected override void tsbSave_Click(object sender, EventArgs e) {
             dgvPagamentos.EndEdit();
-            base.toolStripButtonSave_Click(sender, e);
+            base.tsbSave_Click(sender, e);
         }
 
-        protected override void toolStripButtonRevert_Click(object sender, EventArgs e) {
-            base.toolStripButtonRevert_Click(sender, e);
+        protected override void tsbRevert_Click(object sender, EventArgs e) {
+            base.tsbRevert_Click(sender, e);
             dgvPagamentos.Refresh();
         }
 
-        private void toolStripButtonNovo_Click(object sender, EventArgs e) {
+        private void tsbNovo_Click(object sender, EventArgs e) {
             NovoPagamento();
             ToggleEdit();
         }

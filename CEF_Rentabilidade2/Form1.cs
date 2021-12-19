@@ -17,7 +17,7 @@ namespace Rentabilidades {
         private readonly string _excelFile = Properties.Settings.Default.ExcelFilePath;
         //private readonly string _excelFile = @"D:\Users\Nelson Frick\SkyDrive\Documents\Financeiro\Caixa\Fundos BB e CEF2.xlsm";
 
-       #region FORM
+        #region FORM
 
         public Form1() {
             InitializeComponent();
@@ -26,9 +26,8 @@ namespace Rentabilidades {
         }
 
         private void toolStripButtonColar_Click(object sender, EventArgs e) {
-            var text = (rtbText.TextLength > 0 ? "\n" : "") + Info.RemoveComments(Clipboard.GetText());
-            rtbText.AppendText(text);
-            rtbText.Lines = rtbText.Lines.Where(l => !string.IsNullOrEmpty(l)).ToArray();
+            var linhas = Info.RemoveComments(Clipboard.GetText()).Split(new [] { "\r\n" }, StringSplitOptions.None).Where(l => !string.IsNullOrEmpty(l) && l.Length > 20).ToArray();
+            rtbText.Lines = rtbText.Lines.Concat(linhas).ToArray();
         }
 
         private void toolStripButtonProcessCEF_Click(object sender, EventArgs e) {
@@ -220,8 +219,7 @@ namespace Rentabilidades {
             pck.Workbook.Worksheets.MoveAfter(sheet, bank);
 
             ws.View.ShowGridLines = false;
-            if (ws.Cells["A1"].Value == null)
-            {
+            if (ws.Cells["A1"].Value == null) {
                 var headers = bank == "BB" ? new InfoBB("").ColumnHeaders : new InfoCEF("").ColumnHeaders;
                 for (var i = 0; i < headers.Count(); i++) {
                     ws.Cells[1, i + 1].Value = headers[i];

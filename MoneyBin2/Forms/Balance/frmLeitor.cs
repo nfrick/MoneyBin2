@@ -35,18 +35,19 @@ namespace MoneyBin2 {
 
             if (!LerExtratos()) {
                 Load += (s, e) => Close();
+                return;
             }
 
-            dgvExtrato.FormatColumn("Add", null, 40);
-            dgvExtrato.FormatColumn("Data", dgvExtrato.StyleDateShort, 80);
-            dgvExtrato.FormatColumn("Histórico", null, 300);
-            dgvExtrato.FormatColumn("Documento", null, 120);
-            dgvExtrato.FormatColumn("Valor", dgvExtrato.StyleCurrency, 80);
-            dgvExtrato.FormatColumn("Afeta Saldo", null, 40);
-            dgvExtrato.FormatColumn("Grupo", null, 90);
-            dgvExtrato.FormatColumn("Categoria", null, 90);
-            dgvExtrato.FormatColumn("SubCategoria", null, 110);
-            dgvExtrato.FormatColumn("Descrição", null, 120);
+            dgvExtrato.FormatColumnByHeader("Add", null, 40);
+            dgvExtrato.FormatColumnByHeader("Data", dgvExtrato.StyleDateShort, 80);
+            dgvExtrato.FormatColumnByHeader("Histórico", null, 300);
+            dgvExtrato.FormatColumnByHeader("Documento", null, 120);
+            dgvExtrato.FormatColumnByHeader("Valor", dgvExtrato.StyleCurrency, 80);
+            dgvExtrato.FormatColumnByHeader("Afeta Saldo", null, 40);
+            dgvExtrato.FormatColumnByHeader("Grupo", null, 90);
+            dgvExtrato.FormatColumnByHeader("Categoria", null, 90);
+            dgvExtrato.FormatColumnByHeader("SubCategoria", null, 110);
+            dgvExtrato.FormatColumnByHeader("Descrição", null, 120);
         }
 
         private void frmLeitor_FormClosing(object sender, FormClosingEventArgs e) {
@@ -55,11 +56,11 @@ namespace MoneyBin2 {
         #endregion FORM -------------------------
 
         #region TOOLSTRIP -------------------------
-        private void toolStripButtonSalvar_Click(object sender, EventArgs e) {
+        private void tsbSalvar_Click(object sender, EventArgs e) {
             SalvarExtratoLido();
         }
 
-        private void toolStripButtonLerArquivo_Click(object sender, EventArgs e) {
+        private void tsbLerArquivo_Click(object sender, EventArgs e) {
             LerExtratos();
         }
 
@@ -70,7 +71,7 @@ namespace MoneyBin2 {
             }
         }
 
-        private void toolStripButtonRemove_Click(object sender, EventArgs e) {
+        private void tsbRemove_Click(object sender, EventArgs e) {
             _conta.Extrato.RemoveAll(b => !b.AddToDB);
             bsExtrato.ResetBindings(true);
             SelectRow(0);
@@ -131,7 +132,7 @@ namespace MoneyBin2 {
                         // Ignore exception
                     }
                     bsExtrato.ResetBindings(false);
-                    toolStripButtonSalvar.Enabled = false;
+                    tsbSalvar.Enabled = false;
 
                     break;
                 case DialogResult.No:
@@ -164,7 +165,7 @@ namespace MoneyBin2 {
         }
 
         private void dgvExtrato_RowEnter(object sender, DataGridViewCellEventArgs e) {
-            toolStripButtonSalvar.Enabled = _conta.ExtratoHasAddToDB;
+            tsbSalvar.Enabled = _conta.ExtratoHasAddToDB;
         }
 
         private void dgvExtrato_SelectionChanged(object sender, EventArgs e) {

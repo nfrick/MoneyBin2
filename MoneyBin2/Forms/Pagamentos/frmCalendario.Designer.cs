@@ -38,9 +38,9 @@ namespace MoneyBin2 {
             this.AgendadoData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PagamentoData = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripButtonPrevMonth = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrevMonth = new System.Windows.Forms.ToolStripButton();
             this.toolStripComboBoxMes = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButtonNextMonth = new System.Windows.Forms.ToolStripButton();
+            this.tsbNextMonth = new System.Windows.Forms.ToolStripButton();
             this.toolStripEncontrarPagamentos = new System.Windows.Forms.ToolStripButton();
             this.Pago = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bsCalendar = new System.Windows.Forms.BindingSource(this.components);
@@ -159,18 +159,18 @@ namespace MoneyBin2 {
             this.PagamentoData.HeaderText = "Data";
             this.PagamentoData.Name = "PagamentoData";
             // 
-            // toolStripButtonPrevMonth
+            // tsbPrevMonth
             // 
-            this.toolStripButtonPrevMonth.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonPrevMonth.Font = new System.Drawing.Font("Webdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.toolStripButtonPrevMonth.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonPrevMonth.Image")));
-            this.toolStripButtonPrevMonth.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPrevMonth.Name = "toolStripButtonPrevMonth";
-            this.toolStripButtonPrevMonth.Size = new System.Drawing.Size(34, 30);
-            this.toolStripButtonPrevMonth.Tag = "1";
-            this.toolStripButtonPrevMonth.Text = "3";
-            this.toolStripButtonPrevMonth.ToolTipText = "Mês anterior";
-            this.toolStripButtonPrevMonth.Click += new System.EventHandler(this.toolStripButtonMonth_Click);
+            this.tsbPrevMonth.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbPrevMonth.Font = new System.Drawing.Font("Webdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.tsbPrevMonth.Image = ((System.Drawing.Image)(resources.GetObject("tsbPrevMonth.Image")));
+            this.tsbPrevMonth.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPrevMonth.Name = "tsbPrevMonth";
+            this.tsbPrevMonth.Size = new System.Drawing.Size(34, 30);
+            this.tsbPrevMonth.Tag = "1";
+            this.tsbPrevMonth.Text = "3";
+            this.tsbPrevMonth.ToolTipText = "Mês anterior";
+            this.tsbPrevMonth.Click += new System.EventHandler(this.tsbMonth_Click);
             // 
             // toolStripComboBoxMes
             // 
@@ -179,18 +179,18 @@ namespace MoneyBin2 {
             this.toolStripComboBoxMes.Size = new System.Drawing.Size(80, 33);
             this.toolStripComboBoxMes.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxMes_SelectedIndexChanged);
             // 
-            // toolStripButtonNextMonth
+            // tsbNextMonth
             // 
-            this.toolStripButtonNextMonth.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonNextMonth.Font = new System.Drawing.Font("Webdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.toolStripButtonNextMonth.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNextMonth.Image")));
-            this.toolStripButtonNextMonth.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNextMonth.Name = "toolStripButtonNextMonth";
-            this.toolStripButtonNextMonth.Size = new System.Drawing.Size(34, 30);
-            this.toolStripButtonNextMonth.Tag = "-1";
-            this.toolStripButtonNextMonth.Text = "4";
-            this.toolStripButtonNextMonth.ToolTipText = "Próximo mês";
-            this.toolStripButtonNextMonth.Click += new System.EventHandler(this.toolStripButtonMonth_Click);
+            this.tsbNextMonth.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbNextMonth.Font = new System.Drawing.Font("Webdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.tsbNextMonth.Image = ((System.Drawing.Image)(resources.GetObject("tsbNextMonth.Image")));
+            this.tsbNextMonth.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNextMonth.Name = "tsbNextMonth";
+            this.tsbNextMonth.Size = new System.Drawing.Size(34, 30);
+            this.tsbNextMonth.Tag = "-1";
+            this.tsbNextMonth.Text = "4";
+            this.tsbNextMonth.ToolTipText = "Próximo mês";
+            this.tsbNextMonth.Click += new System.EventHandler(this.tsbMonth_Click);
             // 
             // toolStripEncontrarPagamentos
             // 
@@ -202,7 +202,7 @@ namespace MoneyBin2 {
             this.toolStripEncontrarPagamentos.Size = new System.Drawing.Size(206, 30);
             this.toolStripEncontrarPagamentos.Text = "Encontrar Pagamentos";
             this.toolStripEncontrarPagamentos.ToolTipText = "Encontrar pagamentos no extrato";
-            this.toolStripEncontrarPagamentos.Click += new System.EventHandler(this.toolStripButtonEncontrarPagamentos_Click);
+            this.toolStripEncontrarPagamentos.Click += new System.EventHandler(this.tsbEncontrarPagamentos_Click);
             // 
             // Pago
             // 
@@ -239,8 +239,8 @@ namespace MoneyBin2 {
         private SuperDGV dgvCalendario;
         private System.Windows.Forms.BindingSource bsCalendar;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxMes;
-        private System.Windows.Forms.ToolStripButton toolStripButtonPrevMonth;
-        private System.Windows.Forms.ToolStripButton toolStripButtonNextMonth;
+        private System.Windows.Forms.ToolStripButton tsbPrevMonth;
+        private System.Windows.Forms.ToolStripButton tsbNextMonth;
         private System.Windows.Forms.ToolStripButton toolStripEncontrarPagamentos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;

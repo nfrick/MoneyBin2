@@ -9,9 +9,11 @@ using System.Windows.Forms;
 namespace MoneyBin2 {
     public partial class frmMain : Form {
         private readonly List<string> _lastBackgrounds = new List<string>();
+        private Boolean _salvarConfiguracoes;
+
         public frmMain() {
             InitializeComponent();
-            AtualizaConfiguracoes();
+            CarregaConfiguracoes();
         }
 
         private void frmMain_Load(object sender, EventArgs e) {
@@ -19,22 +21,24 @@ namespace MoneyBin2 {
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e) {
-            SalvaConfiguracoes();
+            if (_salvarConfiguracoes && MessageBox.Show("Salvar Configurações?", Text,
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                SalvaConfiguracoes();
         }
 
-        public void AtualizaConfiguracoes() {
-            toolbarVisivelToolStripMenuItem.Checked = Settings.Default.MainBarraFerramentasVisivel;
-            toolbarImagemApenasToolStripMenuItem.Checked = Settings.Default.MainBarraFerramentasImagem;
-            backgroundVisívelToolStripMenuItem.Checked = Settings.Default.MainBackgroundVisivel;
-            backgroundRodízioToolStripMenuItem.Checked = Settings.Default.MainBackgroundRod;
+        public void CarregaConfiguracoes() {
+            tsmiToolbarVisivel.Checked = Settings.Default.MainBarraFerramentasVisivel;
+            tsmiToolbarImagemApenas.Checked = Settings.Default.MainBarraFerramentasImagem;
+            tsmiBackgroundVisivel.Checked = Settings.Default.MainBackgroundVisivel;
+            tsmiBackgroundRodizio.Checked = Settings.Default.MainBackgroundRod;
             timerBackground.Interval = Settings.Default.MainBackgroundTempo * 1000;
         }
 
         private void SalvaConfiguracoes() {
-            Settings.Default.MainBarraFerramentasVisivel = toolbarVisivelToolStripMenuItem.Checked;
-            Settings.Default.MainBarraFerramentasImagem = toolbarImagemApenasToolStripMenuItem.Checked;
-            Settings.Default.MainBackgroundVisivel = backgroundVisívelToolStripMenuItem.Checked;
-            Settings.Default.MainBackgroundRod = backgroundRodízioToolStripMenuItem.Checked;
+            Settings.Default.MainBarraFerramentasVisivel = tsmiToolbarVisivel.Checked;
+            Settings.Default.MainBarraFerramentasImagem = tsmiToolbarImagemApenas.Checked;
+            Settings.Default.MainBackgroundVisivel = tsmiBackgroundVisivel.Checked;
+            Settings.Default.MainBackgroundRod = tsmiBackgroundRodizio.Checked;
             Settings.Default.Save();
         }
 
@@ -61,113 +65,111 @@ namespace MoneyBin2 {
         #endregion BACKGROUND ------------------
 
         #region EXTRATO -----------------
-        private void toolStripButtonContas_Click(object sender, EventArgs e) {
+        private void tsbContas_Click(object sender, EventArgs e) {
             var frm = new frmBancosContas() { MdiParent = this };
             frm.Show();
         }
 
-        private void toolStripButtonRegras_Click(object sender, EventArgs e) {
+        private void tsbRegras_Click(object sender, EventArgs e) {
             var frm = new frmRegras() { MdiParent = this };
             frm.Show();
         }
 
-        private void toolStripButtonLeitor_Click(object sender, EventArgs e) {
+        private void tsbLeitor_Click(object sender, EventArgs e) {
             var frm = new frmLeitor() { MdiParent = this };
             if (frm.HasData) {
                 frm.Show();
             }
         }
 
-        private void toolStripButtonBalance_Click(object sender, EventArgs e) {
+        private void tsbBalance_Click(object sender, EventArgs e) {
             var frm = new frmBalanceSF { MdiParent = this };
             frm.Show();
         }
 
-        private void toolStripButtonBalanceAntigo_Click(object sender, EventArgs e) {
+        private void tsbBalanceAntigo_Click(object sender, EventArgs e) {
             var frm = new frmBalance() { MdiParent = this };
             frm.Show();
         }
+        private void tsbPesquisa_Click(object sender, EventArgs e) {
+            var frm = new frmPesquisa() { MdiParent = this };
+            frm.Show();
+        }
 
-        private void toolStripButtonClassificacao_Click(object sender, EventArgs e) {
+        private void tsbClassificacao_Click(object sender, EventArgs e) {
             var frm = new frmClassificacao { MdiParent = this };
             frm.Show();
         }
 
-        private void toolStripButtonExportar_Click(object sender, EventArgs e) {
+        private void tsbExportar_Click(object sender, EventArgs e) {
             var frm = new frmExport { MdiParent = this };
             frm.Show();
         }
 
-        private void toolStripButtonRelatorios_Click(object sender, EventArgs e) {
+        private void tsbRelatorios_Click(object sender, EventArgs e) {
             var frm = new frmReport { MdiParent = this };
             frm.Show();
         }
         #endregion EXTRATO -----------------
 
         #region PAGAMENTOS ----------
-        private void toolStripButtonPagamentos_Click(object sender, EventArgs e) {
+        private void tsbPagamentos_Click(object sender, EventArgs e) {
             var frm = new frmPagamentos { MdiParent = this };
             frm.Show();
         }
-        private void toolStripButtonCalendario_Click(object sender, EventArgs e) {
+        private void tsbCalendario_Click(object sender, EventArgs e) {
             var frm = new frmCalendario { MdiParent = this };
             frm.Show();
         }
         #endregion PAGAMENTOS ----------
 
         #region FERRAMENTAS -----------------
-        private void toolStripButtonConfig_Click(object sender, EventArgs e) {
+        private void tsbConfig_Click(object sender, EventArgs e) {
             var frm = new frmConfig { MdiParent = this };
             frm.Show();
         }
 
-        private void toolbarVisivelToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-            toolStripMain.Visible = toolbarVisivelToolStripMenuItem.Checked;
-            SalvaConfiguracoes();
+        private void tsmiToolbarVisivel_CheckedChanged(object sender, EventArgs e) {
+            toolStripMain.Visible = tsmiToolbarVisivel.Checked;
+            _salvarConfiguracoes = true;
         }
 
-        private void toolbarImagemApenasToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-            foreach (ToolStripButton item in toolStripMain.Items) {
-                item.DisplayStyle = toolbarImagemApenasToolStripMenuItem.Checked
-                    ? ToolStripItemDisplayStyle.Image
-                    : ToolStripItemDisplayStyle.ImageAndText;
-            }
-            SalvaConfiguracoes();
+        private void tsmiToolbarImagemApenas_CheckedChanged(object sender, EventArgs e) {
+            foreach (ToolStripButton tsb in toolStripMain.Items)
+                tsb.DisplayStyle = tsmiToolbarImagemApenas.Checked ? ToolStripItemDisplayStyle.Image : ToolStripItemDisplayStyle.ImageAndText;
         }
 
-        private void backgroundRodízioToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-            timerBackground.Enabled = backgroundRodízioToolStripMenuItem.Checked;
-            SalvaConfiguracoes();
+        private void tsmiBackgroundRodízio_CheckedChanged(object sender, EventArgs e) {
+            tsmiBackgroundVisivel.Checked |= tsmiBackgroundRodizio.Checked;
+            timerBackground.Enabled = tsmiBackgroundRodizio.Checked;
+            _salvarConfiguracoes = true;
         }
 
-        private void backgroundVisívelToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-            if (backgroundVisívelToolStripMenuItem.Checked) {
+        private void tsmiBackgroundVisível_CheckedChanged(object sender, EventArgs e) {
+            if (tsmiBackgroundVisivel.Checked)
                 NewBackground();
-            }
             else {
+                tsmiBackgroundRodizio.Checked = false;
+                timerBackground.Enabled = false;
                 BackgroundImage = null;
             }
-            SalvaConfiguracoes();
+            
         }
+
         #endregion FERRAMENTAS -----------------
 
-        private void toolStripButtonSerieHistorica_Click(object sender, EventArgs e) {
+        private void tsbSerieHistorica_Click(object sender, EventArgs e) {
             var frm = new frmSerieHistorica() { MdiParent = this };
             frm.Show();
         }
 
-        private void toolStripButtonInvestimentos_Click(object sender, EventArgs e) {
+        private void tsbInvestimentos_Click(object sender, EventArgs e) {
             var frm = new frmInvestimentos() { MdiParent = this };
             frm.Show();
         }
 
-        private void fundosToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void tsmiFundos_Click(object sender, EventArgs e) {
             var frm = new frmFundos() { MdiParent = this };
-            frm.Show();
-        }
-
-        private void toolStripButtonPesquisa_Click(object sender, EventArgs e) {
-            var frm = new frmPesquisa() { MdiParent = this };
             frm.Show();
         }
     }
